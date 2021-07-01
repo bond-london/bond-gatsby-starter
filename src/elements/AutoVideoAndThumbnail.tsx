@@ -22,7 +22,7 @@ export const AutoVideoAndThumbnail: React.FC<Props> = ({
   loop,
   muted,
 }) => {
-  const realDelay = delay || 5000;
+  const realDelay = delay || 100;
   const [imageLoaded, setImageLoaded] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
 

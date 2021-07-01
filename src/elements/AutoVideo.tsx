@@ -9,7 +9,6 @@ import React, {
 import { onVisibleToUser } from "../hooks/Visibility";
 
 function playVideo(videoElement: HTMLVideoElement) {
-  return;
   videoElement
     .play()
     .then(() => {
@@ -114,15 +113,6 @@ export const RealAutoVideo: React.FC<Props> = ({
     }
   }, [autoplay, src, hasPlayed]);
 
-  console.log({
-    src,
-    videoSrc: videoRef.current?.src,
-    autoplay,
-    hasPlayed,
-    className,
-    loop,
-    muted,
-  });
   return (
     <video
       ref={videoRef}
