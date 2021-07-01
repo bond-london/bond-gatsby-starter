@@ -30,7 +30,7 @@ const Page: React.FC<Props> = (props) => {
   } = props;
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const {
-    siteURL: possibleSiteURL,
+    siteUrl: possibleSiteUrl,
     title: siteTitle,
     description: siteDescription,
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -40,7 +40,7 @@ const Page: React.FC<Props> = (props) => {
   const imageSrc = getSrc(imageData);
   const videoSrc = video?.publicURL;
   const lottie = (animation as File)?.lottie as ExtractedLottie;
-  const siteURL = possibleSiteURL || "http://localhost:8080";
+  const siteUrl = possibleSiteUrl || "http://localhost:8080";
 
   const meta: JSX.IntrinsicElements["meta"][] = [
     { name: "robots", content: "noindex" },
@@ -66,7 +66,7 @@ const Page: React.FC<Props> = (props) => {
   ];
 
   if (imageSrc) {
-    meta.push({ property: "og:image", content: `${siteURL}/${imageSrc}` });
+    meta.push({ property: "og:image", content: `${siteUrl}/${imageSrc}` });
   }
 
   return (
@@ -82,7 +82,7 @@ const Page: React.FC<Props> = (props) => {
         <SEO
           siteMetadata={siteMetadata}
           pageMetadata={{ title, description, image: imageData }}
-          pageUrl={siteMetadata.siteURL || "http://localhost:8000"}
+          pageUrl={siteMetadata.siteUrl || "http://localhost:8000"}
         />
       )}
       <h1 className={classNames(h1)}>
@@ -152,7 +152,7 @@ export const indexPageQuery = graphql`
       siteMetadata {
         description
         title
-        siteURL
+        siteUrl
       }
     }
     siteBuildMetadata {

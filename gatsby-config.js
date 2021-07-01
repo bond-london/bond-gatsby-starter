@@ -9,7 +9,7 @@ module.exports = {
   siteMetadata: {
     title: "Bond London Sample Site",
     description: "Site made using the Simple Bond Gatsby Starter",
-    siteURL: process.env.GATSBY_SITE_URL || "http://localhost:8000",
+    siteUrl: process.env.GATSBY_SITE_URL || "http://localhost:8000",
   },
   plugins: [
     {

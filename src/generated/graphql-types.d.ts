@@ -300,7 +300,7 @@ export type SiteSiteMetadata = {
   __typename?: 'SiteSiteMetadata';
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
-  siteURL?: Maybe<Scalars['String']>;
+  siteUrl?: Maybe<Scalars['String']>;
 };
 
 export type SiteFunction = Node & {
@@ -3345,7 +3345,7 @@ export type DirectorySortInput = {
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
-  siteURL?: Maybe<StringQueryOperatorInput>;
+  siteUrl?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteFlagsFilterInput = {
@@ -3403,7 +3403,7 @@ export type SiteFieldsEnum =
   | 'buildTime'
   | 'siteMetadata___title'
   | 'siteMetadata___description'
-  | 'siteMetadata___siteURL'
+  | 'siteMetadata___siteUrl'
   | 'port'
   | 'host'
   | 'flags___FAST_DEV'
