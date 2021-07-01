@@ -99,9 +99,6 @@ export const RealAutoVideo: React.FC<Props> = ({
     if (!videoElement) return;
     if (autoplay) {
       shouldPlayRef.current = true;
-      if (videoElement.src !== src) {
-        videoElement.src = src;
-      }
       if (!hasPlayed || videoElement.paused) {
         playVideo(videoElement);
       }
@@ -111,7 +108,7 @@ export const RealAutoVideo: React.FC<Props> = ({
         videoElement.pause();
       }
     }
-  }, [autoplay, src, hasPlayed]);
+  }, [autoplay, hasPlayed]);
 
   return (
     <video
@@ -126,7 +123,7 @@ export const RealAutoVideo: React.FC<Props> = ({
       loop={loop}
       muted={muted}
       playsInline={true}
-      onCanPlay={handleLoad}
+      onCanPlay={hasPlayed ? undefined : handleLoad}
       onPlay={hasPlayed ? undefined : handlePlay}
       onClick={onClick}
     />
