@@ -1,26 +1,34 @@
 import React from "react";
 import { h1 } from "../styles";
-import classNames from "classNames";
+import classNames from "classnames";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
-import { getSrc } from "gatsby-plugin-image";
-import { DocsJson, Site } from "../generated/graphql-types";
+import { getSrc, IGatsbyImageData } from "gatsby-plugin-image";
+import {
+  ExtractedLottie,
+  PageDoc,
+  Site,
+  SiteBuildMetadata,
+  File,
+} from "../generated/graphql-types";
+import { AutoVideoOrThumbnail, LottieElement, SEO } from "../elements";
 
 interface Props {
   data: {
-    docsJson: DocsJson;
+    pageDoc: PageDoc;
+    siteBuildMetadata: SiteBuildMetadata & { buildYear: string };
     site: Site;
   };
 }
 const Page: React.FC<Props> = (props) => {
   const {
     data: {
-      docsJson: { index },
+      pageDoc: { title, description, image, video, animation },
+      siteBuildMetadata,
       site: { siteMetadata },
     },
   } = props;
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { title, description, image, video } = index!;
   const {
     siteURL: possibleSiteURL,
     title: siteTitle,
@@ -28,8 +36,10 @@ const Page: React.FC<Props> = (props) => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   } = siteMetadata!;
 
-  const imageSrc = getSrc(image?.childImageSharp?.gatsbyImageData);
+  const imageData = image?.childImageSharp?.gatsbyImageData as IGatsbyImageData;
+  const imageSrc = getSrc(imageData);
   const videoSrc = video?.publicURL;
+  const lottie = (animation as File)?.lottie as ExtractedLottie;
   const siteURL = possibleSiteURL || "http://localhost:8080";
 
   const meta: JSX.IntrinsicElements["meta"][] = [
@@ -66,24 +76,44 @@ const Page: React.FC<Props> = (props) => {
         title={title || siteTitle || "Bond starter"}
         meta={meta}
       >
-        <script type="application/ld+json">
-          {`
-        {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "url": "${siteURL}",
-          "name": "${title || siteTitle || "Bond Sample Site"}"
-        }`}
-        </script>
+        <noscript>This site runs best with JavaScript enabled</noscript>
       </Helmet>
+      {siteMetadata && (
+        <SEO
+          siteMetadata={siteMetadata}
+          pageMetadata={{ title, description, image: imageData }}
+          pageUrl={siteMetadata.siteURL || "http://localhost:8000"}
+        />
+      )}
       <h1 className={classNames(h1)}>
         {title || siteTitle || "Bond Sample Site"}
       </h1>
-      {videoSrc && (
-        <div className="aspect-w-16 aspect-h-9 w-full">
-          <video src={videoSrc} autoPlay={true} muted={true} loop={true} />
+
+      <div className="aspect-w-16 aspect-h-9 w-full">
+        <AutoVideoOrThumbnail
+          videoSrc={videoSrc}
+          alt={description}
+          thumbnail={imageData}
+          fitParent={true}
+          loop={true}
+          muted={true}
+        />
+      </div>
+      {lottie && (
+        <div className="aspect-w-1 aspect-h-1 w-full">
+          <LottieElement
+            animationJson={lottie.animationJson}
+            encoded={lottie.encoded}
+            loop={true}
+          />
         </div>
       )}
+      <footer className="">
+        <p>
+          © Bond London {siteBuildMetadata.buildYear}{" "}
+          {siteBuildMetadata.buildTime}
+        </p>
+      </footer>
     </>
   );
 };
@@ -92,19 +122,29 @@ export default Page;
 
 export const indexPageQuery = graphql`
   query IndexPageQuery {
-    docsJson {
-      index {
-        title
-        description
-        image {
-          id
-          childImageSharp {
-            gatsbyImageData
-          }
+    pageDoc(
+      fileInformation: {
+        extension: { eq: "json" }
+        name: { eq: "index" }
+        relativeDirectory: { eq: "" }
+      }
+    ) {
+      title
+      description
+      image {
+        id
+        childImageSharp {
+          gatsbyImageData
         }
-        video {
-          id
-          publicURL
+      }
+      video {
+        id
+        publicURL
+      }
+      animation {
+        lottie {
+          animationJson
+          encoded
         }
       }
     }
@@ -114,6 +154,10 @@ export const indexPageQuery = graphql`
         title
         siteURL
       }
+    }
+    siteBuildMetadata {
+      buildYear: buildTime(formatString: "YYYY")
+      buildTime(formatString: "dddd, MMMM dS YYYY, h:mm:ss A")
     }
   }
 `;

@@ -1,8 +1,10 @@
 {
-  "index": {
+  "type": "Page",
+  "module": {
     "title": "Welcome to the Bond Gatsby Starter",
     "description": "Site made from the Simple Bond Gatsby starter",
     "image": "../src/images/video-poster.png",
-    "video": "../src/videos/SampleVideo_1280x720_1mb.mp4"
+    "video": "../videos/SampleVideo_1280x720_1mb.mp4",
+    "animation": "../animations/66417-rabbit.json"
   }
 }

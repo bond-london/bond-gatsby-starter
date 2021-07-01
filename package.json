@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@bond-london/gatsby-plugin-generate-typings": "^0.9.13",
+    "@bond-london/gatsby-transformer-expand": "^1.0.2",
     "@bond-london/gatsby-transformer-extracted-lottie": "^1.0.3",
     "@bond-london/gatsby-transformer-extracted-svg": "^1.0.5",
     "@fontsource/roboto": "^4.4.5",
@@ -32,6 +33,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "gatsby": "^3.6.2",
     "gatsby-plugin-eslint": "^3.0.0",
     "gatsby-plugin-gatsby-cloud": "^2.8.1",

@@ -41,6 +41,12 @@ module.exports = {
     "@bond-london/gatsby-transformer-extracted-svg",
     "@bond-london/gatsby-transformer-extracted-lottie",
     {
+      resolve: "@bond-london/gatsby-transformer-expand",
+      options: {
+        unNest: 2,
+      },
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
@@ -52,17 +58,17 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "videos",
-        path: "./src/videos/",
+        path: "./videos/",
       },
       __key: "videos",
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "docs",
-        path: "./docs/",
+        name: "animations",
+        path: "./animations/",
       },
-      __key: "docs",
+      __key: "animations",
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -71,6 +77,14 @@ module.exports = {
         path: "./db/",
       },
       __key: "db",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "docs",
+        path: "./docs/",
+      },
+      __key: "docs",
     },
     {
       resolve: "@bond-london/gatsby-plugin-generate-typings",
