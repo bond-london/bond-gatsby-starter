@@ -75,9 +75,7 @@ const Page: React.FC<Props> = (props) => {
         htmlAttributes={{ lang: "en" }}
         title={title || siteTitle || "Bond starter"}
         meta={meta}
-      >
-        <noscript>This site runs best with JavaScript enabled</noscript>
-      </Helmet>
+      ></Helmet>
       {siteMetadata && (
         <SEO
           siteMetadata={siteMetadata}

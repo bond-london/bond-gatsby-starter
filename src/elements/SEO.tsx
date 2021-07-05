@@ -32,6 +32,7 @@ export const SEO: React.FC<Props> = ({
     <>
       <Helmet>
         <title>{title}</title>
+        <noscript>This site runs best with JavaScript enabled</noscript>
         <meta name="description" content={description} />
         <meta name="image" content={imageUrl} />
         <meta name="keywords" content={keywords.join()} />
