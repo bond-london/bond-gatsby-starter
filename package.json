@@ -19,11 +19,12 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@bond-london/gatsby-plugin-generate-typings": "^0.9.13",
+    "@bond-london/gatsby-plugin-generate-typings": "^1.0.0",
     "@bond-london/gatsby-transformer-expand": "^1.0.2",
     "@bond-london/gatsby-transformer-extracted-lottie": "^1.0.3",
     "@bond-london/gatsby-transformer-extracted-svg": "^1.0.5",
     "@fontsource/roboto": "^4.4.5",
+    "@graphcms/rich-text-react-renderer": "^0.1.5",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
     "@types/react": "^17.0.13",

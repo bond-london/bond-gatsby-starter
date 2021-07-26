@@ -2,6 +2,7 @@ import { getSrc, IGatsbyImageData } from "gatsby-plugin-image";
 import * as React from "react";
 import { Helmet } from "react-helmet";
 import { SchemaOrg } from ".";
+import { SiteBuildMetadata } from "../generated/graphql-types";
 
 export interface Seo {
   title?: string | undefined | null;
@@ -10,12 +11,14 @@ export interface Seo {
   keywords?: string[] | undefined | null;
 }
 interface Props {
+  siteBuildMetadata: SiteBuildMetadata & { buildYear: string };
   siteMetadata: Seo;
   pageMetadata?: Seo;
   pageUrl: string;
 }
 
 export const SEO: React.FC<Props> = ({
+  siteBuildMetadata,
   siteMetadata,
   pageMetadata,
   pageUrl,
@@ -30,12 +33,19 @@ export const SEO: React.FC<Props> = ({
 
   return (
     <>
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: "en" }}>
         <title>{title}</title>
         <noscript>This site runs best with JavaScript enabled</noscript>
         <meta name="description" content={description} />
         <meta name="image" content={imageUrl} />
         <meta name="keywords" content={keywords.join()} />
+        <meta name="designer" content="Bond London" />
+        {siteBuildMetadata.buildTime && (
+          <meta
+            name="revised"
+            content={siteBuildMetadata.buildTime as string}
+          />
+        )}
 
         {/* Open graph tags */}
         <meta property="og:url" content={pageUrl} />

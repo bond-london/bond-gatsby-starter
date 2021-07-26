@@ -2,16 +2,19 @@ import React from "react";
 import { h1 } from "../styles";
 import classNames from "classnames";
 import { graphql } from "gatsby";
-import { Helmet } from "react-helmet";
-import { getSrc, IGatsbyImageData } from "gatsby-plugin-image";
 import {
-  ExtractedLottie,
   PageDoc,
   Site,
   SiteBuildMetadata,
   File,
 } from "../generated/graphql-types";
-import { AutoVideoOrThumbnail, LottieElement, SEO } from "../elements";
+import { AutoVideoOrThumbnail, LottieElement } from "../elements";
+import { Layout } from "../layouts";
+import {
+  getImageFromFile,
+  getLottieFromFile,
+  getVideoFromFile,
+} from "../utils";
 
 interface Props {
   data: {
@@ -28,64 +31,18 @@ const Page: React.FC<Props> = (props) => {
       site: { siteMetadata },
     },
   } = props;
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const {
-    siteUrl: possibleSiteUrl,
-    title: siteTitle,
-    description: siteDescription,
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  } = siteMetadata!;
 
-  const imageData = image?.childImageSharp?.gatsbyImageData as IGatsbyImageData;
-  const imageSrc = getSrc(imageData);
-  const videoSrc = video?.publicURL;
-  const lottie = (animation as File)?.lottie as ExtractedLottie;
-  const siteUrl = possibleSiteUrl || "http://localhost:8080";
-
-  const meta: JSX.IntrinsicElements["meta"][] = [
-    { name: "robots", content: "noindex" },
-    {
-      name: "description",
-      content: description || siteDescription || "Bond Sample Site",
-    },
-    { property: "og:title", content: title || siteTitle || "Bond Sample Site" },
-    {
-      property: "og:description",
-      content: description || siteDescription || "Bond Sample Site",
-    },
-    { property: "og:type", content: "website" },
-    {
-      name: "twitter:title",
-      content: title || siteTitle || "Bond Sample Site",
-    },
-    {
-      name: "twitter:description",
-      content: description || siteTitle || "Bond Sample Site",
-    },
-    { name: "twitter:card", content: "summary_large_image" },
-  ];
-
-  if (imageSrc) {
-    meta.push({ property: "og:image", content: `${siteUrl}/${imageSrc}` });
-  }
+  const imageData = getImageFromFile(image);
+  const videoSrc = getVideoFromFile(video);
+  const lottie = getLottieFromFile(animation as File);
 
   return (
-    <>
-      <Helmet
-        htmlAttributes={{ lang: "en" }}
-        title={title || siteTitle || "Bond starter"}
-        meta={meta}
-      ></Helmet>
-      {siteMetadata && (
-        <SEO
-          siteMetadata={siteMetadata}
-          pageMetadata={{ title, description, image: imageData }}
-          pageUrl={siteMetadata.siteUrl || "http://localhost:8000"}
-        />
-      )}
-      <h1 className={classNames(h1)}>
-        {title || siteTitle || "Bond Sample Site"}
-      </h1>
+    <Layout
+      siteBuildMetadata={siteBuildMetadata}
+      siteMetadata={siteMetadata!}
+      bodyClassName="bg-red"
+    >
+      <h1 className={classNames(h1)}>{title || "Bond Sample Site"}</h1>
 
       <div className="aspect-w-16 aspect-h-9 w-full">
         <AutoVideoOrThumbnail
@@ -112,7 +69,7 @@ const Page: React.FC<Props> = (props) => {
           {siteBuildMetadata.buildTime}
         </p>
       </footer>
-    </>
+    </Layout>
   );
 };
 
@@ -155,7 +112,7 @@ export const indexPageQuery = graphql`
     }
     siteBuildMetadata {
       buildYear: buildTime(formatString: "YYYY")
-      buildTime(formatString: "dddd, MMMM dS YYYY, h:mm:ss A")
+      buildTime(formatString: "dddd, MMMM d YYYY, h:mm:ss A")
     }
   }
 `;

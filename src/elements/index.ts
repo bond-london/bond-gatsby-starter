@@ -6,3 +6,4 @@ export * from "./SvgIcon";
 export * from "./Thumbnail";
 export * from "./SEO";
 export * from "./AutoVideoOrThumbnail";
+export * from "./RTF";
