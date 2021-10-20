@@ -24,7 +24,7 @@ export const Layout: React.FC<Props> = ({
       <Helmet>
         <body
           className={classNames(
-            bodyClassName || "bg-light-grey",
+            bodyClassName || "bg-white",
             process.env.GATSBY_DEBUG_TAILWIND && "debug-screens"
           )}
         />

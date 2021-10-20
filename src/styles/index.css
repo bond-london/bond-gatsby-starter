@@ -4,6 +4,72 @@
 
 @layer base {
   body {
-    @apply font-roboto font-normal text-blue-800;
+    @apply font-roboto font-regular text-blue;
+  }
+}
+
+@layer components {
+  .h1 {
+    @apply font-roboto font-regular text-36-125 lg:text-42-125;
+  }
+
+  .h2 {
+    @apply font-roboto font-regular text-24-125 lg:text-36-125;
+  }
+
+  .h3 {
+    @apply font-roboto font-regular text-22-140 lg:text-24-125;
+  }
+
+  .p1 {
+    @apply font-roboto font-regular text-18-140 lg:text-22-140;
+  }
+
+  .p1sb {
+    @apply font-roboto font-semibold text-18-140 lg:text-22-140;
+  }
+
+  .p2 {
+    @apply font-roboto font-regular text-18-140;
+  }
+
+  .p2sb {
+    @apply font-roboto font-semibold text-18-140;
+  }
+
+  .p3 {
+    @apply font-roboto font-regular text-16-140;
+  }
+
+  .p4 {
+    @apply font-roboto font-regular text-14-140;
+  }
+
+  .page-grid {
+    @apply 2xl:max-w-maxwidth 2xl:mx-auto w-full grid grid-cols-mobile-full gap-x-mobile-gap md:grid-cols-tablet-full md:gap-x-tablet-gap lg:grid-cols-desktop-full lg:gap-x-desktop-gap;
+  }
+
+  .content-grid {
+    @apply mx-mobile-margin md:mx-tablet-margin lg:mx-desktop-margin 2xl:mx-auto 2xl:max-w-maxwidth grid grid-cols-mobile-content md:grid-cols-tablet-content lg:grid-cols-desktop-content gap-x-mobile-gap md:gap-x-tablet-gap lg:gap-x-desktop-gap;
+  }
+
+  .content-grid-in-page-grid {
+    @apply grid grid-cols-mobile-content md:grid-cols-tablet-content lg:grid-cols-desktop-content gap-x-mobile-gap md:gap-x-tablet-gap lg:gap-x-desktop-gap;
+  }
+
+  .col-content {
+    @apply col-central-mobile md:col-central-tablet lg:col-central-desktop;
+  }
+
+  .py-section {
+    @apply py-s md:py-l lg:py-xl;
+  }
+
+  .pt-section {
+    @apply pt-s md:pt-l lg:pt-xl;
+  }
+
+  .pb-section {
+    @apply pb-s md:pb-l lg:pb-xl;
   }
 }
