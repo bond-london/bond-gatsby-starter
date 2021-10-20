@@ -4,6 +4,9 @@
   "description": "Gatsby starter for Bond London",
   "version": "1.1.1",
   "license": "0BSD",
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "prebuild": "yarn lint",
     "build": "gatsby build",

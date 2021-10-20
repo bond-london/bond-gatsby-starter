@@ -262,6 +262,8 @@ export type Site = Node & {
   readonly __typename?: 'Site';
   readonly buildTime?: Maybe<Scalars['Date']>;
   readonly siteMetadata?: Maybe<SiteSiteMetadata>;
+  readonly port?: Maybe<Scalars['Int']>;
+  readonly host?: Maybe<Scalars['String']>;
   readonly flags?: Maybe<SiteFlags>;
   readonly polyfill?: Maybe<Scalars['Boolean']>;
   readonly pathPrefix?: Maybe<Scalars['String']>;
@@ -1052,6 +1054,8 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   flags?: Maybe<SiteFlagsFilterInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
@@ -3472,6 +3476,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
+  | 'port'
+  | 'host'
   | 'flags___FAST_DEV'
   | 'flags___PRESERVE_FILE_DOWNLOAD_CACHE'
   | 'flags___LMDB_STORE'
@@ -3609,6 +3615,8 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   readonly buildTime?: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  readonly port?: Maybe<IntQueryOperatorInput>;
+  readonly host?: Maybe<StringQueryOperatorInput>;
   readonly flags?: Maybe<SiteFlagsFilterInput>;
   readonly polyfill?: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix?: Maybe<StringQueryOperatorInput>;
