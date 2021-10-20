@@ -3,18 +3,20 @@ import { h1 } from "../styles";
 import classNames from "classnames";
 import { graphql } from "gatsby";
 import {
+  AutoVideoOrThumbnail,
+  getImageFromFile,
+  getLottieFromFile,
+  getVideoFromFile,
+  LottieElement,
+} from "@bond-london/gatsby-graphcms-components";
+
+import {
   PageDoc,
   Site,
   SiteBuildMetadata,
   File,
 } from "../generated/graphql-types";
-import { AutoVideoOrThumbnail, LottieElement } from "../elements";
 import { Layout } from "../layouts";
-import {
-  getImageFromFile,
-  getLottieFromFile,
-  getVideoFromFile,
-} from "../utils";
 
 interface Props {
   data: {
@@ -39,7 +41,7 @@ const Page: React.FC<Props> = (props) => {
   return (
     <Layout
       siteBuildMetadata={siteBuildMetadata}
-      siteMetadata={siteMetadata!}
+      siteMetadata={siteMetadata}
       bodyClassName="bg-red"
     >
       <h1 className={classNames(h1)}>{title || "Bond Sample Site"}</h1>
@@ -50,8 +52,6 @@ const Page: React.FC<Props> = (props) => {
           alt={description}
           thumbnail={imageData}
           fitParent={true}
-          loop={true}
-          muted={true}
         />
       </div>
       {lottie && (
@@ -87,20 +87,13 @@ export const indexPageQuery = graphql`
       title
       description
       image {
-        id
-        childImageSharp {
-          gatsbyImageData
-        }
+        ...ImageFragment
       }
       video {
-        id
-        publicURL
+        ...VideoFragment
       }
       animation {
-        lottie {
-          animationJson
-          encoded
-        }
+        ...LottieFragment
       }
     }
     site {

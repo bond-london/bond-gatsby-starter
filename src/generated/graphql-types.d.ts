@@ -20,15 +20,6 @@ export type Scalars = {
   JSON: any;
 };
 
-
-
-
-
-
-
-
-
-
 export type File = Node & {
   readonly __typename?: 'File';
   readonly sourceInstanceName: Scalars['String'];
@@ -168,7 +159,6 @@ export type Internal = {
   readonly type: Scalars['String'];
 };
 
-
 export type Directory = Node & {
   readonly __typename?: 'Directory';
   readonly sourceInstanceName: Scalars['String'];
@@ -272,8 +262,6 @@ export type Site = Node & {
   readonly __typename?: 'Site';
   readonly buildTime?: Maybe<Scalars['Date']>;
   readonly siteMetadata?: Maybe<SiteSiteMetadata>;
-  readonly port?: Maybe<Scalars['Int']>;
-  readonly host?: Maybe<Scalars['String']>;
   readonly flags?: Maybe<SiteFlags>;
   readonly polyfill?: Maybe<Scalars['Boolean']>;
   readonly pathPrefix?: Maybe<Scalars['String']>;
@@ -294,6 +282,8 @@ export type SiteBuildTimeArgs = {
 export type SiteFlags = {
   readonly __typename?: 'SiteFlags';
   readonly FAST_DEV?: Maybe<Scalars['Boolean']>;
+  readonly PRESERVE_FILE_DOWNLOAD_CACHE?: Maybe<Scalars['Boolean']>;
+  readonly LMDB_STORE?: Maybe<Scalars['Boolean']>;
 };
 
 export type SiteSiteMetadata = {
@@ -333,6 +323,125 @@ export type SitePage = Node & {
   readonly pluginCreator?: Maybe<SitePlugin>;
   readonly pluginCreatorId?: Maybe<Scalars['String']>;
 };
+
+export type SitePlugin = Node & {
+  readonly __typename?: 'SitePlugin';
+  readonly resolve?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+  readonly version?: Maybe<Scalars['String']>;
+  readonly nodeAPIs?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly browserAPIs?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly ssrAPIs?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly pluginFilepath?: Maybe<Scalars['String']>;
+  readonly pluginOptions?: Maybe<SitePluginPluginOptions>;
+  readonly packageJson?: Maybe<SitePluginPackageJson>;
+  readonly id: Scalars['ID'];
+  readonly parent?: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+};
+
+export type SitePluginPluginOptions = {
+  readonly __typename?: 'SitePluginPluginOptions';
+  readonly path?: Maybe<Scalars['String']>;
+  readonly pathCheck?: Maybe<Scalars['Boolean']>;
+  readonly allExtensions?: Maybe<Scalars['Boolean']>;
+  readonly isTSX?: Maybe<Scalars['Boolean']>;
+  readonly jsxPragma?: Maybe<Scalars['String']>;
+  readonly rulePaths?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly stages?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly extensions?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly exclude?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly name?: Maybe<Scalars['String']>;
+  readonly base64Width?: Maybe<Scalars['Int']>;
+  readonly stripMetadata?: Maybe<Scalars['Boolean']>;
+  readonly defaultQuality?: Maybe<Scalars['Int']>;
+  readonly failOnError?: Maybe<Scalars['Boolean']>;
+  readonly unNest?: Maybe<Scalars['Int']>;
+  readonly sourceType?: Maybe<Scalars['String']>;
+  readonly typeField?: Maybe<Scalars['String']>;
+  readonly moduleField?: Maybe<Scalars['String']>;
+  readonly icon?: Maybe<Scalars['String']>;
+  readonly legacy?: Maybe<Scalars['Boolean']>;
+  readonly theme_color_in_head?: Maybe<Scalars['Boolean']>;
+  readonly cache_busting_mode?: Maybe<Scalars['String']>;
+  readonly crossOrigin?: Maybe<Scalars['String']>;
+  readonly include_favicon?: Maybe<Scalars['Boolean']>;
+  readonly cacheDigest?: Maybe<Scalars['String']>;
+  readonly output?: Maybe<Scalars['String']>;
+  readonly createLinkInHead?: Maybe<Scalars['Boolean']>;
+  readonly entryLimit?: Maybe<Scalars['Int']>;
+  readonly query?: Maybe<Scalars['String']>;
+  readonly dest?: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPackageJson = {
+  readonly __typename?: 'SitePluginPackageJson';
+  readonly name?: Maybe<Scalars['String']>;
+  readonly description?: Maybe<Scalars['String']>;
+  readonly version?: Maybe<Scalars['String']>;
+  readonly main?: Maybe<Scalars['String']>;
+  readonly keywords?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly author?: Maybe<Scalars['String']>;
+  readonly license?: Maybe<Scalars['String']>;
+  readonly dependencies?: Maybe<ReadonlyArray<Maybe<SitePluginPackageJsonDependencies>>>;
+  readonly devDependencies?: Maybe<ReadonlyArray<Maybe<SitePluginPackageJsonDevDependencies>>>;
+  readonly peerDependencies?: Maybe<ReadonlyArray<Maybe<SitePluginPackageJsonPeerDependencies>>>;
+};
+
+export type SitePluginPackageJsonDependencies = {
+  readonly __typename?: 'SitePluginPackageJsonDependencies';
+  readonly name?: Maybe<Scalars['String']>;
+  readonly version?: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPackageJsonDevDependencies = {
+  readonly __typename?: 'SitePluginPackageJsonDevDependencies';
+  readonly name?: Maybe<Scalars['String']>;
+  readonly version?: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPackageJsonPeerDependencies = {
+  readonly __typename?: 'SitePluginPackageJsonPeerDependencies';
+  readonly name?: Maybe<Scalars['String']>;
+  readonly version?: Maybe<Scalars['String']>;
+};
+
+export type SiteBuildMetadata = Node & {
+  readonly __typename?: 'SiteBuildMetadata';
+  readonly buildTime?: Maybe<Scalars['Date']>;
+  readonly id: Scalars['ID'];
+  readonly parent?: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+};
+
+
+export type SiteBuildMetadataBuildTimeArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type GatsbyImageFormat =
+  | 'NO_CHANGE'
+  | 'AUTO'
+  | 'JPG'
+  | 'PNG'
+  | 'WEBP'
+  | 'AVIF';
+
+export type GatsbyImageLayout =
+  | 'FIXED'
+  | 'FULL_WIDTH'
+  | 'CONSTRAINED';
+
+export type GatsbyImagePlaceholder =
+  | 'DOMINANT_COLOR'
+  | 'TRACED_SVG'
+  | 'BLURRED'
+  | 'NONE';
 
 export type ImageFormat =
   | 'NO_CHANGE'
@@ -529,7 +638,6 @@ export type ImageSharpFluid = {
   readonly presentationHeight: Scalars['Int'];
 };
 
-
 export type ImagePlaceholder =
   | 'DOMINANT_COLOR'
   | 'TRACED_SVG'
@@ -609,112 +717,6 @@ export type ExtractedLottie = Node & {
   readonly parent?: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
   readonly internal: Internal;
-};
-
-export type SitePlugin = Node & {
-  readonly __typename?: 'SitePlugin';
-  readonly id: Scalars['ID'];
-  readonly parent?: Maybe<Node>;
-  readonly children: ReadonlyArray<Node>;
-  readonly internal: Internal;
-  readonly resolve?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
-  readonly version?: Maybe<Scalars['String']>;
-  readonly pluginOptions?: Maybe<SitePluginPluginOptions>;
-  readonly nodeAPIs?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly browserAPIs?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly ssrAPIs?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly pluginFilepath?: Maybe<Scalars['String']>;
-  readonly packageJson?: Maybe<SitePluginPackageJson>;
-};
-
-export type SitePluginPluginOptions = {
-  readonly __typename?: 'SitePluginPluginOptions';
-  readonly stages?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly options?: Maybe<SitePluginPluginOptionsOptions>;
-  readonly output?: Maybe<Scalars['String']>;
-  readonly createLinkInHead?: Maybe<Scalars['Boolean']>;
-  readonly entryLimit?: Maybe<Scalars['Int']>;
-  readonly query?: Maybe<Scalars['String']>;
-  readonly icon?: Maybe<Scalars['String']>;
-  readonly legacy?: Maybe<Scalars['Boolean']>;
-  readonly theme_color_in_head?: Maybe<Scalars['Boolean']>;
-  readonly cache_busting_mode?: Maybe<Scalars['String']>;
-  readonly crossOrigin?: Maybe<Scalars['String']>;
-  readonly include_favicon?: Maybe<Scalars['Boolean']>;
-  readonly cacheDigest?: Maybe<Scalars['String']>;
-  readonly base64Width?: Maybe<Scalars['Int']>;
-  readonly stripMetadata?: Maybe<Scalars['Boolean']>;
-  readonly defaultQuality?: Maybe<Scalars['Int']>;
-  readonly failOnError?: Maybe<Scalars['Boolean']>;
-  readonly unNest?: Maybe<Scalars['Int']>;
-  readonly sourceType?: Maybe<Scalars['String']>;
-  readonly typeField?: Maybe<Scalars['String']>;
-  readonly moduleField?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
-  readonly path?: Maybe<Scalars['String']>;
-  readonly dest?: Maybe<Scalars['String']>;
-  readonly pathCheck?: Maybe<Scalars['Boolean']>;
-  readonly allExtensions?: Maybe<Scalars['Boolean']>;
-  readonly isTSX?: Maybe<Scalars['Boolean']>;
-  readonly jsxPragma?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsOptions = {
-  readonly __typename?: 'SitePluginPluginOptionsOptions';
-  readonly emitWarning?: Maybe<Scalars['Boolean']>;
-  readonly failOnError?: Maybe<Scalars['Boolean']>;
-  readonly extensions?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly exclude?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-};
-
-export type SitePluginPackageJson = {
-  readonly __typename?: 'SitePluginPackageJson';
-  readonly name?: Maybe<Scalars['String']>;
-  readonly description?: Maybe<Scalars['String']>;
-  readonly version?: Maybe<Scalars['String']>;
-  readonly main?: Maybe<Scalars['String']>;
-  readonly author?: Maybe<Scalars['String']>;
-  readonly license?: Maybe<Scalars['String']>;
-  readonly dependencies?: Maybe<ReadonlyArray<Maybe<SitePluginPackageJsonDependencies>>>;
-  readonly devDependencies?: Maybe<ReadonlyArray<Maybe<SitePluginPackageJsonDevDependencies>>>;
-  readonly peerDependencies?: Maybe<ReadonlyArray<Maybe<SitePluginPackageJsonPeerDependencies>>>;
-  readonly keywords?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-};
-
-export type SitePluginPackageJsonDependencies = {
-  readonly __typename?: 'SitePluginPackageJsonDependencies';
-  readonly name?: Maybe<Scalars['String']>;
-  readonly version?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPackageJsonDevDependencies = {
-  readonly __typename?: 'SitePluginPackageJsonDevDependencies';
-  readonly name?: Maybe<Scalars['String']>;
-  readonly version?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPackageJsonPeerDependencies = {
-  readonly __typename?: 'SitePluginPackageJsonPeerDependencies';
-  readonly name?: Maybe<Scalars['String']>;
-  readonly version?: Maybe<Scalars['String']>;
-};
-
-export type SiteBuildMetadata = Node & {
-  readonly __typename?: 'SiteBuildMetadata';
-  readonly id: Scalars['ID'];
-  readonly parent?: Maybe<Node>;
-  readonly children: ReadonlyArray<Node>;
-  readonly internal: Internal;
-  readonly buildTime?: Maybe<Scalars['Date']>;
-};
-
-
-export type SiteBuildMetadataBuildTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
 };
 
 export type PageDoc = Node & {
@@ -921,16 +923,16 @@ export type Query = {
   readonly allSiteFunction: SiteFunctionConnection;
   readonly sitePage?: Maybe<SitePage>;
   readonly allSitePage: SitePageConnection;
+  readonly sitePlugin?: Maybe<SitePlugin>;
+  readonly allSitePlugin: SitePluginConnection;
+  readonly siteBuildMetadata?: Maybe<SiteBuildMetadata>;
+  readonly allSiteBuildMetadata: SiteBuildMetadataConnection;
   readonly imageSharp?: Maybe<ImageSharp>;
   readonly allImageSharp: ImageSharpConnection;
   readonly extractedSvg?: Maybe<ExtractedSvg>;
   readonly allExtractedSvg: ExtractedSvgConnection;
   readonly extractedLottie?: Maybe<ExtractedLottie>;
   readonly allExtractedLottie: ExtractedLottieConnection;
-  readonly sitePlugin?: Maybe<SitePlugin>;
-  readonly allSitePlugin: SitePluginConnection;
-  readonly siteBuildMetadata?: Maybe<SiteBuildMetadata>;
-  readonly allSiteBuildMetadata: SiteBuildMetadataConnection;
   readonly pageDoc?: Maybe<PageDoc>;
   readonly allPageDoc: PageDocConnection;
   readonly docsJson?: Maybe<DocsJson>;
@@ -1050,8 +1052,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   flags?: Maybe<SiteFlagsFilterInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
@@ -1117,6 +1117,48 @@ export type QueryAllSitePageArgs = {
 };
 
 
+export type QuerySitePluginArgs = {
+  resolve?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  version?: Maybe<StringQueryOperatorInput>;
+  nodeAPIs?: Maybe<StringQueryOperatorInput>;
+  browserAPIs?: Maybe<StringQueryOperatorInput>;
+  ssrAPIs?: Maybe<StringQueryOperatorInput>;
+  pluginFilepath?: Maybe<StringQueryOperatorInput>;
+  pluginOptions?: Maybe<SitePluginPluginOptionsFilterInput>;
+  packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+
+export type QueryAllSitePluginArgs = {
+  filter?: Maybe<SitePluginFilterInput>;
+  sort?: Maybe<SitePluginSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QuerySiteBuildMetadataArgs = {
+  buildTime?: Maybe<DateQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+
+export type QueryAllSiteBuildMetadataArgs = {
+  filter?: Maybe<SiteBuildMetadataFilterInput>;
+  sort?: Maybe<SiteBuildMetadataSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryImageSharpArgs = {
   fixed?: Maybe<ImageSharpFixedFilterInput>;
   fluid?: Maybe<ImageSharpFluidFilterInput>;
@@ -1171,48 +1213,6 @@ export type QueryExtractedLottieArgs = {
 export type QueryAllExtractedLottieArgs = {
   filter?: Maybe<ExtractedLottieFilterInput>;
   sort?: Maybe<ExtractedLottieSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QuerySitePluginArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  resolve?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
-  pluginOptions?: Maybe<SitePluginPluginOptionsFilterInput>;
-  nodeAPIs?: Maybe<StringQueryOperatorInput>;
-  browserAPIs?: Maybe<StringQueryOperatorInput>;
-  ssrAPIs?: Maybe<StringQueryOperatorInput>;
-  pluginFilepath?: Maybe<StringQueryOperatorInput>;
-  packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
-};
-
-
-export type QueryAllSitePluginArgs = {
-  filter?: Maybe<SitePluginFilterInput>;
-  sort?: Maybe<SitePluginSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QuerySiteBuildMetadataArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  buildTime?: Maybe<DateQueryOperatorInput>;
-};
-
-
-export type QueryAllSiteBuildMetadataArgs = {
-  filter?: Maybe<SiteBuildMetadataFilterInput>;
-  sort?: Maybe<SiteBuildMetadataSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -3108,8 +3108,40 @@ export type FileGroupConnection = {
   readonly edges: ReadonlyArray<FileEdge>;
   readonly nodes: ReadonlyArray<File>;
   readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<FileGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type FileGroupConnectionDistinctArgs = {
+  field: FileFieldsEnum;
+};
+
+
+export type FileGroupConnectionMaxArgs = {
+  field: FileFieldsEnum;
+};
+
+
+export type FileGroupConnectionMinArgs = {
+  field: FileFieldsEnum;
+};
+
+
+export type FileGroupConnectionSumArgs = {
+  field: FileFieldsEnum;
+};
+
+
+export type FileGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: FileFieldsEnum;
 };
 
 export type FileSortInput = {
@@ -3295,8 +3327,40 @@ export type DirectoryGroupConnection = {
   readonly edges: ReadonlyArray<DirectoryEdge>;
   readonly nodes: ReadonlyArray<Directory>;
   readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<DirectoryGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type DirectoryGroupConnectionDistinctArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryGroupConnectionMaxArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryGroupConnectionMinArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryGroupConnectionSumArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+export type DirectoryGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: DirectoryFieldsEnum;
 };
 
 export type DirectoryFilterInput = {
@@ -3352,6 +3416,8 @@ export type SiteSiteMetadataFilterInput = {
 
 export type SiteFlagsFilterInput = {
   readonly FAST_DEV?: Maybe<BooleanQueryOperatorInput>;
+  readonly PRESERVE_FILE_DOWNLOAD_CACHE?: Maybe<BooleanQueryOperatorInput>;
+  readonly LMDB_STORE?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SiteConnection = {
@@ -3406,9 +3472,9 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
-  | 'port'
-  | 'host'
   | 'flags___FAST_DEV'
+  | 'flags___PRESERVE_FILE_DOWNLOAD_CACHE'
+  | 'flags___LMDB_STORE'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -3504,15 +3570,45 @@ export type SiteGroupConnection = {
   readonly edges: ReadonlyArray<SiteEdge>;
   readonly nodes: ReadonlyArray<Site>;
   readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<SiteGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type SiteGroupConnectionDistinctArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteGroupConnectionMaxArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteGroupConnectionMinArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteGroupConnectionSumArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+export type SiteGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: SiteFieldsEnum;
 };
 
 export type SiteFilterInput = {
   readonly buildTime?: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  readonly port?: Maybe<IntQueryOperatorInput>;
-  readonly host?: Maybe<StringQueryOperatorInput>;
   readonly flags?: Maybe<SiteFlagsFilterInput>;
   readonly polyfill?: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix?: Maybe<StringQueryOperatorInput>;
@@ -3675,8 +3771,40 @@ export type SiteFunctionGroupConnection = {
   readonly edges: ReadonlyArray<SiteFunctionEdge>;
   readonly nodes: ReadonlyArray<SiteFunction>;
   readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<SiteFunctionGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type SiteFunctionGroupConnectionDistinctArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionGroupConnectionMaxArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionGroupConnectionMinArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionGroupConnectionSumArgs = {
+  field: SiteFunctionFieldsEnum;
+};
+
+
+export type SiteFunctionGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: SiteFunctionFieldsEnum;
 };
 
 export type SiteFunctionFilterInput = {
@@ -3699,35 +3827,32 @@ export type SiteFunctionSortInput = {
 };
 
 export type SitePluginFilterInput = {
-  readonly id?: Maybe<StringQueryOperatorInput>;
-  readonly parent?: Maybe<NodeFilterInput>;
-  readonly children?: Maybe<NodeFilterListInput>;
-  readonly internal?: Maybe<InternalFilterInput>;
   readonly resolve?: Maybe<StringQueryOperatorInput>;
   readonly name?: Maybe<StringQueryOperatorInput>;
   readonly version?: Maybe<StringQueryOperatorInput>;
-  readonly pluginOptions?: Maybe<SitePluginPluginOptionsFilterInput>;
   readonly nodeAPIs?: Maybe<StringQueryOperatorInput>;
   readonly browserAPIs?: Maybe<StringQueryOperatorInput>;
   readonly ssrAPIs?: Maybe<StringQueryOperatorInput>;
   readonly pluginFilepath?: Maybe<StringQueryOperatorInput>;
+  readonly pluginOptions?: Maybe<SitePluginPluginOptionsFilterInput>;
   readonly packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
+  readonly id?: Maybe<StringQueryOperatorInput>;
+  readonly parent?: Maybe<NodeFilterInput>;
+  readonly children?: Maybe<NodeFilterListInput>;
+  readonly internal?: Maybe<InternalFilterInput>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  readonly path?: Maybe<StringQueryOperatorInput>;
+  readonly pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  readonly allExtensions?: Maybe<BooleanQueryOperatorInput>;
+  readonly isTSX?: Maybe<BooleanQueryOperatorInput>;
+  readonly jsxPragma?: Maybe<StringQueryOperatorInput>;
+  readonly rulePaths?: Maybe<StringQueryOperatorInput>;
   readonly stages?: Maybe<StringQueryOperatorInput>;
-  readonly options?: Maybe<SitePluginPluginOptionsOptionsFilterInput>;
-  readonly output?: Maybe<StringQueryOperatorInput>;
-  readonly createLinkInHead?: Maybe<BooleanQueryOperatorInput>;
-  readonly entryLimit?: Maybe<IntQueryOperatorInput>;
-  readonly query?: Maybe<StringQueryOperatorInput>;
-  readonly icon?: Maybe<StringQueryOperatorInput>;
-  readonly legacy?: Maybe<BooleanQueryOperatorInput>;
-  readonly theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
-  readonly cache_busting_mode?: Maybe<StringQueryOperatorInput>;
-  readonly crossOrigin?: Maybe<StringQueryOperatorInput>;
-  readonly include_favicon?: Maybe<BooleanQueryOperatorInput>;
-  readonly cacheDigest?: Maybe<StringQueryOperatorInput>;
+  readonly extensions?: Maybe<StringQueryOperatorInput>;
+  readonly exclude?: Maybe<StringQueryOperatorInput>;
+  readonly name?: Maybe<StringQueryOperatorInput>;
   readonly base64Width?: Maybe<IntQueryOperatorInput>;
   readonly stripMetadata?: Maybe<BooleanQueryOperatorInput>;
   readonly defaultQuality?: Maybe<IntQueryOperatorInput>;
@@ -3736,20 +3861,18 @@ export type SitePluginPluginOptionsFilterInput = {
   readonly sourceType?: Maybe<StringQueryOperatorInput>;
   readonly typeField?: Maybe<StringQueryOperatorInput>;
   readonly moduleField?: Maybe<StringQueryOperatorInput>;
-  readonly name?: Maybe<StringQueryOperatorInput>;
-  readonly path?: Maybe<StringQueryOperatorInput>;
+  readonly icon?: Maybe<StringQueryOperatorInput>;
+  readonly legacy?: Maybe<BooleanQueryOperatorInput>;
+  readonly theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
+  readonly cache_busting_mode?: Maybe<StringQueryOperatorInput>;
+  readonly crossOrigin?: Maybe<StringQueryOperatorInput>;
+  readonly include_favicon?: Maybe<BooleanQueryOperatorInput>;
+  readonly cacheDigest?: Maybe<StringQueryOperatorInput>;
+  readonly output?: Maybe<StringQueryOperatorInput>;
+  readonly createLinkInHead?: Maybe<BooleanQueryOperatorInput>;
+  readonly entryLimit?: Maybe<IntQueryOperatorInput>;
+  readonly query?: Maybe<StringQueryOperatorInput>;
   readonly dest?: Maybe<StringQueryOperatorInput>;
-  readonly pathCheck?: Maybe<BooleanQueryOperatorInput>;
-  readonly allExtensions?: Maybe<BooleanQueryOperatorInput>;
-  readonly isTSX?: Maybe<BooleanQueryOperatorInput>;
-  readonly jsxPragma?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsOptionsFilterInput = {
-  readonly emitWarning?: Maybe<BooleanQueryOperatorInput>;
-  readonly failOnError?: Maybe<BooleanQueryOperatorInput>;
-  readonly extensions?: Maybe<StringQueryOperatorInput>;
-  readonly exclude?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPackageJsonFilterInput = {
@@ -3757,12 +3880,12 @@ export type SitePluginPackageJsonFilterInput = {
   readonly description?: Maybe<StringQueryOperatorInput>;
   readonly version?: Maybe<StringQueryOperatorInput>;
   readonly main?: Maybe<StringQueryOperatorInput>;
+  readonly keywords?: Maybe<StringQueryOperatorInput>;
   readonly author?: Maybe<StringQueryOperatorInput>;
   readonly license?: Maybe<StringQueryOperatorInput>;
   readonly dependencies?: Maybe<SitePluginPackageJsonDependenciesFilterListInput>;
   readonly devDependencies?: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>;
   readonly peerDependencies?: Maybe<SitePluginPackageJsonPeerDependenciesFilterListInput>;
-  readonly keywords?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPackageJsonDependenciesFilterListInput = {
@@ -3932,6 +4055,59 @@ export type SitePageFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
+  | 'pluginCreator___resolve'
+  | 'pluginCreator___name'
+  | 'pluginCreator___version'
+  | 'pluginCreator___nodeAPIs'
+  | 'pluginCreator___browserAPIs'
+  | 'pluginCreator___ssrAPIs'
+  | 'pluginCreator___pluginFilepath'
+  | 'pluginCreator___pluginOptions___path'
+  | 'pluginCreator___pluginOptions___pathCheck'
+  | 'pluginCreator___pluginOptions___allExtensions'
+  | 'pluginCreator___pluginOptions___isTSX'
+  | 'pluginCreator___pluginOptions___jsxPragma'
+  | 'pluginCreator___pluginOptions___rulePaths'
+  | 'pluginCreator___pluginOptions___stages'
+  | 'pluginCreator___pluginOptions___extensions'
+  | 'pluginCreator___pluginOptions___exclude'
+  | 'pluginCreator___pluginOptions___name'
+  | 'pluginCreator___pluginOptions___base64Width'
+  | 'pluginCreator___pluginOptions___stripMetadata'
+  | 'pluginCreator___pluginOptions___defaultQuality'
+  | 'pluginCreator___pluginOptions___failOnError'
+  | 'pluginCreator___pluginOptions___unNest'
+  | 'pluginCreator___pluginOptions___sourceType'
+  | 'pluginCreator___pluginOptions___typeField'
+  | 'pluginCreator___pluginOptions___moduleField'
+  | 'pluginCreator___pluginOptions___icon'
+  | 'pluginCreator___pluginOptions___legacy'
+  | 'pluginCreator___pluginOptions___theme_color_in_head'
+  | 'pluginCreator___pluginOptions___cache_busting_mode'
+  | 'pluginCreator___pluginOptions___crossOrigin'
+  | 'pluginCreator___pluginOptions___include_favicon'
+  | 'pluginCreator___pluginOptions___cacheDigest'
+  | 'pluginCreator___pluginOptions___output'
+  | 'pluginCreator___pluginOptions___createLinkInHead'
+  | 'pluginCreator___pluginOptions___entryLimit'
+  | 'pluginCreator___pluginOptions___query'
+  | 'pluginCreator___pluginOptions___dest'
+  | 'pluginCreator___packageJson___name'
+  | 'pluginCreator___packageJson___description'
+  | 'pluginCreator___packageJson___version'
+  | 'pluginCreator___packageJson___main'
+  | 'pluginCreator___packageJson___keywords'
+  | 'pluginCreator___packageJson___author'
+  | 'pluginCreator___packageJson___license'
+  | 'pluginCreator___packageJson___dependencies'
+  | 'pluginCreator___packageJson___dependencies___name'
+  | 'pluginCreator___packageJson___dependencies___version'
+  | 'pluginCreator___packageJson___devDependencies'
+  | 'pluginCreator___packageJson___devDependencies___name'
+  | 'pluginCreator___packageJson___devDependencies___version'
+  | 'pluginCreator___packageJson___peerDependencies'
+  | 'pluginCreator___packageJson___peerDependencies___name'
+  | 'pluginCreator___packageJson___peerDependencies___version'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -3970,60 +4146,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___internal___mediaType'
   | 'pluginCreator___internal___owner'
   | 'pluginCreator___internal___type'
-  | 'pluginCreator___resolve'
-  | 'pluginCreator___name'
-  | 'pluginCreator___version'
-  | 'pluginCreator___pluginOptions___stages'
-  | 'pluginCreator___pluginOptions___options___emitWarning'
-  | 'pluginCreator___pluginOptions___options___failOnError'
-  | 'pluginCreator___pluginOptions___options___extensions'
-  | 'pluginCreator___pluginOptions___options___exclude'
-  | 'pluginCreator___pluginOptions___output'
-  | 'pluginCreator___pluginOptions___createLinkInHead'
-  | 'pluginCreator___pluginOptions___entryLimit'
-  | 'pluginCreator___pluginOptions___query'
-  | 'pluginCreator___pluginOptions___icon'
-  | 'pluginCreator___pluginOptions___legacy'
-  | 'pluginCreator___pluginOptions___theme_color_in_head'
-  | 'pluginCreator___pluginOptions___cache_busting_mode'
-  | 'pluginCreator___pluginOptions___crossOrigin'
-  | 'pluginCreator___pluginOptions___include_favicon'
-  | 'pluginCreator___pluginOptions___cacheDigest'
-  | 'pluginCreator___pluginOptions___base64Width'
-  | 'pluginCreator___pluginOptions___stripMetadata'
-  | 'pluginCreator___pluginOptions___defaultQuality'
-  | 'pluginCreator___pluginOptions___failOnError'
-  | 'pluginCreator___pluginOptions___unNest'
-  | 'pluginCreator___pluginOptions___sourceType'
-  | 'pluginCreator___pluginOptions___typeField'
-  | 'pluginCreator___pluginOptions___moduleField'
-  | 'pluginCreator___pluginOptions___name'
-  | 'pluginCreator___pluginOptions___path'
-  | 'pluginCreator___pluginOptions___dest'
-  | 'pluginCreator___pluginOptions___pathCheck'
-  | 'pluginCreator___pluginOptions___allExtensions'
-  | 'pluginCreator___pluginOptions___isTSX'
-  | 'pluginCreator___pluginOptions___jsxPragma'
-  | 'pluginCreator___nodeAPIs'
-  | 'pluginCreator___browserAPIs'
-  | 'pluginCreator___ssrAPIs'
-  | 'pluginCreator___pluginFilepath'
-  | 'pluginCreator___packageJson___name'
-  | 'pluginCreator___packageJson___description'
-  | 'pluginCreator___packageJson___version'
-  | 'pluginCreator___packageJson___main'
-  | 'pluginCreator___packageJson___author'
-  | 'pluginCreator___packageJson___license'
-  | 'pluginCreator___packageJson___dependencies'
-  | 'pluginCreator___packageJson___dependencies___name'
-  | 'pluginCreator___packageJson___dependencies___version'
-  | 'pluginCreator___packageJson___devDependencies'
-  | 'pluginCreator___packageJson___devDependencies___name'
-  | 'pluginCreator___packageJson___devDependencies___version'
-  | 'pluginCreator___packageJson___peerDependencies'
-  | 'pluginCreator___packageJson___peerDependencies___name'
-  | 'pluginCreator___packageJson___peerDependencies___version'
-  | 'pluginCreator___packageJson___keywords'
   | 'pluginCreatorId';
 
 export type SitePageGroupConnection = {
@@ -4032,8 +4154,40 @@ export type SitePageGroupConnection = {
   readonly edges: ReadonlyArray<SitePageEdge>;
   readonly nodes: ReadonlyArray<SitePage>;
   readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<SitePageGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type SitePageGroupConnectionDistinctArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageGroupConnectionMaxArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageGroupConnectionMinArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageGroupConnectionSumArgs = {
+  field: SitePageFieldsEnum;
+};
+
+
+export type SitePageGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: SitePageFieldsEnum;
 };
 
 export type SitePageFilterInput = {
@@ -4053,6 +4207,432 @@ export type SitePageFilterInput = {
 
 export type SitePageSortInput = {
   readonly fields?: Maybe<ReadonlyArray<Maybe<SitePageFieldsEnum>>>;
+  readonly order?: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
+};
+
+export type SitePluginConnection = {
+  readonly __typename?: 'SitePluginConnection';
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<SitePluginEdge>;
+  readonly nodes: ReadonlyArray<SitePlugin>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<SitePluginGroupConnection>;
+};
+
+
+export type SitePluginConnectionDistinctArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginConnectionMaxArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginConnectionMinArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginConnectionSumArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: SitePluginFieldsEnum;
+};
+
+export type SitePluginEdge = {
+  readonly __typename?: 'SitePluginEdge';
+  readonly next?: Maybe<SitePlugin>;
+  readonly node: SitePlugin;
+  readonly previous?: Maybe<SitePlugin>;
+};
+
+export type SitePluginFieldsEnum =
+  | 'resolve'
+  | 'name'
+  | 'version'
+  | 'nodeAPIs'
+  | 'browserAPIs'
+  | 'ssrAPIs'
+  | 'pluginFilepath'
+  | 'pluginOptions___path'
+  | 'pluginOptions___pathCheck'
+  | 'pluginOptions___allExtensions'
+  | 'pluginOptions___isTSX'
+  | 'pluginOptions___jsxPragma'
+  | 'pluginOptions___rulePaths'
+  | 'pluginOptions___stages'
+  | 'pluginOptions___extensions'
+  | 'pluginOptions___exclude'
+  | 'pluginOptions___name'
+  | 'pluginOptions___base64Width'
+  | 'pluginOptions___stripMetadata'
+  | 'pluginOptions___defaultQuality'
+  | 'pluginOptions___failOnError'
+  | 'pluginOptions___unNest'
+  | 'pluginOptions___sourceType'
+  | 'pluginOptions___typeField'
+  | 'pluginOptions___moduleField'
+  | 'pluginOptions___icon'
+  | 'pluginOptions___legacy'
+  | 'pluginOptions___theme_color_in_head'
+  | 'pluginOptions___cache_busting_mode'
+  | 'pluginOptions___crossOrigin'
+  | 'pluginOptions___include_favicon'
+  | 'pluginOptions___cacheDigest'
+  | 'pluginOptions___output'
+  | 'pluginOptions___createLinkInHead'
+  | 'pluginOptions___entryLimit'
+  | 'pluginOptions___query'
+  | 'pluginOptions___dest'
+  | 'packageJson___name'
+  | 'packageJson___description'
+  | 'packageJson___version'
+  | 'packageJson___main'
+  | 'packageJson___keywords'
+  | 'packageJson___author'
+  | 'packageJson___license'
+  | 'packageJson___dependencies'
+  | 'packageJson___dependencies___name'
+  | 'packageJson___dependencies___version'
+  | 'packageJson___devDependencies'
+  | 'packageJson___devDependencies___name'
+  | 'packageJson___devDependencies___version'
+  | 'packageJson___peerDependencies'
+  | 'packageJson___peerDependencies___name'
+  | 'packageJson___peerDependencies___version'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type SitePluginGroupConnection = {
+  readonly __typename?: 'SitePluginGroupConnection';
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<SitePluginEdge>;
+  readonly nodes: ReadonlyArray<SitePlugin>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<SitePluginGroupConnection>;
+  readonly field: Scalars['String'];
+  readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type SitePluginGroupConnectionDistinctArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginGroupConnectionMaxArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginGroupConnectionMinArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginGroupConnectionSumArgs = {
+  field: SitePluginFieldsEnum;
+};
+
+
+export type SitePluginGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: SitePluginFieldsEnum;
+};
+
+export type SitePluginSortInput = {
+  readonly fields?: Maybe<ReadonlyArray<Maybe<SitePluginFieldsEnum>>>;
+  readonly order?: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
+};
+
+export type SiteBuildMetadataConnection = {
+  readonly __typename?: 'SiteBuildMetadataConnection';
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<SiteBuildMetadataEdge>;
+  readonly nodes: ReadonlyArray<SiteBuildMetadata>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<SiteBuildMetadataGroupConnection>;
+};
+
+
+export type SiteBuildMetadataConnectionDistinctArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataConnectionMaxArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataConnectionMinArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataConnectionSumArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+export type SiteBuildMetadataEdge = {
+  readonly __typename?: 'SiteBuildMetadataEdge';
+  readonly next?: Maybe<SiteBuildMetadata>;
+  readonly node: SiteBuildMetadata;
+  readonly previous?: Maybe<SiteBuildMetadata>;
+};
+
+export type SiteBuildMetadataFieldsEnum =
+  | 'buildTime'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+export type SiteBuildMetadataGroupConnection = {
+  readonly __typename?: 'SiteBuildMetadataGroupConnection';
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<SiteBuildMetadataEdge>;
+  readonly nodes: ReadonlyArray<SiteBuildMetadata>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<SiteBuildMetadataGroupConnection>;
+  readonly field: Scalars['String'];
+  readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type SiteBuildMetadataGroupConnectionDistinctArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataGroupConnectionMaxArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataGroupConnectionMinArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataGroupConnectionSumArgs = {
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+
+export type SiteBuildMetadataGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: SiteBuildMetadataFieldsEnum;
+};
+
+export type SiteBuildMetadataFilterInput = {
+  readonly buildTime?: Maybe<DateQueryOperatorInput>;
+  readonly id?: Maybe<StringQueryOperatorInput>;
+  readonly parent?: Maybe<NodeFilterInput>;
+  readonly children?: Maybe<NodeFilterListInput>;
+  readonly internal?: Maybe<InternalFilterInput>;
+};
+
+export type SiteBuildMetadataSortInput = {
+  readonly fields?: Maybe<ReadonlyArray<Maybe<SiteBuildMetadataFieldsEnum>>>;
   readonly order?: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
@@ -4229,8 +4809,40 @@ export type ImageSharpGroupConnection = {
   readonly edges: ReadonlyArray<ImageSharpEdge>;
   readonly nodes: ReadonlyArray<ImageSharp>;
   readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<ImageSharpGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type ImageSharpGroupConnectionDistinctArgs = {
+  field: ImageSharpFieldsEnum;
+};
+
+
+export type ImageSharpGroupConnectionMaxArgs = {
+  field: ImageSharpFieldsEnum;
+};
+
+
+export type ImageSharpGroupConnectionMinArgs = {
+  field: ImageSharpFieldsEnum;
+};
+
+
+export type ImageSharpGroupConnectionSumArgs = {
+  field: ImageSharpFieldsEnum;
+};
+
+
+export type ImageSharpGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ImageSharpFieldsEnum;
 };
 
 export type ImageSharpSortInput = {
@@ -4382,8 +4994,40 @@ export type ExtractedSvgGroupConnection = {
   readonly edges: ReadonlyArray<ExtractedSvgEdge>;
   readonly nodes: ReadonlyArray<ExtractedSvg>;
   readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<ExtractedSvgGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type ExtractedSvgGroupConnectionDistinctArgs = {
+  field: ExtractedSvgFieldsEnum;
+};
+
+
+export type ExtractedSvgGroupConnectionMaxArgs = {
+  field: ExtractedSvgFieldsEnum;
+};
+
+
+export type ExtractedSvgGroupConnectionMinArgs = {
+  field: ExtractedSvgFieldsEnum;
+};
+
+
+export type ExtractedSvgGroupConnectionSumArgs = {
+  field: ExtractedSvgFieldsEnum;
+};
+
+
+export type ExtractedSvgGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ExtractedSvgFieldsEnum;
 };
 
 export type ExtractedSvgFilterInput = {
@@ -4545,8 +5189,40 @@ export type ExtractedLottieGroupConnection = {
   readonly edges: ReadonlyArray<ExtractedLottieEdge>;
   readonly nodes: ReadonlyArray<ExtractedLottie>;
   readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<ExtractedLottieGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type ExtractedLottieGroupConnectionDistinctArgs = {
+  field: ExtractedLottieFieldsEnum;
+};
+
+
+export type ExtractedLottieGroupConnectionMaxArgs = {
+  field: ExtractedLottieFieldsEnum;
+};
+
+
+export type ExtractedLottieGroupConnectionMinArgs = {
+  field: ExtractedLottieFieldsEnum;
+};
+
+
+export type ExtractedLottieGroupConnectionSumArgs = {
+  field: ExtractedLottieFieldsEnum;
+};
+
+
+export type ExtractedLottieGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ExtractedLottieFieldsEnum;
 };
 
 export type ExtractedLottieFilterInput = {
@@ -4561,369 +5237,6 @@ export type ExtractedLottieFilterInput = {
 
 export type ExtractedLottieSortInput = {
   readonly fields?: Maybe<ReadonlyArray<Maybe<ExtractedLottieFieldsEnum>>>;
-  readonly order?: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
-};
-
-export type SitePluginConnection = {
-  readonly __typename?: 'SitePluginConnection';
-  readonly totalCount: Scalars['Int'];
-  readonly edges: ReadonlyArray<SitePluginEdge>;
-  readonly nodes: ReadonlyArray<SitePlugin>;
-  readonly pageInfo: PageInfo;
-  readonly distinct: ReadonlyArray<Scalars['String']>;
-  readonly max?: Maybe<Scalars['Float']>;
-  readonly min?: Maybe<Scalars['Float']>;
-  readonly sum?: Maybe<Scalars['Float']>;
-  readonly group: ReadonlyArray<SitePluginGroupConnection>;
-};
-
-
-export type SitePluginConnectionDistinctArgs = {
-  field: SitePluginFieldsEnum;
-};
-
-
-export type SitePluginConnectionMaxArgs = {
-  field: SitePluginFieldsEnum;
-};
-
-
-export type SitePluginConnectionMinArgs = {
-  field: SitePluginFieldsEnum;
-};
-
-
-export type SitePluginConnectionSumArgs = {
-  field: SitePluginFieldsEnum;
-};
-
-
-export type SitePluginConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  field: SitePluginFieldsEnum;
-};
-
-export type SitePluginEdge = {
-  readonly __typename?: 'SitePluginEdge';
-  readonly next?: Maybe<SitePlugin>;
-  readonly node: SitePlugin;
-  readonly previous?: Maybe<SitePlugin>;
-};
-
-export type SitePluginFieldsEnum =
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type'
-  | 'resolve'
-  | 'name'
-  | 'version'
-  | 'pluginOptions___stages'
-  | 'pluginOptions___options___emitWarning'
-  | 'pluginOptions___options___failOnError'
-  | 'pluginOptions___options___extensions'
-  | 'pluginOptions___options___exclude'
-  | 'pluginOptions___output'
-  | 'pluginOptions___createLinkInHead'
-  | 'pluginOptions___entryLimit'
-  | 'pluginOptions___query'
-  | 'pluginOptions___icon'
-  | 'pluginOptions___legacy'
-  | 'pluginOptions___theme_color_in_head'
-  | 'pluginOptions___cache_busting_mode'
-  | 'pluginOptions___crossOrigin'
-  | 'pluginOptions___include_favicon'
-  | 'pluginOptions___cacheDigest'
-  | 'pluginOptions___base64Width'
-  | 'pluginOptions___stripMetadata'
-  | 'pluginOptions___defaultQuality'
-  | 'pluginOptions___failOnError'
-  | 'pluginOptions___unNest'
-  | 'pluginOptions___sourceType'
-  | 'pluginOptions___typeField'
-  | 'pluginOptions___moduleField'
-  | 'pluginOptions___name'
-  | 'pluginOptions___path'
-  | 'pluginOptions___dest'
-  | 'pluginOptions___pathCheck'
-  | 'pluginOptions___allExtensions'
-  | 'pluginOptions___isTSX'
-  | 'pluginOptions___jsxPragma'
-  | 'nodeAPIs'
-  | 'browserAPIs'
-  | 'ssrAPIs'
-  | 'pluginFilepath'
-  | 'packageJson___name'
-  | 'packageJson___description'
-  | 'packageJson___version'
-  | 'packageJson___main'
-  | 'packageJson___author'
-  | 'packageJson___license'
-  | 'packageJson___dependencies'
-  | 'packageJson___dependencies___name'
-  | 'packageJson___dependencies___version'
-  | 'packageJson___devDependencies'
-  | 'packageJson___devDependencies___name'
-  | 'packageJson___devDependencies___version'
-  | 'packageJson___peerDependencies'
-  | 'packageJson___peerDependencies___name'
-  | 'packageJson___peerDependencies___version'
-  | 'packageJson___keywords';
-
-export type SitePluginGroupConnection = {
-  readonly __typename?: 'SitePluginGroupConnection';
-  readonly totalCount: Scalars['Int'];
-  readonly edges: ReadonlyArray<SitePluginEdge>;
-  readonly nodes: ReadonlyArray<SitePlugin>;
-  readonly pageInfo: PageInfo;
-  readonly field: Scalars['String'];
-  readonly fieldValue?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginSortInput = {
-  readonly fields?: Maybe<ReadonlyArray<Maybe<SitePluginFieldsEnum>>>;
-  readonly order?: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
-};
-
-export type SiteBuildMetadataConnection = {
-  readonly __typename?: 'SiteBuildMetadataConnection';
-  readonly totalCount: Scalars['Int'];
-  readonly edges: ReadonlyArray<SiteBuildMetadataEdge>;
-  readonly nodes: ReadonlyArray<SiteBuildMetadata>;
-  readonly pageInfo: PageInfo;
-  readonly distinct: ReadonlyArray<Scalars['String']>;
-  readonly max?: Maybe<Scalars['Float']>;
-  readonly min?: Maybe<Scalars['Float']>;
-  readonly sum?: Maybe<Scalars['Float']>;
-  readonly group: ReadonlyArray<SiteBuildMetadataGroupConnection>;
-};
-
-
-export type SiteBuildMetadataConnectionDistinctArgs = {
-  field: SiteBuildMetadataFieldsEnum;
-};
-
-
-export type SiteBuildMetadataConnectionMaxArgs = {
-  field: SiteBuildMetadataFieldsEnum;
-};
-
-
-export type SiteBuildMetadataConnectionMinArgs = {
-  field: SiteBuildMetadataFieldsEnum;
-};
-
-
-export type SiteBuildMetadataConnectionSumArgs = {
-  field: SiteBuildMetadataFieldsEnum;
-};
-
-
-export type SiteBuildMetadataConnectionGroupArgs = {
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-  field: SiteBuildMetadataFieldsEnum;
-};
-
-export type SiteBuildMetadataEdge = {
-  readonly __typename?: 'SiteBuildMetadataEdge';
-  readonly next?: Maybe<SiteBuildMetadata>;
-  readonly node: SiteBuildMetadata;
-  readonly previous?: Maybe<SiteBuildMetadata>;
-};
-
-export type SiteBuildMetadataFieldsEnum =
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type'
-  | 'buildTime';
-
-export type SiteBuildMetadataGroupConnection = {
-  readonly __typename?: 'SiteBuildMetadataGroupConnection';
-  readonly totalCount: Scalars['Int'];
-  readonly edges: ReadonlyArray<SiteBuildMetadataEdge>;
-  readonly nodes: ReadonlyArray<SiteBuildMetadata>;
-  readonly pageInfo: PageInfo;
-  readonly field: Scalars['String'];
-  readonly fieldValue?: Maybe<Scalars['String']>;
-};
-
-export type SiteBuildMetadataFilterInput = {
-  readonly id?: Maybe<StringQueryOperatorInput>;
-  readonly parent?: Maybe<NodeFilterInput>;
-  readonly children?: Maybe<NodeFilterListInput>;
-  readonly internal?: Maybe<InternalFilterInput>;
-  readonly buildTime?: Maybe<DateQueryOperatorInput>;
-};
-
-export type SiteBuildMetadataSortInput = {
-  readonly fields?: Maybe<ReadonlyArray<Maybe<SiteBuildMetadataFieldsEnum>>>;
   readonly order?: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
@@ -6730,8 +7043,40 @@ export type PageDocGroupConnection = {
   readonly edges: ReadonlyArray<PageDocEdge>;
   readonly nodes: ReadonlyArray<PageDoc>;
   readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<PageDocGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type PageDocGroupConnectionDistinctArgs = {
+  field: PageDocFieldsEnum;
+};
+
+
+export type PageDocGroupConnectionMaxArgs = {
+  field: PageDocFieldsEnum;
+};
+
+
+export type PageDocGroupConnectionMinArgs = {
+  field: PageDocFieldsEnum;
+};
+
+
+export type PageDocGroupConnectionSumArgs = {
+  field: PageDocFieldsEnum;
+};
+
+
+export type PageDocGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: PageDocFieldsEnum;
 };
 
 export type PageDocSortInput = {
@@ -7171,8 +7516,40 @@ export type DocsJsonGroupConnection = {
   readonly edges: ReadonlyArray<DocsJsonEdge>;
   readonly nodes: ReadonlyArray<DocsJson>;
   readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<DocsJsonGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type DocsJsonGroupConnectionDistinctArgs = {
+  field: DocsJsonFieldsEnum;
+};
+
+
+export type DocsJsonGroupConnectionMaxArgs = {
+  field: DocsJsonFieldsEnum;
+};
+
+
+export type DocsJsonGroupConnectionMinArgs = {
+  field: DocsJsonFieldsEnum;
+};
+
+
+export type DocsJsonGroupConnectionSumArgs = {
+  field: DocsJsonFieldsEnum;
+};
+
+
+export type DocsJsonGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: DocsJsonFieldsEnum;
 };
 
 export type DocsJsonSortInput = {
@@ -7361,8 +7738,40 @@ export type AnimationsJsonGroupConnection = {
   readonly edges: ReadonlyArray<AnimationsJsonEdge>;
   readonly nodes: ReadonlyArray<AnimationsJson>;
   readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<AnimationsJsonGroupConnection>;
   readonly field: Scalars['String'];
   readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type AnimationsJsonGroupConnectionDistinctArgs = {
+  field: AnimationsJsonFieldsEnum;
+};
+
+
+export type AnimationsJsonGroupConnectionMaxArgs = {
+  field: AnimationsJsonFieldsEnum;
+};
+
+
+export type AnimationsJsonGroupConnectionMinArgs = {
+  field: AnimationsJsonFieldsEnum;
+};
+
+
+export type AnimationsJsonGroupConnectionSumArgs = {
+  field: AnimationsJsonFieldsEnum;
+};
+
+
+export type AnimationsJsonGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: AnimationsJsonFieldsEnum;
 };
 
 export type AnimationsJsonSortInput = {

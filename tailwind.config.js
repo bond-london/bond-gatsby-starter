@@ -38,6 +38,16 @@ function calculateFontSize(pixels, lineHeightPixels) {
   return [fontSize];
 }
 
+function calculateFontSizeRatio(pixels, lineHeightRatio) {
+  const fontSize = calculateRemSize(pixels);
+  if (lineHeightRatio) {
+    const lineHeight = calculateRemSize(pixels * lineHeightRatio);
+    return [fontSize, lineHeight];
+  }
+
+  return [fontSize];
+}
+
 function calculateNumbers(min, max, keyFn, valueFn, by = 1) {
   const result = {};
   for (let i = min; i <= max; i += by) {

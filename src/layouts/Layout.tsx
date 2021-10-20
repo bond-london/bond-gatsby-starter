@@ -1,7 +1,7 @@
+import { SEO } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
 import { Helmet } from "react-helmet";
-import { SEO } from "../elements";
 import {
   SiteBuildMetadata,
   SiteSiteMetadata,
@@ -9,7 +9,7 @@ import {
 
 interface Props {
   siteBuildMetadata: SiteBuildMetadata & { buildYear: string };
-  siteMetadata: SiteSiteMetadata;
+  siteMetadata?: SiteSiteMetadata;
   bodyClassName?: string;
 }
 
@@ -32,7 +32,7 @@ export const Layout: React.FC<Props> = ({
       <SEO
         siteBuildMetadata={siteBuildMetadata}
         siteMetadata={siteMetadata}
-        pageUrl={siteMetadata.siteUrl || "http://localhost:8000"}
+        pageUrl={siteMetadata?.siteUrl || "http://localhost:8000"}
       />
       {children}
     </>
