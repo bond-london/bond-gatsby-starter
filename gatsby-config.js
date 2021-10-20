@@ -4,6 +4,7 @@ require("dotenv").config({
 
 const languages = ["en"];
 const siteUrl = process.env.GATSBY_SITE_URL || "http://localhost:8000";
+const showDevPages = !!process.env.SHOW_DEV_PAGES;
 
 const path = require("path");
 // Get paths of Gatsby's required rules, which as of writing is located at:
@@ -39,6 +40,18 @@ module.exports = {
         stages: ["develop"],
         extensions: ["js", "jsx", "ts", "tsx"],
         exclude: ["node_modules", "bower_components", ".cache", "public"],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/src/pages`,
+        ignore: showDevPages
+          ? undefined
+          : {
+              patterns: [`dev/**.tsx`],
+              options: { nocase: true },
+            },
       },
     },
     "gatsby-plugin-postcss",
@@ -109,5 +122,5 @@ module.exports = {
         dest: "./src/generated/graphql-types.d.ts",
       },
     },
-  ],
+  ].filter((x) => x),
 };

@@ -1,24 +1,34 @@
 import { SEO } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import { Helmet } from "react-helmet";
-import {
-  SiteBuildMetadata,
-  SiteSiteMetadata,
-} from "../generated/graphql-types";
+import { Section } from ".";
+import { Site, SiteBuildMetadata } from "../generated/graphql-types";
 
-interface Props {
-  siteBuildMetadata: SiteBuildMetadata & { buildYear: string };
-  siteMetadata?: SiteSiteMetadata;
-  bodyClassName?: string;
-}
-
-export const Layout: React.FC<Props> = ({
-  siteBuildMetadata,
-  siteMetadata,
+export const Layout: React.FC<{ bodyClassName?: string }> = ({
   bodyClassName,
   children,
 }) => {
+  const siteData = useStaticQuery<{
+    siteBuildMetadata: SiteBuildMetadata & { buildYear: string };
+    site: Site;
+  }>(graphql`
+    query LayoutQuery {
+      site {
+        siteMetadata {
+          description
+          title
+          siteUrl
+        }
+      }
+      siteBuildMetadata {
+        buildYear: buildTime(formatString: "YYYY")
+        buildTime(formatString: "dddd, MMMM d YYYY, h:mm:ss A")
+      }
+    }
+  `);
+
   return (
     <>
       <Helmet>
@@ -30,11 +40,22 @@ export const Layout: React.FC<Props> = ({
         />
       </Helmet>
       <SEO
-        siteBuildMetadata={siteBuildMetadata}
-        siteMetadata={siteMetadata}
-        pageUrl={siteMetadata?.siteUrl || "http://localhost:8000"}
+        siteBuildMetadata={siteData.siteBuildMetadata}
+        siteMetadata={siteData.site.siteMetadata}
+        pageUrl={siteData.site.siteMetadata?.siteUrl || "http://localhost:8000"}
       />
       {children}
+      <Section
+        key="Footer"
+        componentName="Footer"
+        element="footer"
+        bottomSpacing={false}
+      >
+        <p className="col-content">
+          © Bond London {siteData.siteBuildMetadata.buildYear}{" "}
+          {siteData.siteBuildMetadata.buildTime}
+        </p>
+      </Section>
     </>
   );
 };
