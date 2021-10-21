@@ -82,25 +82,25 @@ export const Layout: React.FC<{
         </p>
       </Section>
       <CookieConsent
-        declineCookieValue="cookie-declined"
-        enableDeclineButton={true}
-        declineButtonText="No way!"
-        cookieName={siteMetadata.cookieName}
-        containerClasses="bg-grey opacity-90 page-grid fixed w-full z-50 py-xs gap-y-xs"
-        style={{ alignItems: "end" }}
-        disableStyles={true}
-        disableButtonStyles={true}
-        location={"bottom"}
+        containerClasses="bg-grey opacity-90 page-grid fixed w-full z-50 py-xs gap-y-xs max-w-unset"
+        contentClasses="col-central-mobile md:col-start-2 md:col-span-4 lg:col-start-2 lg:col-span-8 self-center"
         buttonWrapperClasses={classNames(
           "flex self-center",
           "col-central-mobile md:col-start-7 md:col-span-3 lg:col-start-10 lg:col-span-4",
           "justify-around lg:justify-end",
           "space-x-mobile-gap md:space-x-mobile-gap lg:space-x-desktop-gap"
         )}
-        declineButtonClasses="button red-button"
         buttonClasses="button green-button"
+        declineButtonClasses="button red-button"
+        declineCookieValue="cookie-declined"
+        enableDeclineButton={true}
+        declineButtonText="No way!"
+        cookieName={siteMetadata.cookieName}
+        style={{ alignItems: "end" }}
+        disableStyles={true}
+        disableButtonStyles={true}
+        location={"bottom"}
         buttonText="Got it!"
-        contentClasses="col-central-mobile md:col-start-2 md:col-span-4 lg:col-start-2 lg:col-span-8 self-center"
         onAccept={onAccept}
       >
         This website uses cookies to ensure you get the best experience on our

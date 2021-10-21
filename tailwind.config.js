@@ -34,6 +34,7 @@ const colorOptions = {
 const defaultNumbers = {
   0: "0",
   full: "100%",
+  unset: "unset",
 };
 
 const sizes = [
@@ -125,6 +126,7 @@ module.exports = {
     extend: {
       maxWidth: {
         maxwidth: calculateRemSize(maximumWidth),
+        unset: "unset",
       },
       keyframes: {
         fromBottom: {

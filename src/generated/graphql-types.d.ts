@@ -262,6 +262,8 @@ export type Site = Node & {
   readonly __typename?: 'Site';
   readonly buildTime?: Maybe<Scalars['Date']>;
   readonly siteMetadata?: Maybe<SiteSiteMetadata>;
+  readonly port?: Maybe<Scalars['Int']>;
+  readonly host?: Maybe<Scalars['String']>;
   readonly flags?: Maybe<SiteFlags>;
   readonly polyfill?: Maybe<Scalars['Boolean']>;
   readonly pathPrefix?: Maybe<Scalars['String']>;
@@ -343,16 +345,25 @@ export type SitePlugin = Node & {
 
 export type SitePluginPluginOptions = {
   readonly __typename?: 'SitePluginPluginOptions';
+  readonly path?: Maybe<Scalars['String']>;
+  readonly pathCheck?: Maybe<Scalars['Boolean']>;
+  readonly allExtensions?: Maybe<Scalars['Boolean']>;
+  readonly isTSX?: Maybe<Scalars['Boolean']>;
+  readonly jsxPragma?: Maybe<Scalars['String']>;
   readonly rulePaths?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly stages?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly extensions?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly exclude?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly path?: Maybe<Scalars['String']>;
-  readonly ignore?: Maybe<SitePluginPluginOptionsIgnore>;
-  readonly output?: Maybe<Scalars['String']>;
-  readonly createLinkInHead?: Maybe<Scalars['Boolean']>;
-  readonly entryLimit?: Maybe<Scalars['Int']>;
-  readonly query?: Maybe<Scalars['String']>;
+  readonly name?: Maybe<Scalars['String']>;
+  readonly checkSupportedExtensions?: Maybe<Scalars['Boolean']>;
+  readonly base64Width?: Maybe<Scalars['Int']>;
+  readonly stripMetadata?: Maybe<Scalars['Boolean']>;
+  readonly defaultQuality?: Maybe<Scalars['Int']>;
+  readonly failOnError?: Maybe<Scalars['Boolean']>;
+  readonly unNest?: Maybe<Scalars['Int']>;
+  readonly sourceType?: Maybe<Scalars['String']>;
+  readonly typeField?: Maybe<Scalars['String']>;
+  readonly moduleField?: Maybe<Scalars['String']>;
   readonly icon?: Maybe<Scalars['String']>;
   readonly legacy?: Maybe<Scalars['Boolean']>;
   readonly theme_color_in_head?: Maybe<Scalars['Boolean']>;
@@ -360,34 +371,20 @@ export type SitePluginPluginOptions = {
   readonly crossOrigin?: Maybe<Scalars['String']>;
   readonly include_favicon?: Maybe<Scalars['Boolean']>;
   readonly cacheDigest?: Maybe<Scalars['String']>;
-  readonly base64Width?: Maybe<Scalars['Int']>;
-  readonly stripMetadata?: Maybe<Scalars['Boolean']>;
-  readonly defaultQuality?: Maybe<Scalars['Int']>;
-  readonly failOnError?: Maybe<Scalars['Boolean']>;
-  readonly checkSupportedExtensions?: Maybe<Scalars['Boolean']>;
-  readonly unNest?: Maybe<Scalars['Int']>;
-  readonly sourceType?: Maybe<Scalars['String']>;
-  readonly typeField?: Maybe<Scalars['String']>;
-  readonly moduleField?: Maybe<Scalars['String']>;
-  readonly name?: Maybe<Scalars['String']>;
+  readonly output?: Maybe<Scalars['String']>;
+  readonly createLinkInHead?: Maybe<Scalars['Boolean']>;
+  readonly entryLimit?: Maybe<Scalars['Int']>;
+  readonly query?: Maybe<Scalars['String']>;
   readonly dest?: Maybe<Scalars['String']>;
   readonly cookieName?: Maybe<Scalars['String']>;
+  readonly scripts?: Maybe<ReadonlyArray<Maybe<SitePluginPluginOptionsScripts>>>;
   readonly environments?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly pathCheck?: Maybe<Scalars['Boolean']>;
-  readonly allExtensions?: Maybe<Scalars['Boolean']>;
-  readonly isTSX?: Maybe<Scalars['Boolean']>;
-  readonly jsxPragma?: Maybe<Scalars['String']>;
 };
 
-export type SitePluginPluginOptionsIgnore = {
-  readonly __typename?: 'SitePluginPluginOptionsIgnore';
-  readonly patterns?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly options?: Maybe<SitePluginPluginOptionsIgnoreOptions>;
-};
-
-export type SitePluginPluginOptionsIgnoreOptions = {
-  readonly __typename?: 'SitePluginPluginOptionsIgnoreOptions';
-  readonly nocase?: Maybe<Scalars['Boolean']>;
+export type SitePluginPluginOptionsScripts = {
+  readonly __typename?: 'SitePluginPluginOptionsScripts';
+  readonly name?: Maybe<Scalars['String']>;
+  readonly cookieValidScripts?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
 export type SitePluginPackageJson = {
@@ -396,12 +393,12 @@ export type SitePluginPackageJson = {
   readonly description?: Maybe<Scalars['String']>;
   readonly version?: Maybe<Scalars['String']>;
   readonly main?: Maybe<Scalars['String']>;
+  readonly keywords?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly author?: Maybe<Scalars['String']>;
   readonly license?: Maybe<Scalars['String']>;
   readonly dependencies?: Maybe<ReadonlyArray<Maybe<SitePluginPackageJsonDependencies>>>;
   readonly devDependencies?: Maybe<ReadonlyArray<Maybe<SitePluginPackageJsonDevDependencies>>>;
   readonly peerDependencies?: Maybe<ReadonlyArray<Maybe<SitePluginPackageJsonPeerDependencies>>>;
-  readonly keywords?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
 export type SitePluginPackageJsonDependencies = {
@@ -1067,6 +1064,8 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   flags?: Maybe<SiteFlagsFilterInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
@@ -3488,6 +3487,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
   | 'siteMetadata___cookieName'
+  | 'port'
+  | 'host'
   | 'flags___FAST_DEV'
   | 'flags___LMDB_STORE'
   | 'polyfill'
@@ -3624,6 +3625,8 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   readonly buildTime?: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  readonly port?: Maybe<IntQueryOperatorInput>;
+  readonly host?: Maybe<StringQueryOperatorInput>;
   readonly flags?: Maybe<SiteFlagsFilterInput>;
   readonly polyfill?: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix?: Maybe<StringQueryOperatorInput>;
@@ -3858,16 +3861,25 @@ export type SitePluginFilterInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  readonly path?: Maybe<StringQueryOperatorInput>;
+  readonly pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  readonly allExtensions?: Maybe<BooleanQueryOperatorInput>;
+  readonly isTSX?: Maybe<BooleanQueryOperatorInput>;
+  readonly jsxPragma?: Maybe<StringQueryOperatorInput>;
   readonly rulePaths?: Maybe<StringQueryOperatorInput>;
   readonly stages?: Maybe<StringQueryOperatorInput>;
   readonly extensions?: Maybe<StringQueryOperatorInput>;
   readonly exclude?: Maybe<StringQueryOperatorInput>;
-  readonly path?: Maybe<StringQueryOperatorInput>;
-  readonly ignore?: Maybe<SitePluginPluginOptionsIgnoreFilterInput>;
-  readonly output?: Maybe<StringQueryOperatorInput>;
-  readonly createLinkInHead?: Maybe<BooleanQueryOperatorInput>;
-  readonly entryLimit?: Maybe<IntQueryOperatorInput>;
-  readonly query?: Maybe<StringQueryOperatorInput>;
+  readonly name?: Maybe<StringQueryOperatorInput>;
+  readonly checkSupportedExtensions?: Maybe<BooleanQueryOperatorInput>;
+  readonly base64Width?: Maybe<IntQueryOperatorInput>;
+  readonly stripMetadata?: Maybe<BooleanQueryOperatorInput>;
+  readonly defaultQuality?: Maybe<IntQueryOperatorInput>;
+  readonly failOnError?: Maybe<BooleanQueryOperatorInput>;
+  readonly unNest?: Maybe<IntQueryOperatorInput>;
+  readonly sourceType?: Maybe<StringQueryOperatorInput>;
+  readonly typeField?: Maybe<StringQueryOperatorInput>;
+  readonly moduleField?: Maybe<StringQueryOperatorInput>;
   readonly icon?: Maybe<StringQueryOperatorInput>;
   readonly legacy?: Maybe<BooleanQueryOperatorInput>;
   readonly theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
@@ -3875,32 +3887,23 @@ export type SitePluginPluginOptionsFilterInput = {
   readonly crossOrigin?: Maybe<StringQueryOperatorInput>;
   readonly include_favicon?: Maybe<BooleanQueryOperatorInput>;
   readonly cacheDigest?: Maybe<StringQueryOperatorInput>;
-  readonly base64Width?: Maybe<IntQueryOperatorInput>;
-  readonly stripMetadata?: Maybe<BooleanQueryOperatorInput>;
-  readonly defaultQuality?: Maybe<IntQueryOperatorInput>;
-  readonly failOnError?: Maybe<BooleanQueryOperatorInput>;
-  readonly checkSupportedExtensions?: Maybe<BooleanQueryOperatorInput>;
-  readonly unNest?: Maybe<IntQueryOperatorInput>;
-  readonly sourceType?: Maybe<StringQueryOperatorInput>;
-  readonly typeField?: Maybe<StringQueryOperatorInput>;
-  readonly moduleField?: Maybe<StringQueryOperatorInput>;
-  readonly name?: Maybe<StringQueryOperatorInput>;
+  readonly output?: Maybe<StringQueryOperatorInput>;
+  readonly createLinkInHead?: Maybe<BooleanQueryOperatorInput>;
+  readonly entryLimit?: Maybe<IntQueryOperatorInput>;
+  readonly query?: Maybe<StringQueryOperatorInput>;
   readonly dest?: Maybe<StringQueryOperatorInput>;
   readonly cookieName?: Maybe<StringQueryOperatorInput>;
+  readonly scripts?: Maybe<SitePluginPluginOptionsScriptsFilterListInput>;
   readonly environments?: Maybe<StringQueryOperatorInput>;
-  readonly pathCheck?: Maybe<BooleanQueryOperatorInput>;
-  readonly allExtensions?: Maybe<BooleanQueryOperatorInput>;
-  readonly isTSX?: Maybe<BooleanQueryOperatorInput>;
-  readonly jsxPragma?: Maybe<StringQueryOperatorInput>;
 };
 
-export type SitePluginPluginOptionsIgnoreFilterInput = {
-  readonly patterns?: Maybe<StringQueryOperatorInput>;
-  readonly options?: Maybe<SitePluginPluginOptionsIgnoreOptionsFilterInput>;
+export type SitePluginPluginOptionsScriptsFilterListInput = {
+  readonly elemMatch?: Maybe<SitePluginPluginOptionsScriptsFilterInput>;
 };
 
-export type SitePluginPluginOptionsIgnoreOptionsFilterInput = {
-  readonly nocase?: Maybe<BooleanQueryOperatorInput>;
+export type SitePluginPluginOptionsScriptsFilterInput = {
+  readonly name?: Maybe<StringQueryOperatorInput>;
+  readonly cookieValidScripts?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPackageJsonFilterInput = {
@@ -3908,12 +3911,12 @@ export type SitePluginPackageJsonFilterInput = {
   readonly description?: Maybe<StringQueryOperatorInput>;
   readonly version?: Maybe<StringQueryOperatorInput>;
   readonly main?: Maybe<StringQueryOperatorInput>;
+  readonly keywords?: Maybe<StringQueryOperatorInput>;
   readonly author?: Maybe<StringQueryOperatorInput>;
   readonly license?: Maybe<StringQueryOperatorInput>;
   readonly dependencies?: Maybe<SitePluginPackageJsonDependenciesFilterListInput>;
   readonly devDependencies?: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>;
   readonly peerDependencies?: Maybe<SitePluginPackageJsonPeerDependenciesFilterListInput>;
-  readonly keywords?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPackageJsonDependenciesFilterListInput = {
@@ -4090,16 +4093,25 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
   | 'pluginCreator___pluginFilepath'
+  | 'pluginCreator___pluginOptions___path'
+  | 'pluginCreator___pluginOptions___pathCheck'
+  | 'pluginCreator___pluginOptions___allExtensions'
+  | 'pluginCreator___pluginOptions___isTSX'
+  | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___pluginOptions___rulePaths'
   | 'pluginCreator___pluginOptions___stages'
   | 'pluginCreator___pluginOptions___extensions'
   | 'pluginCreator___pluginOptions___exclude'
-  | 'pluginCreator___pluginOptions___path'
-  | 'pluginCreator___pluginOptions___ignore___patterns'
-  | 'pluginCreator___pluginOptions___output'
-  | 'pluginCreator___pluginOptions___createLinkInHead'
-  | 'pluginCreator___pluginOptions___entryLimit'
-  | 'pluginCreator___pluginOptions___query'
+  | 'pluginCreator___pluginOptions___name'
+  | 'pluginCreator___pluginOptions___checkSupportedExtensions'
+  | 'pluginCreator___pluginOptions___base64Width'
+  | 'pluginCreator___pluginOptions___stripMetadata'
+  | 'pluginCreator___pluginOptions___defaultQuality'
+  | 'pluginCreator___pluginOptions___failOnError'
+  | 'pluginCreator___pluginOptions___unNest'
+  | 'pluginCreator___pluginOptions___sourceType'
+  | 'pluginCreator___pluginOptions___typeField'
+  | 'pluginCreator___pluginOptions___moduleField'
   | 'pluginCreator___pluginOptions___icon'
   | 'pluginCreator___pluginOptions___legacy'
   | 'pluginCreator___pluginOptions___theme_color_in_head'
@@ -4107,27 +4119,21 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___crossOrigin'
   | 'pluginCreator___pluginOptions___include_favicon'
   | 'pluginCreator___pluginOptions___cacheDigest'
-  | 'pluginCreator___pluginOptions___base64Width'
-  | 'pluginCreator___pluginOptions___stripMetadata'
-  | 'pluginCreator___pluginOptions___defaultQuality'
-  | 'pluginCreator___pluginOptions___failOnError'
-  | 'pluginCreator___pluginOptions___checkSupportedExtensions'
-  | 'pluginCreator___pluginOptions___unNest'
-  | 'pluginCreator___pluginOptions___sourceType'
-  | 'pluginCreator___pluginOptions___typeField'
-  | 'pluginCreator___pluginOptions___moduleField'
-  | 'pluginCreator___pluginOptions___name'
+  | 'pluginCreator___pluginOptions___output'
+  | 'pluginCreator___pluginOptions___createLinkInHead'
+  | 'pluginCreator___pluginOptions___entryLimit'
+  | 'pluginCreator___pluginOptions___query'
   | 'pluginCreator___pluginOptions___dest'
   | 'pluginCreator___pluginOptions___cookieName'
+  | 'pluginCreator___pluginOptions___scripts'
+  | 'pluginCreator___pluginOptions___scripts___name'
+  | 'pluginCreator___pluginOptions___scripts___cookieValidScripts'
   | 'pluginCreator___pluginOptions___environments'
-  | 'pluginCreator___pluginOptions___pathCheck'
-  | 'pluginCreator___pluginOptions___allExtensions'
-  | 'pluginCreator___pluginOptions___isTSX'
-  | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___packageJson___name'
   | 'pluginCreator___packageJson___description'
   | 'pluginCreator___packageJson___version'
   | 'pluginCreator___packageJson___main'
+  | 'pluginCreator___packageJson___keywords'
   | 'pluginCreator___packageJson___author'
   | 'pluginCreator___packageJson___license'
   | 'pluginCreator___packageJson___dependencies'
@@ -4139,7 +4145,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___packageJson___peerDependencies'
   | 'pluginCreator___packageJson___peerDependencies___name'
   | 'pluginCreator___packageJson___peerDependencies___version'
-  | 'pluginCreator___packageJson___keywords'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -4297,17 +4302,25 @@ export type SitePluginFieldsEnum =
   | 'browserAPIs'
   | 'ssrAPIs'
   | 'pluginFilepath'
+  | 'pluginOptions___path'
+  | 'pluginOptions___pathCheck'
+  | 'pluginOptions___allExtensions'
+  | 'pluginOptions___isTSX'
+  | 'pluginOptions___jsxPragma'
   | 'pluginOptions___rulePaths'
   | 'pluginOptions___stages'
   | 'pluginOptions___extensions'
   | 'pluginOptions___exclude'
-  | 'pluginOptions___path'
-  | 'pluginOptions___ignore___patterns'
-  | 'pluginOptions___ignore___options___nocase'
-  | 'pluginOptions___output'
-  | 'pluginOptions___createLinkInHead'
-  | 'pluginOptions___entryLimit'
-  | 'pluginOptions___query'
+  | 'pluginOptions___name'
+  | 'pluginOptions___checkSupportedExtensions'
+  | 'pluginOptions___base64Width'
+  | 'pluginOptions___stripMetadata'
+  | 'pluginOptions___defaultQuality'
+  | 'pluginOptions___failOnError'
+  | 'pluginOptions___unNest'
+  | 'pluginOptions___sourceType'
+  | 'pluginOptions___typeField'
+  | 'pluginOptions___moduleField'
   | 'pluginOptions___icon'
   | 'pluginOptions___legacy'
   | 'pluginOptions___theme_color_in_head'
@@ -4315,27 +4328,21 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___crossOrigin'
   | 'pluginOptions___include_favicon'
   | 'pluginOptions___cacheDigest'
-  | 'pluginOptions___base64Width'
-  | 'pluginOptions___stripMetadata'
-  | 'pluginOptions___defaultQuality'
-  | 'pluginOptions___failOnError'
-  | 'pluginOptions___checkSupportedExtensions'
-  | 'pluginOptions___unNest'
-  | 'pluginOptions___sourceType'
-  | 'pluginOptions___typeField'
-  | 'pluginOptions___moduleField'
-  | 'pluginOptions___name'
+  | 'pluginOptions___output'
+  | 'pluginOptions___createLinkInHead'
+  | 'pluginOptions___entryLimit'
+  | 'pluginOptions___query'
   | 'pluginOptions___dest'
   | 'pluginOptions___cookieName'
+  | 'pluginOptions___scripts'
+  | 'pluginOptions___scripts___name'
+  | 'pluginOptions___scripts___cookieValidScripts'
   | 'pluginOptions___environments'
-  | 'pluginOptions___pathCheck'
-  | 'pluginOptions___allExtensions'
-  | 'pluginOptions___isTSX'
-  | 'pluginOptions___jsxPragma'
   | 'packageJson___name'
   | 'packageJson___description'
   | 'packageJson___version'
   | 'packageJson___main'
+  | 'packageJson___keywords'
   | 'packageJson___author'
   | 'packageJson___license'
   | 'packageJson___dependencies'
@@ -4347,7 +4354,6 @@ export type SitePluginFieldsEnum =
   | 'packageJson___peerDependencies'
   | 'packageJson___peerDependencies___name'
   | 'packageJson___peerDependencies___version'
-  | 'packageJson___keywords'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
