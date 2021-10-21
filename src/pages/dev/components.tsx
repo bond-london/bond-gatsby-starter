@@ -1,7 +1,11 @@
 import React, { useCallback, useState } from "react";
-import { LinkOrButton, Menu, NavigationBar } from "../../components";
+import {
+  DesignLayout,
+  LinkOrButton,
+  Menu,
+  NavigationBar,
+} from "../../components";
 import { Section } from "../../layouts";
-import { DesignLayout } from "./DesignLayout";
 
 import logo from "../../images/bond-black.svg";
 const menu: Menu = {

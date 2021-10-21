@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import React, { Fragment } from "react";
+import { DesignLayout } from "../../components";
 import { Section } from "../../layouts";
 import { Colours, lookupColourString } from "../../lookups";
-import { DesignLayout } from "./DesignLayout";
 
 function returnColumnColour(i: number) {
   if (i === 1) {
