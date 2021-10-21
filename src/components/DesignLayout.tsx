@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { Link } from "gatsby";
 import React from "react";
-import { Layout, Section } from "../../layouts";
+import { Layout, Section } from "../layouts";
 
 const pages: { title: string; path: string }[] = [
   { title: "Development", path: "/dev" },
