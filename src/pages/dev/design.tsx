@@ -1,22 +1,57 @@
 import classNames from "classnames";
 import React, { Fragment } from "react";
-import { Layout, Section } from "../../layouts";
+import { Section } from "../../layouts";
 import { Colours, lookupColourString } from "../../lookups";
+import { DesignLayout } from "./DesignLayout";
+
+function returnColumnColour(i: number) {
+  if (i === 1) {
+    return "bg-red";
+  }
+  if (i === 6) {
+    return "bg-red md:bg-green";
+  }
+
+  if (i === 10) {
+    return "bg-red lg:bg-green";
+  }
+
+  if (i === 14) {
+    return "bg-red";
+  }
+
+  return "bg-green";
+}
+
+function returnColumnVisibility(i: number) {
+  if (i > 10) {
+    return "hidden lg:block";
+  }
+
+  if (i > 6) {
+    return "hidden md:block";
+  }
+
+  return "block";
+}
 
 const Design: React.FC = () => {
   return (
-    <Layout bodyClassName="bg-white">
-      <Section key="heading" componentName="Heading">
-        <h1
-          className={classNames(
-            "h1",
-            "col-start-2 col-span-4",
-            "md:col-start-3 md:col-span-6",
-            "lg:col-start-4 lg:col-span-8"
-          )}
-        >
-          Design
-        </h1>
+    <DesignLayout title="Design">
+      <Section componentName="Grid" contentClassName="h-xl">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((i) => (
+          <div
+            key={i}
+            className={classNames(
+              "text-black text-center",
+              "col-span-1",
+              returnColumnColour(i),
+              returnColumnVisibility(i)
+            )}
+          >
+            {i}
+          </div>
+        ))}
       </Section>
 
       <Section
@@ -37,7 +72,7 @@ const Design: React.FC = () => {
       <Section key="Spacings" componentName="Spacings">
         <table className="col-content">
           <thead>
-            <tr className="content-grid-in-page-grid text-left">
+            <tr className="content-grid-only text-left">
               <th className="col-start-1 col-span-1 md:col-start-1 md:col-span-3">
                 Name
               </th>
@@ -48,7 +83,7 @@ const Design: React.FC = () => {
           </thead>
           <tbody>
             {["w-xxs", "w-xs", "w-s", "w-m", "w-l", "w-xl"].map((w) => (
-              <tr key={w} className="content-grid-in-page-grid">
+              <tr key={w} className="content-grid-only">
                 <td className="col-start-1 col-span-1 md:col-start-1 md:col-span-3">
                   {w.replace("w-", "").toUpperCase()}
                 </td>
@@ -93,7 +128,7 @@ const Design: React.FC = () => {
           </Fragment>
         ))}
       </Section>
-    </Layout>
+    </DesignLayout>
   );
 };
 

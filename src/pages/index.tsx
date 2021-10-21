@@ -29,7 +29,7 @@ const Page: React.FC<Props> = (props) => {
   const lottie = getLottieFromFile(animation as File);
 
   return (
-    <Layout bodyClassName="bg-white">
+    <Layout bodyClassName="bg-white" title="Home">
       <Section componentName="Heading" className="bg-green">
         <h1
           className={classNames(

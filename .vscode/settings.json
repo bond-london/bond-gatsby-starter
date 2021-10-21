@@ -5,6 +5,16 @@
   },
   "tailwindCSS.validate": true,
   "tailwindCSS.experimental.classRegex": ["const\\s+.*ClassName\\s*=\\s*\"([^']*)\""],
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "containerClasses",
+    "buttonWrapperClasses",
+    "buttonClasses",
+    "contentClasses",
+    "contentClassName"
+  ],
   "files.exclude": {
     ".cache": true,
     "node_modules": true,

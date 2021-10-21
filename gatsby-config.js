@@ -2,6 +2,9 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const COOKIE_NAME = process.env.COOKIE_NAME || "no-cookie-name";
+const GOOGLE_TAG = process.env.GOOGLE_TAG;
+
 const languages = ["en"];
 const siteUrl = process.env.GATSBY_SITE_URL || "http://localhost:8000";
 const showDevPages = !!process.env.SHOW_DEV_PAGES;
@@ -22,13 +25,13 @@ const gatsbyRequiredRules = path.join(
 module.exports = {
   flags: {
     FAST_DEV: true,
-    PRESERVE_FILE_DOWNLOAD_CACHE: true,
-    LMDB_STORE: true,
+    LMDB_STORE: process.env.NODE_ENV === "development",
   },
   siteMetadata: {
     title: "Bond London Sample Site",
     description: "Site made using the Simple Bond Gatsby Starter",
     siteUrl,
+    cookieName: COOKIE_NAME,
   },
   plugins: [
     {
@@ -66,7 +69,13 @@ module.exports = {
       },
     },
     "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    {
+      resolve: `gatsby-transformer-sharp`,
+      options: {
+        // The option defaults to true
+        checkSupportedExtensions: false,
+      },
+    },
     "gatsby-transformer-json",
     "@bond-london/gatsby-transformer-extracted-svg",
     "@bond-london/gatsby-transformer-extracted-lottie",
@@ -120,6 +129,26 @@ module.exports = {
       resolve: "@bond-london/gatsby-plugin-generate-typings",
       options: {
         dest: "./src/generated/graphql-types.d.ts",
+      },
+    },
+    {
+      resolve: "@bond-london/gatsby-plugin-cookie-scripts",
+      options: {
+        cookieName: COOKIE_NAME,
+        scripts: [
+          GOOGLE_TAG
+            ? {
+                name: "Google Tag Manager",
+                cookieValidScripts: [
+                  `<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','${GOOGLE_TAG}');</script>`,
+                ],
+              }
+            : undefined,
+        ].filter((x) => x),
       },
     },
   ].filter((x) => x),

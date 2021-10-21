@@ -1,7 +1,8 @@
 import React from "react";
+import { DesignLayout } from "./DesignLayout";
 
 const DevIndex: React.FC = () => {
-  return <h1>Dev Index page</h1>;
+  return <DesignLayout title="Development" />;
 };
 
 export default DevIndex;

@@ -284,7 +284,6 @@ export type SiteBuildTimeArgs = {
 export type SiteFlags = {
   readonly __typename?: 'SiteFlags';
   readonly FAST_DEV?: Maybe<Scalars['Boolean']>;
-  readonly PRESERVE_FILE_DOWNLOAD_CACHE?: Maybe<Scalars['Boolean']>;
   readonly LMDB_STORE?: Maybe<Scalars['Boolean']>;
 };
 
@@ -293,6 +292,7 @@ export type SiteSiteMetadata = {
   readonly title?: Maybe<Scalars['String']>;
   readonly description?: Maybe<Scalars['String']>;
   readonly siteUrl?: Maybe<Scalars['String']>;
+  readonly cookieName?: Maybe<Scalars['String']>;
 };
 
 export type SiteFunction = Node & {
@@ -355,6 +355,7 @@ export type SitePluginPluginOptions = {
   readonly extensions?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly exclude?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly name?: Maybe<Scalars['String']>;
+  readonly checkSupportedExtensions?: Maybe<Scalars['Boolean']>;
   readonly base64Width?: Maybe<Scalars['Int']>;
   readonly stripMetadata?: Maybe<Scalars['Boolean']>;
   readonly defaultQuality?: Maybe<Scalars['Int']>;
@@ -375,6 +376,15 @@ export type SitePluginPluginOptions = {
   readonly entryLimit?: Maybe<Scalars['Int']>;
   readonly query?: Maybe<Scalars['String']>;
   readonly dest?: Maybe<Scalars['String']>;
+  readonly cookieName?: Maybe<Scalars['String']>;
+  readonly scripts?: Maybe<ReadonlyArray<Maybe<SitePluginPluginOptionsScripts>>>;
+  readonly environments?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+};
+
+export type SitePluginPluginOptionsScripts = {
+  readonly __typename?: 'SitePluginPluginOptionsScripts';
+  readonly name?: Maybe<Scalars['String']>;
+  readonly cookieValidScripts?: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
 };
 
 export type SitePluginPackageJson = {
@@ -3416,11 +3426,11 @@ export type SiteSiteMetadataFilterInput = {
   readonly title?: Maybe<StringQueryOperatorInput>;
   readonly description?: Maybe<StringQueryOperatorInput>;
   readonly siteUrl?: Maybe<StringQueryOperatorInput>;
+  readonly cookieName?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteFlagsFilterInput = {
   readonly FAST_DEV?: Maybe<BooleanQueryOperatorInput>;
-  readonly PRESERVE_FILE_DOWNLOAD_CACHE?: Maybe<BooleanQueryOperatorInput>;
   readonly LMDB_STORE?: Maybe<BooleanQueryOperatorInput>;
 };
 
@@ -3476,10 +3486,10 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
+  | 'siteMetadata___cookieName'
   | 'port'
   | 'host'
   | 'flags___FAST_DEV'
-  | 'flags___PRESERVE_FILE_DOWNLOAD_CACHE'
   | 'flags___LMDB_STORE'
   | 'polyfill'
   | 'pathPrefix'
@@ -3861,6 +3871,7 @@ export type SitePluginPluginOptionsFilterInput = {
   readonly extensions?: Maybe<StringQueryOperatorInput>;
   readonly exclude?: Maybe<StringQueryOperatorInput>;
   readonly name?: Maybe<StringQueryOperatorInput>;
+  readonly checkSupportedExtensions?: Maybe<BooleanQueryOperatorInput>;
   readonly base64Width?: Maybe<IntQueryOperatorInput>;
   readonly stripMetadata?: Maybe<BooleanQueryOperatorInput>;
   readonly defaultQuality?: Maybe<IntQueryOperatorInput>;
@@ -3881,6 +3892,18 @@ export type SitePluginPluginOptionsFilterInput = {
   readonly entryLimit?: Maybe<IntQueryOperatorInput>;
   readonly query?: Maybe<StringQueryOperatorInput>;
   readonly dest?: Maybe<StringQueryOperatorInput>;
+  readonly cookieName?: Maybe<StringQueryOperatorInput>;
+  readonly scripts?: Maybe<SitePluginPluginOptionsScriptsFilterListInput>;
+  readonly environments?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsScriptsFilterListInput = {
+  readonly elemMatch?: Maybe<SitePluginPluginOptionsScriptsFilterInput>;
+};
+
+export type SitePluginPluginOptionsScriptsFilterInput = {
+  readonly name?: Maybe<StringQueryOperatorInput>;
+  readonly cookieValidScripts?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPackageJsonFilterInput = {
@@ -4080,6 +4103,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___extensions'
   | 'pluginCreator___pluginOptions___exclude'
   | 'pluginCreator___pluginOptions___name'
+  | 'pluginCreator___pluginOptions___checkSupportedExtensions'
   | 'pluginCreator___pluginOptions___base64Width'
   | 'pluginCreator___pluginOptions___stripMetadata'
   | 'pluginCreator___pluginOptions___defaultQuality'
@@ -4100,6 +4124,11 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___entryLimit'
   | 'pluginCreator___pluginOptions___query'
   | 'pluginCreator___pluginOptions___dest'
+  | 'pluginCreator___pluginOptions___cookieName'
+  | 'pluginCreator___pluginOptions___scripts'
+  | 'pluginCreator___pluginOptions___scripts___name'
+  | 'pluginCreator___pluginOptions___scripts___cookieValidScripts'
+  | 'pluginCreator___pluginOptions___environments'
   | 'pluginCreator___packageJson___name'
   | 'pluginCreator___packageJson___description'
   | 'pluginCreator___packageJson___version'
@@ -4283,6 +4312,7 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___extensions'
   | 'pluginOptions___exclude'
   | 'pluginOptions___name'
+  | 'pluginOptions___checkSupportedExtensions'
   | 'pluginOptions___base64Width'
   | 'pluginOptions___stripMetadata'
   | 'pluginOptions___defaultQuality'
@@ -4303,6 +4333,11 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___entryLimit'
   | 'pluginOptions___query'
   | 'pluginOptions___dest'
+  | 'pluginOptions___cookieName'
+  | 'pluginOptions___scripts'
+  | 'pluginOptions___scripts___name'
+  | 'pluginOptions___scripts___cookieValidScripts'
+  | 'pluginOptions___environments'
   | 'packageJson___name'
   | 'packageJson___description'
   | 'packageJson___version'

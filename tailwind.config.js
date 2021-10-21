@@ -26,6 +26,9 @@ const colorOptions = {
   red: "#ff0000",
   green: "#00ff00",
   blue: "#0000ff",
+  "dark-green": "#008000",
+  "dark-red": "#800000",
+  grey: "#808080",
 };
 
 const defaultNumbers = {
@@ -140,6 +143,11 @@ module.exports = {
     },
     transitionTimingFunction: {
       bond: animationTiming,
+    },
+    outline: {
+      error: ["4px solid red", "2px"],
+      "debug-white": "1px dashed white",
+      "debug-black": "1px dashed black",
     },
   },
   plugins: [

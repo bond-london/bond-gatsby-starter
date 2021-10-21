@@ -53,7 +53,7 @@
     @apply mx-mobile-margin md:mx-tablet-margin lg:mx-desktop-margin 2xl:mx-auto 2xl:max-w-maxwidth grid grid-cols-mobile-content md:grid-cols-tablet-content lg:grid-cols-desktop-content gap-x-mobile-gap md:gap-x-tablet-gap lg:gap-x-desktop-gap;
   }
 
-  .content-grid-in-page-grid {
+  .content-grid-only {
     @apply grid grid-cols-mobile-content md:grid-cols-tablet-content lg:grid-cols-desktop-content gap-x-mobile-gap md:gap-x-tablet-gap lg:gap-x-desktop-gap;
   }
 
@@ -62,14 +62,26 @@
   }
 
   .py-section {
-    @apply py-s md:py-l lg:py-xl;
+    @apply py-s md:py-s lg:py-m;
   }
 
   .pt-section {
-    @apply pt-s md:pt-l lg:pt-xl;
+    @apply pt-s md:pt-s lg:pt-m;
   }
 
   .pb-section {
-    @apply pb-s md:pb-l lg:pb-xl;
+    @apply pb-s md:pb-s lg:pb-m;
+  }
+
+  .button {
+    @apply px-xxs h-s flex justify-center items-center;
+  }
+
+  .green-button {
+    @apply bg-green hover:bg-dark-green text-white;
+  }
+
+  .red-button {
+    @apply bg-red hover:bg-dark-red text-white;
   }
 }

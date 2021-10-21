@@ -1058,16 +1058,23 @@
     "@babel/helper-validator-identifier" "^7.14.9"
     to-fast-properties "^2.0.0"
 
-"@bond-london/gatsby-graphcms-components@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@bond-london/gatsby-graphcms-components/-/gatsby-graphcms-components-1.0.2.tgz#8f36d1dabdbffabd8496e52e7b3cd721305ae806"
-  integrity sha512-OLouCvlSGM2IGBWji6kN/MLRxsQqNu3W6almmN3gkg5I5KLVMqk2N4OILjxcHhXc2UVDc0JVn9IHLWD5k2VioA==
+"@bond-london/gatsby-graphcms-components@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@bond-london/gatsby-graphcms-components/-/gatsby-graphcms-components-1.0.3.tgz#59a740b308489f25c101feb6f85356b2e58b4b40"
+  integrity sha512-ifjopSfXblfK1mNawl8eUfeBSAFKYJVFrZIDHwTVluUwb06//KWLuPyv+vTbnWLnfSc/G5O4a/PgfFA4bdE/pw==
   dependencies:
     "@graphcms/rich-text-react-renderer" "^0.3.2"
     "@types/react-helmet" "^6.1.4"
     classnames "^2.3.1"
     lottie-web "^5.7.14"
     react-helmet "^6.1.0"
+
+"@bond-london/gatsby-plugin-cookie-scripts@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@bond-london/gatsby-plugin-cookie-scripts/-/gatsby-plugin-cookie-scripts-1.1.2.tgz#b82422d899fd203917abf0e955ef777b9de2347e"
+  integrity sha512-+BvnE7TFoy+r6nR1O7VKj5HMnfdPqQL9R//AScQL+zPaWwaHHCiEAcQqFHR9kmmaPUzrYmVryQ4ASZ/m5s+mjA==
+  dependencies:
+    htmr "^1.0.1"
 
 "@bond-london/gatsby-plugin-generate-typings@^1.1.0":
   version "1.1.0"
@@ -6727,7 +6734,7 @@ html-tags@^3.1.0:
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.1.0.tgz#7b5e6f7e665e9fb41f30007ed9e0d41e97fb2140"
   integrity sha512-1qYz89hW3lFDEazhjW0yVAV87lw8lVkrJocr72XmBkMKsoSVJCQx3W8BXsC7hO2qAt8BoVjYjtAcZ9perqGnNg==
 
-htmlparser2@^6.1.0:
+htmlparser2@^6.0.0, htmlparser2@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-6.1.0.tgz#c4d762b6c3371a05dbe65e94ae43a9f845fb8fb7"
   integrity sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==
@@ -6736,6 +6743,14 @@ htmlparser2@^6.1.0:
     domhandler "^4.0.0"
     domutils "^2.5.2"
     entities "^2.0.0"
+
+htmr@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/htmr/-/htmr-1.0.1.tgz#8083bacf74130bbd040aa0ffb32f26ed794f8c22"
+  integrity sha512-7YF4lq4xlwKs+0AYu9cRnBAIh5bPrjArgMwiZIbSrF3z9MhCzbeqoCp4mYnHdK22DMkcwYakE07PJTYbITOhqA==
+  dependencies:
+    html-entities "^2.1.0"
+    htmlparser2 "^6.0.0"
 
 http-cache-semantics@^4.0.0:
   version "4.1.0"
@@ -7553,6 +7568,11 @@ jpeg-js@^0.4.0:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.4.3.tgz#6158e09f1983ad773813704be80680550eff977b"
   integrity sha512-ru1HWKek8octvUHFHvE5ZzQ1yAsJmIvRdGWvSoKV52XKyuyYA437QWDttXT8eZXDSbuMpHlLzPDZUPd6idIz+Q==
+
+js-cookie@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
+  integrity sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
@@ -10270,6 +10290,14 @@ rc@^1.2.7, rc@^1.2.8:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-cookie-consent@^6.4.1:
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/react-cookie-consent/-/react-cookie-consent-6.4.1.tgz#256916725d87d8227e1f71d6aa4a18d451dc0d40"
+  integrity sha512-dAgC2uSrUN0eXoNhEKDCHH/dL3RUs/84SPO8hRvJVz7HtPGmF+t/mQwd4V4qsGAvVqhbn0hzMdftEuiJS3iueQ==
+  dependencies:
+    js-cookie "^2.2.1"
+    prop-types "^15.7.2"
 
 react-dev-utils@^11.0.3:
   version "11.0.4"
