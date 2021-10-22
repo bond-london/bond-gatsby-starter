@@ -4,9 +4,12 @@ import {
   DesignLayout,
   Headline,
   Hero,
+  Individual,
   LinkOrButton,
   Menu,
   NavigationBar,
+  Product,
+  Team,
 } from "../../components";
 import { Section } from "../../layouts";
 import { File } from "../../generated/graphql-types";
@@ -68,8 +71,21 @@ const Components: React.FC = () => {
   const findFile = (name: string) =>
     allFilesMap.find((n) => name === n.name + n.ext);
 
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const heroThumbnail = getImageFromFile(findFile("small_web_loop.jpg"))!;
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const heroVideo = getVideoFromFile(findFile("small_web_loop.mp4"))!;
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const person = getImageFromFile(findFile("female-silhouette.png"))!;
+
+  const team: Individual[] = [
+    { image: person, name: "Abigail", position: "Left wing" },
+    { image: person, name: "Bernard", position: "Right wing" },
+    { image: person, name: "Cameron", position: "Forward" },
+    { image: person, name: "Duncan", position: "Centre" },
+    { image: person, name: "Eloise", position: "Drummer" },
+    { image: person, name: "Fred", position: "Tea boy" },
+  ];
 
   const [buttonCount, setButtonCount] = useState(0);
   const onButtonClick = useCallback(() => setButtonCount((n) => n + 1), []);
@@ -168,6 +184,36 @@ const Components: React.FC = () => {
           )}
           link={{ name: "Click me" }}
         />
+      </ComponentContainer>
+
+      <ComponentContainer name="Product left">
+        <Product
+          left={true}
+          image={heroThumbnail}
+          alt="Mountain"
+          title="Lorem ipsum dolor sit amet"
+          message={getRTF(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          )}
+          link={{ name: "Click me" }}
+        />
+      </ComponentContainer>
+
+      <ComponentContainer name="Product right">
+        <Product
+          left={false}
+          image={heroThumbnail}
+          alt="Mountain"
+          title="Lorem ipsum dolor sit amet"
+          message={getRTF(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          )}
+          link={{ name: "Click me" }}
+        />
+      </ComponentContainer>
+
+      <ComponentContainer name="Team">
+        <Team team={team} />
       </ComponentContainer>
     </DesignLayout>
   );

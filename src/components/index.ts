@@ -4,3 +4,7 @@ export * from "./DesignLayout";
 export * from "./Hero";
 export * from "./Headline";
 export * from "./Collection";
+export * from "./Product";
+export * from "./Person";
+export * from "./Team";
+export * from "./Icons";
