@@ -21,6 +21,7 @@ export const Hero: React.FC<{
     <Section
       componentName="Hero"
       double={true}
+      topSpacing={false}
       className="text-washed-blue"
       contentClassName="container-basic"
       preChildren={
@@ -29,7 +30,7 @@ export const Hero: React.FC<{
     >
       <div
         className={classNames(
-          "outline-debug-white self-center",
+          "self-center",
           "col-start-1 col-span-4",
           "row-start-1 row-span-3",
           "lg:col-start-1 lg:col-span-5",
@@ -46,7 +47,7 @@ export const Hero: React.FC<{
           className={classNames(
             "relative",
             "col-start-1 col-span-4 row-start-1 row-span-3",
-            "lg:col-start-7 lg:col-span-5"
+            "lg:col-start-7 lg:col-span-5 lg:row-start-2 lg:row-span-2"
           )}
         >
           <div className="aspect-w-1 aspect-h-1">

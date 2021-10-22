@@ -34,8 +34,9 @@ const ComponentContainer: React.FC<{ name: string }> = ({ name, children }) => {
     <Section
       componentName={name}
       topSpacing={false}
+      double={true}
       postChildren={
-        <div className="relative col-span-full row-start-2 row-span-4 outline-debug-black">
+        <div className="relative col-span-full row-start-3 row-span-3 outline-debug-black">
           {children}
         </div>
       }
