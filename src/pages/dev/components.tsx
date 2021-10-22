@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import {
+  Collection,
   DesignLayout,
   Headline,
   Hero,
@@ -67,8 +68,8 @@ const Components: React.FC = () => {
   const findFile = (name: string) =>
     allFilesMap.find((n) => name === n.name + n.ext);
 
-  const heroThumbnail = getImageFromFile(findFile("small_web_loop.jpg"));
-  const heroVideo = getVideoFromFile(findFile("small_web_loop.mp4"));
+  const heroThumbnail = getImageFromFile(findFile("small_web_loop.jpg"))!;
+  const heroVideo = getVideoFromFile(findFile("small_web_loop.mp4"))!;
 
   const [buttonCount, setButtonCount] = useState(0);
   const onButtonClick = useCallback(() => setButtonCount((n) => n + 1), []);
@@ -114,8 +115,7 @@ const Components: React.FC = () => {
           message={getRTF(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          image={heroThumbnail!}
+          image={heroThumbnail}
           videoUrl={heroVideo}
           alt="Mountain"
           link={{ name: "Click me" }}
@@ -128,8 +128,7 @@ const Components: React.FC = () => {
           message={getRTF(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
           )}
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          image={heroThumbnail!}
+          image={heroThumbnail}
           videoUrl={heroVideo}
           alt="Mountain"
           link={{ name: "Click me" }}
@@ -142,6 +141,32 @@ const Components: React.FC = () => {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             getRTF("Lorem ipsum dolor sit amet, consectetur adipiscing elit")!
           }
+        />
+      </ComponentContainer>
+
+      <ComponentContainer name="Collection left">
+        <Collection
+          left={true}
+          image={heroThumbnail}
+          alt="Mountain"
+          title="Lorem ipsum dolor sit amet"
+          message={getRTF(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          )}
+          link={{ name: "Click me" }}
+        />
+      </ComponentContainer>
+
+      <ComponentContainer name="Collection right">
+        <Collection
+          left={false}
+          image={heroThumbnail}
+          alt="Mountain"
+          title="Lorem ipsum dolor sit amet"
+          message={getRTF(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          )}
+          link={{ name: "Click me" }}
         />
       </ComponentContainer>
     </DesignLayout>
