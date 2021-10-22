@@ -163,6 +163,9 @@ module.exports = {
         fromBottom: "fromBottom 0.5s ease-in",
         toTop: "toTop 0.5s ease-out",
       },
+      borderWidth: {
+        6: "6px",
+      },
     },
     transitionTimingFunction: {
       bond: animationTiming,

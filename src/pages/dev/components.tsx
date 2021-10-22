@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import {
   DesignLayout,
+  Headline,
   Hero,
   LinkOrButton,
   Menu,
@@ -132,6 +133,15 @@ const Components: React.FC = () => {
           videoUrl={heroVideo}
           alt="Mountain"
           link={{ name: "Click me" }}
+        />
+      </ComponentContainer>
+
+      <ComponentContainer name="Headline">
+        <Headline
+          content={
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            getRTF("Lorem ipsum dolor sit amet, consectetur adipiscing elit")!
+          }
         />
       </ComponentContainer>
     </DesignLayout>
