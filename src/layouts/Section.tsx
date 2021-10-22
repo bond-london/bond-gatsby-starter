@@ -7,7 +7,8 @@ export const CoreSection: React.FC<{
   contentClassName?: string;
   element?: keyof JSX.IntrinsicElements;
   double?: boolean;
-  coreChildren?: React.ReactNode;
+  preChildren?: React.ReactNode;
+  postChildren?: React.ReactNode;
 }> = ({
   componentName,
   className,
@@ -15,7 +16,8 @@ export const CoreSection: React.FC<{
   children,
   element: Element = "section",
   double,
-  coreChildren,
+  preChildren,
+  postChildren,
 }) => {
   return (
     <Element
@@ -26,8 +28,9 @@ export const CoreSection: React.FC<{
         className
       )}
     >
+      {preChildren}
       <div className={classNames(contentClassName)}>{children}</div>
-      {coreChildren}
+      {postChildren}
     </Element>
   );
 };
@@ -40,7 +43,8 @@ export const Section: React.FC<{
   bottomSpacing?: boolean;
   double?: boolean;
   element?: keyof JSX.IntrinsicElements;
-  coreChildren?: React.ReactNode;
+  preChildren?: React.ReactNode;
+  postChildren?: React.ReactNode;
 }> = ({
   componentName,
   className,
@@ -50,7 +54,8 @@ export const Section: React.FC<{
   double,
   children,
   element,
-  coreChildren,
+  preChildren,
+  postChildren,
 }) => {
   const spacingClassName =
     topSpacing && bottomSpacing
@@ -68,10 +73,11 @@ export const Section: React.FC<{
       contentClassName={classNames(
         spacingClassName,
         contentClassName,
-        "col-start-2 col-span-1 content-grid"
+        "relative col-start-2 col-span-1 content-grid"
       )}
       double={double}
-      coreChildren={coreChildren}
+      preChildren={preChildren}
+      postChildren={postChildren}
     >
       {children}
     </CoreSection>

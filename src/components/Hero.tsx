@@ -18,11 +18,22 @@ export const Hero: React.FC<{
   alt: string;
 }> = ({ title, message, link, image, videoUrl, alt }) => {
   return (
-    <Section componentName="Hero" className="bg-dark-blue text-white">
+    <Section
+      componentName="Hero"
+      double={true}
+      className="text-washed-blue"
+      contentClassName="container-basic"
+      preChildren={
+        <div className="col-start-1 col-span-3 row-start-1 row-span-4 bg-dark-blue" />
+      }
+    >
       <div
         className={classNames(
-          "col-start-2 col-span-4",
-          "lg:col-start-2 lg:col-span-5",
+          "outline-debug-white self-center",
+          "col-start-1 col-span-4",
+          "row-start-1 row-span-3",
+          "lg:col-start-1 lg:col-span-5",
+          "lg:row-start-1 lg:row-span-2",
           "space-y-s"
         )}
       >
@@ -34,16 +45,18 @@ export const Hero: React.FC<{
         <div
           className={classNames(
             "relative",
-            "col-start-2 col-span-4",
-            "lg:col-start-8 lg:col-span-5 lg:row-start-1 lg:row-span-2"
+            "col-start-1 col-span-4 row-start-1 row-span-3",
+            "lg:col-start-7 lg:col-span-5"
           )}
         >
-          <AutoVideoOrThumbnail
-            videoSrc={videoUrl}
-            thumbnail={image}
-            alt={alt}
-            fitParent={true}
-          />
+          <div className="aspect-w-1 aspect-h-1">
+            <AutoVideoOrThumbnail
+              videoSrc={videoUrl}
+              thumbnail={image}
+              alt={alt}
+              fitParent={true}
+            />
+          </div>
         </div>
       )}
     </Section>

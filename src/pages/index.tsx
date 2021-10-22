@@ -34,9 +34,9 @@ const Page: React.FC<Props> = (props) => {
         <h1
           className={classNames(
             "h1",
-            "col-start-2 col-span-4",
-            "md:col-start-3 md:col-span-6",
-            "lg:col-start-4 lg:col-span-8"
+            "col-start-1 col-span-4",
+            "md:col-start-2 md:col-span-6",
+            "lg:col-start-3 lg:col-span-8"
           )}
         >
           {title || "Bond Sample Site"}

@@ -252,6 +252,7 @@ function createGridRows() {
   const grids = {};
   sizes.forEach(({ name, spacing }) => {
     const margin = calculateRemSize(spacing);
+    grids[`${name}-basic`] = `${margin} 1fr ${margin}`;
     grids[`${name}-single`] = `${margin} repeat(4, 1fr) ${margin}`;
     grids[
       `${name}-double`

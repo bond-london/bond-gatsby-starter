@@ -30,7 +30,7 @@ export const NavigationBar: React.FC<{
       topSpacing={false}
       bottomSpacing={false}
     >
-      <LinkOrButton internal="/" className="col-start-2 col-span-2 py-xs">
+      <LinkOrButton internal="/" className="col-start-1 col-span-2 py-xs">
         {logoImage ? (
           <GatsbyImage
             alt="logo"

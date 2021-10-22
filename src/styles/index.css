@@ -51,6 +51,10 @@
     @apply w-full grid grid-cols-mobile-container md:grid-cols-tablet-container lg:grid-cols-desktop-container;
   }
 
+  .container-basic {
+    @apply grid-rows-mobile-basic md:grid-rows-tablet-basic lg:grid-rows-desktop-basic;
+  }
+
   .container-single {
     @apply grid-rows-mobile-single md:grid-rows-tablet-single lg:grid-rows-desktop-single;
   }

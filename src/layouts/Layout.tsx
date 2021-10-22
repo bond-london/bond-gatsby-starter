@@ -83,10 +83,10 @@ export const Layout: React.FC<{
       </Section>
       <CookieConsent
         containerClasses="bg-grey opacity-90 page-grid fixed w-full z-50 py-xs gap-y-xs max-w-unset"
-        contentClasses="col-central-mobile md:col-start-2 md:col-span-4 lg:col-start-2 lg:col-span-8 self-center"
+        contentClasses="col-central-mobile md:col-start-1 md:col-span-4 lg:col-start-1 lg:col-span-8 self-center"
         buttonWrapperClasses={classNames(
           "flex self-center",
-          "col-central-mobile md:col-start-7 md:col-span-3 lg:col-start-10 lg:col-span-4",
+          "col-central-mobile md:col-start-6 md:col-span-3 lg:col-start-9 lg:col-span-4",
           "justify-around lg:justify-end",
           "space-x-mobile-gap md:space-x-mobile-gap lg:space-x-desktop-gap"
         )}

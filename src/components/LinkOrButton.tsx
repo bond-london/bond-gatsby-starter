@@ -67,8 +67,8 @@ export const LinkOrButton: React.FC<
   }
 
   return (
-    <div className={classNames(buttonClassName, "outline-error")}>
+    <p className={classNames(buttonClassName, "inline-flex outline-error")}>
       {name || children}
-    </div>
+    </p>
   );
 };
