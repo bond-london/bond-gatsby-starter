@@ -16,20 +16,22 @@ const tabletMargin = 40;
 const tabletGap = 16;
 const tabletCols = 8;
 
-const desktopMargin = 138;
-const desktopGap = 16;
+const desktopMargin = 48;
+const desktopGap = 24;
 const desktopCols = 12;
 
 const colorOptions = {
-  black: "#000000",
-  white: "#ffffff",
-  red: "#ff0000",
-  green: "#00ff00",
-  blue: "#0000ff",
-  "dark-green": "#008000",
-  "dark-red": "#800000",
-  "dark-blue": "#000080",
-  grey: "#808080",
+  black: "#070707",
+  "light-black": "#121f28",
+  "dark-blue": "#002641",
+  "neon-green": "#bcff03",
+  "dark-neon-green": "#B0f000",
+  pink: "#F7E4E0",
+  blue: "#83E4FA",
+  "light-blue": "#D4FBFF",
+  "washed-blue": "#EBFFFE",
+  grey: "#F2F2F2",
+  "off-white": "#f9ffff",
 };
 
 const defaultNumbers = {
@@ -89,7 +91,8 @@ module.exports = {
   },
   theme: {
     fontFamily: {
-      roboto: ["Roboto", ...defaulttheme.fontFamily.sans],
+      sofiapro: ["Sofia Pro", ...defaulttheme.fontFamily.sans],
+      poppins: ["Poppins", ...defaulttheme.fontFamily.serif],
     },
     fontWeight: {
       regular: 400,
@@ -286,9 +289,11 @@ function createGridCols() {
     grids[`${name}-content`] = `repeat(${cols}, 1fr)`;
 
     if (maxWidth) {
-      grids[`${name}-container`] = `1fr minmax(auto, ${calculateRemSize(
+      grids[`${name}-container`] = `minmax(${calculateRemSize(
+        margin
+      )},1fr) minmax(auto, ${calculateRemSize(
         maxWidth
-      )}) 1fr`;
+      )}) minmax(${calculateRemSize(margin)},1fr)`;
     } else {
       grids[`${name}-container`] = `${calculateRemSize(
         margin

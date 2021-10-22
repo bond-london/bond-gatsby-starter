@@ -1,4 +1,4 @@
 import "./src/styles/index.css";
-import "@fontsource/roboto";
+import "@fontsource/poppins/400.css";
 
 console.log("%cDesigned by BOND", "font-weight: bold");

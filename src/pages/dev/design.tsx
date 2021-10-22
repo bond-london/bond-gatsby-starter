@@ -21,16 +21,16 @@ const Design: React.FC = () => {
     <DesignLayout title="Design">
       <section data-component="New Grids" className="w-full relative">
         <div className="col-span-full grid grid-cols-desktop-container grid-rows-desktop-single py-xs">
-          <div className="col-start-1 col-span-1 row-start-1 row-span-1 bg-red" />
-          <div className="col-start-2 col-span-1 row-start-2 row-span-4 bg-green h-m" />
-          <div className="col-start-3 col-span-1 row-start-6 row-span-1 bg-red" />
+          <div className="col-start-1 col-span-1 row-start-1 row-span-1 bg-pink" />
+          <div className="col-start-2 col-span-1 row-start-2 row-span-4 bg-blue h-m" />
+          <div className="col-start-3 col-span-1 row-start-6 row-span-1 bg-pink" />
         </div>
         <div className="col-span-full grid grid-cols-desktop-container grid-rows-desktop-double py-xs">
-          <div className="col-start-1 col-span-1 row-start-1 row-span-1 bg-red" />
-          <div className="col-start-2 col-span-1 row-start-2 row-span-1 bg-green" />
+          <div className="col-start-1 col-span-1 row-start-1 row-span-1 bg-pink" />
+          <div className="col-start-2 col-span-1 row-start-2 row-span-1 bg-grey" />
           <div className="col-start-2 col-span-1 row-start-3 row-span-2 bg-blue h-xs" />
-          <div className="col-start-2 col-span-1 row-start-5 row-span-1 bg-green" />
-          <div className="col-start-3 col-span-1 row-start-6 row-span-1 bg-red" />
+          <div className="col-start-2 col-span-1 row-start-5 row-span-1 bg-grey" />
+          <div className="col-start-3 col-span-1 row-start-6 row-span-1 bg-pink" />
         </div>
       </section>
 
@@ -39,9 +39,10 @@ const Design: React.FC = () => {
           <div
             key={i}
             className={classNames(
-              "text-black text-center",
+              "text-center",
               "col-span-1",
-              "bg-green",
+              "bg-light-black",
+              lookupColourString("LightBlack", "textOnTop"),
               returnColumnVisibility(i)
             )}
           >
@@ -52,7 +53,7 @@ const Design: React.FC = () => {
       <Section
         key="Colour Palette"
         componentName="Colour Palette"
-        className="bg-white-d3"
+        className="bg-off-white"
       >
         {Colours.map((colour) => (
           <div key={colour} className="col-span-1 md:col-span-2 lg:col-span-3">
@@ -83,7 +84,7 @@ const Design: React.FC = () => {
                   {w.replace("w-", "").toUpperCase()}
                 </td>
                 <td className="col-start-3 col-span-2 md:col-start-6 md:col-span-3">
-                  <div className={classNames("h-m", w, "bg-red")} />
+                  <div className={classNames("h-m", w, "bg-blue")} />
                 </td>
               </tr>
             ))}
