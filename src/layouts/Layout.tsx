@@ -76,7 +76,7 @@ export const Layout: React.FC<{
         element="footer"
         bottomSpacing={false}
       >
-        <p className="col-content">
+        <p className="col-span-full">
           © Bond London {siteBuildMetadata.buildYear}{" "}
           {siteBuildMetadata.buildTime}
         </p>

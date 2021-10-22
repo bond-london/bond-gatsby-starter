@@ -1,14 +1,14 @@
 import classNames from "classnames";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
-import { LinkOrButton } from ".";
+import { LinkInformation, LinkOrButton } from ".";
 import { Section } from "../layouts";
 
-export interface MenuItem {
+export interface NamedLinkInformation extends LinkInformation {
   name: string;
-  internal?: string;
-  external?: string;
-  newPage?: boolean;
+}
+
+export interface MenuItem extends NamedLinkInformation {
   isButton?: boolean;
 }
 

@@ -4,31 +4,12 @@ import { DesignLayout } from "../../components";
 import { Section } from "../../layouts";
 import { Colours, lookupColourString } from "../../lookups";
 
-function returnColumnColour(i: number) {
-  if (i === 1) {
-    return "bg-red";
-  }
-  if (i === 6) {
-    return "bg-red md:bg-green";
-  }
-
-  if (i === 10) {
-    return "bg-red lg:bg-green";
-  }
-
-  if (i === 14) {
-    return "bg-red";
-  }
-
-  return "bg-green";
-}
-
 function returnColumnVisibility(i: number) {
-  if (i > 10) {
+  if (i > 8) {
     return "hidden lg:block";
   }
 
-  if (i > 6) {
+  if (i > 4) {
     return "hidden md:block";
   }
 
@@ -38,14 +19,29 @@ function returnColumnVisibility(i: number) {
 const Design: React.FC = () => {
   return (
     <DesignLayout title="Design">
+      <section data-component="New Grids" className="w-full relative">
+        <div className="col-span-full grid grid-cols-desktop-container grid-rows-desktop-single py-xs">
+          <div className="col-start-1 col-span-1 row-start-1 row-span-1 bg-red" />
+          <div className="col-start-2 col-span-1 row-start-2 row-span-4 bg-green h-m" />
+          <div className="col-start-3 col-span-1 row-start-6 row-span-1 bg-red" />
+        </div>
+        <div className="col-span-full grid grid-cols-desktop-container grid-rows-desktop-double py-xs">
+          <div className="col-start-1 col-span-1 row-start-1 row-span-1 bg-red" />
+          <div className="col-start-2 col-span-1 row-start-2 row-span-1 bg-green" />
+          <div className="col-start-2 col-span-1 row-start-3 row-span-2 bg-blue h-xs" />
+          <div className="col-start-2 col-span-1 row-start-5 row-span-1 bg-green" />
+          <div className="col-start-3 col-span-1 row-start-6 row-span-1 bg-red" />
+        </div>
+      </section>
+
       <Section componentName="Grid" contentClassName="h-xl">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((i) => (
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((i) => (
           <div
             key={i}
             className={classNames(
               "text-black text-center",
               "col-span-1",
-              returnColumnColour(i),
+              "bg-green",
               returnColumnVisibility(i)
             )}
           >
@@ -53,11 +49,10 @@ const Design: React.FC = () => {
           </div>
         ))}
       </Section>
-
       <Section
         key="Colour Palette"
         componentName="Colour Palette"
-        pageGrid={false}
+        className="bg-white-d3"
       >
         {Colours.map((colour) => (
           <div key={colour} className="col-span-1 md:col-span-2 lg:col-span-3">
@@ -70,9 +65,9 @@ const Design: React.FC = () => {
       </Section>
 
       <Section key="Spacings" componentName="Spacings">
-        <table className="col-content">
+        <table className="col-span-full">
           <thead>
-            <tr className="content-grid-only text-left">
+            <tr className="content-grid text-left">
               <th className="col-start-1 col-span-1 md:col-start-1 md:col-span-3">
                 Name
               </th>
@@ -83,7 +78,7 @@ const Design: React.FC = () => {
           </thead>
           <tbody>
             {["w-xxs", "w-xs", "w-s", "w-m", "w-l", "w-xl"].map((w) => (
-              <tr key={w} className="content-grid-only">
+              <tr key={w} className="content-grid">
                 <td className="col-start-1 col-span-1 md:col-start-1 md:col-span-3">
                   {w.replace("w-", "").toUpperCase()}
                 </td>
@@ -96,14 +91,18 @@ const Design: React.FC = () => {
         </table>
       </Section>
 
-      <Section key="Headlines" componentName="Headlines">
-        <h2 className="h2 col-content">Headlines:</h2>
+      <Section
+        key="Headlines"
+        componentName="Headlines"
+        className="bg-white-d9"
+      >
+        <h2 className="h2 col-span-full">Headlines:</h2>
         {["h1", "h2", "h3"].map((text) => (
           <Fragment key={text}>
-            <p className={classNames("col-content", text)}>
+            <p className={classNames("col-span-full", text)}>
               {text.toUpperCase()}
             </p>
-            <p className={classNames("col-content", text, "pb-m")}>
+            <p className={classNames("col-span-full", text, "pb-m")}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam.
@@ -112,15 +111,15 @@ const Design: React.FC = () => {
         ))}
       </Section>
 
-      <Section key="Body copy" componentName="Body Copy">
-        <h2 className="h2 col-content">Bodycopy:</h2>
+      <Section key="Body copy" componentName="Body Copy" className="bg-white-5">
+        <h2 className="h2 col-span-full">Bodycopy:</h2>
 
         {["p1", "p1sb", "p2", "p2sb", "p3", "p4"].map((text) => (
           <Fragment key={text}>
-            <p className={classNames("col-content", text)}>
+            <p className={classNames("col-span-full", text)}>
               {text.toUpperCase()}
             </p>
-            <p className={classNames("col-content", text, "pb-m")}>
+            <p className={classNames("col-span-full", text, "pb-m")}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam.

@@ -45,7 +45,23 @@
     @apply font-roboto font-regular text-14-140;
   }
 
-  .page-grid {
+  .container-grid {
+    @apply w-full grid grid-cols-mobile-container md:grid-cols-tablet-container lg:grid-cols-desktop-container;
+  }
+
+  .container-single {
+    @apply grid-rows-mobile-single md:grid-rows-tablet-single lg:grid-rows-desktop-single;
+  }
+
+  .container-double {
+    @apply grid-rows-mobile-double md:grid-rows-tablet-double lg:grid-rows-desktop-double;
+  }
+
+  .content-grid {
+    @apply grid grid-cols-mobile-content md:grid-cols-tablet-content lg:grid-cols-desktop-content gap-x-mobile-gap md:gap-x-tablet-gap lg:gap-x-desktop-gap;
+  }
+
+  /* .page-grid {
     @apply 2xl:max-w-maxwidth 2xl:mx-auto w-full grid grid-cols-mobile-full gap-x-mobile-gap md:grid-cols-tablet-full md:gap-x-tablet-gap lg:grid-cols-desktop-full lg:gap-x-desktop-gap;
   }
 
@@ -62,16 +78,16 @@
   }
 
   .py-section {
-    @apply py-s md:py-s lg:py-m;
+    @apply py-s md:py-s;
   }
 
   .pt-section {
-    @apply pt-s md:pt-s lg:pt-m;
+    @apply pt-s md:pt-s;
   }
 
   .pb-section {
-    @apply pb-s md:pb-s lg:pb-m;
-  }
+    @apply pb-s md:pb-s;
+  } */
 
   .button {
     @apply px-xxs h-s flex justify-center items-center;

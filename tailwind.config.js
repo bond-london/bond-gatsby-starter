@@ -28,6 +28,7 @@ const colorOptions = {
   blue: "#0000ff",
   "dark-green": "#008000",
   "dark-red": "#800000",
+  "dark-blue": "#000080",
   grey: "#808080",
 };
 
@@ -37,17 +38,6 @@ const defaultNumbers = {
   unset: "unset",
 };
 
-const sizes = [
-  { name: "mobile", margin: mobileMargin, gap: mobileGap, cols: mobileCols },
-  { name: "tablet", margin: tabletMargin, gap: tabletGap, cols: tabletCols },
-  {
-    name: "desktop",
-    margin: desktopMargin,
-    gap: desktopGap,
-    cols: desktopCols,
-  },
-];
-
 const spacing = {
   xxs: 16,
   xs: 24,
@@ -56,6 +46,31 @@ const spacing = {
   l: 80,
   xl: 112,
 };
+
+const sizes = [
+  {
+    name: "mobile",
+    margin: mobileMargin,
+    gap: mobileGap,
+    cols: mobileCols,
+    spacing: spacing.xxs,
+  },
+  {
+    name: "tablet",
+    margin: tabletMargin,
+    gap: tabletGap,
+    cols: tabletCols,
+    spacing: spacing.xs,
+  },
+  {
+    name: "desktop",
+    margin: desktopMargin,
+    maxWidth: maximumWidth,
+    gap: desktopGap,
+    cols: desktopCols,
+    spacing: spacing.s,
+  },
+];
 
 const fontSizeRatios = [
   "42-125",
@@ -92,7 +107,10 @@ module.exports = {
       ...buildFontSizes(),
     },
     gridTemplateColumns: {
-      ...createGrids(),
+      ...createGridCols(),
+    },
+    gridTemplateRows: {
+      ...createGridRows(),
     },
     gridColumn: {
       ...calculateNumbers(
@@ -227,10 +245,23 @@ function calculateSpan(min, max, by = 1) {
   );
 }
 
-function createGrids() {
+function createGridRows() {
+  const grids = {};
+  sizes.forEach(({ name, spacing }) => {
+    const margin = calculateRemSize(spacing);
+    grids[`${name}-single`] = `${margin} repeat(4, 1fr) ${margin}`;
+    grids[
+      `${name}-double`
+    ] = `repeat(2, ${margin}) repeat(2,1fr) repeat(2, ${margin})`;
+  });
+
+  return grids;
+}
+
+function createGridCols() {
   const grids = {};
 
-  sizes.forEach(({ name, margin, gap, cols }) => {
+  sizes.forEach(({ name, margin, gap, cols, maxWidth }) => {
     Object.assign(
       grids,
       calculateNumbers(
@@ -253,6 +284,16 @@ function createGrids() {
       margin - gap
     )} repeat(${cols}, 1fr) ${calculateRemSize(margin - gap)}`;
     grids[`${name}-content`] = `repeat(${cols}, 1fr)`;
+
+    if (maxWidth) {
+      grids[`${name}-container`] = `1fr minmax(auto, ${calculateRemSize(
+        maxWidth
+      )}) 1fr`;
+    } else {
+      grids[`${name}-container`] = `${calculateRemSize(
+        margin
+      )} auto ${calculateRemSize(margin)}`;
+    }
   });
   return grids;
 }
@@ -319,6 +360,27 @@ function addAnimationUtilities({ addUtilities }) {
   );
 }
 
+function LightenDarkenColor(col, amt) {
+  var num = parseInt(col.slice(1), 16);
+
+  var r = (num >> 16) + amt;
+
+  if (r > 255) r = 255;
+  else if (r < 0) r = 0;
+
+  var b = ((num >> 8) & 0x00ff) + amt;
+
+  if (b > 255) b = 255;
+  else if (b < 0) b = 0;
+
+  var g = (num & 0x0000ff) + amt;
+
+  if (g > 255) g = 255;
+  else if (g < 0) g = 0;
+
+  return "#" + (g | (b << 8) | (r << 16)).toString(16);
+}
+
 function buildColours() {
   const colors = {
     transparent: "transparent",
@@ -327,7 +389,20 @@ function buildColours() {
 
   Object.entries(colorOptions).map(([colorName, colorValue]) => {
     colors[colorName] = colorValue;
-    colors[`${colorName}-0`] = `${colorValue}00`;
+    for (let i = 0; i < 10; i++) {
+      colors[`${colorName}-${i}`] = `${colorValue}${Math.round((i / 10) * 255)
+        .toString(16)
+        .padStart(2, "0")}`;
+
+      colors[`${colorName}-d${i}`] = `${LightenDarkenColor(
+        colorValue,
+        -i * 10
+      )}`;
+      colors[`${colorName}-l${i}`] = `${LightenDarkenColor(
+        colorValue,
+        i * 10
+      )}`;
+    }
   });
 
   return colors;

@@ -54,7 +54,7 @@ const Page: React.FC<Props> = (props) => {
       {lottie && (
         <Section componentName="Animation">
           <LottieElement
-            className="aspect-w-1 aspect-h-1 col-content"
+            className="aspect-w-1 aspect-h-1 col-span-full"
             animationJson={lottie.animationJson}
             encoded={lottie.encoded}
             loop={true}

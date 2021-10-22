@@ -2,20 +2,27 @@ import classNames from "classnames";
 import { Link } from "gatsby";
 import React from "react";
 
-export const LinkOrButton: React.FC<{
-  className?: string;
+export interface LinkInformation {
   internal?: string;
   external?: string;
   newPage?: boolean;
-  asButton?: boolean;
-  action?: () => void;
-}> = ({
+}
+
+export const LinkOrButton: React.FC<
+  LinkInformation & {
+    className?: string;
+    asButton?: boolean;
+    name?: string;
+    action?: () => void;
+  }
+> = ({
   className,
   internal,
   external,
   newPage,
   action,
   asButton,
+  name,
   children,
 }) => {
   const buttonClassName = classNames(
@@ -26,7 +33,7 @@ export const LinkOrButton: React.FC<{
   if (internal) {
     return (
       <Link className={buttonClassName} to={internal}>
-        {children}
+        {name || children}
       </Link>
     );
   }
@@ -40,13 +47,13 @@ export const LinkOrButton: React.FC<{
           target="_blank"
           rel="noreferrer"
         >
-          {children}
+          {name || children}
         </a>
       );
     }
     return (
       <a className={buttonClassName} href={external}>
-        {children}
+        {name || children}
       </a>
     );
   }
@@ -54,14 +61,14 @@ export const LinkOrButton: React.FC<{
   if (action) {
     return (
       <button onClick={action} className={buttonClassName}>
-        {children}
+        {name || children}
       </button>
     );
   }
 
   return (
     <div className={classNames(buttonClassName, "outline-error")}>
-      {children}
+      {name || children}
     </div>
   );
 };

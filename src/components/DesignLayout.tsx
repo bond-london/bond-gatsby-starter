@@ -21,14 +21,14 @@ export const DesignLayout: React.FC<{ title: string }> = ({
         <h1
           className={classNames(
             "h1",
-            "col-start-2 col-span-4",
-            "md:col-start-2 md:col-span-6",
-            "lg:col-start-2 lg:col-span-8"
+            "col-start-1 col-span-4",
+            "md:col-start-1 md:col-span-6",
+            "lg:col-start-1 lg:col-span-8"
           )}
         >
           {title}
         </h1>
-        <ul className="col-content content-grid-only">
+        <ul className="col-span-full content-grid">
           {relevantPages.map(({ title, path }) => (
             <li key={title} className="col-span-2">
               <Link to={path} className="ps">
