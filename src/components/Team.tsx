@@ -47,7 +47,8 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
           {team.map((individual, index) => (
             <Slide key={individual.name} index={index}>
               <Person
-                image={individual.image}
+                visual={individual.visual}
+                loop={individual.loop}
                 name={individual.name}
                 position={individual.position}
               />

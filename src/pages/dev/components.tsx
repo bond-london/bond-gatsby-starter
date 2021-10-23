@@ -7,6 +7,7 @@ import {
   Individual,
   LinkOrButton,
   Menu,
+  Message,
   NavigationBar,
   Product,
   Team,
@@ -18,7 +19,9 @@ import logo from "../../images/bond-black.svg";
 import { graphql, useStaticQuery } from "gatsby";
 import {
   getImageFromFile,
+  getLottieFromFile,
   getRTF,
+  getSvgFromFile,
   getVideoFromFile,
 } from "@bond-london/gatsby-graphcms-components";
 const menu: Menu = {
@@ -62,6 +65,8 @@ const Components: React.FC = () => {
           ext
           ...ImageFragment
           ...VideoFragment
+          ...LottieFragment
+          ...SvgFragment
         }
       }
     }
@@ -77,14 +82,56 @@ const Components: React.FC = () => {
   const heroVideo = getVideoFromFile(findFile("small_web_loop.mp4"))!;
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const person = getImageFromFile(findFile("female-silhouette.png"))!;
+  const animation = getLottieFromFile(findFile("80703-data-in-move.json"));
+  const svg = getSvgFromFile(findFile("1545429216.svg"));
+  const pumpkinHead = getLottieFromFile(
+    findFile("81388-pumpkin-evil-laugh-loop.json")
+  );
+  const faceSvg = getSvgFromFile(findFile("Constipated-Emoji.svg"));
+  const personThumbnail = getImageFromFile(
+    findFile("small_pexels-karolina-grabowska-6031698.jpg")
+  );
+  const personVideo = getVideoFromFile(
+    findFile("small_pexels-karolina-grabowska-6031698.mp4")
+  );
 
   const team: Individual[] = [
-    { image: person, name: "Abigail", position: "Left wing" },
-    { image: person, name: "Bernard", position: "Right wing" },
-    { image: person, name: "Cameron", position: "Forward" },
-    { image: person, name: "Duncan", position: "Centre" },
-    { image: person, name: "Eloise", position: "Drummer" },
-    { image: person, name: "Fred", position: "Tea boy" },
+    {
+      visual: { image: person, alt: "Headshot" },
+      name: "Abigail",
+      position: "Left wing",
+    },
+    {
+      visual: { animation: pumpkinHead, alt: "Headshot" },
+      loop: true,
+      name: "Bernard",
+      position: "Right wing",
+    },
+    {
+      visual: { svg: faceSvg, alt: "Headshot" },
+      name: "Cameron",
+      position: "Forward",
+    },
+    {
+      visual: {
+        image: personThumbnail,
+        videoUrl: personVideo,
+        alt: "Headshot",
+      },
+      loop: true,
+      name: "Duncan",
+      position: "Centre",
+    },
+    {
+      visual: { image: person, alt: "Headshot" },
+      name: "Eloise",
+      position: "Drummer",
+    },
+    {
+      visual: { animation: pumpkinHead, alt: "Headshot" },
+      name: "Fred",
+      position: "Tea boy",
+    },
   ];
 
   const [buttonCount, setButtonCount] = useState(0);
@@ -131,22 +178,71 @@ const Components: React.FC = () => {
           message={getRTF(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
-          image={heroThumbnail}
-          videoUrl={heroVideo}
-          alt="Mountain"
+          visual={{
+            image: heroThumbnail,
+            videoUrl: heroVideo,
+            alt: "Mountain",
+          }}
+          loop={false}
+          link={{ name: "Click me" }}
+        />
+      </ComponentContainer>
+
+      <ComponentContainer name="Hero Image">
+        <Hero
+          title="Hero image"
+          message={getRTF(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          )}
+          visual={{
+            image: heroThumbnail,
+            alt: "Mountain",
+          }}
           link={{ name: "Click me" }}
         />
       </ComponentContainer>
 
       <ComponentContainer name="Hero with long text">
         <Hero
-          title="Hero title"
+          title="Long hero video"
           message={getRTF(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
           )}
-          image={heroThumbnail}
-          videoUrl={heroVideo}
-          alt="Mountain"
+          visual={{
+            image: heroThumbnail,
+            videoUrl: heroVideo,
+            alt: "Mountain",
+          }}
+          loop={false}
+          link={{ name: "Click me" }}
+        />
+      </ComponentContainer>
+
+      <ComponentContainer name="Hero animation">
+        <Hero
+          title="Hero animation"
+          message={getRTF(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          )}
+          visual={{
+            animation,
+            alt: "Data",
+          }}
+          loop={true}
+          link={{ name: "Click me" }}
+        />
+      </ComponentContainer>
+
+      <ComponentContainer name="Hero svg">
+        <Hero
+          title="Hero svg"
+          message={getRTF(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          )}
+          visual={{
+            svg,
+            alt: "Circuit",
+          }}
           link={{ name: "Click me" }}
         />
       </ComponentContainer>
@@ -163,8 +259,7 @@ const Components: React.FC = () => {
       <ComponentContainer name="Collection left">
         <Collection
           left={true}
-          image={heroThumbnail}
-          alt="Mountain"
+          visual={{ image: heroThumbnail, alt: "Mountain" }}
           title="Lorem ipsum dolor sit amet"
           message={getRTF(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
@@ -173,11 +268,14 @@ const Components: React.FC = () => {
         />
       </ComponentContainer>
 
-      <ComponentContainer name="Collection right">
+      <ComponentContainer name="Collection right with video">
         <Collection
           left={false}
-          image={heroThumbnail}
-          alt="Mountain"
+          visual={{
+            image: heroThumbnail,
+            videoUrl: heroVideo,
+            alt: "Mountain",
+          }}
           title="Lorem ipsum dolor sit amet"
           message={getRTF(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
@@ -186,11 +284,13 @@ const Components: React.FC = () => {
         />
       </ComponentContainer>
 
-      <ComponentContainer name="Product left">
+      <ComponentContainer name="Product left with animation">
         <Product
           left={true}
-          image={heroThumbnail}
-          alt="Mountain"
+          visual={{
+            animation,
+            alt: "Data",
+          }}
           title="Lorem ipsum dolor sit amet"
           message={getRTF(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
@@ -202,8 +302,25 @@ const Components: React.FC = () => {
       <ComponentContainer name="Product right">
         <Product
           left={false}
-          image={heroThumbnail}
-          alt="Mountain"
+          visual={{
+            image: heroThumbnail,
+            alt: "Mountain",
+          }}
+          title="Lorem ipsum dolor sit amet"
+          message={getRTF(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          )}
+          link={{ name: "Click me" }}
+        />
+      </ComponentContainer>
+
+      <ComponentContainer name="Product right">
+        <Product
+          left={false}
+          visual={{
+            image: heroThumbnail,
+            alt: "Mountain",
+          }}
           title="Lorem ipsum dolor sit amet"
           message={getRTF(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
@@ -214,6 +331,16 @@ const Components: React.FC = () => {
 
       <ComponentContainer name="Team">
         <Team team={team} />
+      </ComponentContainer>
+
+      <ComponentContainer name="Message">
+        <Message
+          heading="Lorem ipsum dolor sit amet"
+          content={getRTF(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          )}
+          visual={{ image: heroThumbnail, alt: "Mountain" }}
+        />
       </ComponentContainer>
     </DesignLayout>
   );

@@ -1,22 +1,23 @@
 import {
-  AutoVideoOrThumbnail,
+  AutoVisual,
   RTF,
   RTFContent,
+  VisualAsset,
 } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
-import { IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { LinkOrButton, NamedLinkInformation } from ".";
 import { Section } from "../layouts";
+import { useFirstVisible } from "../utils";
 
 export const Hero: React.FC<{
   title: string;
   message?: RTFContent;
   link?: NamedLinkInformation;
-  image: IGatsbyImageData;
-  videoUrl?: string;
-  alt: string;
-}> = ({ title, message, link, image, videoUrl, alt }) => {
+  visual?: VisualAsset;
+  loop?: boolean;
+}> = ({ title, message, link, visual, loop }) => {
+  const [onVisible, animationMode] = useFirstVisible();
   return (
     <Section
       componentName="Hero"
@@ -27,6 +28,7 @@ export const Hero: React.FC<{
       preChildren={
         <div className="col-start-1 col-span-3 row-start-1 row-span-4 bg-dark-blue" />
       }
+      onVisible={onVisible}
     >
       <div
         className={classNames(
@@ -38,11 +40,23 @@ export const Hero: React.FC<{
           "space-y-s"
         )}
       >
-        <h1 className="h1">{title}</h1>
-        <RTF fixedParagraphClassName="p2" content={message} />
-        {link && <LinkOrButton asButton={true} {...link} />}
+        <h1 className={classNames(animationMode, "h1 animate-enter-from-left")}>
+          {title}
+        </h1>
+        <RTF
+          fixedParagraphClassName="p2"
+          className={classNames(animationMode, "animate-appear")}
+          content={message}
+        />
+        {link && (
+          <LinkOrButton
+            className={classNames(animationMode, "animate-enter-from-bottom")}
+            asButton={true}
+            {...link}
+          />
+        )}
       </div>
-      {(image || videoUrl) && (
+      {visual && (
         <div
           className={classNames(
             "relative",
@@ -51,12 +65,7 @@ export const Hero: React.FC<{
           )}
         >
           <div className="aspect-w-1 aspect-h-1">
-            <AutoVideoOrThumbnail
-              videoSrc={videoUrl}
-              thumbnail={image}
-              alt={alt}
-              fitParent={true}
-            />
+            <AutoVisual visual={visual} fitParent={true} loop={loop} />
           </div>
         </div>
       )}

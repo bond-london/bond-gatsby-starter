@@ -67,6 +67,10 @@ export type File = Node & {
   readonly childrenPageDoc?: Maybe<ReadonlyArray<Maybe<PageDoc>>>;
   /** Returns the first child node of type PageDoc or null if there are no children of given type on this node */
   readonly childPageDoc?: Maybe<PageDoc>;
+  /** Returns all children nodes filtered by type ImagesJson */
+  readonly childrenImagesJson?: Maybe<ReadonlyArray<Maybe<ImagesJson>>>;
+  /** Returns the first child node of type ImagesJson or null if there are no children of given type on this node */
+  readonly childImagesJson?: Maybe<ImagesJson>;
   /** Returns all children nodes filtered by type DocsJson */
   readonly childrenDocsJson?: Maybe<ReadonlyArray<Maybe<DocsJson>>>;
   /** Returns the first child node of type DocsJson or null if there are no children of given type on this node */
@@ -674,6 +678,649 @@ export type PageDocFileInformation = {
   readonly extension?: Maybe<Scalars['String']>;
 };
 
+export type ImagesJson = Node & {
+  readonly __typename?: 'ImagesJson';
+  readonly id: Scalars['ID'];
+  readonly parent?: Maybe<Node>;
+  readonly children: ReadonlyArray<Node>;
+  readonly internal: Internal;
+  readonly v?: Maybe<Scalars['String']>;
+  readonly fr?: Maybe<Scalars['Int']>;
+  readonly ip?: Maybe<Scalars['Int']>;
+  readonly op?: Maybe<Scalars['Int']>;
+  readonly w?: Maybe<Scalars['Int']>;
+  readonly h?: Maybe<Scalars['Int']>;
+  readonly nm?: Maybe<Scalars['String']>;
+  readonly ddd?: Maybe<Scalars['Int']>;
+  readonly assets?: Maybe<ReadonlyArray<Maybe<ImagesJsonAssets>>>;
+  readonly layers?: Maybe<ReadonlyArray<Maybe<ImagesJsonLayers>>>;
+};
+
+export type ImagesJsonAssets = {
+  readonly __typename?: 'ImagesJsonAssets';
+  readonly id?: Maybe<Scalars['String']>;
+  readonly layers?: Maybe<ReadonlyArray<Maybe<ImagesJsonAssetsLayers>>>;
+};
+
+export type ImagesJsonAssetsLayers = {
+  readonly __typename?: 'ImagesJsonAssetsLayers';
+  readonly ddd?: Maybe<Scalars['Int']>;
+  readonly ind?: Maybe<Scalars['Int']>;
+  readonly ty?: Maybe<Scalars['Int']>;
+  readonly nm?: Maybe<Scalars['String']>;
+  readonly parent?: Maybe<Scalars['Int']>;
+  readonly sr?: Maybe<Scalars['Int']>;
+  readonly ks?: Maybe<ImagesJsonAssetsLayersKs>;
+  readonly ao?: Maybe<Scalars['Int']>;
+  readonly hasMask?: Maybe<Scalars['Boolean']>;
+  readonly masksProperties?: Maybe<ReadonlyArray<Maybe<ImagesJsonAssetsLayersMasksProperties>>>;
+  readonly shapes?: Maybe<ReadonlyArray<Maybe<ImagesJsonAssetsLayersShapes>>>;
+  readonly ip?: Maybe<Scalars['Int']>;
+  readonly op?: Maybe<Scalars['Int']>;
+  readonly st?: Maybe<Scalars['Int']>;
+  readonly bm?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersKs = {
+  readonly __typename?: 'ImagesJsonAssetsLayersKs';
+  readonly o?: Maybe<ImagesJsonAssetsLayersKsO>;
+  readonly r?: Maybe<ImagesJsonAssetsLayersKsR>;
+  readonly p?: Maybe<ImagesJsonAssetsLayersKsP>;
+  readonly a?: Maybe<ImagesJsonAssetsLayersKsA>;
+  readonly s?: Maybe<ImagesJsonAssetsLayersKsS>;
+};
+
+export type ImagesJsonAssetsLayersKsO = {
+  readonly __typename?: 'ImagesJsonAssetsLayersKsO';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersKsR = {
+  readonly __typename?: 'ImagesJsonAssetsLayersKsR';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersKsP = {
+  readonly __typename?: 'ImagesJsonAssetsLayersKsP';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly l?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersKsA = {
+  readonly __typename?: 'ImagesJsonAssetsLayersKsA';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly l?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersKsS = {
+  readonly __typename?: 'ImagesJsonAssetsLayersKsS';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly l?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersMasksProperties = {
+  readonly __typename?: 'ImagesJsonAssetsLayersMasksProperties';
+  readonly inv?: Maybe<Scalars['Boolean']>;
+  readonly mode?: Maybe<Scalars['String']>;
+  readonly pt?: Maybe<ImagesJsonAssetsLayersMasksPropertiesPt>;
+  readonly o?: Maybe<ImagesJsonAssetsLayersMasksPropertiesO>;
+  readonly x?: Maybe<ImagesJsonAssetsLayersMasksPropertiesX>;
+  readonly nm?: Maybe<Scalars['String']>;
+};
+
+export type ImagesJsonAssetsLayersMasksPropertiesPt = {
+  readonly __typename?: 'ImagesJsonAssetsLayersMasksPropertiesPt';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ImagesJsonAssetsLayersMasksPropertiesPtK>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersMasksPropertiesPtK = {
+  readonly __typename?: 'ImagesJsonAssetsLayersMasksPropertiesPtK';
+  readonly i?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly o?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly v?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly c?: Maybe<Scalars['Boolean']>;
+};
+
+export type ImagesJsonAssetsLayersMasksPropertiesO = {
+  readonly __typename?: 'ImagesJsonAssetsLayersMasksPropertiesO';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersMasksPropertiesX = {
+  readonly __typename?: 'ImagesJsonAssetsLayersMasksPropertiesX';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapes = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapes';
+  readonly ty?: Maybe<Scalars['String']>;
+  readonly it?: Maybe<ReadonlyArray<Maybe<ImagesJsonAssetsLayersShapesIt>>>;
+  readonly nm?: Maybe<Scalars['String']>;
+  readonly np?: Maybe<Scalars['Int']>;
+  readonly cix?: Maybe<Scalars['Int']>;
+  readonly bm?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly mn?: Maybe<Scalars['String']>;
+  readonly hd?: Maybe<Scalars['Boolean']>;
+};
+
+export type ImagesJsonAssetsLayersShapesIt = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesIt';
+  readonly ty?: Maybe<Scalars['String']>;
+  readonly it?: Maybe<ReadonlyArray<Maybe<ImagesJsonAssetsLayersShapesItIt>>>;
+  readonly nm?: Maybe<Scalars['String']>;
+  readonly np?: Maybe<Scalars['Int']>;
+  readonly cix?: Maybe<Scalars['Int']>;
+  readonly bm?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly mn?: Maybe<Scalars['String']>;
+  readonly hd?: Maybe<Scalars['Boolean']>;
+  readonly p?: Maybe<ImagesJsonAssetsLayersShapesItP>;
+  readonly a?: Maybe<ImagesJsonAssetsLayersShapesItA>;
+  readonly s?: Maybe<ImagesJsonAssetsLayersShapesItS>;
+  readonly o?: Maybe<ImagesJsonAssetsLayersShapesItO>;
+  readonly sk?: Maybe<ImagesJsonAssetsLayersShapesItSk>;
+  readonly sa?: Maybe<ImagesJsonAssetsLayersShapesItSa>;
+  readonly d?: Maybe<Scalars['Int']>;
+  readonly c?: Maybe<ImagesJsonAssetsLayersShapesItC>;
+  readonly ind?: Maybe<Scalars['Int']>;
+  readonly ks?: Maybe<ImagesJsonAssetsLayersShapesItKs>;
+};
+
+export type ImagesJsonAssetsLayersShapesItIt = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItIt';
+  readonly ty?: Maybe<Scalars['String']>;
+  readonly it?: Maybe<ReadonlyArray<Maybe<ImagesJsonAssetsLayersShapesItItIt>>>;
+  readonly nm?: Maybe<Scalars['String']>;
+  readonly np?: Maybe<Scalars['Int']>;
+  readonly cix?: Maybe<Scalars['Int']>;
+  readonly bm?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly mn?: Maybe<Scalars['String']>;
+  readonly hd?: Maybe<Scalars['Boolean']>;
+  readonly p?: Maybe<ImagesJsonAssetsLayersShapesItItP>;
+  readonly a?: Maybe<ImagesJsonAssetsLayersShapesItItA>;
+  readonly s?: Maybe<ImagesJsonAssetsLayersShapesItItS>;
+  readonly o?: Maybe<ImagesJsonAssetsLayersShapesItItO>;
+  readonly sk?: Maybe<ImagesJsonAssetsLayersShapesItItSk>;
+  readonly sa?: Maybe<ImagesJsonAssetsLayersShapesItItSa>;
+  readonly ind?: Maybe<Scalars['Int']>;
+  readonly ks?: Maybe<ImagesJsonAssetsLayersShapesItItKs>;
+  readonly c?: Maybe<ImagesJsonAssetsLayersShapesItItC>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItIt = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItIt';
+  readonly ind?: Maybe<Scalars['Int']>;
+  readonly ty?: Maybe<Scalars['String']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly ks?: Maybe<ImagesJsonAssetsLayersShapesItItItKs>;
+  readonly nm?: Maybe<Scalars['String']>;
+  readonly mn?: Maybe<Scalars['String']>;
+  readonly hd?: Maybe<Scalars['Boolean']>;
+  readonly c?: Maybe<ImagesJsonAssetsLayersShapesItItItC>;
+  readonly o?: Maybe<ImagesJsonAssetsLayersShapesItItItO>;
+  readonly bm?: Maybe<Scalars['Int']>;
+  readonly p?: Maybe<ImagesJsonAssetsLayersShapesItItItP>;
+  readonly a?: Maybe<ImagesJsonAssetsLayersShapesItItItA>;
+  readonly s?: Maybe<ImagesJsonAssetsLayersShapesItItItS>;
+  readonly sk?: Maybe<ImagesJsonAssetsLayersShapesItItItSk>;
+  readonly sa?: Maybe<ImagesJsonAssetsLayersShapesItItItSa>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItKs = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItItKs';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ImagesJsonAssetsLayersShapesItItItKsK>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItKsK = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItItKsK';
+  readonly i?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly o?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly v?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly c?: Maybe<Scalars['Boolean']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItC = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItItC';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItO = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItItO';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItP = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItItP';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItA = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItItA';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItS = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItItS';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItSk = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItItSk';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItSa = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItItSa';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItP = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItP';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItA = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItA';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItS = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItS';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItO = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItO';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItSk = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItSk';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItSa = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItSa';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItKs = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItKs';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ImagesJsonAssetsLayersShapesItItKsK>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItKsK = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItKsK';
+  readonly i?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly o?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly v?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly c?: Maybe<Scalars['Boolean']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItC = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItItC';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItP = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItP';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItA = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItA';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItS = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItS';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItO = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItO';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItSk = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItSk';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItSa = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItSa';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItC = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItC';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItKs = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItKs';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ImagesJsonAssetsLayersShapesItKsK>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonAssetsLayersShapesItKsK = {
+  readonly __typename?: 'ImagesJsonAssetsLayersShapesItKsK';
+  readonly i?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly o?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly v?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly c?: Maybe<Scalars['Boolean']>;
+};
+
+export type ImagesJsonLayers = {
+  readonly __typename?: 'ImagesJsonLayers';
+  readonly ddd?: Maybe<Scalars['Int']>;
+  readonly ind?: Maybe<Scalars['Int']>;
+  readonly ty?: Maybe<Scalars['Int']>;
+  readonly nm?: Maybe<Scalars['String']>;
+  readonly sr?: Maybe<Scalars['Int']>;
+  readonly ks?: Maybe<ImagesJsonLayersKs>;
+  readonly ao?: Maybe<Scalars['Int']>;
+  readonly ip?: Maybe<Scalars['Int']>;
+  readonly op?: Maybe<Scalars['Int']>;
+  readonly st?: Maybe<Scalars['Int']>;
+  readonly bm?: Maybe<Scalars['Int']>;
+  readonly parent?: Maybe<Scalars['Int']>;
+  readonly shapes?: Maybe<ReadonlyArray<Maybe<ImagesJsonLayersShapes>>>;
+  readonly refId?: Maybe<Scalars['String']>;
+  readonly w?: Maybe<Scalars['Int']>;
+  readonly h?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersKs = {
+  readonly __typename?: 'ImagesJsonLayersKs';
+  readonly o?: Maybe<ImagesJsonLayersKsO>;
+  readonly r?: Maybe<ImagesJsonLayersKsR>;
+  readonly p?: Maybe<ImagesJsonLayersKsP>;
+  readonly a?: Maybe<ImagesJsonLayersKsA>;
+  readonly s?: Maybe<ImagesJsonLayersKsS>;
+};
+
+export type ImagesJsonLayersKsO = {
+  readonly __typename?: 'ImagesJsonLayersKsO';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersKsR = {
+  readonly __typename?: 'ImagesJsonLayersKsR';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersKsP = {
+  readonly __typename?: 'ImagesJsonLayersKsP';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly l?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersKsA = {
+  readonly __typename?: 'ImagesJsonLayersKsA';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly l?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersKsS = {
+  readonly __typename?: 'ImagesJsonLayersKsS';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly l?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapes = {
+  readonly __typename?: 'ImagesJsonLayersShapes';
+  readonly ty?: Maybe<Scalars['String']>;
+  readonly it?: Maybe<ReadonlyArray<Maybe<ImagesJsonLayersShapesIt>>>;
+  readonly nm?: Maybe<Scalars['String']>;
+  readonly np?: Maybe<Scalars['Int']>;
+  readonly cix?: Maybe<Scalars['Int']>;
+  readonly bm?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly mn?: Maybe<Scalars['String']>;
+  readonly hd?: Maybe<Scalars['Boolean']>;
+};
+
+export type ImagesJsonLayersShapesIt = {
+  readonly __typename?: 'ImagesJsonLayersShapesIt';
+  readonly ind?: Maybe<Scalars['Int']>;
+  readonly ty?: Maybe<Scalars['String']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly ks?: Maybe<ImagesJsonLayersShapesItKs>;
+  readonly nm?: Maybe<Scalars['String']>;
+  readonly mn?: Maybe<Scalars['String']>;
+  readonly hd?: Maybe<Scalars['Boolean']>;
+  readonly c?: Maybe<ImagesJsonLayersShapesItC>;
+  readonly o?: Maybe<ImagesJsonLayersShapesItO>;
+  readonly bm?: Maybe<Scalars['Int']>;
+  readonly p?: Maybe<ImagesJsonLayersShapesItP>;
+  readonly a?: Maybe<ImagesJsonLayersShapesItA>;
+  readonly s?: Maybe<ImagesJsonLayersShapesItS>;
+  readonly sk?: Maybe<ImagesJsonLayersShapesItSk>;
+  readonly sa?: Maybe<ImagesJsonLayersShapesItSa>;
+  readonly it?: Maybe<ReadonlyArray<Maybe<ImagesJsonLayersShapesItIt>>>;
+  readonly np?: Maybe<Scalars['Int']>;
+  readonly cix?: Maybe<Scalars['Int']>;
+  readonly w?: Maybe<ImagesJsonLayersShapesItW>;
+  readonly lc?: Maybe<Scalars['Int']>;
+  readonly lj?: Maybe<Scalars['Int']>;
+  readonly mm?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItKs = {
+  readonly __typename?: 'ImagesJsonLayersShapesItKs';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItC = {
+  readonly __typename?: 'ImagesJsonLayersShapesItC';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItO = {
+  readonly __typename?: 'ImagesJsonLayersShapesItO';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItP = {
+  readonly __typename?: 'ImagesJsonLayersShapesItP';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItA = {
+  readonly __typename?: 'ImagesJsonLayersShapesItA';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItS = {
+  readonly __typename?: 'ImagesJsonLayersShapesItS';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItSk = {
+  readonly __typename?: 'ImagesJsonLayersShapesItSk';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItSa = {
+  readonly __typename?: 'ImagesJsonLayersShapesItSa';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItIt = {
+  readonly __typename?: 'ImagesJsonLayersShapesItIt';
+  readonly ind?: Maybe<Scalars['Int']>;
+  readonly ty?: Maybe<Scalars['String']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+  readonly ks?: Maybe<ImagesJsonLayersShapesItItKs>;
+  readonly nm?: Maybe<Scalars['String']>;
+  readonly mn?: Maybe<Scalars['String']>;
+  readonly hd?: Maybe<Scalars['Boolean']>;
+  readonly c?: Maybe<ImagesJsonLayersShapesItItC>;
+  readonly o?: Maybe<ImagesJsonLayersShapesItItO>;
+  readonly bm?: Maybe<Scalars['Int']>;
+  readonly p?: Maybe<ImagesJsonLayersShapesItItP>;
+  readonly a?: Maybe<ImagesJsonLayersShapesItItA>;
+  readonly s?: Maybe<ImagesJsonLayersShapesItItS>;
+  readonly sk?: Maybe<ImagesJsonLayersShapesItItSk>;
+  readonly sa?: Maybe<ImagesJsonLayersShapesItItSa>;
+};
+
+export type ImagesJsonLayersShapesItItKs = {
+  readonly __typename?: 'ImagesJsonLayersShapesItItKs';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ImagesJsonLayersShapesItItKsK>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItItKsK = {
+  readonly __typename?: 'ImagesJsonLayersShapesItItKsK';
+  readonly i?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>>>;
+  readonly o?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>>>;
+  readonly v?: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>>>;
+  readonly c?: Maybe<Scalars['Boolean']>;
+};
+
+export type ImagesJsonLayersShapesItItC = {
+  readonly __typename?: 'ImagesJsonLayersShapesItItC';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItItO = {
+  readonly __typename?: 'ImagesJsonLayersShapesItItO';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItItP = {
+  readonly __typename?: 'ImagesJsonLayersShapesItItP';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItItA = {
+  readonly __typename?: 'ImagesJsonLayersShapesItItA';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItItS = {
+  readonly __typename?: 'ImagesJsonLayersShapesItItS';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItItSk = {
+  readonly __typename?: 'ImagesJsonLayersShapesItItSk';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItItSa = {
+  readonly __typename?: 'ImagesJsonLayersShapesItItSa';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Int']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
+export type ImagesJsonLayersShapesItW = {
+  readonly __typename?: 'ImagesJsonLayersShapesItW';
+  readonly a?: Maybe<Scalars['Int']>;
+  readonly k?: Maybe<Scalars['Float']>;
+  readonly ix?: Maybe<Scalars['Int']>;
+};
+
 export type DocsJson = Node & {
   readonly __typename?: 'DocsJson';
   readonly id: Scalars['ID'];
@@ -868,6 +1515,8 @@ export type Query = {
   readonly allExtractedLottie: ExtractedLottieConnection;
   readonly pageDoc?: Maybe<PageDoc>;
   readonly allPageDoc: PageDocConnection;
+  readonly imagesJson?: Maybe<ImagesJson>;
+  readonly allImagesJson: ImagesJsonConnection;
   readonly docsJson?: Maybe<DocsJson>;
   readonly allDocsJson: DocsJsonConnection;
   readonly animationsJson?: Maybe<AnimationsJson>;
@@ -914,6 +1563,8 @@ export type QueryFileArgs = {
   childImageSharp?: Maybe<ImageSharpFilterInput>;
   childrenPageDoc?: Maybe<PageDocFilterListInput>;
   childPageDoc?: Maybe<PageDocFilterInput>;
+  childrenImagesJson?: Maybe<ImagesJsonFilterListInput>;
+  childImagesJson?: Maybe<ImagesJsonFilterInput>;
   childrenDocsJson?: Maybe<DocsJsonFilterListInput>;
   childDocsJson?: Maybe<DocsJsonFilterInput>;
   childrenAnimationsJson?: Maybe<AnimationsJsonFilterListInput>;
@@ -1172,6 +1823,32 @@ export type QueryAllPageDocArgs = {
 };
 
 
+export type QueryImagesJsonArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  v?: Maybe<StringQueryOperatorInput>;
+  fr?: Maybe<IntQueryOperatorInput>;
+  ip?: Maybe<IntQueryOperatorInput>;
+  op?: Maybe<IntQueryOperatorInput>;
+  w?: Maybe<IntQueryOperatorInput>;
+  h?: Maybe<IntQueryOperatorInput>;
+  nm?: Maybe<StringQueryOperatorInput>;
+  ddd?: Maybe<IntQueryOperatorInput>;
+  assets?: Maybe<ImagesJsonAssetsFilterListInput>;
+  layers?: Maybe<ImagesJsonLayersFilterListInput>;
+};
+
+
+export type QueryAllImagesJsonArgs = {
+  filter?: Maybe<ImagesJsonFilterInput>;
+  sort?: Maybe<ImagesJsonSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryDocsJsonArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -1410,6 +2087,8 @@ export type FileFilterInput = {
   readonly childImageSharp?: Maybe<ImageSharpFilterInput>;
   readonly childrenPageDoc?: Maybe<PageDocFilterListInput>;
   readonly childPageDoc?: Maybe<PageDocFilterInput>;
+  readonly childrenImagesJson?: Maybe<ImagesJsonFilterListInput>;
+  readonly childImagesJson?: Maybe<ImagesJsonFilterInput>;
   readonly childrenDocsJson?: Maybe<DocsJsonFilterListInput>;
   readonly childDocsJson?: Maybe<DocsJsonFilterInput>;
   readonly childrenAnimationsJson?: Maybe<AnimationsJsonFilterListInput>;
@@ -1418,6 +2097,624 @@ export type FileFilterInput = {
   readonly parent?: Maybe<NodeFilterInput>;
   readonly children?: Maybe<NodeFilterListInput>;
   readonly internal?: Maybe<InternalFilterInput>;
+};
+
+export type ImagesJsonFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonFilterInput>;
+};
+
+export type ImagesJsonFilterInput = {
+  readonly id?: Maybe<StringQueryOperatorInput>;
+  readonly parent?: Maybe<NodeFilterInput>;
+  readonly children?: Maybe<NodeFilterListInput>;
+  readonly internal?: Maybe<InternalFilterInput>;
+  readonly v?: Maybe<StringQueryOperatorInput>;
+  readonly fr?: Maybe<IntQueryOperatorInput>;
+  readonly ip?: Maybe<IntQueryOperatorInput>;
+  readonly op?: Maybe<IntQueryOperatorInput>;
+  readonly w?: Maybe<IntQueryOperatorInput>;
+  readonly h?: Maybe<IntQueryOperatorInput>;
+  readonly nm?: Maybe<StringQueryOperatorInput>;
+  readonly ddd?: Maybe<IntQueryOperatorInput>;
+  readonly assets?: Maybe<ImagesJsonAssetsFilterListInput>;
+  readonly layers?: Maybe<ImagesJsonLayersFilterListInput>;
+};
+
+export type ImagesJsonAssetsFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonAssetsFilterInput>;
+};
+
+export type ImagesJsonAssetsFilterInput = {
+  readonly id?: Maybe<StringQueryOperatorInput>;
+  readonly layers?: Maybe<ImagesJsonAssetsLayersFilterListInput>;
+};
+
+export type ImagesJsonAssetsLayersFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonAssetsLayersFilterInput>;
+};
+
+export type ImagesJsonAssetsLayersFilterInput = {
+  readonly ddd?: Maybe<IntQueryOperatorInput>;
+  readonly ind?: Maybe<IntQueryOperatorInput>;
+  readonly ty?: Maybe<IntQueryOperatorInput>;
+  readonly nm?: Maybe<StringQueryOperatorInput>;
+  readonly parent?: Maybe<IntQueryOperatorInput>;
+  readonly sr?: Maybe<IntQueryOperatorInput>;
+  readonly ks?: Maybe<ImagesJsonAssetsLayersKsFilterInput>;
+  readonly ao?: Maybe<IntQueryOperatorInput>;
+  readonly hasMask?: Maybe<BooleanQueryOperatorInput>;
+  readonly masksProperties?: Maybe<ImagesJsonAssetsLayersMasksPropertiesFilterListInput>;
+  readonly shapes?: Maybe<ImagesJsonAssetsLayersShapesFilterListInput>;
+  readonly ip?: Maybe<IntQueryOperatorInput>;
+  readonly op?: Maybe<IntQueryOperatorInput>;
+  readonly st?: Maybe<IntQueryOperatorInput>;
+  readonly bm?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersKsFilterInput = {
+  readonly o?: Maybe<ImagesJsonAssetsLayersKsOFilterInput>;
+  readonly r?: Maybe<ImagesJsonAssetsLayersKsRFilterInput>;
+  readonly p?: Maybe<ImagesJsonAssetsLayersKsPFilterInput>;
+  readonly a?: Maybe<ImagesJsonAssetsLayersKsAFilterInput>;
+  readonly s?: Maybe<ImagesJsonAssetsLayersKsSFilterInput>;
+};
+
+export type ImagesJsonAssetsLayersKsOFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersKsRFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersKsPFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly l?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersKsAFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly l?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersKsSFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly l?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersMasksPropertiesFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonAssetsLayersMasksPropertiesFilterInput>;
+};
+
+export type ImagesJsonAssetsLayersMasksPropertiesFilterInput = {
+  readonly inv?: Maybe<BooleanQueryOperatorInput>;
+  readonly mode?: Maybe<StringQueryOperatorInput>;
+  readonly pt?: Maybe<ImagesJsonAssetsLayersMasksPropertiesPtFilterInput>;
+  readonly o?: Maybe<ImagesJsonAssetsLayersMasksPropertiesOFilterInput>;
+  readonly x?: Maybe<ImagesJsonAssetsLayersMasksPropertiesXFilterInput>;
+  readonly nm?: Maybe<StringQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersMasksPropertiesPtFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<ImagesJsonAssetsLayersMasksPropertiesPtKFilterInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersMasksPropertiesPtKFilterInput = {
+  readonly i?: Maybe<FloatQueryOperatorInput>;
+  readonly o?: Maybe<FloatQueryOperatorInput>;
+  readonly v?: Maybe<FloatQueryOperatorInput>;
+  readonly c?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersMasksPropertiesOFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersMasksPropertiesXFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonAssetsLayersShapesFilterInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesFilterInput = {
+  readonly ty?: Maybe<StringQueryOperatorInput>;
+  readonly it?: Maybe<ImagesJsonAssetsLayersShapesItFilterListInput>;
+  readonly nm?: Maybe<StringQueryOperatorInput>;
+  readonly np?: Maybe<IntQueryOperatorInput>;
+  readonly cix?: Maybe<IntQueryOperatorInput>;
+  readonly bm?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly mn?: Maybe<StringQueryOperatorInput>;
+  readonly hd?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonAssetsLayersShapesItFilterInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItFilterInput = {
+  readonly ty?: Maybe<StringQueryOperatorInput>;
+  readonly it?: Maybe<ImagesJsonAssetsLayersShapesItItFilterListInput>;
+  readonly nm?: Maybe<StringQueryOperatorInput>;
+  readonly np?: Maybe<IntQueryOperatorInput>;
+  readonly cix?: Maybe<IntQueryOperatorInput>;
+  readonly bm?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly mn?: Maybe<StringQueryOperatorInput>;
+  readonly hd?: Maybe<BooleanQueryOperatorInput>;
+  readonly p?: Maybe<ImagesJsonAssetsLayersShapesItPFilterInput>;
+  readonly a?: Maybe<ImagesJsonAssetsLayersShapesItAFilterInput>;
+  readonly s?: Maybe<ImagesJsonAssetsLayersShapesItSFilterInput>;
+  readonly o?: Maybe<ImagesJsonAssetsLayersShapesItOFilterInput>;
+  readonly sk?: Maybe<ImagesJsonAssetsLayersShapesItSkFilterInput>;
+  readonly sa?: Maybe<ImagesJsonAssetsLayersShapesItSaFilterInput>;
+  readonly d?: Maybe<IntQueryOperatorInput>;
+  readonly c?: Maybe<ImagesJsonAssetsLayersShapesItCFilterInput>;
+  readonly ind?: Maybe<IntQueryOperatorInput>;
+  readonly ks?: Maybe<ImagesJsonAssetsLayersShapesItKsFilterInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonAssetsLayersShapesItItFilterInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItFilterInput = {
+  readonly ty?: Maybe<StringQueryOperatorInput>;
+  readonly it?: Maybe<ImagesJsonAssetsLayersShapesItItItFilterListInput>;
+  readonly nm?: Maybe<StringQueryOperatorInput>;
+  readonly np?: Maybe<IntQueryOperatorInput>;
+  readonly cix?: Maybe<IntQueryOperatorInput>;
+  readonly bm?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly mn?: Maybe<StringQueryOperatorInput>;
+  readonly hd?: Maybe<BooleanQueryOperatorInput>;
+  readonly p?: Maybe<ImagesJsonAssetsLayersShapesItItPFilterInput>;
+  readonly a?: Maybe<ImagesJsonAssetsLayersShapesItItAFilterInput>;
+  readonly s?: Maybe<ImagesJsonAssetsLayersShapesItItSFilterInput>;
+  readonly o?: Maybe<ImagesJsonAssetsLayersShapesItItOFilterInput>;
+  readonly sk?: Maybe<ImagesJsonAssetsLayersShapesItItSkFilterInput>;
+  readonly sa?: Maybe<ImagesJsonAssetsLayersShapesItItSaFilterInput>;
+  readonly ind?: Maybe<IntQueryOperatorInput>;
+  readonly ks?: Maybe<ImagesJsonAssetsLayersShapesItItKsFilterInput>;
+  readonly c?: Maybe<ImagesJsonAssetsLayersShapesItItCFilterInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonAssetsLayersShapesItItItFilterInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItFilterInput = {
+  readonly ind?: Maybe<IntQueryOperatorInput>;
+  readonly ty?: Maybe<StringQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly ks?: Maybe<ImagesJsonAssetsLayersShapesItItItKsFilterInput>;
+  readonly nm?: Maybe<StringQueryOperatorInput>;
+  readonly mn?: Maybe<StringQueryOperatorInput>;
+  readonly hd?: Maybe<BooleanQueryOperatorInput>;
+  readonly c?: Maybe<ImagesJsonAssetsLayersShapesItItItCFilterInput>;
+  readonly o?: Maybe<ImagesJsonAssetsLayersShapesItItItOFilterInput>;
+  readonly bm?: Maybe<IntQueryOperatorInput>;
+  readonly p?: Maybe<ImagesJsonAssetsLayersShapesItItItPFilterInput>;
+  readonly a?: Maybe<ImagesJsonAssetsLayersShapesItItItAFilterInput>;
+  readonly s?: Maybe<ImagesJsonAssetsLayersShapesItItItSFilterInput>;
+  readonly sk?: Maybe<ImagesJsonAssetsLayersShapesItItItSkFilterInput>;
+  readonly sa?: Maybe<ImagesJsonAssetsLayersShapesItItItSaFilterInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItKsFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<ImagesJsonAssetsLayersShapesItItItKsKFilterInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItKsKFilterInput = {
+  readonly i?: Maybe<FloatQueryOperatorInput>;
+  readonly o?: Maybe<FloatQueryOperatorInput>;
+  readonly v?: Maybe<FloatQueryOperatorInput>;
+  readonly c?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItCFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItOFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItPFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItAFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItSFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItSkFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItItSaFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItPFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItAFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItSFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItOFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItSkFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItSaFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItKsFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<ImagesJsonAssetsLayersShapesItItKsKFilterInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItKsKFilterInput = {
+  readonly i?: Maybe<FloatQueryOperatorInput>;
+  readonly o?: Maybe<FloatQueryOperatorInput>;
+  readonly v?: Maybe<FloatQueryOperatorInput>;
+  readonly c?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItItCFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItPFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItAFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItSFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItOFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItSkFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItSaFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItCFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItKsFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<ImagesJsonAssetsLayersShapesItKsKFilterInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonAssetsLayersShapesItKsKFilterInput = {
+  readonly i?: Maybe<FloatQueryOperatorInput>;
+  readonly o?: Maybe<FloatQueryOperatorInput>;
+  readonly v?: Maybe<FloatQueryOperatorInput>;
+  readonly c?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonLayersFilterInput>;
+};
+
+export type ImagesJsonLayersFilterInput = {
+  readonly ddd?: Maybe<IntQueryOperatorInput>;
+  readonly ind?: Maybe<IntQueryOperatorInput>;
+  readonly ty?: Maybe<IntQueryOperatorInput>;
+  readonly nm?: Maybe<StringQueryOperatorInput>;
+  readonly sr?: Maybe<IntQueryOperatorInput>;
+  readonly ks?: Maybe<ImagesJsonLayersKsFilterInput>;
+  readonly ao?: Maybe<IntQueryOperatorInput>;
+  readonly ip?: Maybe<IntQueryOperatorInput>;
+  readonly op?: Maybe<IntQueryOperatorInput>;
+  readonly st?: Maybe<IntQueryOperatorInput>;
+  readonly bm?: Maybe<IntQueryOperatorInput>;
+  readonly parent?: Maybe<IntQueryOperatorInput>;
+  readonly shapes?: Maybe<ImagesJsonLayersShapesFilterListInput>;
+  readonly refId?: Maybe<StringQueryOperatorInput>;
+  readonly w?: Maybe<IntQueryOperatorInput>;
+  readonly h?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersKsFilterInput = {
+  readonly o?: Maybe<ImagesJsonLayersKsOFilterInput>;
+  readonly r?: Maybe<ImagesJsonLayersKsRFilterInput>;
+  readonly p?: Maybe<ImagesJsonLayersKsPFilterInput>;
+  readonly a?: Maybe<ImagesJsonLayersKsAFilterInput>;
+  readonly s?: Maybe<ImagesJsonLayersKsSFilterInput>;
+};
+
+export type ImagesJsonLayersKsOFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersKsRFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersKsPFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly l?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersKsAFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly l?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersKsSFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly l?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonLayersShapesFilterInput>;
+};
+
+export type ImagesJsonLayersShapesFilterInput = {
+  readonly ty?: Maybe<StringQueryOperatorInput>;
+  readonly it?: Maybe<ImagesJsonLayersShapesItFilterListInput>;
+  readonly nm?: Maybe<StringQueryOperatorInput>;
+  readonly np?: Maybe<IntQueryOperatorInput>;
+  readonly cix?: Maybe<IntQueryOperatorInput>;
+  readonly bm?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly mn?: Maybe<StringQueryOperatorInput>;
+  readonly hd?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonLayersShapesItFilterInput>;
+};
+
+export type ImagesJsonLayersShapesItFilterInput = {
+  readonly ind?: Maybe<IntQueryOperatorInput>;
+  readonly ty?: Maybe<StringQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly ks?: Maybe<ImagesJsonLayersShapesItKsFilterInput>;
+  readonly nm?: Maybe<StringQueryOperatorInput>;
+  readonly mn?: Maybe<StringQueryOperatorInput>;
+  readonly hd?: Maybe<BooleanQueryOperatorInput>;
+  readonly c?: Maybe<ImagesJsonLayersShapesItCFilterInput>;
+  readonly o?: Maybe<ImagesJsonLayersShapesItOFilterInput>;
+  readonly bm?: Maybe<IntQueryOperatorInput>;
+  readonly p?: Maybe<ImagesJsonLayersShapesItPFilterInput>;
+  readonly a?: Maybe<ImagesJsonLayersShapesItAFilterInput>;
+  readonly s?: Maybe<ImagesJsonLayersShapesItSFilterInput>;
+  readonly sk?: Maybe<ImagesJsonLayersShapesItSkFilterInput>;
+  readonly sa?: Maybe<ImagesJsonLayersShapesItSaFilterInput>;
+  readonly it?: Maybe<ImagesJsonLayersShapesItItFilterListInput>;
+  readonly np?: Maybe<IntQueryOperatorInput>;
+  readonly cix?: Maybe<IntQueryOperatorInput>;
+  readonly w?: Maybe<ImagesJsonLayersShapesItWFilterInput>;
+  readonly lc?: Maybe<IntQueryOperatorInput>;
+  readonly lj?: Maybe<IntQueryOperatorInput>;
+  readonly mm?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItKsFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItCFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItOFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItPFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItAFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItSFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItSkFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItSaFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItItFilterListInput = {
+  readonly elemMatch?: Maybe<ImagesJsonLayersShapesItItFilterInput>;
+};
+
+export type ImagesJsonLayersShapesItItFilterInput = {
+  readonly ind?: Maybe<IntQueryOperatorInput>;
+  readonly ty?: Maybe<StringQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+  readonly ks?: Maybe<ImagesJsonLayersShapesItItKsFilterInput>;
+  readonly nm?: Maybe<StringQueryOperatorInput>;
+  readonly mn?: Maybe<StringQueryOperatorInput>;
+  readonly hd?: Maybe<BooleanQueryOperatorInput>;
+  readonly c?: Maybe<ImagesJsonLayersShapesItItCFilterInput>;
+  readonly o?: Maybe<ImagesJsonLayersShapesItItOFilterInput>;
+  readonly bm?: Maybe<IntQueryOperatorInput>;
+  readonly p?: Maybe<ImagesJsonLayersShapesItItPFilterInput>;
+  readonly a?: Maybe<ImagesJsonLayersShapesItItAFilterInput>;
+  readonly s?: Maybe<ImagesJsonLayersShapesItItSFilterInput>;
+  readonly sk?: Maybe<ImagesJsonLayersShapesItItSkFilterInput>;
+  readonly sa?: Maybe<ImagesJsonLayersShapesItItSaFilterInput>;
+};
+
+export type ImagesJsonLayersShapesItItKsFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<ImagesJsonLayersShapesItItKsKFilterInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItItKsKFilterInput = {
+  readonly i?: Maybe<IntQueryOperatorInput>;
+  readonly o?: Maybe<IntQueryOperatorInput>;
+  readonly v?: Maybe<FloatQueryOperatorInput>;
+  readonly c?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItItCFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItItOFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItItPFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItItAFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItItSFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItItSkFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItItSaFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<IntQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
+};
+
+export type ImagesJsonLayersShapesItWFilterInput = {
+  readonly a?: Maybe<IntQueryOperatorInput>;
+  readonly k?: Maybe<FloatQueryOperatorInput>;
+  readonly ix?: Maybe<IntQueryOperatorInput>;
 };
 
 export type DocsJsonFilterListInput = {
@@ -1921,6 +3218,31 @@ export type FileFieldsEnum =
   | 'childrenPageDoc___image___childPageDoc___children'
   | 'childrenPageDoc___image___childPageDoc___title'
   | 'childrenPageDoc___image___childPageDoc___description'
+  | 'childrenPageDoc___image___childrenImagesJson'
+  | 'childrenPageDoc___image___childrenImagesJson___id'
+  | 'childrenPageDoc___image___childrenImagesJson___children'
+  | 'childrenPageDoc___image___childrenImagesJson___v'
+  | 'childrenPageDoc___image___childrenImagesJson___fr'
+  | 'childrenPageDoc___image___childrenImagesJson___ip'
+  | 'childrenPageDoc___image___childrenImagesJson___op'
+  | 'childrenPageDoc___image___childrenImagesJson___w'
+  | 'childrenPageDoc___image___childrenImagesJson___h'
+  | 'childrenPageDoc___image___childrenImagesJson___nm'
+  | 'childrenPageDoc___image___childrenImagesJson___ddd'
+  | 'childrenPageDoc___image___childrenImagesJson___assets'
+  | 'childrenPageDoc___image___childrenImagesJson___layers'
+  | 'childrenPageDoc___image___childImagesJson___id'
+  | 'childrenPageDoc___image___childImagesJson___children'
+  | 'childrenPageDoc___image___childImagesJson___v'
+  | 'childrenPageDoc___image___childImagesJson___fr'
+  | 'childrenPageDoc___image___childImagesJson___ip'
+  | 'childrenPageDoc___image___childImagesJson___op'
+  | 'childrenPageDoc___image___childImagesJson___w'
+  | 'childrenPageDoc___image___childImagesJson___h'
+  | 'childrenPageDoc___image___childImagesJson___nm'
+  | 'childrenPageDoc___image___childImagesJson___ddd'
+  | 'childrenPageDoc___image___childImagesJson___assets'
+  | 'childrenPageDoc___image___childImagesJson___layers'
   | 'childrenPageDoc___image___childrenDocsJson'
   | 'childrenPageDoc___image___childrenDocsJson___id'
   | 'childrenPageDoc___image___childrenDocsJson___children'
@@ -2017,6 +3339,31 @@ export type FileFieldsEnum =
   | 'childrenPageDoc___video___childPageDoc___children'
   | 'childrenPageDoc___video___childPageDoc___title'
   | 'childrenPageDoc___video___childPageDoc___description'
+  | 'childrenPageDoc___video___childrenImagesJson'
+  | 'childrenPageDoc___video___childrenImagesJson___id'
+  | 'childrenPageDoc___video___childrenImagesJson___children'
+  | 'childrenPageDoc___video___childrenImagesJson___v'
+  | 'childrenPageDoc___video___childrenImagesJson___fr'
+  | 'childrenPageDoc___video___childrenImagesJson___ip'
+  | 'childrenPageDoc___video___childrenImagesJson___op'
+  | 'childrenPageDoc___video___childrenImagesJson___w'
+  | 'childrenPageDoc___video___childrenImagesJson___h'
+  | 'childrenPageDoc___video___childrenImagesJson___nm'
+  | 'childrenPageDoc___video___childrenImagesJson___ddd'
+  | 'childrenPageDoc___video___childrenImagesJson___assets'
+  | 'childrenPageDoc___video___childrenImagesJson___layers'
+  | 'childrenPageDoc___video___childImagesJson___id'
+  | 'childrenPageDoc___video___childImagesJson___children'
+  | 'childrenPageDoc___video___childImagesJson___v'
+  | 'childrenPageDoc___video___childImagesJson___fr'
+  | 'childrenPageDoc___video___childImagesJson___ip'
+  | 'childrenPageDoc___video___childImagesJson___op'
+  | 'childrenPageDoc___video___childImagesJson___w'
+  | 'childrenPageDoc___video___childImagesJson___h'
+  | 'childrenPageDoc___video___childImagesJson___nm'
+  | 'childrenPageDoc___video___childImagesJson___ddd'
+  | 'childrenPageDoc___video___childImagesJson___assets'
+  | 'childrenPageDoc___video___childImagesJson___layers'
   | 'childrenPageDoc___video___childrenDocsJson'
   | 'childrenPageDoc___video___childrenDocsJson___id'
   | 'childrenPageDoc___video___childrenDocsJson___children'
@@ -2113,6 +3460,31 @@ export type FileFieldsEnum =
   | 'childrenPageDoc___animation___childPageDoc___children'
   | 'childrenPageDoc___animation___childPageDoc___title'
   | 'childrenPageDoc___animation___childPageDoc___description'
+  | 'childrenPageDoc___animation___childrenImagesJson'
+  | 'childrenPageDoc___animation___childrenImagesJson___id'
+  | 'childrenPageDoc___animation___childrenImagesJson___children'
+  | 'childrenPageDoc___animation___childrenImagesJson___v'
+  | 'childrenPageDoc___animation___childrenImagesJson___fr'
+  | 'childrenPageDoc___animation___childrenImagesJson___ip'
+  | 'childrenPageDoc___animation___childrenImagesJson___op'
+  | 'childrenPageDoc___animation___childrenImagesJson___w'
+  | 'childrenPageDoc___animation___childrenImagesJson___h'
+  | 'childrenPageDoc___animation___childrenImagesJson___nm'
+  | 'childrenPageDoc___animation___childrenImagesJson___ddd'
+  | 'childrenPageDoc___animation___childrenImagesJson___assets'
+  | 'childrenPageDoc___animation___childrenImagesJson___layers'
+  | 'childrenPageDoc___animation___childImagesJson___id'
+  | 'childrenPageDoc___animation___childImagesJson___children'
+  | 'childrenPageDoc___animation___childImagesJson___v'
+  | 'childrenPageDoc___animation___childImagesJson___fr'
+  | 'childrenPageDoc___animation___childImagesJson___ip'
+  | 'childrenPageDoc___animation___childImagesJson___op'
+  | 'childrenPageDoc___animation___childImagesJson___w'
+  | 'childrenPageDoc___animation___childImagesJson___h'
+  | 'childrenPageDoc___animation___childImagesJson___nm'
+  | 'childrenPageDoc___animation___childImagesJson___ddd'
+  | 'childrenPageDoc___animation___childImagesJson___assets'
+  | 'childrenPageDoc___animation___childImagesJson___layers'
   | 'childrenPageDoc___animation___childrenDocsJson'
   | 'childrenPageDoc___animation___childrenDocsJson___id'
   | 'childrenPageDoc___animation___childrenDocsJson___children'
@@ -2253,6 +3625,31 @@ export type FileFieldsEnum =
   | 'childPageDoc___image___childPageDoc___children'
   | 'childPageDoc___image___childPageDoc___title'
   | 'childPageDoc___image___childPageDoc___description'
+  | 'childPageDoc___image___childrenImagesJson'
+  | 'childPageDoc___image___childrenImagesJson___id'
+  | 'childPageDoc___image___childrenImagesJson___children'
+  | 'childPageDoc___image___childrenImagesJson___v'
+  | 'childPageDoc___image___childrenImagesJson___fr'
+  | 'childPageDoc___image___childrenImagesJson___ip'
+  | 'childPageDoc___image___childrenImagesJson___op'
+  | 'childPageDoc___image___childrenImagesJson___w'
+  | 'childPageDoc___image___childrenImagesJson___h'
+  | 'childPageDoc___image___childrenImagesJson___nm'
+  | 'childPageDoc___image___childrenImagesJson___ddd'
+  | 'childPageDoc___image___childrenImagesJson___assets'
+  | 'childPageDoc___image___childrenImagesJson___layers'
+  | 'childPageDoc___image___childImagesJson___id'
+  | 'childPageDoc___image___childImagesJson___children'
+  | 'childPageDoc___image___childImagesJson___v'
+  | 'childPageDoc___image___childImagesJson___fr'
+  | 'childPageDoc___image___childImagesJson___ip'
+  | 'childPageDoc___image___childImagesJson___op'
+  | 'childPageDoc___image___childImagesJson___w'
+  | 'childPageDoc___image___childImagesJson___h'
+  | 'childPageDoc___image___childImagesJson___nm'
+  | 'childPageDoc___image___childImagesJson___ddd'
+  | 'childPageDoc___image___childImagesJson___assets'
+  | 'childPageDoc___image___childImagesJson___layers'
   | 'childPageDoc___image___childrenDocsJson'
   | 'childPageDoc___image___childrenDocsJson___id'
   | 'childPageDoc___image___childrenDocsJson___children'
@@ -2349,6 +3746,31 @@ export type FileFieldsEnum =
   | 'childPageDoc___video___childPageDoc___children'
   | 'childPageDoc___video___childPageDoc___title'
   | 'childPageDoc___video___childPageDoc___description'
+  | 'childPageDoc___video___childrenImagesJson'
+  | 'childPageDoc___video___childrenImagesJson___id'
+  | 'childPageDoc___video___childrenImagesJson___children'
+  | 'childPageDoc___video___childrenImagesJson___v'
+  | 'childPageDoc___video___childrenImagesJson___fr'
+  | 'childPageDoc___video___childrenImagesJson___ip'
+  | 'childPageDoc___video___childrenImagesJson___op'
+  | 'childPageDoc___video___childrenImagesJson___w'
+  | 'childPageDoc___video___childrenImagesJson___h'
+  | 'childPageDoc___video___childrenImagesJson___nm'
+  | 'childPageDoc___video___childrenImagesJson___ddd'
+  | 'childPageDoc___video___childrenImagesJson___assets'
+  | 'childPageDoc___video___childrenImagesJson___layers'
+  | 'childPageDoc___video___childImagesJson___id'
+  | 'childPageDoc___video___childImagesJson___children'
+  | 'childPageDoc___video___childImagesJson___v'
+  | 'childPageDoc___video___childImagesJson___fr'
+  | 'childPageDoc___video___childImagesJson___ip'
+  | 'childPageDoc___video___childImagesJson___op'
+  | 'childPageDoc___video___childImagesJson___w'
+  | 'childPageDoc___video___childImagesJson___h'
+  | 'childPageDoc___video___childImagesJson___nm'
+  | 'childPageDoc___video___childImagesJson___ddd'
+  | 'childPageDoc___video___childImagesJson___assets'
+  | 'childPageDoc___video___childImagesJson___layers'
   | 'childPageDoc___video___childrenDocsJson'
   | 'childPageDoc___video___childrenDocsJson___id'
   | 'childPageDoc___video___childrenDocsJson___children'
@@ -2445,6 +3867,31 @@ export type FileFieldsEnum =
   | 'childPageDoc___animation___childPageDoc___children'
   | 'childPageDoc___animation___childPageDoc___title'
   | 'childPageDoc___animation___childPageDoc___description'
+  | 'childPageDoc___animation___childrenImagesJson'
+  | 'childPageDoc___animation___childrenImagesJson___id'
+  | 'childPageDoc___animation___childrenImagesJson___children'
+  | 'childPageDoc___animation___childrenImagesJson___v'
+  | 'childPageDoc___animation___childrenImagesJson___fr'
+  | 'childPageDoc___animation___childrenImagesJson___ip'
+  | 'childPageDoc___animation___childrenImagesJson___op'
+  | 'childPageDoc___animation___childrenImagesJson___w'
+  | 'childPageDoc___animation___childrenImagesJson___h'
+  | 'childPageDoc___animation___childrenImagesJson___nm'
+  | 'childPageDoc___animation___childrenImagesJson___ddd'
+  | 'childPageDoc___animation___childrenImagesJson___assets'
+  | 'childPageDoc___animation___childrenImagesJson___layers'
+  | 'childPageDoc___animation___childImagesJson___id'
+  | 'childPageDoc___animation___childImagesJson___children'
+  | 'childPageDoc___animation___childImagesJson___v'
+  | 'childPageDoc___animation___childImagesJson___fr'
+  | 'childPageDoc___animation___childImagesJson___ip'
+  | 'childPageDoc___animation___childImagesJson___op'
+  | 'childPageDoc___animation___childImagesJson___w'
+  | 'childPageDoc___animation___childImagesJson___h'
+  | 'childPageDoc___animation___childImagesJson___nm'
+  | 'childPageDoc___animation___childImagesJson___ddd'
+  | 'childPageDoc___animation___childImagesJson___assets'
+  | 'childPageDoc___animation___childImagesJson___layers'
   | 'childPageDoc___animation___childrenDocsJson'
   | 'childPageDoc___animation___childrenDocsJson___id'
   | 'childPageDoc___animation___childrenDocsJson___children'
@@ -2495,6 +3942,183 @@ export type FileFieldsEnum =
   | 'childPageDoc___fileInformation___name'
   | 'childPageDoc___fileInformation___ext'
   | 'childPageDoc___fileInformation___extension'
+  | 'childrenImagesJson'
+  | 'childrenImagesJson___id'
+  | 'childrenImagesJson___parent___id'
+  | 'childrenImagesJson___parent___parent___id'
+  | 'childrenImagesJson___parent___parent___children'
+  | 'childrenImagesJson___parent___children'
+  | 'childrenImagesJson___parent___children___id'
+  | 'childrenImagesJson___parent___children___children'
+  | 'childrenImagesJson___parent___internal___content'
+  | 'childrenImagesJson___parent___internal___contentDigest'
+  | 'childrenImagesJson___parent___internal___description'
+  | 'childrenImagesJson___parent___internal___fieldOwners'
+  | 'childrenImagesJson___parent___internal___ignoreType'
+  | 'childrenImagesJson___parent___internal___mediaType'
+  | 'childrenImagesJson___parent___internal___owner'
+  | 'childrenImagesJson___parent___internal___type'
+  | 'childrenImagesJson___children'
+  | 'childrenImagesJson___children___id'
+  | 'childrenImagesJson___children___parent___id'
+  | 'childrenImagesJson___children___parent___children'
+  | 'childrenImagesJson___children___children'
+  | 'childrenImagesJson___children___children___id'
+  | 'childrenImagesJson___children___children___children'
+  | 'childrenImagesJson___children___internal___content'
+  | 'childrenImagesJson___children___internal___contentDigest'
+  | 'childrenImagesJson___children___internal___description'
+  | 'childrenImagesJson___children___internal___fieldOwners'
+  | 'childrenImagesJson___children___internal___ignoreType'
+  | 'childrenImagesJson___children___internal___mediaType'
+  | 'childrenImagesJson___children___internal___owner'
+  | 'childrenImagesJson___children___internal___type'
+  | 'childrenImagesJson___internal___content'
+  | 'childrenImagesJson___internal___contentDigest'
+  | 'childrenImagesJson___internal___description'
+  | 'childrenImagesJson___internal___fieldOwners'
+  | 'childrenImagesJson___internal___ignoreType'
+  | 'childrenImagesJson___internal___mediaType'
+  | 'childrenImagesJson___internal___owner'
+  | 'childrenImagesJson___internal___type'
+  | 'childrenImagesJson___v'
+  | 'childrenImagesJson___fr'
+  | 'childrenImagesJson___ip'
+  | 'childrenImagesJson___op'
+  | 'childrenImagesJson___w'
+  | 'childrenImagesJson___h'
+  | 'childrenImagesJson___nm'
+  | 'childrenImagesJson___ddd'
+  | 'childrenImagesJson___assets'
+  | 'childrenImagesJson___assets___id'
+  | 'childrenImagesJson___assets___layers'
+  | 'childrenImagesJson___assets___layers___ddd'
+  | 'childrenImagesJson___assets___layers___ind'
+  | 'childrenImagesJson___assets___layers___ty'
+  | 'childrenImagesJson___assets___layers___nm'
+  | 'childrenImagesJson___assets___layers___parent'
+  | 'childrenImagesJson___assets___layers___sr'
+  | 'childrenImagesJson___assets___layers___ao'
+  | 'childrenImagesJson___assets___layers___hasMask'
+  | 'childrenImagesJson___assets___layers___masksProperties'
+  | 'childrenImagesJson___assets___layers___shapes'
+  | 'childrenImagesJson___assets___layers___ip'
+  | 'childrenImagesJson___assets___layers___op'
+  | 'childrenImagesJson___assets___layers___st'
+  | 'childrenImagesJson___assets___layers___bm'
+  | 'childrenImagesJson___layers'
+  | 'childrenImagesJson___layers___ddd'
+  | 'childrenImagesJson___layers___ind'
+  | 'childrenImagesJson___layers___ty'
+  | 'childrenImagesJson___layers___nm'
+  | 'childrenImagesJson___layers___sr'
+  | 'childrenImagesJson___layers___ao'
+  | 'childrenImagesJson___layers___ip'
+  | 'childrenImagesJson___layers___op'
+  | 'childrenImagesJson___layers___st'
+  | 'childrenImagesJson___layers___bm'
+  | 'childrenImagesJson___layers___parent'
+  | 'childrenImagesJson___layers___shapes'
+  | 'childrenImagesJson___layers___shapes___ty'
+  | 'childrenImagesJson___layers___shapes___it'
+  | 'childrenImagesJson___layers___shapes___nm'
+  | 'childrenImagesJson___layers___shapes___np'
+  | 'childrenImagesJson___layers___shapes___cix'
+  | 'childrenImagesJson___layers___shapes___bm'
+  | 'childrenImagesJson___layers___shapes___ix'
+  | 'childrenImagesJson___layers___shapes___mn'
+  | 'childrenImagesJson___layers___shapes___hd'
+  | 'childrenImagesJson___layers___refId'
+  | 'childrenImagesJson___layers___w'
+  | 'childrenImagesJson___layers___h'
+  | 'childImagesJson___id'
+  | 'childImagesJson___parent___id'
+  | 'childImagesJson___parent___parent___id'
+  | 'childImagesJson___parent___parent___children'
+  | 'childImagesJson___parent___children'
+  | 'childImagesJson___parent___children___id'
+  | 'childImagesJson___parent___children___children'
+  | 'childImagesJson___parent___internal___content'
+  | 'childImagesJson___parent___internal___contentDigest'
+  | 'childImagesJson___parent___internal___description'
+  | 'childImagesJson___parent___internal___fieldOwners'
+  | 'childImagesJson___parent___internal___ignoreType'
+  | 'childImagesJson___parent___internal___mediaType'
+  | 'childImagesJson___parent___internal___owner'
+  | 'childImagesJson___parent___internal___type'
+  | 'childImagesJson___children'
+  | 'childImagesJson___children___id'
+  | 'childImagesJson___children___parent___id'
+  | 'childImagesJson___children___parent___children'
+  | 'childImagesJson___children___children'
+  | 'childImagesJson___children___children___id'
+  | 'childImagesJson___children___children___children'
+  | 'childImagesJson___children___internal___content'
+  | 'childImagesJson___children___internal___contentDigest'
+  | 'childImagesJson___children___internal___description'
+  | 'childImagesJson___children___internal___fieldOwners'
+  | 'childImagesJson___children___internal___ignoreType'
+  | 'childImagesJson___children___internal___mediaType'
+  | 'childImagesJson___children___internal___owner'
+  | 'childImagesJson___children___internal___type'
+  | 'childImagesJson___internal___content'
+  | 'childImagesJson___internal___contentDigest'
+  | 'childImagesJson___internal___description'
+  | 'childImagesJson___internal___fieldOwners'
+  | 'childImagesJson___internal___ignoreType'
+  | 'childImagesJson___internal___mediaType'
+  | 'childImagesJson___internal___owner'
+  | 'childImagesJson___internal___type'
+  | 'childImagesJson___v'
+  | 'childImagesJson___fr'
+  | 'childImagesJson___ip'
+  | 'childImagesJson___op'
+  | 'childImagesJson___w'
+  | 'childImagesJson___h'
+  | 'childImagesJson___nm'
+  | 'childImagesJson___ddd'
+  | 'childImagesJson___assets'
+  | 'childImagesJson___assets___id'
+  | 'childImagesJson___assets___layers'
+  | 'childImagesJson___assets___layers___ddd'
+  | 'childImagesJson___assets___layers___ind'
+  | 'childImagesJson___assets___layers___ty'
+  | 'childImagesJson___assets___layers___nm'
+  | 'childImagesJson___assets___layers___parent'
+  | 'childImagesJson___assets___layers___sr'
+  | 'childImagesJson___assets___layers___ao'
+  | 'childImagesJson___assets___layers___hasMask'
+  | 'childImagesJson___assets___layers___masksProperties'
+  | 'childImagesJson___assets___layers___shapes'
+  | 'childImagesJson___assets___layers___ip'
+  | 'childImagesJson___assets___layers___op'
+  | 'childImagesJson___assets___layers___st'
+  | 'childImagesJson___assets___layers___bm'
+  | 'childImagesJson___layers'
+  | 'childImagesJson___layers___ddd'
+  | 'childImagesJson___layers___ind'
+  | 'childImagesJson___layers___ty'
+  | 'childImagesJson___layers___nm'
+  | 'childImagesJson___layers___sr'
+  | 'childImagesJson___layers___ao'
+  | 'childImagesJson___layers___ip'
+  | 'childImagesJson___layers___op'
+  | 'childImagesJson___layers___st'
+  | 'childImagesJson___layers___bm'
+  | 'childImagesJson___layers___parent'
+  | 'childImagesJson___layers___shapes'
+  | 'childImagesJson___layers___shapes___ty'
+  | 'childImagesJson___layers___shapes___it'
+  | 'childImagesJson___layers___shapes___nm'
+  | 'childImagesJson___layers___shapes___np'
+  | 'childImagesJson___layers___shapes___cix'
+  | 'childImagesJson___layers___shapes___bm'
+  | 'childImagesJson___layers___shapes___ix'
+  | 'childImagesJson___layers___shapes___mn'
+  | 'childImagesJson___layers___shapes___hd'
+  | 'childImagesJson___layers___refId'
+  | 'childImagesJson___layers___w'
+  | 'childImagesJson___layers___h'
   | 'childrenDocsJson'
   | 'childrenDocsJson___id'
   | 'childrenDocsJson___parent___id'
@@ -2573,6 +4197,7 @@ export type FileFieldsEnum =
   | 'childrenDocsJson___module___image___publicURL'
   | 'childrenDocsJson___module___image___childrenImageSharp'
   | 'childrenDocsJson___module___image___childrenPageDoc'
+  | 'childrenDocsJson___module___image___childrenImagesJson'
   | 'childrenDocsJson___module___image___childrenDocsJson'
   | 'childrenDocsJson___module___image___childrenAnimationsJson'
   | 'childrenDocsJson___module___image___id'
@@ -2613,6 +4238,7 @@ export type FileFieldsEnum =
   | 'childrenDocsJson___module___video___publicURL'
   | 'childrenDocsJson___module___video___childrenImageSharp'
   | 'childrenDocsJson___module___video___childrenPageDoc'
+  | 'childrenDocsJson___module___video___childrenImagesJson'
   | 'childrenDocsJson___module___video___childrenDocsJson'
   | 'childrenDocsJson___module___video___childrenAnimationsJson'
   | 'childrenDocsJson___module___video___id'
@@ -2653,6 +4279,7 @@ export type FileFieldsEnum =
   | 'childrenDocsJson___module___animation___publicURL'
   | 'childrenDocsJson___module___animation___childrenImageSharp'
   | 'childrenDocsJson___module___animation___childrenPageDoc'
+  | 'childrenDocsJson___module___animation___childrenImagesJson'
   | 'childrenDocsJson___module___animation___childrenDocsJson'
   | 'childrenDocsJson___module___animation___childrenAnimationsJson'
   | 'childrenDocsJson___module___animation___id'
@@ -2734,6 +4361,7 @@ export type FileFieldsEnum =
   | 'childDocsJson___module___image___publicURL'
   | 'childDocsJson___module___image___childrenImageSharp'
   | 'childDocsJson___module___image___childrenPageDoc'
+  | 'childDocsJson___module___image___childrenImagesJson'
   | 'childDocsJson___module___image___childrenDocsJson'
   | 'childDocsJson___module___image___childrenAnimationsJson'
   | 'childDocsJson___module___image___id'
@@ -2774,6 +4402,7 @@ export type FileFieldsEnum =
   | 'childDocsJson___module___video___publicURL'
   | 'childDocsJson___module___video___childrenImageSharp'
   | 'childDocsJson___module___video___childrenPageDoc'
+  | 'childDocsJson___module___video___childrenImagesJson'
   | 'childDocsJson___module___video___childrenDocsJson'
   | 'childDocsJson___module___video___childrenAnimationsJson'
   | 'childDocsJson___module___video___id'
@@ -2814,6 +4443,7 @@ export type FileFieldsEnum =
   | 'childDocsJson___module___animation___publicURL'
   | 'childDocsJson___module___animation___childrenImageSharp'
   | 'childDocsJson___module___animation___childrenPageDoc'
+  | 'childDocsJson___module___animation___childrenImagesJson'
   | 'childDocsJson___module___animation___childrenDocsJson'
   | 'childDocsJson___module___animation___childrenAnimationsJson'
   | 'childDocsJson___module___animation___id'
@@ -5325,6 +6955,7 @@ export type PageDocFieldsEnum =
   | 'image___childrenPageDoc___image___publicURL'
   | 'image___childrenPageDoc___image___childrenImageSharp'
   | 'image___childrenPageDoc___image___childrenPageDoc'
+  | 'image___childrenPageDoc___image___childrenImagesJson'
   | 'image___childrenPageDoc___image___childrenDocsJson'
   | 'image___childrenPageDoc___image___childrenAnimationsJson'
   | 'image___childrenPageDoc___image___id'
@@ -5365,6 +6996,7 @@ export type PageDocFieldsEnum =
   | 'image___childrenPageDoc___video___publicURL'
   | 'image___childrenPageDoc___video___childrenImageSharp'
   | 'image___childrenPageDoc___video___childrenPageDoc'
+  | 'image___childrenPageDoc___video___childrenImagesJson'
   | 'image___childrenPageDoc___video___childrenDocsJson'
   | 'image___childrenPageDoc___video___childrenAnimationsJson'
   | 'image___childrenPageDoc___video___id'
@@ -5405,6 +7037,7 @@ export type PageDocFieldsEnum =
   | 'image___childrenPageDoc___animation___publicURL'
   | 'image___childrenPageDoc___animation___childrenImageSharp'
   | 'image___childrenPageDoc___animation___childrenPageDoc'
+  | 'image___childrenPageDoc___animation___childrenImagesJson'
   | 'image___childrenPageDoc___animation___childrenDocsJson'
   | 'image___childrenPageDoc___animation___childrenAnimationsJson'
   | 'image___childrenPageDoc___animation___id'
@@ -5465,6 +7098,7 @@ export type PageDocFieldsEnum =
   | 'image___childPageDoc___image___publicURL'
   | 'image___childPageDoc___image___childrenImageSharp'
   | 'image___childPageDoc___image___childrenPageDoc'
+  | 'image___childPageDoc___image___childrenImagesJson'
   | 'image___childPageDoc___image___childrenDocsJson'
   | 'image___childPageDoc___image___childrenAnimationsJson'
   | 'image___childPageDoc___image___id'
@@ -5505,6 +7139,7 @@ export type PageDocFieldsEnum =
   | 'image___childPageDoc___video___publicURL'
   | 'image___childPageDoc___video___childrenImageSharp'
   | 'image___childPageDoc___video___childrenPageDoc'
+  | 'image___childPageDoc___video___childrenImagesJson'
   | 'image___childPageDoc___video___childrenDocsJson'
   | 'image___childPageDoc___video___childrenAnimationsJson'
   | 'image___childPageDoc___video___id'
@@ -5545,6 +7180,7 @@ export type PageDocFieldsEnum =
   | 'image___childPageDoc___animation___publicURL'
   | 'image___childPageDoc___animation___childrenImageSharp'
   | 'image___childPageDoc___animation___childrenPageDoc'
+  | 'image___childPageDoc___animation___childrenImagesJson'
   | 'image___childPageDoc___animation___childrenDocsJson'
   | 'image___childPageDoc___animation___childrenAnimationsJson'
   | 'image___childPageDoc___animation___id'
@@ -5553,6 +7189,89 @@ export type PageDocFieldsEnum =
   | 'image___childPageDoc___fileInformation___name'
   | 'image___childPageDoc___fileInformation___ext'
   | 'image___childPageDoc___fileInformation___extension'
+  | 'image___childrenImagesJson'
+  | 'image___childrenImagesJson___id'
+  | 'image___childrenImagesJson___parent___id'
+  | 'image___childrenImagesJson___parent___children'
+  | 'image___childrenImagesJson___children'
+  | 'image___childrenImagesJson___children___id'
+  | 'image___childrenImagesJson___children___children'
+  | 'image___childrenImagesJson___internal___content'
+  | 'image___childrenImagesJson___internal___contentDigest'
+  | 'image___childrenImagesJson___internal___description'
+  | 'image___childrenImagesJson___internal___fieldOwners'
+  | 'image___childrenImagesJson___internal___ignoreType'
+  | 'image___childrenImagesJson___internal___mediaType'
+  | 'image___childrenImagesJson___internal___owner'
+  | 'image___childrenImagesJson___internal___type'
+  | 'image___childrenImagesJson___v'
+  | 'image___childrenImagesJson___fr'
+  | 'image___childrenImagesJson___ip'
+  | 'image___childrenImagesJson___op'
+  | 'image___childrenImagesJson___w'
+  | 'image___childrenImagesJson___h'
+  | 'image___childrenImagesJson___nm'
+  | 'image___childrenImagesJson___ddd'
+  | 'image___childrenImagesJson___assets'
+  | 'image___childrenImagesJson___assets___id'
+  | 'image___childrenImagesJson___assets___layers'
+  | 'image___childrenImagesJson___layers'
+  | 'image___childrenImagesJson___layers___ddd'
+  | 'image___childrenImagesJson___layers___ind'
+  | 'image___childrenImagesJson___layers___ty'
+  | 'image___childrenImagesJson___layers___nm'
+  | 'image___childrenImagesJson___layers___sr'
+  | 'image___childrenImagesJson___layers___ao'
+  | 'image___childrenImagesJson___layers___ip'
+  | 'image___childrenImagesJson___layers___op'
+  | 'image___childrenImagesJson___layers___st'
+  | 'image___childrenImagesJson___layers___bm'
+  | 'image___childrenImagesJson___layers___parent'
+  | 'image___childrenImagesJson___layers___shapes'
+  | 'image___childrenImagesJson___layers___refId'
+  | 'image___childrenImagesJson___layers___w'
+  | 'image___childrenImagesJson___layers___h'
+  | 'image___childImagesJson___id'
+  | 'image___childImagesJson___parent___id'
+  | 'image___childImagesJson___parent___children'
+  | 'image___childImagesJson___children'
+  | 'image___childImagesJson___children___id'
+  | 'image___childImagesJson___children___children'
+  | 'image___childImagesJson___internal___content'
+  | 'image___childImagesJson___internal___contentDigest'
+  | 'image___childImagesJson___internal___description'
+  | 'image___childImagesJson___internal___fieldOwners'
+  | 'image___childImagesJson___internal___ignoreType'
+  | 'image___childImagesJson___internal___mediaType'
+  | 'image___childImagesJson___internal___owner'
+  | 'image___childImagesJson___internal___type'
+  | 'image___childImagesJson___v'
+  | 'image___childImagesJson___fr'
+  | 'image___childImagesJson___ip'
+  | 'image___childImagesJson___op'
+  | 'image___childImagesJson___w'
+  | 'image___childImagesJson___h'
+  | 'image___childImagesJson___nm'
+  | 'image___childImagesJson___ddd'
+  | 'image___childImagesJson___assets'
+  | 'image___childImagesJson___assets___id'
+  | 'image___childImagesJson___assets___layers'
+  | 'image___childImagesJson___layers'
+  | 'image___childImagesJson___layers___ddd'
+  | 'image___childImagesJson___layers___ind'
+  | 'image___childImagesJson___layers___ty'
+  | 'image___childImagesJson___layers___nm'
+  | 'image___childImagesJson___layers___sr'
+  | 'image___childImagesJson___layers___ao'
+  | 'image___childImagesJson___layers___ip'
+  | 'image___childImagesJson___layers___op'
+  | 'image___childImagesJson___layers___st'
+  | 'image___childImagesJson___layers___bm'
+  | 'image___childImagesJson___layers___parent'
+  | 'image___childImagesJson___layers___shapes'
+  | 'image___childImagesJson___layers___refId'
+  | 'image___childImagesJson___layers___w'
+  | 'image___childImagesJson___layers___h'
   | 'image___childrenDocsJson'
   | 'image___childrenDocsJson___id'
   | 'image___childrenDocsJson___parent___id'
@@ -5877,6 +7596,7 @@ export type PageDocFieldsEnum =
   | 'video___childrenPageDoc___image___publicURL'
   | 'video___childrenPageDoc___image___childrenImageSharp'
   | 'video___childrenPageDoc___image___childrenPageDoc'
+  | 'video___childrenPageDoc___image___childrenImagesJson'
   | 'video___childrenPageDoc___image___childrenDocsJson'
   | 'video___childrenPageDoc___image___childrenAnimationsJson'
   | 'video___childrenPageDoc___image___id'
@@ -5917,6 +7637,7 @@ export type PageDocFieldsEnum =
   | 'video___childrenPageDoc___video___publicURL'
   | 'video___childrenPageDoc___video___childrenImageSharp'
   | 'video___childrenPageDoc___video___childrenPageDoc'
+  | 'video___childrenPageDoc___video___childrenImagesJson'
   | 'video___childrenPageDoc___video___childrenDocsJson'
   | 'video___childrenPageDoc___video___childrenAnimationsJson'
   | 'video___childrenPageDoc___video___id'
@@ -5957,6 +7678,7 @@ export type PageDocFieldsEnum =
   | 'video___childrenPageDoc___animation___publicURL'
   | 'video___childrenPageDoc___animation___childrenImageSharp'
   | 'video___childrenPageDoc___animation___childrenPageDoc'
+  | 'video___childrenPageDoc___animation___childrenImagesJson'
   | 'video___childrenPageDoc___animation___childrenDocsJson'
   | 'video___childrenPageDoc___animation___childrenAnimationsJson'
   | 'video___childrenPageDoc___animation___id'
@@ -6017,6 +7739,7 @@ export type PageDocFieldsEnum =
   | 'video___childPageDoc___image___publicURL'
   | 'video___childPageDoc___image___childrenImageSharp'
   | 'video___childPageDoc___image___childrenPageDoc'
+  | 'video___childPageDoc___image___childrenImagesJson'
   | 'video___childPageDoc___image___childrenDocsJson'
   | 'video___childPageDoc___image___childrenAnimationsJson'
   | 'video___childPageDoc___image___id'
@@ -6057,6 +7780,7 @@ export type PageDocFieldsEnum =
   | 'video___childPageDoc___video___publicURL'
   | 'video___childPageDoc___video___childrenImageSharp'
   | 'video___childPageDoc___video___childrenPageDoc'
+  | 'video___childPageDoc___video___childrenImagesJson'
   | 'video___childPageDoc___video___childrenDocsJson'
   | 'video___childPageDoc___video___childrenAnimationsJson'
   | 'video___childPageDoc___video___id'
@@ -6097,6 +7821,7 @@ export type PageDocFieldsEnum =
   | 'video___childPageDoc___animation___publicURL'
   | 'video___childPageDoc___animation___childrenImageSharp'
   | 'video___childPageDoc___animation___childrenPageDoc'
+  | 'video___childPageDoc___animation___childrenImagesJson'
   | 'video___childPageDoc___animation___childrenDocsJson'
   | 'video___childPageDoc___animation___childrenAnimationsJson'
   | 'video___childPageDoc___animation___id'
@@ -6105,6 +7830,89 @@ export type PageDocFieldsEnum =
   | 'video___childPageDoc___fileInformation___name'
   | 'video___childPageDoc___fileInformation___ext'
   | 'video___childPageDoc___fileInformation___extension'
+  | 'video___childrenImagesJson'
+  | 'video___childrenImagesJson___id'
+  | 'video___childrenImagesJson___parent___id'
+  | 'video___childrenImagesJson___parent___children'
+  | 'video___childrenImagesJson___children'
+  | 'video___childrenImagesJson___children___id'
+  | 'video___childrenImagesJson___children___children'
+  | 'video___childrenImagesJson___internal___content'
+  | 'video___childrenImagesJson___internal___contentDigest'
+  | 'video___childrenImagesJson___internal___description'
+  | 'video___childrenImagesJson___internal___fieldOwners'
+  | 'video___childrenImagesJson___internal___ignoreType'
+  | 'video___childrenImagesJson___internal___mediaType'
+  | 'video___childrenImagesJson___internal___owner'
+  | 'video___childrenImagesJson___internal___type'
+  | 'video___childrenImagesJson___v'
+  | 'video___childrenImagesJson___fr'
+  | 'video___childrenImagesJson___ip'
+  | 'video___childrenImagesJson___op'
+  | 'video___childrenImagesJson___w'
+  | 'video___childrenImagesJson___h'
+  | 'video___childrenImagesJson___nm'
+  | 'video___childrenImagesJson___ddd'
+  | 'video___childrenImagesJson___assets'
+  | 'video___childrenImagesJson___assets___id'
+  | 'video___childrenImagesJson___assets___layers'
+  | 'video___childrenImagesJson___layers'
+  | 'video___childrenImagesJson___layers___ddd'
+  | 'video___childrenImagesJson___layers___ind'
+  | 'video___childrenImagesJson___layers___ty'
+  | 'video___childrenImagesJson___layers___nm'
+  | 'video___childrenImagesJson___layers___sr'
+  | 'video___childrenImagesJson___layers___ao'
+  | 'video___childrenImagesJson___layers___ip'
+  | 'video___childrenImagesJson___layers___op'
+  | 'video___childrenImagesJson___layers___st'
+  | 'video___childrenImagesJson___layers___bm'
+  | 'video___childrenImagesJson___layers___parent'
+  | 'video___childrenImagesJson___layers___shapes'
+  | 'video___childrenImagesJson___layers___refId'
+  | 'video___childrenImagesJson___layers___w'
+  | 'video___childrenImagesJson___layers___h'
+  | 'video___childImagesJson___id'
+  | 'video___childImagesJson___parent___id'
+  | 'video___childImagesJson___parent___children'
+  | 'video___childImagesJson___children'
+  | 'video___childImagesJson___children___id'
+  | 'video___childImagesJson___children___children'
+  | 'video___childImagesJson___internal___content'
+  | 'video___childImagesJson___internal___contentDigest'
+  | 'video___childImagesJson___internal___description'
+  | 'video___childImagesJson___internal___fieldOwners'
+  | 'video___childImagesJson___internal___ignoreType'
+  | 'video___childImagesJson___internal___mediaType'
+  | 'video___childImagesJson___internal___owner'
+  | 'video___childImagesJson___internal___type'
+  | 'video___childImagesJson___v'
+  | 'video___childImagesJson___fr'
+  | 'video___childImagesJson___ip'
+  | 'video___childImagesJson___op'
+  | 'video___childImagesJson___w'
+  | 'video___childImagesJson___h'
+  | 'video___childImagesJson___nm'
+  | 'video___childImagesJson___ddd'
+  | 'video___childImagesJson___assets'
+  | 'video___childImagesJson___assets___id'
+  | 'video___childImagesJson___assets___layers'
+  | 'video___childImagesJson___layers'
+  | 'video___childImagesJson___layers___ddd'
+  | 'video___childImagesJson___layers___ind'
+  | 'video___childImagesJson___layers___ty'
+  | 'video___childImagesJson___layers___nm'
+  | 'video___childImagesJson___layers___sr'
+  | 'video___childImagesJson___layers___ao'
+  | 'video___childImagesJson___layers___ip'
+  | 'video___childImagesJson___layers___op'
+  | 'video___childImagesJson___layers___st'
+  | 'video___childImagesJson___layers___bm'
+  | 'video___childImagesJson___layers___parent'
+  | 'video___childImagesJson___layers___shapes'
+  | 'video___childImagesJson___layers___refId'
+  | 'video___childImagesJson___layers___w'
+  | 'video___childImagesJson___layers___h'
   | 'video___childrenDocsJson'
   | 'video___childrenDocsJson___id'
   | 'video___childrenDocsJson___parent___id'
@@ -6429,6 +8237,7 @@ export type PageDocFieldsEnum =
   | 'animation___childrenPageDoc___image___publicURL'
   | 'animation___childrenPageDoc___image___childrenImageSharp'
   | 'animation___childrenPageDoc___image___childrenPageDoc'
+  | 'animation___childrenPageDoc___image___childrenImagesJson'
   | 'animation___childrenPageDoc___image___childrenDocsJson'
   | 'animation___childrenPageDoc___image___childrenAnimationsJson'
   | 'animation___childrenPageDoc___image___id'
@@ -6469,6 +8278,7 @@ export type PageDocFieldsEnum =
   | 'animation___childrenPageDoc___video___publicURL'
   | 'animation___childrenPageDoc___video___childrenImageSharp'
   | 'animation___childrenPageDoc___video___childrenPageDoc'
+  | 'animation___childrenPageDoc___video___childrenImagesJson'
   | 'animation___childrenPageDoc___video___childrenDocsJson'
   | 'animation___childrenPageDoc___video___childrenAnimationsJson'
   | 'animation___childrenPageDoc___video___id'
@@ -6509,6 +8319,7 @@ export type PageDocFieldsEnum =
   | 'animation___childrenPageDoc___animation___publicURL'
   | 'animation___childrenPageDoc___animation___childrenImageSharp'
   | 'animation___childrenPageDoc___animation___childrenPageDoc'
+  | 'animation___childrenPageDoc___animation___childrenImagesJson'
   | 'animation___childrenPageDoc___animation___childrenDocsJson'
   | 'animation___childrenPageDoc___animation___childrenAnimationsJson'
   | 'animation___childrenPageDoc___animation___id'
@@ -6569,6 +8380,7 @@ export type PageDocFieldsEnum =
   | 'animation___childPageDoc___image___publicURL'
   | 'animation___childPageDoc___image___childrenImageSharp'
   | 'animation___childPageDoc___image___childrenPageDoc'
+  | 'animation___childPageDoc___image___childrenImagesJson'
   | 'animation___childPageDoc___image___childrenDocsJson'
   | 'animation___childPageDoc___image___childrenAnimationsJson'
   | 'animation___childPageDoc___image___id'
@@ -6609,6 +8421,7 @@ export type PageDocFieldsEnum =
   | 'animation___childPageDoc___video___publicURL'
   | 'animation___childPageDoc___video___childrenImageSharp'
   | 'animation___childPageDoc___video___childrenPageDoc'
+  | 'animation___childPageDoc___video___childrenImagesJson'
   | 'animation___childPageDoc___video___childrenDocsJson'
   | 'animation___childPageDoc___video___childrenAnimationsJson'
   | 'animation___childPageDoc___video___id'
@@ -6649,6 +8462,7 @@ export type PageDocFieldsEnum =
   | 'animation___childPageDoc___animation___publicURL'
   | 'animation___childPageDoc___animation___childrenImageSharp'
   | 'animation___childPageDoc___animation___childrenPageDoc'
+  | 'animation___childPageDoc___animation___childrenImagesJson'
   | 'animation___childPageDoc___animation___childrenDocsJson'
   | 'animation___childPageDoc___animation___childrenAnimationsJson'
   | 'animation___childPageDoc___animation___id'
@@ -6657,6 +8471,89 @@ export type PageDocFieldsEnum =
   | 'animation___childPageDoc___fileInformation___name'
   | 'animation___childPageDoc___fileInformation___ext'
   | 'animation___childPageDoc___fileInformation___extension'
+  | 'animation___childrenImagesJson'
+  | 'animation___childrenImagesJson___id'
+  | 'animation___childrenImagesJson___parent___id'
+  | 'animation___childrenImagesJson___parent___children'
+  | 'animation___childrenImagesJson___children'
+  | 'animation___childrenImagesJson___children___id'
+  | 'animation___childrenImagesJson___children___children'
+  | 'animation___childrenImagesJson___internal___content'
+  | 'animation___childrenImagesJson___internal___contentDigest'
+  | 'animation___childrenImagesJson___internal___description'
+  | 'animation___childrenImagesJson___internal___fieldOwners'
+  | 'animation___childrenImagesJson___internal___ignoreType'
+  | 'animation___childrenImagesJson___internal___mediaType'
+  | 'animation___childrenImagesJson___internal___owner'
+  | 'animation___childrenImagesJson___internal___type'
+  | 'animation___childrenImagesJson___v'
+  | 'animation___childrenImagesJson___fr'
+  | 'animation___childrenImagesJson___ip'
+  | 'animation___childrenImagesJson___op'
+  | 'animation___childrenImagesJson___w'
+  | 'animation___childrenImagesJson___h'
+  | 'animation___childrenImagesJson___nm'
+  | 'animation___childrenImagesJson___ddd'
+  | 'animation___childrenImagesJson___assets'
+  | 'animation___childrenImagesJson___assets___id'
+  | 'animation___childrenImagesJson___assets___layers'
+  | 'animation___childrenImagesJson___layers'
+  | 'animation___childrenImagesJson___layers___ddd'
+  | 'animation___childrenImagesJson___layers___ind'
+  | 'animation___childrenImagesJson___layers___ty'
+  | 'animation___childrenImagesJson___layers___nm'
+  | 'animation___childrenImagesJson___layers___sr'
+  | 'animation___childrenImagesJson___layers___ao'
+  | 'animation___childrenImagesJson___layers___ip'
+  | 'animation___childrenImagesJson___layers___op'
+  | 'animation___childrenImagesJson___layers___st'
+  | 'animation___childrenImagesJson___layers___bm'
+  | 'animation___childrenImagesJson___layers___parent'
+  | 'animation___childrenImagesJson___layers___shapes'
+  | 'animation___childrenImagesJson___layers___refId'
+  | 'animation___childrenImagesJson___layers___w'
+  | 'animation___childrenImagesJson___layers___h'
+  | 'animation___childImagesJson___id'
+  | 'animation___childImagesJson___parent___id'
+  | 'animation___childImagesJson___parent___children'
+  | 'animation___childImagesJson___children'
+  | 'animation___childImagesJson___children___id'
+  | 'animation___childImagesJson___children___children'
+  | 'animation___childImagesJson___internal___content'
+  | 'animation___childImagesJson___internal___contentDigest'
+  | 'animation___childImagesJson___internal___description'
+  | 'animation___childImagesJson___internal___fieldOwners'
+  | 'animation___childImagesJson___internal___ignoreType'
+  | 'animation___childImagesJson___internal___mediaType'
+  | 'animation___childImagesJson___internal___owner'
+  | 'animation___childImagesJson___internal___type'
+  | 'animation___childImagesJson___v'
+  | 'animation___childImagesJson___fr'
+  | 'animation___childImagesJson___ip'
+  | 'animation___childImagesJson___op'
+  | 'animation___childImagesJson___w'
+  | 'animation___childImagesJson___h'
+  | 'animation___childImagesJson___nm'
+  | 'animation___childImagesJson___ddd'
+  | 'animation___childImagesJson___assets'
+  | 'animation___childImagesJson___assets___id'
+  | 'animation___childImagesJson___assets___layers'
+  | 'animation___childImagesJson___layers'
+  | 'animation___childImagesJson___layers___ddd'
+  | 'animation___childImagesJson___layers___ind'
+  | 'animation___childImagesJson___layers___ty'
+  | 'animation___childImagesJson___layers___nm'
+  | 'animation___childImagesJson___layers___sr'
+  | 'animation___childImagesJson___layers___ao'
+  | 'animation___childImagesJson___layers___ip'
+  | 'animation___childImagesJson___layers___op'
+  | 'animation___childImagesJson___layers___st'
+  | 'animation___childImagesJson___layers___bm'
+  | 'animation___childImagesJson___layers___parent'
+  | 'animation___childImagesJson___layers___shapes'
+  | 'animation___childImagesJson___layers___refId'
+  | 'animation___childImagesJson___layers___w'
+  | 'animation___childImagesJson___layers___h'
   | 'animation___childrenDocsJson'
   | 'animation___childrenDocsJson___id'
   | 'animation___childrenDocsJson___parent___id'
@@ -6853,6 +8750,280 @@ export type PageDocSortInput = {
   readonly order?: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
+export type ImagesJsonConnection = {
+  readonly __typename?: 'ImagesJsonConnection';
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<ImagesJsonEdge>;
+  readonly nodes: ReadonlyArray<ImagesJson>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<ImagesJsonGroupConnection>;
+};
+
+
+export type ImagesJsonConnectionDistinctArgs = {
+  field: ImagesJsonFieldsEnum;
+};
+
+
+export type ImagesJsonConnectionMaxArgs = {
+  field: ImagesJsonFieldsEnum;
+};
+
+
+export type ImagesJsonConnectionMinArgs = {
+  field: ImagesJsonFieldsEnum;
+};
+
+
+export type ImagesJsonConnectionSumArgs = {
+  field: ImagesJsonFieldsEnum;
+};
+
+
+export type ImagesJsonConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ImagesJsonFieldsEnum;
+};
+
+export type ImagesJsonEdge = {
+  readonly __typename?: 'ImagesJsonEdge';
+  readonly next?: Maybe<ImagesJson>;
+  readonly node: ImagesJson;
+  readonly previous?: Maybe<ImagesJson>;
+};
+
+export type ImagesJsonFieldsEnum =
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'v'
+  | 'fr'
+  | 'ip'
+  | 'op'
+  | 'w'
+  | 'h'
+  | 'nm'
+  | 'ddd'
+  | 'assets'
+  | 'assets___id'
+  | 'assets___layers'
+  | 'assets___layers___ddd'
+  | 'assets___layers___ind'
+  | 'assets___layers___ty'
+  | 'assets___layers___nm'
+  | 'assets___layers___parent'
+  | 'assets___layers___sr'
+  | 'assets___layers___ao'
+  | 'assets___layers___hasMask'
+  | 'assets___layers___masksProperties'
+  | 'assets___layers___masksProperties___inv'
+  | 'assets___layers___masksProperties___mode'
+  | 'assets___layers___masksProperties___nm'
+  | 'assets___layers___shapes'
+  | 'assets___layers___shapes___ty'
+  | 'assets___layers___shapes___it'
+  | 'assets___layers___shapes___nm'
+  | 'assets___layers___shapes___np'
+  | 'assets___layers___shapes___cix'
+  | 'assets___layers___shapes___bm'
+  | 'assets___layers___shapes___ix'
+  | 'assets___layers___shapes___mn'
+  | 'assets___layers___shapes___hd'
+  | 'assets___layers___ip'
+  | 'assets___layers___op'
+  | 'assets___layers___st'
+  | 'assets___layers___bm'
+  | 'layers'
+  | 'layers___ddd'
+  | 'layers___ind'
+  | 'layers___ty'
+  | 'layers___nm'
+  | 'layers___sr'
+  | 'layers___ks___o___a'
+  | 'layers___ks___o___k'
+  | 'layers___ks___o___ix'
+  | 'layers___ks___r___a'
+  | 'layers___ks___r___k'
+  | 'layers___ks___r___ix'
+  | 'layers___ks___p___a'
+  | 'layers___ks___p___k'
+  | 'layers___ks___p___ix'
+  | 'layers___ks___p___l'
+  | 'layers___ks___a___a'
+  | 'layers___ks___a___k'
+  | 'layers___ks___a___ix'
+  | 'layers___ks___a___l'
+  | 'layers___ks___s___a'
+  | 'layers___ks___s___ix'
+  | 'layers___ks___s___l'
+  | 'layers___ao'
+  | 'layers___ip'
+  | 'layers___op'
+  | 'layers___st'
+  | 'layers___bm'
+  | 'layers___parent'
+  | 'layers___shapes'
+  | 'layers___shapes___ty'
+  | 'layers___shapes___it'
+  | 'layers___shapes___it___ind'
+  | 'layers___shapes___it___ty'
+  | 'layers___shapes___it___ix'
+  | 'layers___shapes___it___nm'
+  | 'layers___shapes___it___mn'
+  | 'layers___shapes___it___hd'
+  | 'layers___shapes___it___bm'
+  | 'layers___shapes___it___it'
+  | 'layers___shapes___it___np'
+  | 'layers___shapes___it___cix'
+  | 'layers___shapes___it___lc'
+  | 'layers___shapes___it___lj'
+  | 'layers___shapes___it___mm'
+  | 'layers___shapes___nm'
+  | 'layers___shapes___np'
+  | 'layers___shapes___cix'
+  | 'layers___shapes___bm'
+  | 'layers___shapes___ix'
+  | 'layers___shapes___mn'
+  | 'layers___shapes___hd'
+  | 'layers___refId'
+  | 'layers___w'
+  | 'layers___h';
+
+export type ImagesJsonGroupConnection = {
+  readonly __typename?: 'ImagesJsonGroupConnection';
+  readonly totalCount: Scalars['Int'];
+  readonly edges: ReadonlyArray<ImagesJsonEdge>;
+  readonly nodes: ReadonlyArray<ImagesJson>;
+  readonly pageInfo: PageInfo;
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly max?: Maybe<Scalars['Float']>;
+  readonly min?: Maybe<Scalars['Float']>;
+  readonly sum?: Maybe<Scalars['Float']>;
+  readonly group: ReadonlyArray<ImagesJsonGroupConnection>;
+  readonly field: Scalars['String'];
+  readonly fieldValue?: Maybe<Scalars['String']>;
+};
+
+
+export type ImagesJsonGroupConnectionDistinctArgs = {
+  field: ImagesJsonFieldsEnum;
+};
+
+
+export type ImagesJsonGroupConnectionMaxArgs = {
+  field: ImagesJsonFieldsEnum;
+};
+
+
+export type ImagesJsonGroupConnectionMinArgs = {
+  field: ImagesJsonFieldsEnum;
+};
+
+
+export type ImagesJsonGroupConnectionSumArgs = {
+  field: ImagesJsonFieldsEnum;
+};
+
+
+export type ImagesJsonGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: ImagesJsonFieldsEnum;
+};
+
+export type ImagesJsonSortInput = {
+  readonly fields?: Maybe<ReadonlyArray<Maybe<ImagesJsonFieldsEnum>>>;
+  readonly order?: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
+};
+
 export type DocsJsonConnection = {
   readonly __typename?: 'DocsJsonConnection';
   readonly totalCount: Scalars['Int'];
@@ -7040,6 +9211,31 @@ export type DocsJsonFieldsEnum =
   | 'module___image___childPageDoc___children'
   | 'module___image___childPageDoc___title'
   | 'module___image___childPageDoc___description'
+  | 'module___image___childrenImagesJson'
+  | 'module___image___childrenImagesJson___id'
+  | 'module___image___childrenImagesJson___children'
+  | 'module___image___childrenImagesJson___v'
+  | 'module___image___childrenImagesJson___fr'
+  | 'module___image___childrenImagesJson___ip'
+  | 'module___image___childrenImagesJson___op'
+  | 'module___image___childrenImagesJson___w'
+  | 'module___image___childrenImagesJson___h'
+  | 'module___image___childrenImagesJson___nm'
+  | 'module___image___childrenImagesJson___ddd'
+  | 'module___image___childrenImagesJson___assets'
+  | 'module___image___childrenImagesJson___layers'
+  | 'module___image___childImagesJson___id'
+  | 'module___image___childImagesJson___children'
+  | 'module___image___childImagesJson___v'
+  | 'module___image___childImagesJson___fr'
+  | 'module___image___childImagesJson___ip'
+  | 'module___image___childImagesJson___op'
+  | 'module___image___childImagesJson___w'
+  | 'module___image___childImagesJson___h'
+  | 'module___image___childImagesJson___nm'
+  | 'module___image___childImagesJson___ddd'
+  | 'module___image___childImagesJson___assets'
+  | 'module___image___childImagesJson___layers'
   | 'module___image___childrenDocsJson'
   | 'module___image___childrenDocsJson___id'
   | 'module___image___childrenDocsJson___children'
@@ -7136,6 +9332,31 @@ export type DocsJsonFieldsEnum =
   | 'module___video___childPageDoc___children'
   | 'module___video___childPageDoc___title'
   | 'module___video___childPageDoc___description'
+  | 'module___video___childrenImagesJson'
+  | 'module___video___childrenImagesJson___id'
+  | 'module___video___childrenImagesJson___children'
+  | 'module___video___childrenImagesJson___v'
+  | 'module___video___childrenImagesJson___fr'
+  | 'module___video___childrenImagesJson___ip'
+  | 'module___video___childrenImagesJson___op'
+  | 'module___video___childrenImagesJson___w'
+  | 'module___video___childrenImagesJson___h'
+  | 'module___video___childrenImagesJson___nm'
+  | 'module___video___childrenImagesJson___ddd'
+  | 'module___video___childrenImagesJson___assets'
+  | 'module___video___childrenImagesJson___layers'
+  | 'module___video___childImagesJson___id'
+  | 'module___video___childImagesJson___children'
+  | 'module___video___childImagesJson___v'
+  | 'module___video___childImagesJson___fr'
+  | 'module___video___childImagesJson___ip'
+  | 'module___video___childImagesJson___op'
+  | 'module___video___childImagesJson___w'
+  | 'module___video___childImagesJson___h'
+  | 'module___video___childImagesJson___nm'
+  | 'module___video___childImagesJson___ddd'
+  | 'module___video___childImagesJson___assets'
+  | 'module___video___childImagesJson___layers'
   | 'module___video___childrenDocsJson'
   | 'module___video___childrenDocsJson___id'
   | 'module___video___childrenDocsJson___children'
@@ -7232,6 +9453,31 @@ export type DocsJsonFieldsEnum =
   | 'module___animation___childPageDoc___children'
   | 'module___animation___childPageDoc___title'
   | 'module___animation___childPageDoc___description'
+  | 'module___animation___childrenImagesJson'
+  | 'module___animation___childrenImagesJson___id'
+  | 'module___animation___childrenImagesJson___children'
+  | 'module___animation___childrenImagesJson___v'
+  | 'module___animation___childrenImagesJson___fr'
+  | 'module___animation___childrenImagesJson___ip'
+  | 'module___animation___childrenImagesJson___op'
+  | 'module___animation___childrenImagesJson___w'
+  | 'module___animation___childrenImagesJson___h'
+  | 'module___animation___childrenImagesJson___nm'
+  | 'module___animation___childrenImagesJson___ddd'
+  | 'module___animation___childrenImagesJson___assets'
+  | 'module___animation___childrenImagesJson___layers'
+  | 'module___animation___childImagesJson___id'
+  | 'module___animation___childImagesJson___children'
+  | 'module___animation___childImagesJson___v'
+  | 'module___animation___childImagesJson___fr'
+  | 'module___animation___childImagesJson___ip'
+  | 'module___animation___childImagesJson___op'
+  | 'module___animation___childImagesJson___w'
+  | 'module___animation___childImagesJson___h'
+  | 'module___animation___childImagesJson___nm'
+  | 'module___animation___childImagesJson___ddd'
+  | 'module___animation___childImagesJson___assets'
+  | 'module___animation___childImagesJson___layers'
   | 'module___animation___childrenDocsJson'
   | 'module___animation___childrenDocsJson___id'
   | 'module___animation___childrenDocsJson___children'

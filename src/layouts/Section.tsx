@@ -1,3 +1,4 @@
+import { useFirstVisibleToUser } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
 
@@ -9,6 +10,9 @@ export const CoreSection: React.FC<{
   double?: boolean;
   preChildren?: React.ReactNode;
   postChildren?: React.ReactNode;
+  visibleThreshold?: number;
+  visibleDelay?: number;
+  onVisible?: () => void;
 }> = ({
   componentName,
   className,
@@ -18,7 +22,16 @@ export const CoreSection: React.FC<{
   double,
   preChildren,
   postChildren,
+  visibleThreshold,
+  visibleDelay,
+  onVisible,
 }) => {
+  const [ref] = useFirstVisibleToUser<HTMLDivElement>(
+    visibleThreshold,
+    visibleDelay,
+    onVisible
+  );
+
   return (
     <Element
       data-component={componentName}
@@ -29,7 +42,9 @@ export const CoreSection: React.FC<{
       )}
     >
       {preChildren}
-      <div className={classNames(contentClassName)}>{children}</div>
+      <div ref={ref} className={classNames(contentClassName)}>
+        {children}
+      </div>
       {postChildren}
     </Element>
   );
@@ -45,6 +60,7 @@ export const Section: React.FC<{
   element?: keyof JSX.IntrinsicElements;
   preChildren?: React.ReactNode;
   postChildren?: React.ReactNode;
+  onVisible?: () => void;
 }> = ({
   componentName,
   className,
@@ -56,6 +72,7 @@ export const Section: React.FC<{
   element,
   preChildren,
   postChildren,
+  onVisible,
 }) => {
   const spacingClassName =
     topSpacing && bottomSpacing
@@ -78,6 +95,7 @@ export const Section: React.FC<{
       double={double}
       preChildren={preChildren}
       postChildren={postChildren}
+      onVisible={onVisible}
     >
       {children}
     </CoreSection>

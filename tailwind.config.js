@@ -150,18 +150,45 @@ module.exports = {
         unset: "unset",
       },
       keyframes: {
-        fromBottom: {
-          "0%": { transform: "translateY(100vh)" },
-          "100%": { transform: "translateY(0)" },
+        "enter-from-top": {
+          "0%": { transform: "translateY(-10vw)", opacity: 0 },
+          "30%": { opacity: 1 },
+          "100%": {
+            transform: "translateY(0)",
+          },
         },
-        toTop: {
-          "0%": { transform: "translateY(0)" },
-          "100%": { transform: "translateY(-100vh)" },
+        "enter-from-bottom": {
+          "0%": { transform: "translateY(10vw)", opacity: 0 },
+          "30%": { opacity: 1 },
+          "100%": {
+            transform: "translateY(0)",
+          },
+        },
+        "enter-from-left": {
+          "0%": { transform: "translateX(-10vw)", opacity: 0 },
+          "30%": { opacity: 1 },
+          "100%": {
+            transform: "translateX(0)",
+          },
+        },
+        "enter-from-right": {
+          "0%": { transform: "translateX(10vw)", opacity: 0 },
+          "30%": { opacity: 1 },
+          "100%": {
+            transform: "translateX(0)",
+          },
+        },
+        appear: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
         },
       },
       animation: {
-        fromBottom: "fromBottom 0.5s ease-in",
-        toTop: "toTop 0.5s ease-out",
+        "enter-from-top": `enter-from-top ${animationDuration} ${animationTiming} both`,
+        "enter-from-bottom": `enter-from-bottom ${animationDuration} ${animationTiming} both`,
+        "enter-from-left": `enter-from-left ${animationDuration} ${animationTiming} both`,
+        "enter-from-right": `enter-from-right ${animationDuration} ${animationTiming} both`,
+        appear: `appear ${animationDuration} ${animationTiming} both`,
       },
       borderWidth: {
         6: "6px",
@@ -177,6 +204,7 @@ module.exports = {
     },
   },
   plugins: [
+    addAnimationUtilities,
     require("@tailwindcss/aspect-ratio"),
     require("tailwindcss-debug-screens"),
     require("@tailwindcss/forms"),

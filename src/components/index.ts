@@ -8,3 +8,4 @@ export * from "./Product";
 export * from "./Person";
 export * from "./Team";
 export * from "./Icons";
+export * from "./Message";

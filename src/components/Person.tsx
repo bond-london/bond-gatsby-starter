@@ -1,20 +1,30 @@
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+import {
+  AutoVisual,
+  VisualAsset,
+} from "@bond-london/gatsby-graphcms-components";
 import React from "react";
 
 export interface Individual {
-  image: IGatsbyImageData;
+  visual: VisualAsset;
+  loop?: boolean;
   name: string;
   position: string;
 }
 
-export const Person: React.FC<Individual> = ({ image, name, position }) => {
+export const Person: React.FC<Individual> = ({
+  visual,
+  loop,
+  name,
+  position,
+}) => {
   return (
     <div className="relative text-center">
       <div className="aspect-w-1 aspect-h-1">
-        <GatsbyImage
-          image={image}
-          alt={name}
-          imgClassName="bg-washed-blue rounded-lg"
+        <AutoVisual
+          visual={visual}
+          loop={loop}
+          fitParent={true}
+          className="bg-neon-green rounded-lg"
         />
       </div>
       <h3 className="h3 pt-s">{name}</h3>
