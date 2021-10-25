@@ -41,6 +41,7 @@ const defaultNumbers = {
 };
 
 const spacing = {
+  xxxs: 8,
   xxs: 16,
   xs: 24,
   s: 40,

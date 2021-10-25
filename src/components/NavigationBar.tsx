@@ -5,7 +5,7 @@ import { LinkInformation, LinkOrButton } from ".";
 import { Section } from "../layouts";
 
 export interface NamedLinkInformation extends LinkInformation {
-  name: string;
+  name?: string;
 }
 
 export interface MenuItem extends NamedLinkInformation {
@@ -53,7 +53,7 @@ export const NavigationBar: React.FC<{
             <LinkOrButton
               internal={item.internal}
               external={item.external}
-              asButton={item.isButton}
+              isButton={item.isButton}
             >
               {item.name}
             </LinkOrButton>

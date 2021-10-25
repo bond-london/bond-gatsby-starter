@@ -1,8 +1,10 @@
 import classNames from "classnames";
 import { Link } from "gatsby";
 import React from "react";
+import { Icon, IconType } from ".";
 
 export interface LinkInformation {
+  icon?: IconType;
   internal?: string;
   external?: string;
   newPage?: boolean;
@@ -11,7 +13,7 @@ export interface LinkInformation {
 export const LinkOrButton: React.FC<
   LinkInformation & {
     className?: string;
-    asButton?: boolean;
+    isButton?: boolean;
     name?: string;
     action?: () => void;
   }
@@ -21,19 +23,27 @@ export const LinkOrButton: React.FC<
   external,
   newPage,
   action,
-  asButton,
+  isButton,
   name,
   children,
+  icon,
 }) => {
   const buttonClassName = classNames(
-    asButton && "button green-button",
+    isButton && "button green-button",
     className
+  );
+
+  const inside = (
+    <>
+      {icon && <Icon type={icon} className="mr-xs h-xs" />}
+      {name || children}
+    </>
   );
 
   if (internal) {
     return (
       <Link className={buttonClassName} to={internal}>
-        {name || children}
+        {inside}
       </Link>
     );
   }
@@ -43,17 +53,17 @@ export const LinkOrButton: React.FC<
       return (
         <a
           href={external}
-          className={buttonClassName}
+          className={classNames(buttonClassName, "inline-block")}
           target="_blank"
           rel="noreferrer"
         >
-          {name || children}
+          {inside}
         </a>
       );
     }
     return (
       <a className={buttonClassName} href={external}>
-        {name || children}
+        {inside}
       </a>
     );
   }
@@ -61,14 +71,10 @@ export const LinkOrButton: React.FC<
   if (action) {
     return (
       <button onClick={action} className={buttonClassName}>
-        {name || children}
+        {inside}
       </button>
     );
   }
 
-  return (
-    <p className={classNames(buttonClassName, "inline-flex outline-error")}>
-      {name || children}
-    </p>
-  );
+  return <p className={classNames(buttonClassName, "inline-flex")}>{inside}</p>;
 };

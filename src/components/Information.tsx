@@ -10,7 +10,7 @@ import { LinkOrButton, NamedLinkInformation } from ".";
 import { Section } from "../layouts";
 import { useFirstVisible } from "../utils";
 
-export const Collection: React.FC<{
+export const Information: React.FC<{
   left?: boolean;
   visual: VisualAsset;
   loop?: boolean;

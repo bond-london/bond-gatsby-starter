@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import {
-  Collection,
+  Information,
   DesignLayout,
   Headline,
   Hero,
@@ -11,6 +11,8 @@ import {
   NavigationBar,
   Product,
   Team,
+  FooterInformation,
+  Footer,
 } from "../../components";
 import { Section } from "../../layouts";
 import { File } from "../../generated/graphql-types";
@@ -34,6 +36,75 @@ const menu: Menu = {
       newPage: true,
       isButton: true,
     },
+  ],
+};
+
+const footer: FooterInformation = {
+  columns: [
+    [
+      { type: "Logo" },
+      {
+        type: "Text",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      },
+      { type: "Text", text: "Follow us" },
+      {
+        type: "Links",
+        links: [
+          {
+            icon: "Facebook",
+            external: "https://www.facebook.com",
+            newPage: true,
+          },
+          {
+            icon: "LinkedIn",
+            external: "https://www.linkedin.com",
+            newPage: true,
+          },
+        ],
+      },
+    ],
+    [
+      { type: "Text", text: "Information" },
+      { type: "Links", links: [{ name: "Home", internal: "/" }] },
+    ],
+    [
+      { type: "Text", text: "Contact us" },
+      {
+        type: "Links",
+        links: [
+          { icon: "Location", name: "22 Acacia Avenue, London, TW17 0AY" },
+        ],
+      },
+      { type: "Links", links: [{ icon: "Phone", name: "(555) 666 6666" }] },
+      {
+        type: "Links",
+        links: [
+          {
+            icon: "Email",
+            name: "eddie@ironmaiden.com",
+            external: "mailto:eddie@ironmaiden.com",
+          },
+        ],
+      },
+    ],
+  ],
+  lastRow: [
+    [
+      {
+        type: "Links",
+        separator: "/",
+        links: [
+          { name: "Privacy Policy", internal: "/privacy" },
+          {
+            name: "Google",
+            external: "https://www.google.co.uk",
+            newPage: true,
+          },
+        ],
+      },
+    ],
+    [{ type: "Text", text: "Copyright © 2021 | Bond London" }],
   ],
 };
 
@@ -144,21 +215,21 @@ const Components: React.FC = () => {
           <LinkOrButton
             internal="/dev"
             className="col-start-1 col-span-2"
-            asButton={true}
+            isButton={true}
           >
             Development
           </LinkOrButton>
-          <LinkOrButton external="/dev" className="col-span-2" asButton={true}>
+          <LinkOrButton external="/dev" className="col-span-2" isButton={true}>
             Development (ext)
           </LinkOrButton>
           <LinkOrButton
             action={onButtonClick}
             className="col-span-2"
-            asButton={true}
+            isButton={true}
           >
             Click
           </LinkOrButton>
-          <LinkOrButton className="col-span-2" asButton={true}>
+          <LinkOrButton className="col-span-2" isButton={true}>
             Nothing
           </LinkOrButton>
 
@@ -257,7 +328,7 @@ const Components: React.FC = () => {
       </ComponentContainer>
 
       <ComponentContainer name="Collection left">
-        <Collection
+        <Information
           left={true}
           visual={{ image: heroThumbnail, alt: "Mountain" }}
           title="Lorem ipsum dolor sit amet"
@@ -269,7 +340,7 @@ const Components: React.FC = () => {
       </ComponentContainer>
 
       <ComponentContainer name="Collection right with video">
-        <Collection
+        <Information
           left={false}
           visual={{
             image: heroThumbnail,
@@ -341,6 +412,10 @@ const Components: React.FC = () => {
           )}
           visual={{ image: heroThumbnail, alt: "Mountain" }}
         />
+      </ComponentContainer>
+
+      <ComponentContainer name="Footer">
+        <Footer {...footer} />
       </ComponentContainer>
     </DesignLayout>
   );

@@ -24,7 +24,7 @@ export const Person: React.FC<Individual> = ({
           visual={visual}
           loop={loop}
           fitParent={true}
-          className="bg-neon-green rounded-lg"
+          className="bg-neon-green rounded-lg transform-gpu"
         />
       </div>
       <h3 className="h3 pt-s">{name}</h3>
