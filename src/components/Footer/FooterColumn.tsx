@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import { FooterEntry } from ".";
+import { FooterEntry, sizeToHeightClassName, sizeToTextClassName } from ".";
 import { BondLogoIcon } from "..";
 import { FooterMenuEntries } from "./FooterMenuEntries";
 
@@ -11,13 +11,12 @@ export const FooterColumn: React.FC<{
   return (
     <div className={classNames(className, "space-y-s")}>
       {entries.map((entry, index) => {
-        const defaultClassName = index === 0 ? "h-m" : "";
         switch (entry.type) {
           case "Logo":
             return (
               <BondLogoIcon
                 key={index}
-                className={classNames(defaultClassName, "w-m")}
+                className={classNames(sizeToHeightClassName(entry.size))}
               />
             );
           case "Text":
@@ -25,8 +24,9 @@ export const FooterColumn: React.FC<{
               <p
                 key={index}
                 className={classNames(
-                  defaultClassName,
-                  index === 0 ? "h3" : "p2"
+                  "flex items-center",
+                  sizeToTextClassName(entry.size),
+                  sizeToHeightClassName(entry.size)
                 )}
               >
                 {entry.text}
@@ -38,6 +38,7 @@ export const FooterColumn: React.FC<{
             const hasIcon = !!links.find((l) => !!l.icon);
             return (
               <FooterMenuEntries
+                size={entry.size}
                 separator={entry.separator}
                 key={index}
                 links={links}

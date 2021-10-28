@@ -42,14 +42,16 @@ const menu: Menu = {
 const footer: FooterInformation = {
   columns: [
     [
-      { type: "Logo" },
+      { type: "Logo", size: "Large" },
       {
         type: "Text",
+        size: "Medium",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       },
-      { type: "Text", text: "Follow us" },
+      { type: "Text", text: "Follow us", size: "Large" },
       {
         type: "Links",
+        size: "Medium",
         links: [
           {
             icon: "Facebook",
@@ -65,20 +67,30 @@ const footer: FooterInformation = {
       },
     ],
     [
-      { type: "Text", text: "Information" },
-      { type: "Links", links: [{ name: "Home", internal: "/" }] },
-    ],
-    [
-      { type: "Text", text: "Contact us" },
+      { type: "Text", text: "Information", size: "Large" },
       {
         type: "Links",
+        size: "Medium",
+        links: [{ name: "Home", internal: "/" }],
+      },
+    ],
+    [
+      { type: "Text", text: "Contact us", size: "Large" },
+      {
+        type: "Links",
+        size: "Medium",
         links: [
           { icon: "Location", name: "22 Acacia Avenue, London, TW17 0AY" },
         ],
       },
-      { type: "Links", links: [{ icon: "Phone", name: "(555) 666 6666" }] },
       {
         type: "Links",
+        size: "Medium",
+        links: [{ icon: "Phone", name: "(555) 666 6666" }],
+      },
+      {
+        type: "Links",
+        size: "Medium",
         links: [
           {
             icon: "Email",
@@ -94,6 +106,7 @@ const footer: FooterInformation = {
       {
         type: "Links",
         separator: "/",
+        size: "Small",
         links: [
           { name: "Privacy Policy", internal: "/privacy" },
           {
@@ -104,7 +117,13 @@ const footer: FooterInformation = {
         ],
       },
     ],
-    [{ type: "Text", text: "Copyright © 2021 | Bond London" }],
+    [
+      {
+        type: "Text",
+        size: "Small",
+        text: "Copyright © ##BUILD_YEAR## | Bond London",
+      },
+    ],
   ],
 };
 

@@ -81,5 +81,8 @@
   },
   "bugs": {
     "url": "https://github.com/bond-london/bond-gatsby-starter/issues"
+  },
+  "devDependencies": {
+    "hint": "^6.1.6"
   }
 }

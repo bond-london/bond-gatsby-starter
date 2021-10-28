@@ -13,6 +13,7 @@ export interface LinkInformation {
 export const LinkOrButton: React.FC<
   LinkInformation & {
     className?: string;
+    iconClassName?: string;
     isButton?: boolean;
     name?: string;
     action?: () => void;
@@ -27,6 +28,7 @@ export const LinkOrButton: React.FC<
   name,
   children,
   icon,
+  iconClassName,
 }) => {
   const buttonClassName = classNames(
     isButton && "button green-button",
@@ -35,7 +37,9 @@ export const LinkOrButton: React.FC<
 
   const inside = (
     <>
-      {icon && <Icon type={icon} className="mr-xs h-xs" />}
+      {icon && (
+        <Icon type={icon} className={classNames("mr-xs", iconClassName)} />
+      )}
       {name || children}
     </>
   );

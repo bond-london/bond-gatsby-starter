@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import { FooterEntry } from ".";
+import { FooterEntry, sizeToTextClassName } from ".";
 import { FooterMenuEntries } from "./FooterMenuEntries";
 
 export const FooterRow: React.FC<{
@@ -15,7 +15,13 @@ export const FooterRow: React.FC<{
             switch (entry.type) {
               case "Text":
                 return (
-                  <p key={index} className="p4 inline-block">
+                  <p
+                    key={index}
+                    className={classNames(
+                      sizeToTextClassName(entry.size),
+                      "inline-block"
+                    )}
+                  >
                     {entry.text}
                   </p>
                 );
@@ -26,6 +32,7 @@ export const FooterRow: React.FC<{
                 const hasIcon = !!links.find((l) => !!l.icon);
                 return (
                   <FooterMenuEntries
+                    size={entry.size}
                     separator={entry.separator}
                     key={index}
                     links={links}
