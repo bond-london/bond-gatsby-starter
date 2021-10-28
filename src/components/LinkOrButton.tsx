@@ -13,6 +13,7 @@ export interface LinkInformation {
 export const LinkOrButton: React.FC<
   LinkInformation & {
     className?: string;
+    buttonClassName?: string;
     iconClassName?: string;
     isButton?: boolean;
     name?: string;
@@ -29,9 +30,11 @@ export const LinkOrButton: React.FC<
   children,
   icon,
   iconClassName,
+  buttonClassName,
 }) => {
-  const buttonClassName = classNames(
-    isButton && "button green-button",
+  const realButtonClassName = classNames(
+    isButton && "button",
+    isButton && (buttonClassName || "green-button"),
     className
   );
 
@@ -46,7 +49,7 @@ export const LinkOrButton: React.FC<
 
   if (internal) {
     return (
-      <Link className={buttonClassName} to={internal}>
+      <Link className={realButtonClassName} to={internal}>
         {inside}
       </Link>
     );
@@ -57,7 +60,7 @@ export const LinkOrButton: React.FC<
       return (
         <a
           href={external}
-          className={classNames(buttonClassName, "inline-block")}
+          className={classNames(realButtonClassName, "inline-block")}
           target="_blank"
           rel="noreferrer"
         >
@@ -66,7 +69,7 @@ export const LinkOrButton: React.FC<
       );
     }
     return (
-      <a className={buttonClassName} href={external}>
+      <a className={realButtonClassName} href={external}>
         {inside}
       </a>
     );
@@ -74,11 +77,13 @@ export const LinkOrButton: React.FC<
 
   if (action) {
     return (
-      <button onClick={action} className={buttonClassName}>
+      <button onClick={action} className={realButtonClassName}>
         {inside}
       </button>
     );
   }
 
-  return <p className={classNames(buttonClassName, "inline-flex")}>{inside}</p>;
+  return (
+    <p className={classNames(realButtonClassName, "inline-flex")}>{inside}</p>
+  );
 };

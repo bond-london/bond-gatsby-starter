@@ -15,36 +15,71 @@
     @apply font-poppins font-regular text-36-125 lg:text-42-125;
   }
 
+  .h1 .icon {
+    @apply h-s lg:h-m;
+  }
+
   .h2 {
     @apply font-poppins font-regular text-24-125 lg:text-36-125;
+  }
+
+  .h2 .icon {
+    @apply h-xs lg:h-s;
   }
 
   .h3 {
     @apply font-poppins font-regular text-22-140 lg:text-24-125;
   }
 
+  .h3 .icon {
+    @apply h-xs;
+  }
+
   .p1 {
     @apply font-sofiapro font-regular text-18-140 lg:text-22-140;
   }
 
+  .p1 .icon {
+    @apply h-xs;
+  }
+
   .p1sb {
     @apply font-sofiapro font-semibold text-18-140 lg:text-22-140;
+  }
+  .p1sb .icon {
+    @apply h-xs;
   }
 
   .p2 {
     @apply font-sofiapro font-regular text-18-140;
   }
 
+  .p2 .icon {
+    @apply h-xs;
+  }
+
   .p2sb {
     @apply font-sofiapro font-semibold text-18-140;
+  }
+
+  .p2sb .icon {
+    @apply h-xs;
   }
 
   .p3 {
     @apply font-sofiapro font-regular text-16-140;
   }
 
+  .p3 .icon {
+    @apply h-xs;
+  }
+
   .p4 {
     @apply font-sofiapro font-regular text-14-140;
+  }
+
+  .p4 .icon {
+    @apply h-xxs;
   }
 
   .container-grid {
@@ -68,10 +103,14 @@
   }
 
   .button {
-    @apply px-xxs h-s flex justify-center items-center;
+    @apply px-xxs h-s inline-flex justify-center items-center;
   }
 
   .green-button {
     @apply bg-neon-green hover:bg-dark-neon-green text-dark-blue;
+  }
+
+  .blue-button {
+    @apply bg-blue hover:bg-blue-d9 text-dark-blue;
   }
 }

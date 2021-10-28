@@ -10,7 +10,7 @@ export const ArrowBackIcon: React.FC<Props> = ({ className }) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     className={classNames(
-      "inline-block stroke-current fill-current",
+      "icon inline-block stroke-current fill-current",
       className
     )}
   >
@@ -23,7 +23,7 @@ export const ArrowForwardIcon: React.FC<Props> = ({ className }) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     className={classNames(
-      "inline-block stroke-current fill-current",
+      "icon inline-block stroke-current fill-current",
       className
     )}
   >
@@ -35,7 +35,7 @@ export const FacebookIcon: React.FC<Props> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    className={classNames("inline-block fill-current", className)}
+    className={classNames("icon inline-block fill-current", className)}
   >
     <path d="M17 3.5a.5.5 0 0 0-.5-.5H14a4.77 4.77 0 0 0-5 4.5v2.7H6.5a.5.5 0 0 0-.5.5v2.6a.5.5 0 0 0 .5.5H9v6.7a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-6.7h2.62a.5.5 0 0 0 .49-.37l.72-2.6a.5.5 0 0 0-.48-.63H13V7.5a1 1 0 0 1 1-.9h2.5a.5.5 0 0 0 .5-.5z" />
   </svg>
@@ -45,7 +45,7 @@ export const LinkedInIcon: React.FC<Props> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    className={classNames("inline-block fill-current", className)}
+    className={classNames("icon inline-block fill-current", className)}
   >
     <path d="M15.15 8.4a5.83 5.83 0 0 0-5.85 5.82v5.88a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a1.94 1.94 0 0 1 2.15-1.93 2 2 0 0 1 1.75 2v5.81a.9.9 0 0 0 .9.9h2.1a.9.9 0 0 0 .9-.9v-5.88a5.83 5.83 0 0 0-5.85-5.82z" />
     <rect x="3" y="9.3" width="4.5" height="11.7" rx=".9" ry=".9" />
@@ -57,7 +57,7 @@ export const LocationIcon: React.FC<Props> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    className={classNames("inline-block fill-current", className)}
+    className={classNames("icon inline-block fill-current", className)}
   >
     <path d="M12 2a8 8 0 0 0-8 7.92c0 5.48 7.05 11.58 7.35 11.84a1 1 0 0 0 1.3 0C13 21.5 20 15.4 20 9.92A8 8 0 0 0 12 2zm0 11a3.5 3.5 0 1 1 3.5-3.5A3.5 3.5 0 0 1 12 13z" />
   </svg>
@@ -67,7 +67,7 @@ export const PhoneIcon: React.FC<Props> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    className={classNames("inline-block fill-current", className)}
+    className={classNames("icon inline-block fill-current", className)}
   >
     <path d="M17.4 22A15.42 15.42 0 0 1 2 6.6 4.6 4.6 0 0 1 6.6 2a3.94 3.94 0 0 1 .77.07 3.79 3.79 0 0 1 .72.18 1 1 0 0 1 .65.75l1.37 6a1 1 0 0 1-.26.92c-.13.14-.14.15-1.37.79a9.91 9.91 0 0 0 4.87 4.89c.65-1.24.66-1.25.8-1.38a1 1 0 0 1 .92-.26l6 1.37a1 1 0 0 1 .72.65 4.34 4.34 0 0 1 .19.73 4.77 4.77 0 0 1 .06.76A4.6 4.6 0 0 1 17.4 22z" />
   </svg>
@@ -77,7 +77,7 @@ export const EmailIcon: React.FC<Props> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    className={classNames("inline-block fill-current", className)}
+    className={classNames("icon inline-block fill-current", className)}
   >
     <path d="M19 4H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-.67 2L12 10.75 5.67 6zM19 18H5a1 1 0 0 1-1-1V7.25l7.4 5.55a1 1 0 0 0 .6.2 1 1 0 0 0 .6-.2L20 7.25V17a1 1 0 0 1-1 1z" />
   </svg>
@@ -88,7 +88,7 @@ export const AlertIcon: React.FC<Props> = ({ className }) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     className={classNames(
-      "inline-block stroke-current fill-current",
+      "icon inline-block stroke-current fill-current",
       className
     )}
   >
@@ -101,7 +101,7 @@ export const BlankIcon: React.FC<Props> = ({ className }) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     className={classNames(
-      "inline-block stroke-current fill-current",
+      "icon inline-block stroke-current fill-current",
       className
     )}
   />
@@ -124,12 +124,24 @@ export const BondLogoIcon: React.FC<Props> = ({ className }) => (
   </svg>
 );
 
+export const CalendarIcon: React.FC<Props> = ({ className }) => (
+  <svg
+    viewBox="0 0 24 22"
+    className={classNames("icon inline-block fill-current", className)}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M22.8 2.8H18.4V0H16.8V2.8H7.2V0H5.6V2.8H1.2C0.881854 2.80037 0.576845 2.92692 0.351881 3.15188C0.126918 3.37684 0.000370522 3.68185 0 4V20.8C0.000370522 21.1181 0.126918 21.4232 0.351881 21.6481C0.576845 21.8731 0.881854 21.9996 1.2 22H22.8C23.1181 21.9996 23.4232 21.8731 23.6481 21.6481C23.8731 21.4232 23.9996 21.1181 24 20.8V4C23.9996 3.68185 23.8731 3.37684 23.6481 3.15188C23.4232 2.92692 23.1181 2.80037 22.8 2.8ZM22.4 20.4H1.6V4.4H5.6V6.4H7.2V4.4H16.8V6.4H18.4V4.4H22.4V20.4Z" />
+    <path d="M11.4206 13.8631L9.00501 11.295L8 12.3635L11.4206 16L17 10.0684L15.9949 9L11.4206 13.8631Z" />
+  </svg>
+);
+
 export type IconType =
   | "Facebook"
   | "LinkedIn"
   | "Location"
   | "Phone"
   | "Email"
+  | "Calendar"
   | "Blank";
 
 export const Icon: React.FC<Props & { type: IconType }> = ({
@@ -149,6 +161,8 @@ export const Icon: React.FC<Props & { type: IconType }> = ({
       return <PhoneIcon className={className} />;
     case "Blank":
       return <BlankIcon className={className} />;
+    case "Calendar":
+      return <CalendarIcon className={className} />;
     default:
       return <AlertIcon className={className} />;
   }

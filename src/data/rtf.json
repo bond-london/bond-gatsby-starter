@@ -1,0 +1,61 @@
+{
+  "complex_hero_1": {
+    "json": {
+      "children": [
+        {
+          "type": "heading-two",
+          "children": [
+            {
+              "code": true,
+              "text": "##TODAYS_DATE##"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "code": true,
+              "text": "##ACTION_GET_INFORMATION##"
+            }
+          ]
+        },
+        {
+          "type": "heading-four",
+          "children": [
+            {
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+          ]
+        },
+        {
+          "type": "heading-two",
+          "children": [
+            {
+              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "code": true,
+              "text": "##ACTION_GET_UPDATES##"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "code": true,
+              "text": ""
+            }
+          ]
+        }
+      ]
+    },
+    "references": []
+  }
+}

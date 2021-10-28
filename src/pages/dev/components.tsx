@@ -13,13 +13,17 @@ import {
   Team,
   FooterInformation,
   Footer,
+  ComplexHero,
 } from "../../components";
+import rtf from "../../data/rtf.json";
+
 import { Section } from "../../layouts";
 import { File } from "../../generated/graphql-types";
 
 import logo from "../../images/bond-black.svg";
 import { graphql, useStaticQuery } from "gatsby";
 import {
+  GenericRichTextNode,
   getImageFromFile,
   getLottieFromFile,
   getRTF,
@@ -334,6 +338,19 @@ const Components: React.FC = () => {
             alt: "Circuit",
           }}
           link={{ name: "Click me" }}
+        />
+      </ComponentContainer>
+
+      <ComponentContainer name="Complex hero">
+        <ComplexHero
+          title="Complex hero"
+          message={getRTF(rtf.complex_hero_1 as GenericRichTextNode)}
+          visual={{
+            image: heroThumbnail,
+            videoUrl: heroVideo,
+            alt: "Mountain",
+          }}
+          loop={false}
         />
       </ComponentContainer>
 

@@ -11,7 +11,8 @@
     "noUnusedLocals": false,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
-    "removeComments": true
+    "removeComments": true,
+    "resolveJsonModule": true
   },
   "include": ["src", "src/images.d.ts"],
   "exclude": ["node_modules", "public", ".cache"]

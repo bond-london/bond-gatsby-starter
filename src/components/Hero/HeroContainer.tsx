@@ -1,26 +1,20 @@
 import {
   AutoVisual,
-  RTFContent,
   VisualAsset,
 } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
-import { LinkOrButton, NamedLinkInformation } from ".";
-import { RTF } from "../elements";
-import { Section } from "../layouts";
-import { useFirstVisible } from "../utils";
+import { Section } from "../../layouts";
 
-export const Hero: React.FC<{
-  title: string;
-  message?: RTFContent;
-  link?: NamedLinkInformation;
+export const HeroContainer: React.FC<{
+  componentName: string;
   visual?: VisualAsset;
   loop?: boolean;
-}> = ({ title, message, link, visual, loop }) => {
-  const [onVisible, animationMode] = useFirstVisible();
+  onVisible?: () => void;
+}> = ({ onVisible, visual, loop, componentName, children }) => {
   return (
     <Section
-      componentName="Hero"
+      componentName={componentName}
       double={true}
       topSpacing={false}
       className="text-washed-blue"
@@ -40,21 +34,7 @@ export const Hero: React.FC<{
           "space-y-s"
         )}
       >
-        <h1 className={classNames(animationMode, "h1 animate-enter-from-left")}>
-          {title}
-        </h1>
-        <RTF
-          fixedParagraphClassName="p2"
-          className={classNames(animationMode, "animate-appear")}
-          content={message}
-        />
-        {link && (
-          <LinkOrButton
-            className={classNames(animationMode, "animate-enter-from-bottom")}
-            isButton={true}
-            {...link}
-          />
-        )}
+        {children}
       </div>
       {visual && (
         <div
