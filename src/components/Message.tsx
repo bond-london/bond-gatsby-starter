@@ -1,11 +1,11 @@
 import {
-  RTF,
   RTFContent,
   VisualAsset,
   AutoVisual,
 } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
+import { RTF } from "../elements";
 import { Section } from "../layouts";
 
 export const Message: React.FC<{

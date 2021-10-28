@@ -110,45 +110,45 @@ module.exports = {
     fontSize: {
       ...buildFontSizes(),
     },
-    gridTemplateColumns: {
-      ...createGridCols(),
-    },
-    gridTemplateRows: {
-      ...createGridRows(),
-    },
-    gridColumn: {
-      ...calculateNumbers(
-        1,
-        Math.max(mobileCols, tabletCols, desktopCols) + 2,
-        (v) => `span-${v}`,
-        (v) => `span ${v} / span ${v}`
-      ),
-      "span-full": "1/-1",
-      ...calculateSizes(
-        ({ name }) => `central-${name}`,
-        ({ cols }) => `2 / span ${cols}`
-      ),
-    },
-    gridColumnStart: {
-      ...calculateNumbers(
-        1,
-        Math.max(mobileCols, tabletCols, desktopCols) + 2,
-        (v) => `${v}`,
-        (v) => `${v}`
-      ),
-    },
-    gridColumnEnd: {
-      ...calculateNumbers(
-        1,
-        Math.max(mobileCols, tabletCols, desktopCols) + 2,
-        (v) => `${v}`,
-        (v) => `${v}`
-      ),
-    },
     extend: {
       maxWidth: {
         maxwidth: calculateRemSize(maximumWidth),
         unset: "unset",
+      },
+      gridTemplateColumns: {
+        ...createGridCols(),
+      },
+      gridTemplateRows: {
+        ...createGridRows(),
+      },
+      gridColumn: {
+        ...calculateNumbers(
+          1,
+          Math.max(mobileCols, tabletCols, desktopCols) + 2,
+          (v) => `span-${v}`,
+          (v) => `span ${v} / span ${v}`
+        ),
+        "span-full": "1/-1",
+        ...calculateSizes(
+          ({ name }) => `central-${name}`,
+          ({ cols }) => `2 / span ${cols}`
+        ),
+      },
+      gridColumnStart: {
+        ...calculateNumbers(
+          1,
+          Math.max(mobileCols, tabletCols, desktopCols) + 2,
+          (v) => `${v}`,
+          (v) => `${v}`
+        ),
+      },
+      gridColumnEnd: {
+        ...calculateNumbers(
+          1,
+          Math.max(mobileCols, tabletCols, desktopCols) + 2,
+          (v) => `${v}`,
+          (v) => `${v}`
+        ),
       },
       keyframes: {
         "enter-from-top": {

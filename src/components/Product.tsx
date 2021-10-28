@@ -1,12 +1,12 @@
 import {
   AutoVisual,
-  RTF,
   RTFContent,
   VisualAsset,
 } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
 import { LinkOrButton, NamedLinkInformation } from ".";
+import { RTF } from "../elements";
 import { Section } from "../layouts";
 import { useFirstVisible } from "../utils";
 
@@ -63,7 +63,7 @@ export const Product: React.FC<{
           {link && (
             <LinkOrButton
               className={classNames(animationMode, "animate-enter-from-bottom")}
-              asButton={true}
+              isButton={true}
               {...link}
             />
           )}

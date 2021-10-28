@@ -1,6 +1,7 @@
-import { RTF, RTFContent } from "@bond-london/gatsby-graphcms-components";
+import { RTFContent } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
+import { RTF } from "../elements";
 import { Section } from "../layouts";
 
 export const Headline: React.FC<{ content: RTFContent }> = ({ content }) => {

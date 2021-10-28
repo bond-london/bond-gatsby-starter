@@ -33,8 +33,19 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
         isIntrinsicHeight={true}
         visibleSlides={isLg ? 4 : isMd ? 3 : isSm ? 2 : 1}
       >
-        <ButtonBack className={classNames("col-start-1", "lg:col-start-1")}>
-          <ArrowBackIcon className="stroke-current bg-neon-green text-dark-blue h-xs rounded-md" />
+        <ButtonBack
+          className={classNames(
+            "col-start-1",
+            "lg:col-start-1",
+            "grid grid-cols-1 grid-rows-3"
+          )}
+        >
+          <ArrowBackIcon
+            className={classNames(
+              "stroke-current bg-neon-green text-dark-blue h-xs rounded-md",
+              "row-start-1 row-span-2 self-center"
+            )}
+          />
         </ButtonBack>
         <Slider
           className={classNames(
@@ -55,8 +66,19 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
             </Slide>
           ))}
         </Slider>
-        <ButtonNext className={classNames("col-start-4", "lg:col-start-12")}>
-          <ArrowForwardIcon className="stroke-current bg-neon-green text-dark-blue h-xs rounded-md" />
+        <ButtonNext
+          className={classNames(
+            "col-start-4",
+            "lg:col-start-12",
+            "grid grid-cols-1 grid-rows-3"
+          )}
+        >
+          <ArrowForwardIcon
+            className={classNames(
+              "stroke-current bg-neon-green text-dark-blue h-xs rounded-md",
+              "row-start-1 row-span-2 self-center"
+            )}
+          />
         </ButtonNext>
       </CarouselProvider>
     </Section>

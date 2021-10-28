@@ -63,7 +63,7 @@ export const Layout: React.FC<{
           keywords,
         }}
         siteMetadata={siteMetadata}
-        pageUrl={siteMetadata?.siteUrl || "http://localhost:8000"}
+        pageUrl={siteMetadata.siteUrl}
         className={classNames(
           bodyClassName || "bg-white",
           process.env.GATSBY_DEBUG_TAILWIND && "debug-screens"
