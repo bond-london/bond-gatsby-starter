@@ -12,7 +12,7 @@
 
 @layer components {
   .h1 {
-    @apply font-poppins font-regular text-36-125 lg:text-42-125;
+    @apply font-poppins font-regular text-32-125 lg:text-42-125;
   }
 
   .h1 .icon {
@@ -28,11 +28,15 @@
   }
 
   .h3 {
-    @apply font-poppins font-regular text-22-140 lg:text-24-125;
+    @apply font-poppins font-regular text-18-125 lg:text-24-125;
   }
 
   .h3 .icon {
     @apply h-xs;
+  }
+
+  .h4 {
+    @apply font-poppins font-regular text-18-125;
   }
 
   .p1 {
@@ -51,7 +55,7 @@
   }
 
   .p2 {
-    @apply font-sofiapro font-regular text-18-140;
+    @apply font-sofiapro font-regular text-16-140 lg:text-18-140;
   }
 
   .p2 .icon {
@@ -59,7 +63,7 @@
   }
 
   .p2sb {
-    @apply font-sofiapro font-semibold text-18-140;
+    @apply font-sofiapro font-semibold text-16-140 lg:text-18-140;
   }
 
   .p2sb .icon {
@@ -67,7 +71,7 @@
   }
 
   .p3 {
-    @apply font-sofiapro font-regular text-16-140;
+    @apply font-sofiapro font-regular text-14-140 lg:text-16-140;
   }
 
   .p3 .icon {
@@ -75,7 +79,7 @@
   }
 
   .p4 {
-    @apply font-sofiapro font-regular text-14-140;
+    @apply font-sofiapro font-regular text-12-140 lg:text-14-140;
   }
 
   .p4 .icon {

@@ -8,8 +8,8 @@ const defaulttheme = require("tailwindcss/defaultTheme");
 const animationTiming = "cubic-bezier(0.22, 1, 0.36, 1)";
 const animationDuration = "1s";
 
-const mobileMargin = 30;
-const mobileGap = 7;
+const mobileMargin = 20;
+const mobileGap = 20;
 const mobileCols = 4;
 
 const tabletMargin = 40;
@@ -32,6 +32,7 @@ const colorOptions = {
   "washed-blue": "#EBFFFE",
   grey: "#F2F2F2",
   "off-white": "#f9ffff",
+  error: "#e53935",
 };
 
 const defaultNumbers = {
@@ -56,14 +57,14 @@ const sizes = [
     margin: mobileMargin,
     gap: mobileGap,
     cols: mobileCols,
-    spacing: spacing.xxs,
+    spacing: spacing.s,
   },
   {
     name: "tablet",
     margin: tabletMargin,
     gap: tabletGap,
     cols: tabletCols,
-    spacing: spacing.xs,
+    spacing: spacing.s,
   },
   {
     name: "desktop",
@@ -78,11 +79,14 @@ const sizes = [
 const fontSizeRatios = [
   "42-125",
   "36-125",
+  "32-125",
   "24-125",
   "22-140",
   "18-140",
+  "18-125",
   "16-140",
   "14-140",
+  "12-140",
 ];
 
 module.exports = {
@@ -286,9 +290,13 @@ function createGridRows() {
     const margin = calculateRemSize(spacing);
     grids[`${name}-basic`] = `${margin} 1fr ${margin}`;
     grids[`${name}-single`] = `${margin} repeat(4, 1fr) ${margin}`;
+    grids[`${name}-single-auto`] = `${margin} repeat(4, auto) ${margin}`;
     grids[
       `${name}-double`
     ] = `repeat(2, ${margin}) repeat(2,1fr) repeat(2, ${margin})`;
+    grids[
+      `${name}-double-auto`
+    ] = `repeat(2, ${margin}) repeat(2,auto) repeat(2, ${margin})`;
   });
 
   return grids;

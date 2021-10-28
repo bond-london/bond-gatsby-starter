@@ -18,20 +18,27 @@ export const HeroContainer: React.FC<{
       double={true}
       topSpacing={false}
       className="text-washed-blue"
-      contentClassName="container-basic"
+      contentClassName="grid-rows-mobile-double-auto lg:grid-rows-desktop-double-auto"
       preChildren={
-        <div className="col-start-1 col-span-3 row-start-1 row-span-4 bg-dark-blue" />
+        <div
+          className={classNames(
+            "col-start-1 col-span-3 bg-dark-blue",
+            "row-start-1 row-span-6",
+            "lg:row-start-1 lg:row-span-4"
+          )}
+        />
       }
       onVisible={onVisible}
     >
       <div
         className={classNames(
+          "pt-s lg:pt-0",
           "self-center",
           "col-start-1 col-span-4",
-          "row-start-1 row-span-3",
+          "row-start-4 row-span-3",
           "lg:col-start-1 lg:col-span-5",
-          "lg:row-start-1 lg:row-span-2",
-          "space-y-s"
+          "lg:row-start-1 lg:row-span-5",
+          "space-y-xs lg:space-y-s"
         )}
       >
         {children}
@@ -40,8 +47,8 @@ export const HeroContainer: React.FC<{
         <div
           className={classNames(
             "relative",
-            "col-start-1 col-span-4 row-start-1 row-span-3",
-            "lg:col-start-7 lg:col-span-5 lg:row-start-2 lg:row-span-2"
+            "col-start-1 col-span-4 row-start-2 row-span-2",
+            "lg:col-start-7 lg:col-span-5 lg:row-start-2 lg:row-span-5"
           )}
         >
           <div className="aspect-w-1 aspect-h-1">
