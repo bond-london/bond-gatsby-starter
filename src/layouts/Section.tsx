@@ -36,7 +36,8 @@ export const CoreSection: React.FC<{
     <Element
       data-component={componentName}
       className={classNames(
-        "relative container-grid",
+        "relative",
+        "container-grid",
         double ? "container-double" : "container-single",
         className
       )}

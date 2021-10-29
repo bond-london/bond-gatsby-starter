@@ -90,6 +90,7 @@ export const Footer: React.FC<FooterInformation> = (information) => {
       componentName="Footer"
       element="footer"
       className="bg-dark-blue text-washed-blue"
+      contentClassName="space-y-s lg:space-y-0"
     >
       {columns.map((column, index) => (
         <FooterColumn

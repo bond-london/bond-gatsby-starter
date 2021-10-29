@@ -9,7 +9,7 @@ export const FooterColumn: React.FC<{
   className?: string;
 }> = ({ entries, className }) => {
   return (
-    <div className={classNames(className, "space-y-s")}>
+    <div className={classNames(className, "space-y-xs lg:space-y-s")}>
       {entries.map((entry, index) => {
         switch (entry.type) {
           case "Logo":
@@ -25,8 +25,7 @@ export const FooterColumn: React.FC<{
                 key={index}
                 className={classNames(
                   "flex items-center",
-                  sizeToTextClassName(entry.size),
-                  sizeToHeightClassName(entry.size)
+                  sizeToTextClassName(entry.size)
                 )}
               >
                 {entry.text}

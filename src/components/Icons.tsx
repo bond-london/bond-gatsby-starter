@@ -135,35 +135,40 @@ export const CalendarIcon: React.FC<Props> = ({ className }) => (
   </svg>
 );
 
-export type IconType =
-  | "Facebook"
-  | "LinkedIn"
-  | "Location"
-  | "Phone"
-  | "Email"
-  | "Calendar"
-  | "Blank";
+export const HamburgerIcon: React.FC<Props> = ({ className }) => (
+  <svg
+    width="24"
+    height="16"
+    viewBox="0 0 24 16"
+    className={classNames("inline-block fill-current", className)}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M22.7333 6.66675H1.26667C0.567106 6.66675 0 7.23385 0 7.93341V8.06675C0 8.76631 0.567106 9.33341 1.26667 9.33341H22.7333C23.4329 9.33341 24 8.76631 24 8.06675V7.93341C24 7.23385 23.4329 6.66675 22.7333 6.66675Z" />
+    <path d="M22.7333 13.3333H1.26667C0.567106 13.3333 0 13.9004 0 14.5999V14.7333C0 15.4328 0.567106 15.9999 1.26667 15.9999H22.7333C23.4329 15.9999 24 15.4328 24 14.7333V14.5999C24 13.9004 23.4329 13.3333 22.7333 13.3333Z" />
+    <path d="M22.7333 0H1.26667C0.567106 0 0 0.567106 0 1.26667V1.4C0 2.09956 0.567106 2.66667 1.26667 2.66667H22.7333C23.4329 2.66667 24 2.09956 24 1.4V1.26667C24 0.567106 23.4329 0 22.7333 0Z" />
+  </svg>
+);
+
+const iconMap = {
+  Facebook: FacebookIcon,
+  LinkedIn: LinkedInIcon,
+  Location: LocationIcon,
+  Phone: PhoneIcon,
+  Email: EmailIcon,
+  Calendar: CalendarIcon,
+  Hamburger: HamburgerIcon,
+  Blank: BlankIcon,
+};
+
+export type IconType = keyof typeof iconMap;
 
 export const Icon: React.FC<Props & { type: IconType }> = ({
   className,
   type,
 }) => {
-  switch (type) {
-    case "Email":
-      return <EmailIcon className={className} />;
-    case "Facebook":
-      return <FacebookIcon className={className} />;
-    case "LinkedIn":
-      return <LinkedInIcon className={className} />;
-    case "Location":
-      return <LocationIcon className={className} />;
-    case "Phone":
-      return <PhoneIcon className={className} />;
-    case "Blank":
-      return <BlankIcon className={className} />;
-    case "Calendar":
-      return <CalendarIcon className={className} />;
-    default:
-      return <AlertIcon className={className} />;
+  const Element = iconMap[type];
+  if (Element) {
+    return <Element className={className} />;
   }
+  return <AlertIcon className={className} />;
 };

@@ -51,6 +51,8 @@ const spacing = {
   xl: 112,
 };
 
+const navHeight = spacing.xs + spacing.m + spacing.xs;
+
 const sizes = [
   {
     name: "mobile",
@@ -115,6 +117,10 @@ module.exports = {
       ...buildFontSizes(),
     },
     extend: {
+      maxHeight: {
+        navClosed: calculateRemSize(200),
+        navOpen: calculateRemSize(2000),
+      },
       maxWidth: {
         maxwidth: calculateRemSize(maximumWidth),
         unset: "unset",
@@ -299,6 +305,11 @@ function createGridRows() {
     ] = `repeat(2, ${margin}) repeat(2,auto) repeat(2, ${margin})`;
   });
 
+  (grids["nav-closed"] = `${calculateRemSize(navHeight)} 1fr`),
+    (grids["nav-open"] = `${calculateRemSize(navHeight)} ${calculateRemSize(
+      spacing.s
+    )} 1fr ${calculateRemSize(spacing.s)}`);
+
   return grids;
 }
 
@@ -459,6 +470,7 @@ function buildSpacing() {
   Object.entries(spacing).map(
     ([name, value]) => (results[name] = calculateRemSize(value))
   );
+  results["nav"] = calculateRemSize(navHeight);
   return results;
 }
 

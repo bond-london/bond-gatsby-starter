@@ -8,7 +8,14 @@ export const FooterRow: React.FC<{
   className?: string;
 }> = ({ className, entries }) => {
   return (
-    <div className={classNames(className, "flex justify-between")}>
+    <div
+      className={classNames(
+        className,
+        "flex gap-y-xxs",
+        "flex-col",
+        "lg:flex-row lg:justify-between lg:items-center"
+      )}
+    >
       {entries.map((entryArray, index) => (
         <div key={index} className="">
           {entryArray.map((entry, index) => {

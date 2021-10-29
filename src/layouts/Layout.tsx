@@ -2,16 +2,24 @@ import { SEO } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Section } from ".";
 import CookieConsent from "react-cookie-consent";
 import { handleCookieAccepted } from "@bond-london/gatsby-plugin-cookie-scripts";
+
+export const LayoutContext = React.createContext<{
+  setBodyLocked: (locked: boolean) => void;
+}>({
+  setBodyLocked: () => {
+    /*noop*/
+  },
+});
 
 export const Layout: React.FC<{
   bodyClassName?: string;
   title: string;
   description?: string;
-  keywords?: string[];
+  keywords?: string;
   image?: IGatsbyImageData;
 }> = ({ bodyClassName, title, description, keywords, image, children }) => {
   const { siteBuildMetadata, site } = useStaticQuery<{
@@ -51,8 +59,22 @@ export const Layout: React.FC<{
     handleCookieAccepted();
   }, []);
 
+  const setBodyLocked = useCallback((locked: boolean) => {
+    const body = document?.body;
+    if (body) {
+      if (locked) {
+        body.style.overflowX = "hidden";
+        body.style.overflowY = "hidden";
+      } else {
+        body.style.overflowX = "";
+        body.style.overflowY = "";
+      }
+    }
+  }, []);
+  const provider = useMemo(() => ({ setBodyLocked }), [setBodyLocked]);
+
   return (
-    <>
+    <LayoutContext.Provider value={provider}>
       <SEO
         pageTitle={pageTitle}
         siteBuildMetadata={siteBuildMetadata}
@@ -106,6 +128,6 @@ export const Layout: React.FC<{
         This website uses cookies to ensure you get the best experience on our
         website.
       </CookieConsent>
-    </>
+    </LayoutContext.Provider>
   );
 };

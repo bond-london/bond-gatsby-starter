@@ -8,19 +8,18 @@ import {
   LinkOrButton,
   Menu,
   Message,
-  NavigationBar,
   Product,
   Team,
   FooterInformation,
   Footer,
   ComplexHero,
+  NavigationBar,
 } from "../../components";
 import rtf from "../../data/rtf.json";
 
 import { Section } from "../../layouts";
 import { File } from "../../generated/graphql-types";
 
-import logo from "../../images/bond-black.svg";
 import { graphql, useStaticQuery } from "gatsby";
 import {
   GenericRichTextNode,
@@ -263,7 +262,7 @@ const Components: React.FC = () => {
       </ComponentContainer>
 
       <ComponentContainer name="Navigation Bar">
-        <NavigationBar logoSvg={logo} menu={menu} />
+        <NavigationBar menu={menu} />
       </ComponentContainer>
 
       <ComponentContainer name="Hero">
