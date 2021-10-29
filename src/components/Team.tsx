@@ -22,7 +22,7 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
       componentName="Team"
       className="bg-light-blue"
       preChildren={
-        <div className="col-start-1 col-span-3 row-start-4 row-span-3 bg-dark-blue" />
+        <div className="hidden lg:block col-start-1 col-span-3 row-start-4 row-span-3 bg-dark-blue" />
       }
     >
       <CarouselProvider
@@ -35,23 +35,25 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
       >
         <ButtonBack
           className={classNames(
+            "row-start-1 self-end justify-self-start z-30",
             "col-start-1",
             "lg:col-start-1",
-            "grid grid-cols-1 grid-rows-3"
+            "lg:grid lg:grid-cols-1 lg:grid-rows-3 lg:self-auto lg:justify-self-auto"
           )}
         >
           <ArrowBackIcon
             className={classNames(
               "stroke-current bg-neon-green text-dark-blue h-xs rounded-md",
-              "row-start-1 row-span-2 self-center"
+              "lg:row-start-1 lg:row-span-2 lg:self-center"
             )}
           />
         </ButtonBack>
         <Slider
           className={classNames(
+            "row-start-1",
             "col-start-1 col-span-4",
             "lg:col-start-2 lg:col-span-10",
-            "text-grey"
+            "text-dark-blue lg:text-grey"
           )}
           classNameTray="space-x-mobile-gap md:space-x-tablet-gap lg:space-x-desktop-gap"
         >
@@ -68,15 +70,16 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
         </Slider>
         <ButtonNext
           className={classNames(
+            "row-start-1 self-end justify-self-end z-30",
             "col-start-4",
             "lg:col-start-12",
-            "grid grid-cols-1 grid-rows-3"
+            "lg:grid lg:grid-cols-1 lg:grid-rows-3 lg:self-auto lg:justify-self-auto"
           )}
         >
           <ArrowForwardIcon
             className={classNames(
               "stroke-current bg-neon-green text-dark-blue h-xs rounded-md",
-              "row-start-1 row-span-2 self-center"
+              "lg:row-start-1 lg:row-span-2 lg:self-center"
             )}
           />
         </ButtonNext>
