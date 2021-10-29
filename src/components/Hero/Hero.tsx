@@ -23,6 +23,7 @@ export const Hero: React.FC<{
       onVisible={onVisible}
       visual={visual}
       loop={loop}
+      containerClassName="space-y-xs lg:space-y-s"
     >
       <h1 className={classNames(animationMode, "h1 animate-enter-from-left")}>
         {title}

@@ -11,7 +11,15 @@ export const HeroContainer: React.FC<{
   visual?: VisualAsset;
   loop?: boolean;
   onVisible?: () => void;
-}> = ({ onVisible, visual, loop, componentName, children }) => {
+  containerClassName?: string;
+}> = ({
+  onVisible,
+  visual,
+  loop,
+  componentName,
+  containerClassName,
+  children,
+}) => {
   return (
     <Section
       componentName={componentName}
@@ -38,7 +46,7 @@ export const HeroContainer: React.FC<{
           "row-start-4 row-span-3",
           "lg:col-start-1 lg:col-span-5",
           "lg:row-start-1 lg:row-span-5",
-          "space-y-xs lg:space-y-s"
+          containerClassName
         )}
       >
         {children}

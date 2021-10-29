@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 import { sizeToHeightClassName } from ".";
 import { FooterEntrySize, LinkOrButton, MenuItem } from "..";
@@ -13,7 +14,7 @@ export const FooterMenuEntry: React.FC<{
 }) => {
   return (
     <LinkOrButton
-      iconClassName={sizeToHeightClassName(size)}
+      iconClassName={classNames(sizeToHeightClassName(size), "text-blue")}
       icon={withIcon ? icon || "Blank" : undefined}
       name={name}
       internal={internal}

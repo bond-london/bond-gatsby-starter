@@ -22,7 +22,7 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
       componentName="Team"
       className="bg-light-blue"
       preChildren={
-        <div className="hidden lg:block col-start-1 col-span-3 row-start-4 row-span-3 bg-dark-blue" />
+        <div className="col-start-1 col-span-3 row-start-4 row-span-3 bg-dark-blue" />
       }
     >
       <CarouselProvider

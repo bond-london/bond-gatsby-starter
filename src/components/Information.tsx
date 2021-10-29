@@ -23,7 +23,7 @@ export const Information: React.FC<{
     <Section
       componentName={left ? "Information left" : "Information right"}
       preChildren={
-        <div className="hidden lg:block col-start-1 col-span-3 row-start-4 row-span-3 bg-dark-blue" />
+        <div className="col-start-1 col-span-3 row-start-4 row-span-3 bg-dark-blue" />
       }
       onVisible={onVisible}
       contentClassName="grid-rows-mobile-portrait lg:grid-rows-1"
@@ -52,7 +52,7 @@ export const Information: React.FC<{
       >
         <div
           className={classNames(
-            "bg-off-white rounded-3xl px-l py-s space-y-s lg:my-m"
+            "bg-off-white rounded-3xl px-xs lg:px-l py-s space-y-s lg:my-m"
           )}
         >
           <h2
