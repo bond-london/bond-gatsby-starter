@@ -233,7 +233,7 @@ const Components: React.FC = () => {
   return (
     <DesignLayout title="Design">
       <ComponentContainer name="Buttons">
-        <Section componentName="Buttons">
+        <Section componentName="Buttons" contentClassName="gap-y-mobile-gap">
           <LinkOrButton
             internal="/dev"
             className="col-start-1 col-span-2"
