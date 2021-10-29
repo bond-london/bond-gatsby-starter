@@ -21,18 +21,20 @@ export const Information: React.FC<{
   const [onVisible, animationMode] = useFirstVisible();
   return (
     <Section
-      componentName={left ? "Collection left" : "Collection right"}
+      componentName={left ? "Information left" : "Information right"}
       preChildren={
-        <div className="col-start-1 col-span-3 row-start-4 row-span-3 bg-dark-blue" />
+        <div className="hidden lg:block col-start-1 col-span-3 row-start-4 row-span-3 bg-dark-blue" />
       }
       onVisible={onVisible}
+      contentClassName="grid-rows-mobile-portrait lg:grid-rows-1"
     >
       <AutoVisual
         visual={visual}
         loop={loop}
         className={classNames(
-          "row-start-2 row-span-4",
+          "row-start-1 row-span-3",
           "col-start-1 col-span-4",
+          "lg:row-start-1 lg:row-span-1",
           left ? "lg:col-start-6" : "lg:col-start-1",
           " lg:col-span-7"
         )}
@@ -40,8 +42,9 @@ export const Information: React.FC<{
       <div
         className={classNames(
           "relative",
-          "row-start-2 row-span-4",
+          "row-start-3 row-span-3",
           "col-start-1 col-span-4",
+          "lg:row-start-1 lg:row-span-1",
           left ? "lg:col-start-1" : "lg:col-start-7",
           "lg:col-span-6",
           "flex"
@@ -49,7 +52,7 @@ export const Information: React.FC<{
       >
         <div
           className={classNames(
-            "bg-off-white rounded-3xl px-l py-s space-y-s my-m"
+            "bg-off-white rounded-3xl px-l py-s space-y-s lg:my-m"
           )}
         >
           <h2

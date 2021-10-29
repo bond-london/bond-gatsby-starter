@@ -23,16 +23,18 @@ export const Product: React.FC<{
     <Section
       componentName={left ? "Collection left" : "Collection right"}
       preChildren={
-        <div className="col-start-1 col-span-3 row-start-4 row-span-3 bg-dark-blue" />
+        <div className="hidden lg:block col-start-1 col-span-3 row-start-4 row-span-3 bg-dark-blue" />
       }
       onVisible={onVisible}
+      contentClassName="grid-rows-mobile-portrait lg:grid-rows-1"
     >
       <AutoVisual
         visual={visual}
         loop={loop}
         className={classNames(
-          "row-start-2 row-span-4",
-          "col-start-2 col-span-2",
+          "row-start-1 row-span-2",
+          "col-start-1 col-span-4",
+          "lg:row-start-1 lg:row-span-1",
           left ? "lg:col-start-8" : "lg:col-start-3",
           " lg:col-span-3"
         )}
@@ -40,15 +42,18 @@ export const Product: React.FC<{
       <div
         className={classNames(
           "relative",
-          "row-start-2 row-span-4",
+          "row-start-4 row-span-2",
           "col-start-1 col-span-4",
+          "lg:row-start-1 lg:row-span-1",
           left ? "lg:col-start-1" : "lg:col-start-7",
           "lg:col-span-6",
           "flex"
         )}
       >
         <div
-          className={classNames("bg-off-white rounded-3xl px-l py-s space-y-s")}
+          className={classNames(
+            "bg-off-white rounded-3xl lg:px-l py-s space-y-s"
+          )}
         >
           <h2
             className={classNames(animationMode, "h2 animate-enter-from-left")}

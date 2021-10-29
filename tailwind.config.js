@@ -303,12 +303,13 @@ function createGridRows() {
     grids[
       `${name}-double-auto`
     ] = `repeat(2, ${margin}) repeat(2,auto) repeat(2, ${margin})`;
+    grids[`${name}-portrait`] = `${margin} auto ${margin} auto ${margin}`;
   });
 
-  (grids["nav-closed"] = `${calculateRemSize(navHeight)} 1fr`),
-    (grids["nav-open"] = `${calculateRemSize(navHeight)} ${calculateRemSize(
-      spacing.s
-    )} 1fr ${calculateRemSize(spacing.s)}`);
+  grids["nav-closed"] = `${calculateRemSize(navHeight)} 1fr`;
+  grids["nav-open"] = `${calculateRemSize(navHeight)} ${calculateRemSize(
+    spacing.s
+  )} 1fr ${calculateRemSize(spacing.s)}`;
 
   return grids;
 }
