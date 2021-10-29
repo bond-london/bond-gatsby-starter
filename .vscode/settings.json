@@ -18,7 +18,8 @@
     "buttonClassName",
     "fixedParagraphClassName",
     "fixedHeadingClassName",
-    "contentClassName"
+    "contentClassName",
+    "visualClassName",
   ],
   "files.exclude": {
     ".cache": true,

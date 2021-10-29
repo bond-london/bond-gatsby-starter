@@ -98,14 +98,17 @@ export const Footer: React.FC<FooterInformation> = (information) => {
           entries={column}
           className={classNames(
             "col-start-1 col-span-4",
-            index === 0 ? "lg:col-start-2 lg:col-span-4" : "lg:col-span-3"
+            "md:col-span-4",
+            index === 0
+              ? "md:col-start-1 lg:col-start-2 lg:col-span-4"
+              : "md:col-start-auto lg:col-start-auto lg:col-span-3"
           )}
         />
       ))}
       <FooterRow
         entries={lastRow}
         className={classNames(
-          "col-span-full lg:pt-s lg:col-start-2 lg:col-span-10"
+          "col-span-full md:pt-s lg:col-start-2 lg:col-span-10"
         )}
       />
     </Section>

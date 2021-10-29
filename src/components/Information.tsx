@@ -26,7 +26,7 @@ export const Information: React.FC<{
         <div className="col-start-1 col-span-3 row-start-4 row-span-3 bg-dark-blue" />
       }
       onVisible={onVisible}
-      contentClassName="grid-rows-mobile-portrait lg:grid-rows-1"
+      contentClassName="grid-rows-mobile-portrait md:grid-rows-1"
     >
       <AutoVisual
         visual={visual}
@@ -34,9 +34,11 @@ export const Information: React.FC<{
         className={classNames(
           "row-start-1 row-span-3",
           "col-start-1 col-span-4",
-          "lg:row-start-1 lg:row-span-1",
-          left ? "lg:col-start-6" : "lg:col-start-1",
-          " lg:col-span-7"
+          "md:row-start-1 md:row-span-1",
+          left
+            ? "md:col-start-5 lg:col-start-6"
+            : "md:col-start-1 lg:col-start-1",
+          "md:col-span-4 lg:col-span-7"
         )}
       />
       <div
@@ -44,9 +46,11 @@ export const Information: React.FC<{
           "relative",
           "row-start-3 row-span-3",
           "col-start-1 col-span-4",
-          "lg:row-start-1 lg:row-span-1",
-          left ? "lg:col-start-1" : "lg:col-start-7",
-          "lg:col-span-6",
+          "md:row-start-1 md:row-span-1",
+          left
+            ? "md:col-start-1 lg:col-start-1"
+            : "md:col-start-4 lg:col-start-7",
+          "md:col-span-5 lg:col-span-6",
           "flex"
         )}
       >

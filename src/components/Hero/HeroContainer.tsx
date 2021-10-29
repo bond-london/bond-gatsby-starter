@@ -1,9 +1,7 @@
-import {
-  AutoVisual,
-  VisualAsset,
-} from "@bond-london/gatsby-graphcms-components";
+import { VisualAsset } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
+import { AspectRatioVisual } from "../../elements";
 import { Section } from "../../layouts";
 
 export const HeroContainer: React.FC<{
@@ -32,7 +30,7 @@ export const HeroContainer: React.FC<{
           className={classNames(
             "col-start-1 col-span-3 bg-dark-blue",
             "row-start-1 row-span-6",
-            "lg:row-start-1 lg:row-span-4"
+            "md:row-start-1 md:row-span-4"
           )}
         />
       }
@@ -44,25 +42,25 @@ export const HeroContainer: React.FC<{
           "self-center",
           "col-start-1 col-span-4",
           "row-start-4 row-span-3",
+          "md:col-start-1 md:col-span-3",
           "lg:col-start-1 lg:col-span-5",
-          "lg:row-start-1 lg:row-span-5",
+          "md:row-start-1 md:row-span-5",
           containerClassName
         )}
       >
         {children}
       </div>
       {visual && (
-        <div
+        <AspectRatioVisual
           className={classNames(
-            "relative",
             "col-start-1 col-span-4 row-start-2 row-span-2",
-            "lg:col-start-7 lg:col-span-5 lg:row-start-2 lg:row-span-5"
+            "md:col-start-5 md:col-span-4 md:row-start-2 md:row-span-5",
+            "lg:col-start-7 lg:col-span-5"
           )}
-        >
-          <div className="aspect-hero">
-            <AutoVisual visual={visual} fitParent={true} loop={loop} />
-          </div>
-        </div>
+          aspectRatioClassName="aspect-hero"
+          visual={visual}
+          loop={loop}
+        />
       )}
     </Section>
   );

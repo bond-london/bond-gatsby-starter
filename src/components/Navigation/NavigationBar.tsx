@@ -54,7 +54,7 @@ export const NavigationBar: React.FC<{
         </LinkOrButton>
         <button
           aria-label="Toggle menu"
-          className="col-start-4 col-span-1 justify-end lg:hidden"
+          className="col-start-4 col-span-1 md:col-start-8 justify-end lg:hidden"
           onClick={toggleMenu}
         >
           <Icon type="Hamburger" />

@@ -13,7 +13,7 @@ export const FooterRow: React.FC<{
         className,
         "flex gap-y-xxs",
         "flex-col",
-        "lg:flex-row lg:justify-between lg:items-center"
+        "md:flex-row md:justify-between md:items-center"
       )}
     >
       {entries.map((entryArray, index) => (

@@ -37,14 +37,14 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
           className={classNames(
             "row-start-1 self-end justify-self-start z-30",
             "col-start-1",
-            "lg:col-start-1",
-            "lg:grid lg:grid-cols-1 lg:grid-rows-3 lg:self-auto lg:justify-self-auto"
+            "md:col-start-1",
+            "md:grid md:grid-cols-1 md:grid-rows-3 md:self-auto"
           )}
         >
           <ArrowBackIcon
             className={classNames(
               "stroke-current bg-neon-green text-dark-blue h-xs rounded-md",
-              "lg:row-start-1 lg:row-span-2 lg:self-center"
+              "md:row-start-1 md:row-span-2 md:self-center"
             )}
           />
         </ButtonBack>
@@ -52,6 +52,7 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
           className={classNames(
             "row-start-1",
             "col-start-1 col-span-4",
+            "md:col-start-2 md:col-span-6",
             "lg:col-start-2 lg:col-span-10",
             "text-dark-blue lg:text-grey"
           )}
@@ -72,14 +73,14 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
           className={classNames(
             "row-start-1 self-end justify-self-end z-30",
             "col-start-4",
-            "lg:col-start-12",
-            "lg:grid lg:grid-cols-1 lg:grid-rows-3 lg:self-auto lg:justify-self-auto"
+            "md:col-start-8 lg:col-start-12",
+            "md:grid md:grid-cols-1 md:grid-rows-3 md:self-auto"
           )}
         >
           <ArrowForwardIcon
             className={classNames(
               "stroke-current bg-neon-green text-dark-blue h-xs rounded-md",
-              "lg:row-start-1 lg:row-span-2 lg:self-center"
+              "md:row-start-1 md:row-span-2 md:self-center"
             )}
           />
         </ButtonNext>
