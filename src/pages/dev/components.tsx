@@ -180,6 +180,7 @@ const Components: React.FC = () => {
   const pumpkinHead = getLottieFromFile(
     findFile("81388-pumpkin-evil-laugh-loop.json")
   );
+  const engine = getSvgFromFile(findFile("PortableSteamEngine.svg"));
   const faceSvg = getSvgFromFile(findFile("Constipated-Emoji.svg"));
   const personThumbnail = getImageFromFile(
     findFile("small_pexels-karolina-grabowska-6031698.jpg")
@@ -247,11 +248,16 @@ const Components: React.FC = () => {
           <LinkOrButton
             action={onButtonClick}
             className="col-span-2"
+            buttonClassName="blue-button"
             isButton={true}
           >
             Click
           </LinkOrButton>
-          <LinkOrButton className="col-span-2" isButton={true}>
+          <LinkOrButton
+            className="col-span-2"
+            isButton={true}
+            buttonClassName="white-button"
+          >
             Nothing
           </LinkOrButton>
 
@@ -409,7 +415,7 @@ const Components: React.FC = () => {
         <Product
           left={false}
           visual={{
-            image: heroThumbnail,
+            svg: engine,
             alt: "Mountain",
           }}
           title="Lorem ipsum dolor sit amet"
@@ -424,7 +430,7 @@ const Components: React.FC = () => {
         <Product
           left={false}
           visual={{
-            image: heroThumbnail,
+            svg: engine,
             alt: "Mountain",
           }}
           title="Lorem ipsum dolor sit amet"

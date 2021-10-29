@@ -25,9 +25,10 @@ const colorOptions = {
   "light-black": "#121f28",
   "dark-blue": "#002641",
   "neon-green": "#bcff03",
-  "dark-neon-green": "#B0f000",
+  "neon-green-hover": "#B0f000",
   pink: "#F7E4E0",
   blue: "#83E4FA",
+  "blue-hover": "#3FC8E7",
   "light-blue": "#D4FBFF",
   "washed-blue": "#EBFFFE",
   grey: "#F2F2F2",
@@ -466,11 +467,24 @@ function buildColours() {
   return colors;
 }
 
-function buildSpacing() {
+function defaultKeyFn(value) {
+  return `${value}`;
+}
+
+function remValueFn(value) {
+  return `${calculateRemSize(value)}`;
+}
+
+function processSpacing(keyFn, valueFn) {
   const results = {};
   Object.entries(spacing).map(
-    ([name, value]) => (results[name] = calculateRemSize(value))
+    ([name, value]) => (results[keyFn(name)] = valueFn(value))
   );
+  return results;
+}
+
+function buildSpacing() {
+  const results = processSpacing(defaultKeyFn, remValueFn);
   results["nav"] = calculateRemSize(navHeight);
   return results;
 }

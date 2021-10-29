@@ -107,14 +107,30 @@
   }
 
   .button {
-    @apply px-xxs h-s inline-flex justify-center items-center;
+    @apply px-xxs h-s inline-flex justify-center items-center rounded-sm;
   }
 
   .green-button {
-    @apply bg-neon-green hover:bg-dark-neon-green text-dark-blue;
+    @apply bg-neon-green hover:bg-neon-green-hover text-dark-blue;
   }
 
   .blue-button {
-    @apply bg-blue hover:bg-blue-d9 text-dark-blue;
+    @apply bg-blue hover:bg-blue-hover text-dark-blue;
+  }
+
+  .white-button {
+    @apply bg-washed-blue border-2 border-blue text-blue hover:bg-blue hover:text-dark-blue;
+  }
+
+  .aspect-square {
+    @apply aspect-w-1 aspect-h-1;
+  }
+
+  .aspect-4x3 {
+    @apply aspect-w-4 aspect-h-3;
+  }
+
+  .aspect-hero {
+    @apply aspect-w-11 aspect-h-10;
   }
 }

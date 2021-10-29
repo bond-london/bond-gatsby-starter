@@ -59,7 +59,7 @@ export const HeroContainer: React.FC<{
             "lg:col-start-7 lg:col-span-5 lg:row-start-2 lg:row-span-5"
           )}
         >
-          <div className="aspect-w-1 aspect-h-1">
+          <div className="aspect-hero">
             <AutoVisual visual={visual} fitParent={true} loop={loop} />
           </div>
         </div>

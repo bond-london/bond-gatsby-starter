@@ -25,17 +25,22 @@ export const Product: React.FC<{
       onVisible={onVisible}
       contentClassName="grid-rows-mobile-portrait lg:grid-rows-1"
     >
-      <AutoVisual
-        visual={visual}
-        loop={loop}
+      <div
         className={classNames(
+          "relative",
           "row-start-1 row-span-2",
           "col-start-1 col-span-4",
+          "px-xs lg:px-0",
+          "self-center",
           "lg:row-start-1 lg:row-span-1",
           left ? "lg:col-start-8" : "lg:col-start-3",
-          " lg:col-span-3"
+          "lg:col-span-3"
         )}
-      />
+      >
+        <div className="aspect-4x3">
+          <AutoVisual visual={visual} loop={loop} className={classNames()} />
+        </div>
+      </div>
       <div
         className={classNames(
           "relative",
