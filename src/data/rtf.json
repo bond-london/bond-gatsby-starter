@@ -57,5 +57,668 @@
       ]
     },
     "references": []
+  },
+  "table1": {
+    "json": {
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": ""
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "children": [
+            {
+              "type": "table_head",
+              "children": [
+                {
+                  "type": "table_row",
+                  "children": [
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Name"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Value"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Description"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table_body",
+              "children": [
+                {
+                  "type": "table_row",
+                  "children": [
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Alien"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "ET"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Somewhere else"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "table_row",
+                  "children": [
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Bear"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Winnie"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "No brain"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "table_row",
+                  "children": [
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Clown"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Pennywise"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Lurking somewhere. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "table_row",
+                  "children": [
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Drummer"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Neal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "RIP 😢"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "table_row",
+                  "children": [
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Engine"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "V12"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "table_cell",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "text": "Nice sound"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": ""
+            }
+          ]
+        }
+      ]
+    },
+    "references": []
+  },
+  "rtf1": {
+    "json": {
+      "children": [
+        {
+          "type": "heading-three",
+          "children": [
+            {
+              "text": "Is a Terms of Use Agreement Legally Binding?"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Yes, a Terms of Use agreement is legally binding if it's:"
+            }
+          ]
+        },
+        {
+          "type": "bulleted-list",
+          "children": [
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "type": "list-item-child",
+                  "children": [
+                    {
+                      "text": "Clear"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "type": "list-item-child",
+                  "children": [
+                    {
+                      "text": "Reasonable"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "type": "list-item-child",
+                  "children": [
+                    {
+                      "text": "Lawful"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "type": "list-item-child",
+                  "children": [
+                    {
+                      "text": "Agreed upon"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "The courts will usually enforce a Terms of Use agreement against either party "
+            },
+            {
+              "bold": true,
+              "text": "if it's clear that both parties clearly agreed to it"
+            },
+            {
+              "text": ", and both parties "
+            },
+            {
+              "bold": true,
+              "text": "knew what they were agreeing to"
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "However, there are certain clauses that "
+            },
+            {
+              "bold": true,
+              "text": "courts will not enforce"
+            },
+            {
+              "text": " under any circumstances. For example, clauses that are designed to "
+            },
+            {
+              "bold": true,
+              "text": "trick or exploit the user"
+            },
+            {
+              "text": ", or clauses that are "
+            },
+            {
+              "bold": true,
+              "text": "forbidden by law"
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading-three",
+          "children": [
+            {
+              "text": "Is a Terms of Use Agreement a Contract?"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "A Terms of Use agreement is a contract"
+            },
+            {
+              "text": " if it's clear, reasonable, lawful, and has been agreed upon."
+            }
+          ]
+        },
+        {
+          "type": "heading-three",
+          "children": [
+            {
+              "text": "Is a Terms of Use Agreement a Legal Requirement?"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "Creating a Terms of Use agreement is not a legal requirement"
+            },
+            {
+              "text": ". However, a Terms of Use agreement is a simple, effective way to help your company avoid legal issues and is thus highly recommended regardless of not being required."
+            }
+          ]
+        },
+        {
+          "type": "heading-three",
+          "children": [
+            {
+              "text": "Terms of Use Vs. Terms and Conditions"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "Legally speaking, "
+            },
+            {
+              "bold": true,
+              "text": "a Terms of Use agreement is the same thing as a Terms and Conditions agreement"
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "We're using the phrase \"Terms of Use\" to describe "
+            },
+            {
+              "bold": true,
+              "text": "a general agreement between you and your users"
+            },
+            {
+              "text": ". Different companies use different names for this type of agreement, including:"
+            }
+          ]
+        },
+        {
+          "type": "numbered-list",
+          "children": [
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "type": "list-item-child",
+                  "children": [
+                    {
+                      "text": "Terms and Conditions"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "type": "list-item-child",
+                  "children": [
+                    {
+                      "text": "Terms of Service"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "type": "list-item-child",
+                  "children": [
+                    {
+                      "text": "User Agreement"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                {
+                  "type": "list-item-child",
+                  "children": [
+                    {
+                      "text": "Acceptable Use Policy"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "These documents usually "
+            },
+            {
+              "bold": true,
+              "text": "serve the same purpose"
+            },
+            {
+              "text": " but can be used in different contexts."
+            }
+          ]
+        },
+        {
+          "type": "heading-three",
+          "children": [
+            {
+              "text": "Terms of Use Vs. Privacy Policy"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "A Terms of Use agreement is very different from a Privacy Policy"
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": "A Privacy Policy is a form of notice that explains the ways in which a company "
+            },
+            {
+              "text": "processes personal information",
+              "italic": true
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "bold": true,
+              "text": "A Privacy Policy is a legal requirement"
+            },
+            {
+              "text": " for almost every company that operates a website or online service under laws such as the "
+            },
+            {
+              "href": "https://www.termsfeed.com/blog/gdpr/",
+              "type": "link",
+              "children": [
+                {
+                  "text": "EU General Data Protection Regulation (GDPR)"
+                }
+              ],
+              "openInNewTab": false
+            },
+            {
+              "text": " or "
+            },
+            {
+              "href": "https://www.termsfeed.com/blog/caloppa/",
+              "type": "link",
+              "children": [
+                {
+                  "text": "California Online Privacy Protection Act (CalOPPA)"
+                }
+              ],
+              "openInNewTab": false
+            },
+            {
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "text": ""
+            }
+          ]
+        }
+      ]
+    }
   }
 }

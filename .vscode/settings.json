@@ -4,7 +4,11 @@
     "strings": true
   },
   "tailwindCSS.validate": true,
-  "tailwindCSS.experimental.classRegex": ["const\\s+.*ClassName\\s*=\\s*\"([^']*)\""],
+  "tailwindCSS.experimental.classRegex": [
+    "classNames\\(\"(.*)\"\\)",
+    // ["classNames\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+      "const\\s+.*ClassName\\s*=\\s*\"([^']*)\""
+      ],
   "tailwindCSS.classAttributes": [
     "class",
     "className",

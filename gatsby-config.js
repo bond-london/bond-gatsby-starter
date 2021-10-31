@@ -25,7 +25,6 @@ const gatsbyRequiredRules = path.join(
 module.exports = {
   flags: {
     FAST_DEV: true,
-    LMDB_STORE: process.env.NODE_ENV === "development",
   },
   siteMetadata: {
     title: "Bond London Sample Site",

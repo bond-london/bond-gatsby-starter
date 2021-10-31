@@ -215,8 +215,15 @@ module.exports = {
       "debug-black": "1px dashed black",
     },
   },
+  variants: {
+    extend: {
+      borderRadius: ["last", "first"],
+    },
+  },
   plugins: [
     addAnimationUtilities,
+    addBorderSpacing,
+    addExtraVariants,
     require("@tailwindcss/aspect-ratio"),
     require("tailwindcss-debug-screens"),
     require("@tailwindcss/forms"),
@@ -381,6 +388,25 @@ function buildGridSpacing() {
     }
   });
   return results;
+}
+
+function addExtraVariants({ addVariant, e }) {
+  addVariant("not-first", ({ modifySelectors, separator }) => {
+    modifySelectors(({ className }) => {
+      return `.${e(`not-first${separator}${className}`)}:not(:first-child)`;
+    });
+  });
+  addVariant("not-last", ({ modifySelectors, separator }) => {
+    modifySelectors(({ className }) => {
+      return `.${e(`not-last${separator}${className}`)}:not(:last-child)`;
+    });
+  });
+}
+
+function addBorderSpacing({ addUtilities }) {
+  addUtilities({
+    ".border-spacing-0": { "border-spacing": "0" },
+  });
 }
 
 function addAnimationUtilities({ addUtilities }) {

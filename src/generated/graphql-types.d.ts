@@ -286,7 +286,6 @@ export type SiteBuildTimeArgs = {
 export type SiteFlags = {
   readonly __typename?: 'SiteFlags';
   readonly FAST_DEV?: Maybe<Scalars['Boolean']>;
-  readonly LMDB_STORE?: Maybe<Scalars['Boolean']>;
 };
 
 export type SiteSiteMetadata = {
@@ -4975,7 +4974,6 @@ export type SiteSiteMetadataFilterInput = {
 
 export type SiteFlagsFilterInput = {
   readonly FAST_DEV?: Maybe<BooleanQueryOperatorInput>;
-  readonly LMDB_STORE?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SiteConnection = {
@@ -5034,7 +5032,6 @@ export type SiteFieldsEnum =
   | 'port'
   | 'host'
   | 'flags___FAST_DEV'
-  | 'flags___LMDB_STORE'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'

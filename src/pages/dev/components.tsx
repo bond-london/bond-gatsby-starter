@@ -14,6 +14,7 @@ import {
   Footer,
   ComplexHero,
   NavigationBar,
+  BasicRTF,
 } from "../../components";
 import rtf from "../../data/rtf.json";
 
@@ -453,6 +454,14 @@ const Components: React.FC = () => {
           )}
           visual={{ image: heroThumbnail, alt: "Mountain" }}
         />
+      </ComponentContainer>
+
+      <ComponentContainer name="Generic RTF">
+        <BasicRTF content={getRTF(rtf.rtf1 as GenericRichTextNode)} />
+      </ComponentContainer>
+
+      <ComponentContainer name="RTF table">
+        <BasicRTF content={getRTF(rtf.table1 as GenericRichTextNode)} />
       </ComponentContainer>
 
       <ComponentContainer name="Footer">
