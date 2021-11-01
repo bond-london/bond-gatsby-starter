@@ -11,3 +11,4 @@ export * from "./Icons";
 export * from "./Message";
 export * from "./Footer";
 export * from "./Text";
+export * from "./Select";

@@ -15,8 +15,11 @@ import {
   ComplexHero,
   NavigationBar,
   BasicRTF,
+  SearchableChooser,
+  Option,
 } from "../../components";
 import rtf from "../../data/rtf.json";
+import countries from "../../data/countries.json";
 
 import { Section } from "../../layouts";
 import { File } from "../../generated/graphql-types";
@@ -231,6 +234,7 @@ const Components: React.FC = () => {
 
   const [buttonCount, setButtonCount] = useState(0);
   const onButtonClick = useCallback(() => setButtonCount((n) => n + 1), []);
+  const [selectedCountry, setSelectedCountry] = useState<Option>();
 
   return (
     <DesignLayout title="Design">
@@ -462,6 +466,19 @@ const Components: React.FC = () => {
 
       <ComponentContainer name="RTF table">
         <BasicRTF content={getRTF(rtf.table1 as GenericRichTextNode)} />
+      </ComponentContainer>
+
+      <ComponentContainer name="Searchable chooser">
+        <Section componentName="Chooser" contentClassName="gap-y-mobile-gap">
+          <h3 className="h3 col-start-1 col-span-4 md:col-start-3 md:col-span-8 lg:col-start-5 lg:col-span-6">
+            Selected: {JSON.stringify(selectedCountry || "")}
+          </h3>
+          <SearchableChooser
+            className="col-start-1 col-span-4 md:col-start-3 md:col-span-8 lg:col-start-5 lg:col-span-6"
+            options={countries.map((d) => ({ value: d.id, label: d.text }))}
+            onChange={setSelectedCountry}
+          />
+        </Section>
       </ComponentContainer>
 
       <ComponentContainer name="Footer">
