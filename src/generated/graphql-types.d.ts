@@ -269,6 +269,7 @@ export type Site = Node & {
   readonly flags?: Maybe<SiteFlags>;
   readonly polyfill?: Maybe<Scalars['Boolean']>;
   readonly pathPrefix?: Maybe<Scalars['String']>;
+  readonly jsxRuntime?: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly parent?: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
@@ -1638,6 +1639,7 @@ export type QuerySiteArgs = {
   flags?: Maybe<SiteFlagsFilterInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
+  jsxRuntime?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -5034,6 +5036,7 @@ export type SiteFieldsEnum =
   | 'flags___FAST_DEV'
   | 'polyfill'
   | 'pathPrefix'
+  | 'jsxRuntime'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -5171,6 +5174,7 @@ export type SiteFilterInput = {
   readonly flags?: Maybe<SiteFlagsFilterInput>;
   readonly polyfill?: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix?: Maybe<StringQueryOperatorInput>;
+  readonly jsxRuntime?: Maybe<StringQueryOperatorInput>;
   readonly id?: Maybe<StringQueryOperatorInput>;
   readonly parent?: Maybe<NodeFilterInput>;
   readonly children?: Maybe<NodeFilterListInput>;
