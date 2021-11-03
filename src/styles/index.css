@@ -31,6 +31,10 @@
     @apply font-poppins font-regular text-18-125 lg:text-24-125;
   }
 
+  .h3tl {
+    @apply font-poppins font-regular text-14-125 lg:text-24-125;
+  }
+
   .h3 .icon {
     @apply h-xs;
   }
@@ -118,8 +122,12 @@
     @apply bg-blue hover:bg-blue-hover text-dark-blue;
   }
 
-  .white-button {
-    @apply bg-washed-blue border-2 border-blue text-blue hover:bg-blue hover:text-dark-blue;
+  .white-blue-button {
+    @apply border-2 border-blue text-blue hover:bg-blue hover:text-dark-blue;
+  }
+
+  .white-green-button {
+    @apply border-2 border-neon-green text-neon-green hover:bg-neon-green hover:text-dark-blue;
   }
 
   .aspect-square {

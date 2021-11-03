@@ -261,7 +261,15 @@ const Components: React.FC = () => {
           <LinkOrButton
             className="col-span-2"
             isButton={true}
-            buttonClassName="white-button"
+            buttonClassName="white-blue-button"
+          >
+            Nothing
+          </LinkOrButton>
+
+          <LinkOrButton
+            className="col-span-2"
+            isButton={true}
+            buttonClassName="white-green-button"
           >
             Nothing
           </LinkOrButton>

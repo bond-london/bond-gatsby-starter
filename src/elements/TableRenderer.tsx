@@ -58,7 +58,7 @@ export const TableRenderer: React.FC = ({ children }) => {
   console.log(table);
 
   const tdClassName = classNames(
-    "table-row lg:table-cell",
+    "flex lg:table-cell",
     "lg:py-xs",
     "lg:not-first:pl-desktop-gap",
     "lg:first:rounded-l-md lg:last:rounded-r-md lg:first:pl-desktop-1-cols lg:last:pr-desktop-1-cols"
@@ -92,22 +92,24 @@ export const TableRenderer: React.FC = ({ children }) => {
         {table.body.map((row, index) => (
           <tr
             key={index}
-            className="table not-first:pt-s lg:pt-0 lg:table-row lg:even:bg-off-white"
+            className="table p-xxs w-full lg:table-row even:bg-neon-green not-first:mt-xs lg:mt-0"
           >
             {row.map((cell, index) => (
               <td key={index} className={tdClassName}>
-                <div className="lg:hidden inline-block pr-mobile-gap">
+                <div className="lg:hidden inline-block w-1/3 pr-mobile-gap">
                   <RichText
                     content={table.header[index] as RichTextContent}
                     renderers={renderers}
                     references={references}
                   />
                 </div>
-                <RichText
-                  content={[cell]}
-                  renderers={renderers}
-                  references={references}
-                />
+                <div className="w-2/3 inline-block lg:w-auto">
+                  <RichText
+                    content={cell as RichTextContent}
+                    renderers={renderers}
+                    references={references}
+                  />
+                </div>
               </td>
             ))}
           </tr>
