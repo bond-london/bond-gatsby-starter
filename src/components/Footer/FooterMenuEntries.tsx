@@ -16,7 +16,7 @@ export const FooterMenuEntries: React.FC<{
       {links.map((link, index) => (
         <Fragment key={link.name || index}>
           {separator && index > 0 && <span>&nbsp;{separator}&nbsp;</span>}
-          <FooterMenuEntry link={link} withIcon={withIcons} size={size} />
+          <FooterMenuEntry link={link} withIcon={withIcons} />
         </Fragment>
       ))}
     </div>

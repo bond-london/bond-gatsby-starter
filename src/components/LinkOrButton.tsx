@@ -1,22 +1,30 @@
+import {
+  AutoVisual,
+  VisualAsset,
+} from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import { Link } from "gatsby";
 import React from "react";
-import { Icon, IconType } from ".";
+import { Icon, NamedLinkColour, NamedLinkInformation } from ".";
 
-export interface LinkInformation {
-  icon?: IconType;
-  internal?: string;
-  external?: string;
-  newPage?: boolean;
+export function getButtonColour(colour?: NamedLinkColour): string {
+  switch (colour) {
+    case "Blue":
+      return "blue-button";
+    case "White Blue":
+      return "white-blue-button";
+    case "White Green":
+      return "white-green-button";
+  }
+  return "green-button";
 }
 
 export const LinkOrButton: React.FC<
-  LinkInformation & {
+  NamedLinkInformation & {
+    visual?: VisualAsset;
     className?: string;
-    buttonClassName?: string;
     iconClassName?: string;
     isButton?: boolean;
-    name?: string;
     action?: () => void;
   }
 > = ({
@@ -27,24 +35,26 @@ export const LinkOrButton: React.FC<
   action,
   isButton,
   name,
+  colour,
   children,
   icon,
   iconClassName,
-  buttonClassName,
+  visual,
 }) => {
-  const realButtonClassName = classNames(
-    isButton && "button",
-    isButton && (buttonClassName || "green-button"),
-    className
-  );
+  const realButtonClassName =
+    isButton && colour
+      ? classNames("button", getButtonColour(colour), className)
+      : className;
 
-  const inside = (
-    <>
-      {icon && (
-        <Icon type={icon} className={classNames("mr-xs", iconClassName)} />
-      )}
-      {name || children}
-    </>
+  const inside = icon ? (
+    <div className="grid grid-cols-icon-button gap-x-xs">
+      <Icon type={icon} className={classNames("mt-icon", iconClassName)} />
+      <div>{name || children}</div>
+    </div>
+  ) : visual ? (
+    <AutoVisual visual={visual} />
+  ) : (
+    name || children
   );
 
   if (internal) {
@@ -60,7 +70,7 @@ export const LinkOrButton: React.FC<
       return (
         <a
           href={external}
-          className={classNames(realButtonClassName, "inline-block")}
+          className={classNames(realButtonClassName, "inline-flex")}
           target="_blank"
           rel="noreferrer"
         >
@@ -69,7 +79,10 @@ export const LinkOrButton: React.FC<
       );
     }
     return (
-      <a className={realButtonClassName} href={external}>
+      <a
+        className={classNames(realButtonClassName, "inline-flex")}
+        href={external}
+      >
         {inside}
       </a>
     );
@@ -84,6 +97,8 @@ export const LinkOrButton: React.FC<
   }
 
   return (
-    <p className={classNames(realButtonClassName, "inline-flex")}>{inside}</p>
+    <div className={classNames(realButtonClassName, "inline-flex")}>
+      {inside}
+    </div>
   );
 };

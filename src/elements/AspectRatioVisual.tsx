@@ -11,10 +11,21 @@ export const AspectRatioVisual: React.FC<{
   aspectRatioClassName: string;
   visualClassName?: string;
   loop?: boolean;
-}> = ({ visual, className, aspectRatioClassName, loop, visualClassName }) => {
+}> = ({
+  visual,
+  className,
+  aspectRatioClassName,
+  loop,
+  visualClassName,
+  children,
+}) => {
+  if (!visual) {
+    return null;
+  }
   return (
     <div className={classNames("relative", className)}>
       <div className={aspectRatioClassName}>
+        {children}
         <AutoVisual
           visual={visual}
           loop={loop}

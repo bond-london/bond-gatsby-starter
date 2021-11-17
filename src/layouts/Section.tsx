@@ -55,6 +55,7 @@ export const Section: React.FC<{
   componentName: string;
   className?: string;
   contentClassName?: string;
+  spacingClassName?: string;
   topSpacing?: boolean;
   bottomSpacing?: boolean;
   double?: boolean;
@@ -66,6 +67,7 @@ export const Section: React.FC<{
   componentName,
   className,
   contentClassName,
+  spacingClassName,
   topSpacing = true,
   bottomSpacing = true,
   double,
@@ -75,21 +77,22 @@ export const Section: React.FC<{
   postChildren,
   onVisible,
 }) => {
-  const spacingClassName =
-    topSpacing && bottomSpacing
+  const realSpacingClassName =
+    spacingClassName ||
+    (topSpacing && bottomSpacing
       ? "row-start-2 row-span-4"
       : topSpacing
       ? "row-start-2 row-span-5"
       : bottomSpacing
       ? "row-start-1 row-span-5"
-      : "row-start-1 row-span-6";
+      : "row-start-1 row-span-6");
   return (
     <CoreSection
       element={element}
       componentName={componentName}
       className={classNames(className)}
       contentClassName={classNames(
-        spacingClassName,
+        realSpacingClassName,
         contentClassName,
         "relative col-start-2 col-span-1 content-grid"
       )}

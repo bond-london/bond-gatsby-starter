@@ -46,7 +46,7 @@ const Page: React.FC<Props> = (props) => {
       <div className="aspect-w-16 aspect-h-9 w-full">
         <AutoVideoOrThumbnail
           videoSrc={videoSrc}
-          alt={description}
+          alt={description || "description"}
           thumbnail={imageData}
           fitParent={true}
         />
@@ -54,6 +54,7 @@ const Page: React.FC<Props> = (props) => {
       {lottie && (
         <Section componentName="Animation">
           <LottieElement
+            alt="Animation"
             className="aspect-w-1 aspect-h-1 col-span-full"
             animationJson={lottie.animationJson}
             encoded={lottie.encoded}

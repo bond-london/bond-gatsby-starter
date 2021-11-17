@@ -23,17 +23,6 @@ export function sizeToTextClassName(size: FooterEntrySize) {
   }
 }
 
-export function sizeToHeightClassName(size: FooterEntrySize) {
-  switch (size) {
-    case "Small":
-      return "h-xxs";
-    case "Medium":
-      return "h-xs";
-    case "Large":
-      return "h-m";
-  }
-}
-
 export interface FooterEntry {
   type: "Logo" | "Text" | "Links";
   size: FooterEntrySize;

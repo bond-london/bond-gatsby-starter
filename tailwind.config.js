@@ -43,9 +43,11 @@ const defaultNumbers = {
 };
 
 const spacing = {
+  icon: 6,
   xxxs: 8,
   xxs: 16,
   xs: 24,
+  square: 32,
   s: 40,
   m: 64,
   l: 80,
@@ -312,7 +314,6 @@ function createGridRows() {
     grids[
       `${name}-double-auto`
     ] = `repeat(2, ${margin}) repeat(2,auto) repeat(2, ${margin})`;
-    grids[`${name}-portrait`] = `${margin} auto ${margin} auto ${margin}`;
   });
 
   grids["nav-closed"] = `${calculateRemSize(navHeight)} 1fr`;
@@ -362,6 +363,8 @@ function createGridCols() {
       )} auto ${calculateRemSize(margin)}`;
     }
   });
+
+  grids["icon-button"] = `${calculateRemSize(spacing.xxs)} 1fr`;
   return grids;
 }
 
@@ -377,6 +380,11 @@ function buildGridSpacing() {
       )}) - ${calculateRemSize(
         2 * margin + (cols + 1) * gap
       )}) / ${cols}) * ${i}) + ${calculateRemSize((i - 1) * gap)})`;
+      results[`${name}-${i}-gap-cols`] = `calc((((min(100vw, ${calculateRemSize(
+        maximumWidth
+      )}) - ${calculateRemSize(
+        2 * margin + cols * gap
+      )}) / ${cols}) * ${i}) + ${calculateRemSize(i * gap)})`;
       results[
         `${name}-${i}-margin-cols`
       ] = `calc((((min(100vw, ${calculateRemSize(

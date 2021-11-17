@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import { FooterEntry, sizeToHeightClassName, sizeToTextClassName } from ".";
+import { FooterEntry, sizeToTextClassName } from ".";
 import { BondLogoIcon } from "..";
 import { FooterMenuEntries } from "./FooterMenuEntries";
 
@@ -13,12 +13,7 @@ export const FooterColumn: React.FC<{
       {entries.map((entry, index) => {
         switch (entry.type) {
           case "Logo":
-            return (
-              <BondLogoIcon
-                key={index}
-                className={classNames(sizeToHeightClassName(entry.size))}
-              />
-            );
+            return <BondLogoIcon key={index} className="h-m" />;
           case "Text":
             return (
               <p

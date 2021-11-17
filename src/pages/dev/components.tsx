@@ -155,7 +155,7 @@ const Components: React.FC = () => {
   const allFiles = useStaticQuery<{
     allFile: { nodes: readonly File[] };
   }>(graphql`
-    query MyQuery {
+    query {
       allFile(filter: { sourceInstanceName: { eq: "images" } }) {
         nodes {
           name
@@ -253,7 +253,7 @@ const Components: React.FC = () => {
           <LinkOrButton
             action={onButtonClick}
             className="col-span-2"
-            buttonClassName="blue-button"
+            colour="Blue"
             isButton={true}
           >
             Click
@@ -261,7 +261,7 @@ const Components: React.FC = () => {
           <LinkOrButton
             className="col-span-2"
             isButton={true}
-            buttonClassName="white-blue-button"
+            colour="White Blue"
           >
             Nothing
           </LinkOrButton>
@@ -269,7 +269,7 @@ const Components: React.FC = () => {
           <LinkOrButton
             className="col-span-2"
             isButton={true}
-            buttonClassName="white-green-button"
+            colour="White Green"
           >
             Nothing
           </LinkOrButton>
@@ -296,7 +296,7 @@ const Components: React.FC = () => {
             alt: "Mountain",
           }}
           loop={false}
-          link={{ name: "Click me" }}
+          links={[{ name: "Click me", colour: "Blue" }]}
         />
       </ComponentContainer>
 
@@ -310,7 +310,7 @@ const Components: React.FC = () => {
             image: heroThumbnail,
             alt: "Mountain",
           }}
-          link={{ name: "Click me" }}
+          links={[{ name: "Click me", colour: "Green" }]}
         />
       </ComponentContainer>
 
@@ -326,7 +326,7 @@ const Components: React.FC = () => {
             alt: "Mountain",
           }}
           loop={false}
-          link={{ name: "Click me" }}
+          links={[{ name: "Click me", colour: "White Blue" }]}
         />
       </ComponentContainer>
 
@@ -341,7 +341,7 @@ const Components: React.FC = () => {
             alt: "Data",
           }}
           loop={true}
-          link={{ name: "Click me" }}
+          links={[{ name: "Click me", colour: "White Green" }]}
         />
       </ComponentContainer>
 
@@ -355,7 +355,7 @@ const Components: React.FC = () => {
             svg,
             alt: "Circuit",
           }}
-          link={{ name: "Click me" }}
+          links={[{ name: "Click me", colour: "Blue" }]}
         />
       </ComponentContainer>
 

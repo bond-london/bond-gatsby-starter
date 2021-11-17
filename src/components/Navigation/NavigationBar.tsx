@@ -1,11 +1,21 @@
 import classNames from "classnames";
 import React, { useCallback, useContext, useState } from "react";
-import { BondLogoIcon, Icon, LinkInformation, LinkOrButton } from "..";
+import { BondLogoIcon, Icon, IconType, LinkOrButton } from "..";
 import { LayoutContext } from "../../layouts";
 import { NavigationMenu } from "./NavigationMenu";
 
+export interface LinkInformation {
+  icon?: IconType;
+  internal?: string;
+  external?: string;
+  newPage?: boolean;
+}
+
+export type NamedLinkColour = "Green" | "Blue" | "White Green" | "White Blue";
+
 export interface NamedLinkInformation extends LinkInformation {
   name?: string;
+  colour?: NamedLinkColour;
 }
 
 export interface MenuItem extends NamedLinkInformation {

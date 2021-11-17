@@ -63,7 +63,7 @@
   }
 
   .p2 .icon {
-    @apply h-xs;
+    @apply h-xxs;
   }
 
   .p2sb {
@@ -71,7 +71,7 @@
   }
 
   .p2sb .icon {
-    @apply h-xs;
+    @apply h-xxs;
   }
 
   .p3 {
@@ -79,7 +79,7 @@
   }
 
   .p3 .icon {
-    @apply h-xs;
+    @apply h-xxs;
   }
 
   .p4 {
