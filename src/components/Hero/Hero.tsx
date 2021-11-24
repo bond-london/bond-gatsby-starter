@@ -1,21 +1,19 @@
-import {
-  RTFContent,
-  VisualAsset,
-} from "@bond-london/gatsby-graphcms-components";
+import { VisualAsset } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
 import { HeroContainer } from "./HeroContainer";
 import { LinkOrButton, NamedLinkInformation } from "..";
 import { RTF } from "../../elements";
 import { useFirstVisible } from "../../utils";
+import { RTFContent } from "@bond-london/graphcms-rich-text";
 
 export const Hero: React.FC<{
   title: string;
   message?: RTFContent;
-  link?: NamedLinkInformation;
+  links?: NamedLinkInformation[];
   visual?: VisualAsset;
   loop?: boolean;
-}> = ({ title, message, link, visual, loop }) => {
+}> = ({ title, message, links, visual, loop }) => {
   const [onVisible, animationMode] = useFirstVisible();
   return (
     <HeroContainer
@@ -28,18 +26,22 @@ export const Hero: React.FC<{
       <h1 className={classNames(animationMode, "h1 animate-enter-from-left")}>
         {title}
       </h1>
-      <RTF
-        fixedParagraphClassName="p2"
-        className={classNames(animationMode, "animate-appear")}
-        content={message}
-      />
-      {link && (
-        <LinkOrButton
-          className={classNames(animationMode, "animate-enter-from-bottom")}
-          isButton={true}
-          {...link}
+      {message && (
+        <RTF
+          fixedParagraphClassName="p2"
+          className={classNames(animationMode, "animate-appear")}
+          content={message}
         />
       )}
+      {links &&
+        links.map((link) => (
+          <LinkOrButton
+            key={link.name}
+            className={classNames(animationMode, "animate-enter-from-bottom")}
+            isButton={true}
+            {...link}
+          />
+        ))}
     </HeroContainer>
   );
 };

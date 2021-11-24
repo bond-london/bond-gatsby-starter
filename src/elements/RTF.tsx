@@ -1,52 +1,57 @@
-import { CoreRTF, RTFProps } from "@bond-london/gatsby-graphcms-components";
 import React, { useMemo } from "react";
-import { NodeRendererType } from "@graphcms/rich-text-types";
 import { CodeOrActionRenderer } from "./CodeOrActionRenderer";
 import classNames from "classnames";
 import { TableRenderer } from "./TableRenderer";
+import {
+  ClassNameOverrides,
+  NodeRenderer,
+  NodeRendererProps,
+  RichText,
+  RichTextProps,
+} from "@bond-london/graphcms-rich-text";
 
-const renderers: NodeRendererType = {
-  code: ({ children }) => (
-    <CodeOrActionRenderer>{children}</CodeOrActionRenderer>
+const renderers: Partial<NodeRenderer> = {
+  code: (props) => (
+    <CodeOrActionRenderer {...(props as unknown as NodeRendererProps)} />
   ),
-  table: ({ children }) => <TableRenderer>{children}</TableRenderer>,
+  table: (props) => (
+    <TableRenderer {...(props as unknown as NodeRendererProps)} />
+  ),
 };
 
-export const RTF: React.FC<RTFProps> = ({
-  classNameOverrides,
-  className,
-  ...props
-}) => {
-  const realClassNameOverrides = useMemo(
-    () => ({
-      // table: classNames(
-      //   "block overflow-x-auto whitespace-nowrap md:whitespace-normal",
-      //   "border-spacing-0",
-      //   "border-separate",
-      //   "table-auto",
-      //   "col-start-1 col-span-4",
-      //   "md:col-start-1 md:col-span-8",
-      //   "lg:col-start-2 lg:col-span-10"
-      // ),
-      // thead: classNames("bg-light-blue"),
-      // tr: classNames("even:bg-off-white"),
-      // td: classNames(
-      //   "py-xxs lg:py-xs",
-      //   "not-first:pl-mobile-gap not-first:md:pl-tablet-gap not-first:lg:pl-desktop-gap",
-      //   "first:rounded-l-md last:rounded-r-md first:pl-xxs last:pr-xxs lg:first:pl-desktop-1-cols lg:last:pr-desktop-1-cols"
-      // ),
+const headingClasses: (keyof ClassNameOverrides)[] = [
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+];
+
+export const RTF: React.FC<
+  RichTextProps & { className?: string; fixedParagraphClassName?: string }
+> = ({ classNameOverrides, className, fixedParagraphClassName, ...props }) => {
+  const realClassNameOverrides = useMemo(() => {
+    const result: ClassNameOverrides = {
       ol: classNames("list-decimal list-inside"),
       ul: classNames("list-disc list-inside"),
       ...classNameOverrides,
-    }),
-    [classNameOverrides]
-  );
+    };
+    if (fixedParagraphClassName) {
+      headingClasses.forEach((h) => {
+        result[h] = fixedParagraphClassName;
+      });
+    }
+    return result;
+  }, [classNameOverrides, fixedParagraphClassName]);
+
   return (
-    <CoreRTF
-      {...props}
-      renderers={renderers}
-      classNameOverrides={realClassNameOverrides}
-      className={classNames(className, "space-y-xs")}
-    />
+    <div className={classNames(className, "space-y-xs")}>
+      <RichText
+        {...props}
+        renderers={renderers}
+        classNameOverrides={realClassNameOverrides}
+      />
+    </div>
   );
 };

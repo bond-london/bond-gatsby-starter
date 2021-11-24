@@ -1,60 +1,15 @@
 import React from "react";
-import {
-  RichTextProps,
-  RichTextContent,
-  ElementNode,
-  isElement,
-} from "@graphcms/rich-text-types";
 import classNames from "classnames";
-import { RichText } from "@graphcms/rich-text-react-renderer";
+import {
+  buildTableInformationFromChildren,
+  NodeRendererProps,
+  RenderElements,
+} from "@bond-london/graphcms-rich-text";
 
-type TableCell = ElementNode;
-type TableRow = TableCell[];
-
-interface TableInformation {
-  header: TableRow;
-  body: TableRow[];
-}
-
-function getTableRow(node: ElementNode): TableRow | undefined {
-  switch (node.type) {
-    case "table_row":
-      return node.children as TableRow;
-    default:
-      throw new Error(`Cannot find table row: ${node.type}`);
-  }
-}
-
-function getTable(node: ElementNode[]): TableInformation {
-  const rows = node
-    .filter((n) => {
-      switch (n.type) {
-        case "table_head":
-        case "table_body":
-          return true;
-        default:
-          return false;
-      }
-    })
-    .flatMap((e) => e.children.filter(isElement).map(getTableRow))
-    .filter((e) => e);
-
-  const [header, ...body] = rows as TableRow[];
-  return { header, body };
-}
-
-function buildTableInformation(content: RichTextContent) {
-  if (Array.isArray(content)) {
-    return getTable(content);
-  }
-  return getTable(content.children);
-}
-
-export const TableRenderer: React.FC = ({ children }) => {
-  const element = children as React.ReactElement<RichTextProps>;
-  const { props } = element;
-  const { content, renderers, references } = props;
-  const table = buildTableInformation(content);
+export const TableRenderer: React.FC<NodeRendererProps> = (mainProps) => {
+  console.log({ mainProps });
+  const { children, renderers, references } = mainProps;
+  const table = buildTableInformationFromChildren(children);
   console.log(table);
 
   const tdClassName = classNames(
@@ -79,8 +34,8 @@ export const TableRenderer: React.FC = ({ children }) => {
         <tr>
           {table.header.map((cell, index) => (
             <td key={index} className={tdClassName}>
-              <RichText
-                content={cell as RichTextContent}
+              <RenderElements
+                contents={cell}
                 renderers={renderers}
                 references={references}
               />
@@ -97,15 +52,15 @@ export const TableRenderer: React.FC = ({ children }) => {
             {row.map((cell, index) => (
               <td key={index} className={tdClassName}>
                 <div className="lg:hidden inline-block w-1/3 pr-mobile-gap">
-                  <RichText
-                    content={table.header[index] as RichTextContent}
+                  <RenderElements
+                    contents={table.header[index]}
                     renderers={renderers}
                     references={references}
                   />
                 </div>
                 <div className="w-2/3 inline-block lg:w-auto">
-                  <RichText
-                    content={cell as RichTextContent}
+                  <RenderElements
+                    contents={cell}
                     renderers={renderers}
                     references={references}
                   />

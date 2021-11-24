@@ -1,9 +1,9 @@
-import { RTFContent } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
 import { RTF } from "../elements";
 import { Section } from "../layouts";
 import { useFirstVisible } from "../utils";
+import { RTFContent } from "@bond-london/graphcms-rich-text";
 
 export const Headline: React.FC<{ content: RTFContent }> = ({ content }) => {
   const [onVisible, animationMode] = useFirstVisible();

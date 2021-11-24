@@ -1,13 +1,11 @@
-import {
-  RTFContent,
-  VisualAsset,
-} from "@bond-london/gatsby-graphcms-components";
+import { VisualAsset } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
 import { LinkOrButton, NamedLinkInformation } from ".";
 import { AspectRatioVisual, RTF } from "../elements";
 import { Section } from "../layouts";
 import { useFirstVisible } from "../utils";
+import { RTFContent } from "@bond-london/graphcms-rich-text";
 
 export const Product: React.FC<{
   left?: boolean;
@@ -63,11 +61,13 @@ export const Product: React.FC<{
           >
             {title}
           </h2>
-          <RTF
-            fixedParagraphClassName="p2"
-            content={message}
-            className={classNames(animationMode, "animate-appear")}
-          />
+          {message && (
+            <RTF
+              fixedParagraphClassName="p2"
+              content={message}
+              className={classNames(animationMode, "animate-appear")}
+            />
+          )}
           {link && (
             <LinkOrButton
               className={classNames(animationMode, "animate-enter-from-bottom")}

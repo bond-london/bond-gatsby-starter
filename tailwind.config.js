@@ -224,6 +224,7 @@ module.exports = {
     },
   },
   plugins: [
+    addContainerGrid,
     addAnimationUtilities,
     addBorderSpacing,
     addExtraVariants,
@@ -418,6 +419,29 @@ function addBorderSpacing({ addUtilities }) {
   });
 }
 
+function addContainerGrid({ addUtilities }) {
+  addUtilities({
+    ".grid-container": {
+      "--bond-container-row-1": calculateRemSize(spacing.m),
+      "--bond-container-row-2": "1fr",
+      "--bond-container-row-3": "1fr",
+      "--bond-container-row-4": "1fr",
+      "--bond-container-row-5": "1fr",
+      "--bond-container-row-6": calculateRemSize(spacing.m),
+      "grid-template-rows": `var(--bond-container-row-1) var(--bond-container-row-2) var(--bond-container-row-3) var(--bond-container-row-4) var(--bond-container-row-5) var(--bond-container-row-6)`,
+    },
+  });
+
+  const values = {};
+  for (let row = 1; row <= 6; row++) {
+    Object.entries(spacing).forEach(([name, value]) => {
+      const properties = {};
+      properties[`--bond-container-row-${row}`] = calculateRemSize(value);
+      values[`.bond-row-${row}-${name}`] = properties;
+    });
+  }
+  addUtilities(values);
+}
 function addAnimationUtilities({ addUtilities }) {
   addUtilities(
     calculateNumbers(

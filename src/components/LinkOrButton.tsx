@@ -1,11 +1,9 @@
-import {
-  AutoVisual,
-  VisualAsset,
-} from "@bond-london/gatsby-graphcms-components";
+import { VisualAsset } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import { Link } from "gatsby";
 import React from "react";
 import { Icon, NamedLinkColour, NamedLinkInformation } from ".";
+import { AutoVisual } from "../utils";
 
 export function getButtonColour(colour?: NamedLinkColour): string {
   switch (colour) {

@@ -1,7 +1,10 @@
+import { NodeRendererProps } from "@bond-london/graphcms-rich-text";
 import React from "react";
 import { Actions } from "../actions";
 
-export const CodeOrActionRenderer: React.FC = ({ children }) => {
+export const CodeOrActionRenderer: React.FC<NodeRendererProps> = (props) => {
+  console.log("code or action renderer", props);
+  const { children } = props;
   if (children) {
     const childrenString = children?.toString();
     if (

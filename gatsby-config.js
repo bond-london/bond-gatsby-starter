@@ -33,6 +33,8 @@ module.exports = {
     cookieName: COOKIE_NAME,
   },
   plugins: [
+    "gatsby-plugin-webpack-bundle-analyser-v2",
+    "gatsby-plugin-loadable-components-ssr",
     {
       resolve: "gatsby-plugin-eslint",
       options: {

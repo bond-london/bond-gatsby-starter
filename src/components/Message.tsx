@@ -1,12 +1,10 @@
-import {
-  RTFContent,
-  VisualAsset,
-} from "@bond-london/gatsby-graphcms-components";
+import { VisualAsset } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
 import { AspectRatioVisual, RTF } from "../elements";
 import { Section } from "../layouts";
 import { useFirstVisible } from "../utils";
+import { RTFContent } from "@bond-london/graphcms-rich-text";
 
 export const Message: React.FC<{
   heading: string;
@@ -37,11 +35,13 @@ export const Message: React.FC<{
         >
           {heading}
         </h2>
-        <RTF
-          content={content}
-          fixedParagraphClassName="p2"
-          className={classNames(animationMode, "animate-appear")}
-        />
+        {content && (
+          <RTF
+            content={content}
+            fixedParagraphClassName="p2"
+            className={classNames(animationMode, "animate-appear")}
+          />
+        )}
       </div>
       <AspectRatioVisual
         visual={visual}

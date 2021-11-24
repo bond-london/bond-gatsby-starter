@@ -26,13 +26,12 @@ import { File } from "../../generated/graphql-types";
 
 import { graphql, useStaticQuery } from "gatsby";
 import {
-  GenericRichTextNode,
   getImageFromFile,
   getLottieFromFile,
-  getRTF,
   getSvgFromFile,
   getVideoFromFile,
 } from "@bond-london/gatsby-graphcms-components";
+import { GenericRichTextNode, getRTF } from "@bond-london/graphcms-rich-text";
 const menu: Menu = {
   items: [
     { name: "Design", internal: "/dev/design" },

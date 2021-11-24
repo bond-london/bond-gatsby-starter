@@ -1,9 +1,7 @@
-import {
-  AutoVisual,
-  VisualAsset,
-} from "@bond-london/gatsby-graphcms-components";
+import { VisualAsset } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
+import { AutoVisual } from "../utils";
 
 export const AspectRatioVisual: React.FC<{
   visual?: VisualAsset;
