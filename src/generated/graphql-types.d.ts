@@ -265,8 +265,6 @@ export type Site = Node & {
   readonly __typename?: 'Site';
   readonly buildTime?: Maybe<Scalars['Date']>;
   readonly siteMetadata?: Maybe<SiteSiteMetadata>;
-  readonly port?: Maybe<Scalars['Int']>;
-  readonly host?: Maybe<Scalars['String']>;
   readonly flags?: Maybe<SiteFlags>;
   readonly polyfill?: Maybe<Scalars['Boolean']>;
   readonly pathPrefix?: Maybe<Scalars['String']>;
@@ -1635,8 +1633,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: InputMaybe<DateQueryOperatorInput>;
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
-  port?: InputMaybe<IntQueryOperatorInput>;
-  host?: InputMaybe<StringQueryOperatorInput>;
   flags?: InputMaybe<SiteFlagsFilterInput>;
   polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   pathPrefix?: InputMaybe<StringQueryOperatorInput>;
@@ -5032,8 +5028,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
   | 'siteMetadata___cookieName'
-  | 'port'
-  | 'host'
   | 'flags___FAST_DEV'
   | 'polyfill'
   | 'pathPrefix'
@@ -5170,8 +5164,6 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   readonly buildTime?: InputMaybe<DateQueryOperatorInput>;
   readonly siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>;
-  readonly port?: InputMaybe<IntQueryOperatorInput>;
-  readonly host?: InputMaybe<StringQueryOperatorInput>;
   readonly flags?: InputMaybe<SiteFlagsFilterInput>;
   readonly polyfill?: InputMaybe<BooleanQueryOperatorInput>;
   readonly pathPrefix?: InputMaybe<StringQueryOperatorInput>;

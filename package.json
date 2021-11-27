@@ -35,6 +35,7 @@
     "@bond-london/gatsby-transformer-extracted-svg": "^2.0.0",
     "@bond-london/graphcms-rich-text": "^0.2.3",
     "@fontsource/poppins": "^4.5.0",
+    "@loadable/babel-plugin": "^5.13.2",
     "@loadable/component": "^5.15.0",
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/forms": "^0.3.4",
