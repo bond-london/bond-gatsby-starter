@@ -27,7 +27,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@bond-london/gatsby-graphcms-components": "^1.8.9",
+    "@bond-london/gatsby-graphcms-components": "^1.8.10",
     "@bond-london/gatsby-plugin-cookie-scripts": "^2.0.0",
     "@bond-london/gatsby-plugin-generate-typings": "^2.0.0",
     "@bond-london/gatsby-transformer-expand": "^2.0.0",

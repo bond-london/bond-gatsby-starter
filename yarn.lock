@@ -1066,10 +1066,10 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
-"@bond-london/gatsby-graphcms-components@^1.8.8":
-  version "1.8.8"
-  resolved "https://registry.yarnpkg.com/@bond-london/gatsby-graphcms-components/-/gatsby-graphcms-components-1.8.8.tgz#bc1c30b02b1d3229ff761b1344b24549fb3049a7"
-  integrity sha512-49gFxY0oBqX2rNW9GudY/7zWDsuqLj57juXWET/zZ650N+O+RtzeOg4Pv15yuucQwRENXumPZ3Tku0pmkqHTbA==
+"@bond-london/gatsby-graphcms-components@^1.8.10":
+  version "1.8.10"
+  resolved "https://registry.yarnpkg.com/@bond-london/gatsby-graphcms-components/-/gatsby-graphcms-components-1.8.10.tgz#6fab6222877aea879410718fe18b85c2d1106432"
+  integrity sha512-v1agLj/8WCyFB18SGd2Hbg6IwAFoU5m2+y6rvtbH1mvDKMqOnOgfd8AhwIETBTVkaOZi94njNOmthnTB6Q7ikw==
   dependencies:
     "@bond-london/graphcms-rich-text" "^0.2.0"
     react-helmet "^6.1.0"
