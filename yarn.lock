@@ -1074,10 +1074,10 @@
     "@bond-london/graphcms-rich-text" "^0.2.0"
     react-helmet "^6.1.0"
 
-"@bond-london/gatsby-graphcms-components@^1.8.9":
-  version "1.8.9"
-  resolved "https://registry.yarnpkg.com/@bond-london/gatsby-graphcms-components/-/gatsby-graphcms-components-1.8.9.tgz#cb3b373b3e0f2f73371a379113ba355804440e7d"
-  integrity sha512-Oh7rlfOetQtz3r9JfBap5oT2j9vLm9zYl904ZaxoPZo3tPEthqAYctc+h9toymg0St13MuJqsHkzndy9HhfMPA==
+"@bond-london/gatsby-graphcms-components@^1.8.11":
+  version "1.8.11"
+  resolved "https://registry.yarnpkg.com/@bond-london/gatsby-graphcms-components/-/gatsby-graphcms-components-1.8.11.tgz#0202c636a73480e010229dea14eee2c052c7146b"
+  integrity sha512-W2zUO/O2lEvQN+h5oA6tJSrvjuGtO6yMfvI9iOwtLsh2I8HlS8V3Qa1lvh1FRI0fKe8YFxbwPgnFjRCZofToEQ==
   dependencies:
     "@bond-london/graphcms-rich-text" "^0.2.0"
     react-helmet "^6.1.0"
