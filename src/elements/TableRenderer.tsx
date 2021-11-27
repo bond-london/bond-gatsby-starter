@@ -7,10 +7,8 @@ import {
 } from "@bond-london/graphcms-rich-text";
 
 export const TableRenderer: React.FC<NodeRendererProps> = (mainProps) => {
-  console.log({ mainProps });
   const { children, renderers, references } = mainProps;
   const table = buildTableInformationFromChildren(children);
-  console.log(table);
 
   const tdClassName = classNames(
     "flex lg:table-cell",

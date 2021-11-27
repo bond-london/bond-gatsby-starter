@@ -33,6 +33,7 @@ export const GetInformation: React.FC<{ className?: string }> = ({
         name="Get Information"
         action={handleClick}
         isButton={true}
+        colour="Green"
       />
       {information && <p className="pl-xs">{information}</p>}
     </div>

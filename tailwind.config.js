@@ -121,9 +121,14 @@ module.exports = {
       ...buildFontSizes(),
     },
     extend: {
+      zIndex: {
+        cookies: "1000",
+        modal: "500",
+      },
       maxHeight: {
         navClosed: calculateRemSize(200),
         navOpen: calculateRemSize(2000),
+        modal: "80vh",
       },
       maxWidth: {
         maxwidth: calculateRemSize(maximumWidth),

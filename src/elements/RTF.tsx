@@ -11,7 +11,7 @@ import {
 } from "@bond-london/graphcms-rich-text";
 
 const renderers: Partial<NodeRenderer> = {
-  code: (props) => (
+  code_block: (props) => (
     <CodeOrActionRenderer {...(props as unknown as NodeRendererProps)} />
   ),
   table: (props) => (

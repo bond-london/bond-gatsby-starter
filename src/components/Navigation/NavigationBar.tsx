@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { BondLogoIcon, Icon, IconType, LinkOrButton } from "..";
-import { LayoutContext } from "../../layouts";
+import { useBodyScrollLock } from "../../layouts";
 import { NavigationMenu } from "./NavigationMenu";
 
 export interface LinkInformation {
@@ -30,16 +30,16 @@ export const NavigationBar: React.FC<{
   menu: Menu;
   className?: string;
 }> = ({ menu, className }) => {
-  const { setBodyLocked } = useContext(LayoutContext);
   const [isOpen, setIsOpen] = useState(false);
+  const { ref } = useBodyScrollLock(isOpen);
   const toggleMenu = useCallback(() => {
     const nextValue = !isOpen;
-    setBodyLocked(nextValue);
     setIsOpen(nextValue);
-  }, [isOpen, setBodyLocked]);
+  }, [isOpen]);
 
   return (
     <nav
+      ref={ref}
       data-component="Navigation Bar"
       className={classNames(
         className,

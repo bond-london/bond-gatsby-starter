@@ -17,7 +17,7 @@
     "buttonWrapperClasses",
     "buttonClasses",
     "contentClasses",
-    "contentClassName",
+    "containerClassName",
     "iconClassName",
     "buttonClassName",
     "fixedParagraphClassName",

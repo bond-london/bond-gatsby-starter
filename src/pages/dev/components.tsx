@@ -17,6 +17,7 @@ import {
   BasicRTF,
   SearchableChooser,
   Option,
+  ModalDialog,
 } from "../../components";
 import rtf from "../../data/rtf.json";
 import countries from "../../data/countries.json";
@@ -486,6 +487,10 @@ const Components: React.FC = () => {
             onChange={setSelectedCountry}
           />
         </Section>
+      </ComponentContainer>
+
+      <ComponentContainer name="Modal">
+        <ModalDialog />
       </ComponentContainer>
 
       <ComponentContainer name="Footer">

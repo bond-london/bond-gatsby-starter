@@ -1,12 +1,14 @@
-import { NodeRendererProps } from "@bond-london/graphcms-rich-text";
+import { ElementsRendererProps } from "@bond-london/graphcms-rich-text";
+import { isText } from "@graphcms/rich-text-types";
 import React from "react";
 import { Actions } from "../actions";
 
-export const CodeOrActionRenderer: React.FC<NodeRendererProps> = (props) => {
-  console.log("code or action renderer", props);
-  const { children } = props;
-  if (children) {
-    const childrenString = children?.toString();
+export const CodeOrActionRenderer: React.FC<ElementsRendererProps> = (
+  props
+) => {
+  const { contents } = props;
+  if (contents?.length === 1 && isText(contents[0])) {
+    const childrenString = contents[0].text;
     if (
       childrenString.length > 4 &&
       childrenString.startsWith("##") &&
@@ -16,5 +18,5 @@ export const CodeOrActionRenderer: React.FC<NodeRendererProps> = (props) => {
       return <Actions name={actionName} />;
     }
   }
-  return <code>{children}</code>;
+  return <code>{props.children}</code>;
 };

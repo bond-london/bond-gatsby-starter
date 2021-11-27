@@ -69,7 +69,16 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
-    "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-plugin-sharp",
+
+      options: {
+        defaults: {
+          formats: ["auto", "webp", "avif"],
+          breakpoints: [400, 750, 1080, 1366, 1920],
+        },
+      },
+    },
     {
       resolve: `gatsby-transformer-sharp`,
       options: {

@@ -9,7 +9,9 @@ export const GetUpdates: React.FC<{ className?: string }> = ({ className }) => {
       internal="/"
       isButton={true}
       className={classNames(className)}
-      buttonClassName="blue-button"
-    />
+      colour="Blue"
+    >
+      Get updates
+    </LinkOrButton>
   );
 };

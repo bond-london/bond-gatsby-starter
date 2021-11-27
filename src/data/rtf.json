@@ -3,19 +3,17 @@
     "json": {
       "children": [
         {
-          "type": "heading-two",
+          "type": "code-block",
           "children": [
             {
-              "code": true,
               "text": "##TODAYS_DATE##"
             }
           ]
         },
         {
-          "type": "paragraph",
+          "type": "code-block",
           "children": [
             {
-              "code": true,
               "text": "##ACTION_GET_INFORMATION##"
             }
           ]
@@ -37,10 +35,9 @@
           ]
         },
         {
-          "type": "paragraph",
+          "type": "code-block",
           "children": [
             {
-              "code": true,
               "text": "##ACTION_GET_UPDATES##"
             }
           ]

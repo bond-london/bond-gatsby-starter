@@ -2,16 +2,17 @@ import { SEO } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
-import React, { useCallback, useMemo } from "react";
-import { Section } from ".";
+import React, { ReactNode, useCallback, useMemo, useState } from "react";
+import { Modal, Section } from ".";
 import CookieConsent from "react-cookie-consent";
 import { handleCookieAccepted } from "@bond-london/gatsby-plugin-cookie-scripts";
 
 export const LayoutContext = React.createContext<{
-  setBodyLocked: (locked: boolean) => void;
+  setModal: (node?: ReactNode) => void;
+  modal?: ReactNode;
 }>({
-  setBodyLocked: () => {
-    /*noop*/
+  setModal: () => {
+    /* noop */
   },
 });
 
@@ -59,19 +60,14 @@ export const Layout: React.FC<{
     handleCookieAccepted();
   }, []);
 
-  const setBodyLocked = useCallback((locked: boolean) => {
-    const body = document?.body;
-    if (body) {
-      if (locked) {
-        body.style.overflowX = "hidden";
-        body.style.overflowY = "hidden";
-      } else {
-        body.style.overflowX = "";
-        body.style.overflowY = "";
-      }
-    }
-  }, []);
-  const provider = useMemo(() => ({ setBodyLocked }), [setBodyLocked]);
+  const [modal, setModal] = useState<ReactNode>();
+  const provider = useMemo(
+    () => ({
+      modal,
+      setModal,
+    }),
+    [modal, setModal]
+  );
 
   return (
     <LayoutContext.Provider value={provider}>
@@ -104,8 +100,10 @@ export const Layout: React.FC<{
         </p>
       </Section>
       <CookieConsent
-        containerClasses="bg-grey opacity-90 page-grid fixed w-full z-50 py-xs gap-y-xs max-w-unset"
+        containerClasses="bg-grey opacity-90 page-grid fixed w-full z-cookies py-xs gap-y-xs max-w-unset"
         contentClasses="col-central-mobile md:col-start-1 md:col-span-4 lg:col-start-1 lg:col-span-8 self-center"
+        acceptOnScroll={true}
+        acceptOnScrollPercentage={5}
         buttonWrapperClasses={classNames(
           "flex self-center",
           "col-central-mobile md:col-start-6 md:col-span-3 lg:col-start-9 lg:col-span-4",
@@ -128,6 +126,10 @@ export const Layout: React.FC<{
         This website uses cookies to ensure you get the best experience on our
         website.
       </CookieConsent>
+      <Modal
+        containerClassName="bg-black bg-opacity-50"
+        contentClassName="bg-washed-blue rounded-3xl p-s"
+      />
     </LayoutContext.Provider>
   );
 };
