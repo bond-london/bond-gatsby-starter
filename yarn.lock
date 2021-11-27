@@ -1074,6 +1074,14 @@
     "@bond-london/graphcms-rich-text" "^0.2.0"
     react-helmet "^6.1.0"
 
+"@bond-london/gatsby-graphcms-components@^1.8.9":
+  version "1.8.9"
+  resolved "https://registry.yarnpkg.com/@bond-london/gatsby-graphcms-components/-/gatsby-graphcms-components-1.8.9.tgz#cb3b373b3e0f2f73371a379113ba355804440e7d"
+  integrity sha512-Oh7rlfOetQtz3r9JfBap5oT2j9vLm9zYl904ZaxoPZo3tPEthqAYctc+h9toymg0St13MuJqsHkzndy9HhfMPA==
+  dependencies:
+    "@bond-london/graphcms-rich-text" "^0.2.0"
+    react-helmet "^6.1.0"
+
 "@bond-london/gatsby-plugin-cookie-scripts@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@bond-london/gatsby-plugin-cookie-scripts/-/gatsby-plugin-cookie-scripts-2.0.0.tgz#976617788ddffff76fe1056d0e757d4ea2a54548"
