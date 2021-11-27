@@ -8,13 +8,8 @@ import {
 } from "@bond-london/gatsby-graphcms-components";
 import loadable from "@loadable/component";
 const LottieElement = loadable(
-  () =>
-    import(
-      "@bond-london/gatsby-graphcms-components/dist/elements/LottieElement"
-    ),
-  {
-    resolveComponent: (c) => c.LottieElement,
-  }
+  () => import("@bond-london/gatsby-graphcms-components"),
+  { resolveComponent: (lib) => lib.LottieElement }
 );
 
 import { PageDoc, File } from "../generated/graphql-types";
