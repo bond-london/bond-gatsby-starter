@@ -7,7 +7,6 @@ export const CoreSection: React.FC<{
   className: string;
   contentClassName?: string;
   element?: keyof JSX.IntrinsicElements;
-  double?: boolean;
   preChildren?: React.ReactNode;
   postChildren?: React.ReactNode;
   visibleThreshold?: number;
@@ -19,7 +18,6 @@ export const CoreSection: React.FC<{
   contentClassName,
   children,
   element: Element = "section",
-  double,
   preChildren,
   postChildren,
   visibleThreshold,
@@ -36,9 +34,7 @@ export const CoreSection: React.FC<{
     <Element
       data-component={componentName}
       className={classNames(
-        "relative",
-        "container-grid",
-        double ? "container-double" : "container-single",
+        "relative grid-container container-grid",
         className
       )}
     >
@@ -58,10 +54,11 @@ export const Section: React.FC<{
   spacingClassName?: string;
   topSpacing?: boolean;
   bottomSpacing?: boolean;
-  double?: boolean;
   element?: keyof JSX.IntrinsicElements;
   preChildren?: React.ReactNode;
   postChildren?: React.ReactNode;
+  visibleThreshold?: number;
+  visibleDelay?: number;
   onVisible?: () => void;
 }> = ({
   componentName,
@@ -70,11 +67,12 @@ export const Section: React.FC<{
   spacingClassName,
   topSpacing = true,
   bottomSpacing = true,
-  double,
   children,
   element,
   preChildren,
   postChildren,
+  visibleThreshold,
+  visibleDelay,
   onVisible,
 }) => {
   const realSpacingClassName =
@@ -96,10 +94,11 @@ export const Section: React.FC<{
         contentClassName,
         "relative col-start-2 col-span-1 content-grid"
       )}
-      double={double}
       preChildren={preChildren}
       postChildren={postChildren}
       onVisible={onVisible}
+      visibleDelay={visibleDelay}
+      visibleThreshold={visibleThreshold}
     >
       {children}
     </CoreSection>

@@ -1,57 +1,46 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { CodeOrActionRenderer } from "./CodeOrActionRenderer";
 import classNames from "classnames";
 import { TableRenderer } from "./TableRenderer";
 import {
   ClassNameOverrides,
+  RealRTF,
   NodeRenderer,
   NodeRendererProps,
-  RichText,
-  RichTextProps,
+  RealRTFProps,
+  ClassNodeRendererProps,
 } from "@bond-london/graphcms-rich-text";
+import { ClassRenderer } from "./ClassRenderer";
 
-const renderers: Partial<NodeRenderer> = {
+const projectRenderers: Partial<NodeRenderer> = {
   code_block: (props) => (
     <CodeOrActionRenderer {...(props as unknown as NodeRendererProps)} />
   ),
   table: (props) => (
     <TableRenderer {...(props as unknown as NodeRendererProps)} />
   ),
+  class: (props) => (
+    <ClassRenderer {...(props as unknown as ClassNodeRendererProps)} />
+  ),
 };
 
-const headingClasses: (keyof ClassNameOverrides)[] = [
-  "h1",
-  "h2",
-  "h3",
-  "h4",
-  "h5",
-  "h6",
-];
+const projectClassNameOverrides: ClassNameOverrides = {
+  h2: "h2 my-s",
+  h3: "h3 not-first:my-s",
+  h5: "p2sb not-first:mt-xs",
+  ol: "list-decimal list-outside space-y-xs my-xs pl-s",
+  p: "not-first:mb-xs",
+  ul: classNames("space-y-xs my-xs ml-xxs bulleted"),
+  b: classNames("font-semibold"),
+  a: classNames("underline text-dark-blue"),
+};
 
-export const RTF: React.FC<
-  RichTextProps & { className?: string; fixedParagraphClassName?: string }
-> = ({ classNameOverrides, className, fixedParagraphClassName, ...props }) => {
-  const realClassNameOverrides = useMemo(() => {
-    const result: ClassNameOverrides = {
-      ol: classNames("list-decimal list-inside"),
-      ul: classNames("list-disc list-inside"),
-      ...classNameOverrides,
-    };
-    if (fixedParagraphClassName) {
-      headingClasses.forEach((h) => {
-        result[h] = fixedParagraphClassName;
-      });
-    }
-    return result;
-  }, [classNameOverrides, fixedParagraphClassName]);
-
+export const RTF: React.FC<RealRTFProps> = (props) => {
   return (
-    <div className={classNames(className, "space-y-xs")}>
-      <RichText
-        {...props}
-        renderers={renderers}
-        classNameOverrides={realClassNameOverrides}
-      />
-    </div>
+    <RealRTF
+      {...props}
+      projectClassNameOverrides={projectClassNameOverrides}
+      projectRenderers={projectRenderers}
+    />
   );
 };

@@ -1,32 +1,40 @@
-import { VisualAsset } from "@bond-london/gatsby-graphcms-components";
+import {
+  AutoVisualNoLottie,
+  VisualAsset,
+} from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React from "react";
-import { AutoVisual } from "../utils";
+import loadable from "@loadable/component";
+
+const AutoVisualWithLottie = loadable(
+  () => import("@bond-london/gatsby-graphcms-components"),
+  { resolveComponent: (lib) => lib.AutoVisualWithLottie }
+);
 
 export const AspectRatioVisual: React.FC<{
   visual?: VisualAsset;
   className?: string;
   aspectRatioClassName: string;
   visualClassName?: string;
-  loop?: boolean;
 }> = ({
   visual,
   className,
   aspectRatioClassName,
-  loop,
   visualClassName,
   children,
 }) => {
   if (!visual) {
     return null;
   }
+
+  const hasLottie = !!visual.animation;
+  const Component = hasLottie ? AutoVisualWithLottie : AutoVisualNoLottie;
   return (
     <div className={classNames("relative", className)}>
       <div className={aspectRatioClassName}>
         {children}
-        <AutoVisual
+        <Component
           visual={visual}
-          loop={loop}
           fitParent={true}
           className={visualClassName}
         />

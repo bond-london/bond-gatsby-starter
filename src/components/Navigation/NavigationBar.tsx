@@ -1,6 +1,7 @@
+import { VisualAsset } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import React, { useCallback, useState } from "react";
-import { BondLogoIcon, Icon, IconType, LinkOrButton } from "..";
+import { BondLogoIcon, IconType, LinkOrButton } from "..";
 import { useBodyScrollLock } from "../../layouts";
 import { NavigationMenu } from "./NavigationMenu";
 
@@ -11,11 +12,12 @@ export interface LinkInformation {
   newPage?: boolean;
 }
 
-export type NamedLinkColour = "Green" | "Blue" | "White Green" | "White Blue";
+export type NamedLinkColour = "Green" | "Blue" | "WhiteGreen" | "WhiteBlue";
 
 export interface NamedLinkInformation extends LinkInformation {
   name?: string;
   colour?: NamedLinkColour;
+  visual?: VisualAsset;
 }
 
 export interface MenuItem extends NamedLinkInformation {
@@ -64,10 +66,29 @@ export const NavigationBar: React.FC<{
         </LinkOrButton>
         <button
           aria-label="Toggle menu"
-          className="col-start-4 col-span-1 md:col-start-8 justify-end lg:hidden"
+          className="col-start-4 col-span-1 md:col-start-8 justify-self-end lg:hidden relative w-xs h-xxs "
           onClick={toggleMenu}
         >
-          <Icon type="Hamburger" />
+          <div className="block absolute">
+            <span
+              className={classNames(
+                "block absolute h-3 w-xs text-white bg-current transform transition duration-500 ease-in-out rounded-full",
+                isOpen ? "rotate-45" : "-translate-y-xxxs"
+              )}
+            />
+            <span
+              className={classNames(
+                "block absolute h-3 w-xs text-white bg-current transform transition duration-500 ease-in-out",
+                isOpen && "opacity-0"
+              )}
+            />
+            <span
+              className={classNames(
+                "block absolute h-3 w-xs text-white bg-current transform transition duration-500 ease-in-out",
+                isOpen ? "-rotate-45" : "translate-y-xxxs"
+              )}
+            />
+          </div>
         </button>
         <NavigationMenu items={menu.items} isOpen={isOpen} />
       </div>

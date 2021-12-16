@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowBackIcon, ArrowForwardIcon, Individual, Person } from ".";
+import { Icon, Individual, Person } from ".";
 import { useMediaQuery } from "react-responsive";
 import {
   ButtonBack,
@@ -41,12 +41,15 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
             "md:grid md:grid-cols-1 md:grid-rows-3 md:self-auto"
           )}
         >
-          <ArrowBackIcon
+          <div
             className={classNames(
-              "stroke-current bg-neon-green text-dark-blue h-xs rounded-md",
+              "h-xs w-xs rounded-square bg-neon-green",
+              "flex justify-center items-center",
               "md:row-start-1 md:row-span-2 md:self-center"
             )}
-          />
+          >
+            <Icon type="ArrowBack" className="text-dark-blue h-xxs" />
+          </div>
         </ButtonBack>
         <Slider
           className={classNames(
@@ -54,7 +57,7 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
             "col-start-1 col-span-4",
             "md:col-start-2 md:col-span-6",
             "lg:col-start-2 lg:col-span-10",
-            "text-dark-blue lg:text-grey"
+            "text-grey"
           )}
           classNameTray="space-x-mobile-gap md:space-x-tablet-gap lg:space-x-desktop-gap"
         >
@@ -62,7 +65,6 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
             <Slide key={individual.name} index={index}>
               <Person
                 visual={individual.visual}
-                loop={individual.loop}
                 name={individual.name}
                 position={individual.position}
               />
@@ -77,12 +79,15 @@ export const Team: React.FC<{ team: Individual[] }> = ({ team }) => {
             "md:grid md:grid-cols-1 md:grid-rows-3 md:self-auto"
           )}
         >
-          <ArrowForwardIcon
+          <div
             className={classNames(
-              "stroke-current bg-neon-green text-dark-blue h-xs rounded-md",
+              "h-xs w-xs rounded-square bg-neon-green",
+              "flex justify-center items-center",
               "md:row-start-1 md:row-span-2 md:self-center"
             )}
-          />
+          >
+            <Icon type="ArrowForward" className="text-dark-blue h-xxs" />
+          </div>
         </ButtonNext>
       </CarouselProvider>
     </Section>

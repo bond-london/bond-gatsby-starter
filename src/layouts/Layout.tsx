@@ -83,7 +83,7 @@ export const Layout: React.FC<{
         siteMetadata={siteMetadata}
         pageUrl={siteMetadata.siteUrl}
         className={classNames(
-          bodyClassName || "bg-white",
+          bodyClassName || "bg-washed-blue",
           process.env.GATSBY_DEBUG_TAILWIND && "debug-screens"
         )}
       />
@@ -128,7 +128,7 @@ export const Layout: React.FC<{
       </CookieConsent>
       <Modal
         containerClassName="bg-black bg-opacity-50"
-        contentClassName="bg-washed-blue rounded-3xl p-s"
+        contentClassName="bg-washed-blue rounded-normal p-s"
       />
     </LayoutContext.Provider>
   );

@@ -8,40 +8,58 @@ import { useFirstVisible } from "../../utils";
 import { RTFContent } from "@bond-london/graphcms-rich-text";
 
 export const Hero: React.FC<{
-  title: string;
-  message?: RTFContent;
+  title?: string;
+  content?: RTFContent;
   links?: NamedLinkInformation[];
   visual?: VisualAsset;
-  loop?: boolean;
-}> = ({ title, message, links, visual, loop }) => {
+}> = ({ title, content, links, visual }) => {
   const [onVisible, animationMode] = useFirstVisible();
   return (
     <HeroContainer
       componentName="Hero"
       onVisible={onVisible}
       visual={visual}
-      loop={loop}
       containerClassName="space-y-xs lg:space-y-s pb-xs"
     >
-      <h1 className={classNames(animationMode, "h1 animate-enter-from-left")}>
-        {title}
-      </h1>
-      {message && (
+      {title && (
+        <h1
+          className={classNames(animationMode, "h1 animate-enter-from-bottom")}
+        >
+          {title}
+        </h1>
+      )}
+      {content && (
         <RTF
-          fixedParagraphClassName="p2"
-          className={classNames(animationMode, "animate-appear")}
-          content={message}
+          classNameOverrides={{
+            h1: "p1 my-xs",
+            h2: "p2 my-xs",
+            h3: "p3 my-xs",
+            h4: "p4 my-xs",
+            h5: "p4 my-xs",
+            h6: "p4 my-xs",
+            p: "p2",
+          }}
+          className={classNames(
+            animationMode,
+            "animate-enter-from-bottom animation-delay-100"
+          )}
+          content={content}
         />
       )}
-      {links &&
-        links.map((link) => (
-          <LinkOrButton
-            key={link.name}
-            className={classNames(animationMode, "animate-enter-from-bottom")}
-            isButton={true}
-            {...link}
-          />
-        ))}
+      {links && (
+        <div
+          className={classNames(
+            animationMode,
+            "animation-delay-200",
+            "animate-appear",
+            "flex space-x-xs"
+          )}
+        >
+          {links.map((link, index) => (
+            <LinkOrButton key={index} isButton={true} {...link} />
+          ))}
+        </div>
+      )}
     </HeroContainer>
   );
 };

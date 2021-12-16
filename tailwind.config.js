@@ -6,7 +6,7 @@ const rounding = 1000;
 const defaulttheme = require("tailwindcss/defaultTheme");
 
 const animationTiming = "cubic-bezier(0.22, 1, 0.36, 1)";
-const animationDuration = "1s";
+const animationDuration = "0.5s";
 
 const mobileMargin = 20;
 const mobileGap = 20;
@@ -54,7 +54,7 @@ const spacing = {
   xl: 112,
 };
 
-const navHeight = spacing.xs + spacing.m + spacing.xs;
+const navHeight = spacing.xxxs + spacing.m + spacing.xxs;
 
 const sizes = [
   {
@@ -97,15 +97,14 @@ const fontSizeRatios = [
 
 module.exports = {
   mode: "jit",
-  purge: {
-    content: ["./src/**/*.{tsx,ts}"],
-  },
+  content: ["./src/**/*.{tsx,ts}"],
   theme: {
     fontFamily: {
       sofiapro: ["Sofia Pro", ...defaulttheme.fontFamily.sans],
       poppins: ["Poppins", ...defaulttheme.fontFamily.serif],
     },
     fontWeight: {
+      light: 300,
       regular: 400,
       semibold: 600,
     },
@@ -116,9 +115,17 @@ module.exports = {
       ...defaultNumbers,
       ...buildSpacing(),
       ...buildGridSpacing(),
+      ...mapNumbers([1, 2, 3], defaultKeyFn, remValueFn),
     },
     fontSize: {
       ...buildFontSizes(),
+    },
+    borderRadius: {
+      ...defaultNumbers,
+      square: calculateRemSize(2),
+      button: calculateRemSize(4),
+      normal: calculateRemSize(24),
+      full: "9999px",
     },
     extend: {
       zIndex: {
@@ -126,7 +133,7 @@ module.exports = {
         modal: "500",
       },
       maxHeight: {
-        navClosed: calculateRemSize(200),
+        navClosed: calculateRemSize(88),
         navOpen: calculateRemSize(2000),
         modal: "80vh",
       },
@@ -171,31 +178,31 @@ module.exports = {
       },
       keyframes: {
         "enter-from-top": {
-          "0%": { transform: "translateY(-10vw)", opacity: 0 },
-          "30%": { opacity: 1 },
+          "0%": { transform: "translateY(-20px)", opacity: 0 },
           "100%": {
             transform: "translateY(0)",
+            opacity: 1,
           },
         },
         "enter-from-bottom": {
-          "0%": { transform: "translateY(10vw)", opacity: 0 },
-          "30%": { opacity: 1 },
+          "0%": { transform: "translateY(20px)", opacity: 0 },
           "100%": {
             transform: "translateY(0)",
+            opacity: 1,
           },
         },
         "enter-from-left": {
-          "0%": { transform: "translateX(-10vw)", opacity: 0 },
-          "30%": { opacity: 1 },
+          "0%": { transform: "translateX(-20px)", opacity: 0 },
           "100%": {
             transform: "translateX(0)",
+            opacity: 1,
           },
         },
         "enter-from-right": {
-          "0%": { transform: "translateX(10vw)", opacity: 0 },
-          "30%": { opacity: 1 },
+          "0%": { transform: "translateX(20px)", opacity: 0 },
           "100%": {
             transform: "translateX(0)",
+            opacity: 1,
           },
         },
         appear: {
@@ -309,23 +316,12 @@ function calculateSpan(min, max, by = 1) {
 
 function createGridRows() {
   const grids = {};
-  sizes.forEach(({ name, spacing }) => {
-    const margin = calculateRemSize(spacing);
-    grids[`${name}-basic`] = `${margin} 1fr ${margin}`;
-    grids[`${name}-single`] = `${margin} repeat(4, 1fr) ${margin}`;
-    grids[`${name}-single-auto`] = `${margin} repeat(4, auto) ${margin}`;
-    grids[
-      `${name}-double`
-    ] = `repeat(2, ${margin}) repeat(2,1fr) repeat(2, ${margin})`;
-    grids[
-      `${name}-double-auto`
-    ] = `repeat(2, ${margin}) repeat(2,auto) repeat(2, ${margin})`;
-  });
 
   grids["nav-closed"] = `${calculateRemSize(navHeight)} 1fr`;
   grids["nav-open"] = `${calculateRemSize(navHeight)} ${calculateRemSize(
     spacing.s
   )} 1fr ${calculateRemSize(spacing.s)}`;
+  grids["mobile-overlap"] = `auto ${calculateRemSize(spacing.s)} auto`;
 
   return grids;
 }
@@ -379,6 +375,11 @@ function buildGridSpacing() {
   sizes.forEach(({ name, margin, gap, cols }) => {
     results[`${name}-gap`] = calculateRemSize(gap);
     results[`${name}-margin`] = calculateRemSize(margin);
+    results[`${name}-half-col`] = `calc((((min(100vw, ${calculateRemSize(
+      maximumWidth
+    )}) - ${calculateRemSize(
+      2 * margin + (cols + 1) * gap
+    )}) / ${cols}) * 0.5))`;
 
     for (let i = 1; i < cols; i++) {
       results[`${name}-${i}-cols`] = `calc((((min(100vw, ${calculateRemSize(
@@ -427,12 +428,12 @@ function addBorderSpacing({ addUtilities }) {
 function addContainerGrid({ addUtilities }) {
   addUtilities({
     ".grid-container": {
-      "--bond-container-row-1": calculateRemSize(spacing.m),
+      "--bond-container-row-1": calculateRemSize(spacing.s),
       "--bond-container-row-2": "1fr",
       "--bond-container-row-3": "1fr",
       "--bond-container-row-4": "1fr",
       "--bond-container-row-5": "1fr",
-      "--bond-container-row-6": calculateRemSize(spacing.m),
+      "--bond-container-row-6": calculateRemSize(spacing.s),
       "grid-template-rows": `var(--bond-container-row-1) var(--bond-container-row-2) var(--bond-container-row-3) var(--bond-container-row-4) var(--bond-container-row-5) var(--bond-container-row-6)`,
     },
   });
@@ -447,6 +448,7 @@ function addContainerGrid({ addUtilities }) {
   }
   addUtilities(values);
 }
+
 function addAnimationUtilities({ addUtilities }) {
   addUtilities(
     calculateNumbers(
@@ -507,7 +509,7 @@ function LightenDarkenColor(col, amt) {
 function buildColours() {
   const colors = {
     transparent: "transparent",
-    current: "current",
+    current: "currentColor",
   };
 
   Object.entries(colorOptions).map(([colorName, colorValue]) => {

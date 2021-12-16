@@ -7,24 +7,14 @@ import { Section } from "../../layouts";
 export const HeroContainer: React.FC<{
   componentName: string;
   visual?: VisualAsset;
-  loop?: boolean;
   onVisible?: () => void;
   containerClassName?: string;
-}> = ({
-  onVisible,
-  visual,
-  loop,
-  componentName,
-  containerClassName,
-  children,
-}) => {
+}> = ({ onVisible, visual, componentName, containerClassName, children }) => {
   return (
     <Section
       componentName={componentName}
-      double={true}
-      topSpacing={false}
-      className="text-washed-blue"
-      contentClassName="grid-rows-mobile-double-auto lg:grid-rows-desktop-double-auto"
+      spacingClassName="row-start-2 row-span-4"
+      className="text-washed-blue bond-row-5-s"
       preChildren={
         <div
           className={classNames(
@@ -59,7 +49,6 @@ export const HeroContainer: React.FC<{
           )}
           aspectRatioClassName="aspect-hero"
           visual={visual}
-          loop={loop}
         />
       )}
     </Section>

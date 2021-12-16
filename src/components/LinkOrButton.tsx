@@ -1,17 +1,19 @@
-import { VisualAsset } from "@bond-london/gatsby-graphcms-components";
+import {
+  AutoVisualNoLottie,
+  VisualAsset,
+} from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import { Link } from "gatsby";
 import React from "react";
 import { Icon, NamedLinkColour, NamedLinkInformation } from ".";
-import { AutoVisual } from "../utils";
 
 export function getButtonColour(colour?: NamedLinkColour): string {
   switch (colour) {
     case "Blue":
       return "blue-button";
-    case "White Blue":
+    case "WhiteBlue":
       return "white-blue-button";
-    case "White Green":
+    case "WhiteGreen":
       return "white-green-button";
   }
   return "green-button";
@@ -41,7 +43,11 @@ export const LinkOrButton: React.FC<
 }) => {
   const realButtonClassName =
     isButton && colour
-      ? classNames("button", getButtonColour(colour), className)
+      ? classNames(
+          visual ? "image-button" : "button",
+          getButtonColour(colour),
+          className
+        )
       : className;
 
   const inside = icon ? (
@@ -50,7 +56,7 @@ export const LinkOrButton: React.FC<
       <div>{name || children}</div>
     </div>
   ) : visual ? (
-    <AutoVisual visual={visual} />
+    <AutoVisualNoLottie visual={visual} />
   ) : (
     name || children
   );

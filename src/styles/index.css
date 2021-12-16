@@ -6,13 +6,13 @@
 
 @layer base {
   body {
-    @apply font-sofiapro font-regular text-dark-blue bg-washed-blue;
+    @apply font-sofiapro font-light text-dark-blue bg-washed-blue;
   }
 }
 
 @layer components {
   .h1 {
-    @apply font-poppins font-regular text-32-125 lg:text-42-125;
+    @apply font-poppins font-light text-32-125 lg:text-42-125;
   }
 
   .h1 .icon {
@@ -20,7 +20,7 @@
   }
 
   .h2 {
-    @apply font-poppins font-regular text-24-125 lg:text-36-125;
+    @apply font-poppins font-light text-24-125 lg:text-36-125;
   }
 
   .h2 .icon {
@@ -28,11 +28,11 @@
   }
 
   .h3 {
-    @apply font-poppins font-regular text-18-125 lg:text-24-125;
+    @apply font-poppins font-light text-18-125 lg:text-24-125;
   }
 
   .h3tl {
-    @apply font-poppins font-regular text-14-125 lg:text-24-125;
+    @apply font-poppins font-light text-14-125 lg:text-24-125;
   }
 
   .h3 .icon {
@@ -40,11 +40,11 @@
   }
 
   .h4 {
-    @apply font-poppins font-regular text-18-125;
+    @apply font-poppins font-light text-18-125;
   }
 
   .p1 {
-    @apply font-sofiapro font-regular text-18-140 lg:text-22-140;
+    @apply font-sofiapro font-light text-18-140 lg:text-22-140;
   }
 
   .p1 .icon {
@@ -59,7 +59,7 @@
   }
 
   .p2 {
-    @apply font-sofiapro font-regular text-16-140 lg:text-18-140;
+    @apply font-sofiapro font-light text-16-140 lg:text-18-140;
   }
 
   .p2 .icon {
@@ -75,7 +75,7 @@
   }
 
   .p3 {
-    @apply font-sofiapro font-regular text-14-140 lg:text-16-140;
+    @apply font-sofiapro font-light text-14-140 lg:text-16-140;
   }
 
   .p3 .icon {
@@ -83,7 +83,7 @@
   }
 
   .p4 {
-    @apply font-sofiapro font-regular text-12-140 lg:text-14-140;
+    @apply font-sofiapro font-light text-12-140 lg:text-14-140;
   }
 
   .p4 .icon {
@@ -94,24 +94,16 @@
     @apply w-full grid grid-cols-mobile-container md:grid-cols-tablet-container lg:grid-cols-desktop-container;
   }
 
-  .container-basic {
-    @apply grid-rows-mobile-basic md:grid-rows-tablet-basic lg:grid-rows-desktop-basic;
-  }
-
-  .container-single {
-    @apply grid-rows-mobile-single md:grid-rows-tablet-single lg:grid-rows-desktop-single;
-  }
-
-  .container-double {
-    @apply grid-rows-mobile-double md:grid-rows-tablet-double lg:grid-rows-desktop-double;
-  }
-
   .content-grid {
     @apply grid grid-cols-mobile-content md:grid-cols-tablet-content lg:grid-cols-desktop-content gap-x-mobile-gap md:gap-x-tablet-gap lg:gap-x-desktop-gap;
   }
 
   .button {
-    @apply px-xxs h-s inline-flex justify-center items-center rounded-sm;
+    @apply px-xxs h-s inline-flex justify-center items-center rounded-button text-16-140 font-sofiapro font-regular;
+  }
+
+  .image-button {
+    @apply h-s inline-flex justify-center items-center rounded-button text-16-140 font-sofiapro font-regular;
   }
 
   .green-button {
@@ -140,5 +132,12 @@
 
   .aspect-hero {
     @apply aspect-w-11 aspect-h-10;
+  }
+  .bulleted li::marker {
+    content: url(./bullet.svg);
+  }
+
+  .bulleted li {
+    @apply pl-xs;
   }
 }

@@ -12,10 +12,10 @@ export const Headline: React.FC<{ content: RTFContent }> = ({ content }) => {
       <RTF
         content={content}
         className={classNames(
-          "col-start-1 col-span-4 md:col-start-2 md:col-span-6 lg:col-start-2 lg:col-span-8",
+          "col-start-1 col-span-4 md:col-start-2 md:col-span-6 lg:col-start-2 lg:col-span-6",
           "border-l-6 border-neon-green pl-xs",
           animationMode,
-          "animate-appear"
+          "animate-enter-from-bottom"
         )}
         fixedParagraphClassName="h1"
       />

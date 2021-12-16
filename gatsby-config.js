@@ -9,6 +9,8 @@ const languages = ["en"];
 const siteUrl = process.env.GATSBY_SITE_URL || "http://localhost:8000";
 const showDevPages = !!process.env.SHOW_DEV_PAGES;
 
+const isProduction = process.env.PRODUCTION || process.env.GRAPHCMS_STAGE === "PUBLISHED";
+
 const path = require("path");
 // Get paths of Gatsby's required rules, which as of writing is located at:
 // https://github.com/gatsbyjs/gatsby/tree/fbfe3f63dec23d279a27b54b4057dd611dce74bb/packages/
@@ -46,6 +48,7 @@ module.exports = {
         exclude: ["node_modules", "bower_components", ".cache", "public"],
       },
     },
+    "gatsby-plugin-robots-txt",
     {
       resolve: "gatsby-plugin-page-creator",
       options: {
@@ -74,8 +77,8 @@ module.exports = {
 
       options: {
         defaults: {
-          formats: ["auto", "webp", "avif"],
-          breakpoints: [400, 750, 1080, 1366, 1920],
+          formats: isProduction ? ["auto", "webp"] : ["auto"],
+          breakpoints: isProduction ? [400, 750, 1080, 1366, 1920] : [1920],
         },
       },
     },

@@ -9,7 +9,7 @@ export const FooterColumn: React.FC<{
   className?: string;
 }> = ({ entries, className }) => {
   return (
-    <div className={classNames(className, "space-y-xs lg:space-y-s")}>
+    <div className={classNames(className, "space-y-xs")}>
       {entries.map((entry, index) => {
         switch (entry.type) {
           case "Logo":
