@@ -4,7 +4,7 @@ import React from "react";
 import { AspectRatioVisual, RTF } from "../elements";
 import { Section } from "../layouts";
 import { useFirstVisible } from "../utils";
-import { RTFContent } from "@bond-london/graphcms-rich-text";
+import { CleanedRTF } from "@bond-london/graphcms-rich-text";
 import { lookupColourString } from "../lookups";
 
 export type BackgroundColour = "LightBlue" | "DarkBlue";
@@ -18,7 +18,7 @@ export function getBackgroundColourClassName(
 
 export const Message: React.FC<{
   title: string;
-  content?: RTFContent;
+  content?: CleanedRTF;
   visual?: VisualAsset;
   className?: string;
   backgroundColour?: BackgroundColour;

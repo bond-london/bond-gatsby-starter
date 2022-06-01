@@ -4,7 +4,7 @@ import {
 } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import { Link } from "gatsby";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Icon, NamedLinkColour, NamedLinkInformation } from ".";
 
 export function getButtonColour(colour?: NamedLinkColour): string {
@@ -20,13 +20,15 @@ export function getButtonColour(colour?: NamedLinkColour): string {
 }
 
 export const LinkOrButton: React.FC<
-  NamedLinkInformation & {
-    visual?: VisualAsset;
-    className?: string;
-    iconClassName?: string;
-    isButton?: boolean;
-    action?: () => void;
-  }
+  PropsWithChildren<
+    NamedLinkInformation & {
+      visual?: VisualAsset;
+      className?: string;
+      iconClassName?: string;
+      isButton?: boolean;
+      action?: () => void;
+    }
+  >
 > = ({
   className,
   internal,

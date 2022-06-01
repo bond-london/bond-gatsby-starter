@@ -1,15 +1,17 @@
 import { VisualAsset } from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { AspectRatioVisual } from "../../elements";
 import { Section } from "../../layouts";
 
-export const HeroContainer: React.FC<{
-  componentName: string;
-  visual?: VisualAsset;
-  onVisible?: () => void;
-  containerClassName?: string;
-}> = ({ onVisible, visual, componentName, containerClassName, children }) => {
+export const HeroContainer: React.FC<
+  PropsWithChildren<{
+    componentName: string;
+    visual?: VisualAsset;
+    onVisible?: () => void;
+    containerClassName?: string;
+  }>
+> = ({ onVisible, visual, componentName, containerClassName, children }) => {
   return (
     <Section
       componentName={componentName}

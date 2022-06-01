@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { PropsWithChildren, useCallback, useState } from "react";
 import {
   Information,
   DesignLayout,
@@ -12,7 +12,6 @@ import {
   Team,
   FooterInformation,
   Footer,
-  ComplexHero,
   NavigationBar,
   BasicRTF,
   SearchableChooser,
@@ -23,7 +22,6 @@ import rtf from "../../data/rtf.json";
 import countries from "../../data/countries.json";
 
 import { Section } from "../../layouts";
-import { File } from "../../generated/graphql-types";
 
 import { graphql, useStaticQuery } from "gatsby";
 import {
@@ -32,7 +30,12 @@ import {
   getSvgFromFile,
   getVideoFromFile,
 } from "@bond-london/gatsby-graphcms-components";
-import { GenericRichTextNode, getRTF } from "@bond-london/graphcms-rich-text";
+import {
+  CleanedRTF,
+  getCleanedRTF,
+  rtfFromText,
+  GenericRichTextNode,
+} from "@bond-london/graphcms-rich-text";
 const menu: Menu = {
   items: [
     { name: "Design", internal: "/dev/design" },
@@ -134,12 +137,14 @@ const footer: FooterInformation = {
   ],
 };
 
-const ComponentContainer: React.FC<{ name: string }> = ({ name, children }) => {
+const ComponentContainer: React.FC<PropsWithChildren<{ name: string }>> = ({
+  name,
+  children,
+}) => {
   return (
     <Section
       componentName={name}
       topSpacing={false}
-      double={true}
       postChildren={
         <div className="relative col-span-full row-start-3 row-span-3 outline-debug-black">
           {children}
@@ -151,11 +156,9 @@ const ComponentContainer: React.FC<{ name: string }> = ({ name, children }) => {
   );
 };
 
-const Components: React.FC = () => {
-  const allFiles = useStaticQuery<{
-    allFile: { nodes: readonly File[] };
-  }>(graphql`
-    query {
+const Components: React.FC<{ pagePath: string }> = ({ pagePath }) => {
+  const allFiles = useStaticQuery<Queries.AllFilesQuery>(graphql`
+    query AllFiles {
       allFile(filter: { sourceInstanceName: { eq: "images" } }) {
         nodes {
           name
@@ -201,7 +204,6 @@ const Components: React.FC = () => {
     },
     {
       visual: { animation: pumpkinHead, alt: "Headshot" },
-      loop: true,
       name: "Bernard",
       position: "Right wing",
     },
@@ -216,7 +218,6 @@ const Components: React.FC = () => {
         videoUrl: personVideo,
         alt: "Headshot",
       },
-      loop: true,
       name: "Duncan",
       position: "Centre",
     },
@@ -237,7 +238,7 @@ const Components: React.FC = () => {
   const [selectedCountry, setSelectedCountry] = useState<Option>();
 
   return (
-    <DesignLayout title="Design">
+    <DesignLayout title="Design" pagePath={pagePath}>
       <ComponentContainer name="Buttons">
         <Section componentName="Buttons" contentClassName="gap-y-mobile-gap">
           <LinkOrButton
@@ -261,7 +262,7 @@ const Components: React.FC = () => {
           <LinkOrButton
             className="col-span-2"
             isButton={true}
-            colour="White Blue"
+            colour="WhiteBlue"
           >
             Nothing
           </LinkOrButton>
@@ -269,7 +270,7 @@ const Components: React.FC = () => {
           <LinkOrButton
             className="col-span-2"
             isButton={true}
-            colour="White Green"
+            colour="WhiteGreen"
           >
             Nothing
           </LinkOrButton>
@@ -287,7 +288,7 @@ const Components: React.FC = () => {
       <ComponentContainer name="Hero">
         <Hero
           title="Hero title"
-          message={getRTF(
+          content={rtfFromText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
           visual={{
@@ -295,7 +296,6 @@ const Components: React.FC = () => {
             videoUrl: heroVideo,
             alt: "Mountain",
           }}
-          loop={false}
           links={[{ name: "Click me", colour: "Blue" }]}
         />
       </ComponentContainer>
@@ -303,7 +303,7 @@ const Components: React.FC = () => {
       <ComponentContainer name="Hero Image">
         <Hero
           title="Hero image"
-          message={getRTF(
+          content={rtfFromText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
           visual={{
@@ -317,7 +317,7 @@ const Components: React.FC = () => {
       <ComponentContainer name="Hero with long text">
         <Hero
           title="Long hero video"
-          message={getRTF(
+          content={rtfFromText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
           )}
           visual={{
@@ -325,30 +325,29 @@ const Components: React.FC = () => {
             videoUrl: heroVideo,
             alt: "Mountain",
           }}
-          loop={false}
-          links={[{ name: "Click me", colour: "White Blue" }]}
+          links={[{ name: "Click me", colour: "WhiteBlue" }]}
         />
       </ComponentContainer>
 
       <ComponentContainer name="Hero animation">
         <Hero
           title="Hero animation"
-          message={getRTF(
+          content={rtfFromText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
           visual={{
             animation,
             alt: "Data",
+            loop: true,
           }}
-          loop={true}
-          links={[{ name: "Click me", colour: "White Green" }]}
+          links={[{ name: "Click me", colour: "WhiteGreen" }]}
         />
       </ComponentContainer>
 
       <ComponentContainer name="Hero svg">
         <Hero
           title="Hero svg"
-          message={getRTF(
+          content={rtfFromText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
           visual={{
@@ -359,98 +358,79 @@ const Components: React.FC = () => {
         />
       </ComponentContainer>
 
-      <ComponentContainer name="Complex hero">
-        <ComplexHero
-          title="Complex hero"
-          message={getRTF(rtf.complex_hero_1 as GenericRichTextNode)}
-          visual={{
-            image: heroThumbnail,
-            videoUrl: heroVideo,
-            alt: "Mountain",
-          }}
-          loop={false}
-        />
-      </ComponentContainer>
-
       <ComponentContainer name="Headline">
         <Headline
-          content={
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            getRTF("Lorem ipsum dolor sit amet, consectetur adipiscing elit")!
-          }
+          content={rtfFromText(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+          )}
         />
       </ComponentContainer>
 
       <ComponentContainer name="Collection left">
         <Information
-          left={true}
           visual={{ image: heroThumbnail, alt: "Mountain" }}
           title="Lorem ipsum dolor sit amet"
-          message={getRTF(
+          content={rtfFromText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
-          link={{ name: "Click me" }}
+          links={[{ name: "Click me" }]}
         />
       </ComponentContainer>
 
       <ComponentContainer name="Collection right with video">
         <Information
-          left={false}
           visual={{
             image: heroThumbnail,
             videoUrl: heroVideo,
             alt: "Mountain",
           }}
           title="Lorem ipsum dolor sit amet"
-          message={getRTF(
+          content={rtfFromText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
-          link={{ name: "Click me" }}
+          links={[{ name: "Click me" }]}
         />
       </ComponentContainer>
 
       <ComponentContainer name="Product left with animation">
         <Product
-          left={true}
           visual={{
             animation,
             alt: "Data",
           }}
           title="Lorem ipsum dolor sit amet"
-          message={getRTF(
+          content={rtfFromText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
-          link={{ name: "Click me" }}
+          links={[{ name: "Click me" }]}
         />
       </ComponentContainer>
 
       <ComponentContainer name="Product right">
         <Product
-          left={false}
           visual={{
             svg: engine,
             alt: "Mountain",
           }}
           title="Lorem ipsum dolor sit amet"
-          message={getRTF(
+          content={rtfFromText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
-          link={{ name: "Click me" }}
+          links={[{ name: "Click me" }]}
         />
       </ComponentContainer>
 
       <ComponentContainer name="Product right">
         <Product
-          left={false}
           visual={{
             svg: engine,
             alt: "Mountain",
           }}
           title="Lorem ipsum dolor sit amet"
-          message={getRTF(
+          content={rtfFromText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
-          link={{ name: "Click me" }}
+          links={[{ name: "Click me" }]}
         />
       </ComponentContainer>
 
@@ -460,8 +440,8 @@ const Components: React.FC = () => {
 
       <ComponentContainer name="Message">
         <Message
-          heading="Lorem ipsum dolor sit amet"
-          content={getRTF(
+          title="Lorem ipsum dolor sit amet"
+          content={rtfFromText(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
           )}
           visual={{ image: heroThumbnail, alt: "Mountain" }}
@@ -469,11 +449,17 @@ const Components: React.FC = () => {
       </ComponentContainer>
 
       <ComponentContainer name="Generic RTF">
-        <BasicRTF content={getRTF(rtf.rtf1 as GenericRichTextNode)} />
+        <BasicRTF
+          content={getCleanedRTF(rtf.rtf1 as GenericRichTextNode) as CleanedRTF}
+        />
       </ComponentContainer>
 
       <ComponentContainer name="RTF table">
-        <BasicRTF content={getRTF(rtf.table1 as GenericRichTextNode)} />
+        <BasicRTF
+          content={
+            getCleanedRTF(rtf.table1 as GenericRichTextNode) as CleanedRTF
+          }
+        />
       </ComponentContainer>
 
       <ComponentContainer name="Searchable chooser">

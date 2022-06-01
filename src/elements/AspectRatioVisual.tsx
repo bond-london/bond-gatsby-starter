@@ -2,21 +2,18 @@ import {
   AutoVisualNoLottie,
   VisualAsset,
 } from "@bond-london/gatsby-graphcms-components";
+import { AutoVisualWithLottie } from "@bond-london/gatsby-graphcms-components/dist/lottie";
 import classNames from "classnames";
-import React from "react";
-import loadable from "@loadable/component";
+import React, { PropsWithChildren, Suspense } from "react";
 
-const AutoVisualWithLottie = loadable(
-  () => import("@bond-london/gatsby-graphcms-components"),
-  { resolveComponent: (lib) => lib.AutoVisualWithLottie }
-);
-
-export const AspectRatioVisual: React.FC<{
-  visual?: VisualAsset;
-  className?: string;
-  aspectRatioClassName: string;
-  visualClassName?: string;
-}> = ({
+export const AspectRatioVisual: React.FC<
+  PropsWithChildren<{
+    visual?: VisualAsset;
+    className?: string;
+    aspectRatioClassName: string;
+    visualClassName?: string;
+  }>
+> = ({
   visual,
   className,
   aspectRatioClassName,
@@ -28,12 +25,28 @@ export const AspectRatioVisual: React.FC<{
   }
 
   const hasLottie = !!visual.animation;
-  const Component = hasLottie ? AutoVisualWithLottie : AutoVisualNoLottie;
+  if (hasLottie) {
+    return (
+      <div className={classNames("relative", className)}>
+        <div className={aspectRatioClassName}>
+          {children}
+          <Suspense fallback={<div>loading ...</div>}>
+            <AutoVisualWithLottie
+              visual={visual}
+              fitParent={true}
+              className={visualClassName}
+            />
+          </Suspense>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={classNames("relative", className)}>
       <div className={aspectRatioClassName}>
         {children}
-        <Component
+        <AutoVisualNoLottie
           visual={visual}
           fitParent={true}
           className={visualClassName}

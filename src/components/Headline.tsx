@@ -3,9 +3,9 @@ import React from "react";
 import { RTF } from "../elements";
 import { Section } from "../layouts";
 import { useFirstVisible } from "../utils";
-import { RTFContent } from "@bond-london/graphcms-rich-text";
+import { CleanedRTF } from "@bond-london/graphcms-rich-text";
 
-export const Headline: React.FC<{ content: RTFContent }> = ({ content }) => {
+export const Headline: React.FC<{ content: CleanedRTF }> = ({ content }) => {
   const [onVisible, animationMode] = useFirstVisible();
   return (
     <Section componentName="Headline" onVisible={onVisible}>

@@ -12,27 +12,27 @@
 
 @layer components {
   .h1 {
-    @apply font-poppins font-light text-32-125 lg:text-42-125;
+    @apply font-poppins font-light text-32-125 laptop:text-42-125;
   }
 
   .h1 .icon {
-    @apply h-s lg:h-m;
+    @apply h-s laptop:h-m;
   }
 
   .h2 {
-    @apply font-poppins font-light text-24-125 lg:text-36-125;
+    @apply font-poppins font-light text-24-125 laptop:text-36-125;
   }
 
   .h2 .icon {
-    @apply h-xs lg:h-s;
+    @apply h-xs laptop:h-s;
   }
 
   .h3 {
-    @apply font-poppins font-light text-18-125 lg:text-24-125;
+    @apply font-poppins font-light text-18-125 laptop:text-24-125;
   }
 
   .h3tl {
-    @apply font-poppins font-light text-14-125 lg:text-24-125;
+    @apply font-poppins font-light text-14-125 laptop:text-24-125;
   }
 
   .h3 .icon {
@@ -44,7 +44,7 @@
   }
 
   .p1 {
-    @apply font-sofiapro font-light text-18-140 lg:text-22-140;
+    @apply font-sofiapro font-light text-18-140 laptop:text-22-140;
   }
 
   .p1 .icon {
@@ -52,14 +52,14 @@
   }
 
   .p1sb {
-    @apply font-sofiapro font-semibold text-18-140 lg:text-22-140;
+    @apply font-sofiapro font-semibold text-18-140 laptop:text-22-140;
   }
   .p1sb .icon {
     @apply h-xs;
   }
 
   .p2 {
-    @apply font-sofiapro font-light text-16-140 lg:text-18-140;
+    @apply font-sofiapro font-light text-16-140 laptop:text-18-140;
   }
 
   .p2 .icon {
@@ -67,7 +67,7 @@
   }
 
   .p2sb {
-    @apply font-sofiapro font-semibold text-16-140 lg:text-18-140;
+    @apply font-sofiapro font-semibold text-16-140 laptop:text-18-140;
   }
 
   .p2sb .icon {
@@ -75,7 +75,7 @@
   }
 
   .p3 {
-    @apply font-sofiapro font-light text-14-140 lg:text-16-140;
+    @apply font-sofiapro font-light text-14-140 laptop:text-16-140;
   }
 
   .p3 .icon {
@@ -83,19 +83,11 @@
   }
 
   .p4 {
-    @apply font-sofiapro font-light text-12-140 lg:text-14-140;
+    @apply font-sofiapro font-light text-12-140 laptop:text-14-140;
   }
 
   .p4 .icon {
     @apply h-xxs;
-  }
-
-  .container-grid {
-    @apply w-full grid grid-cols-mobile-container md:grid-cols-tablet-container lg:grid-cols-desktop-container;
-  }
-
-  .content-grid {
-    @apply grid grid-cols-mobile-content md:grid-cols-tablet-content lg:grid-cols-desktop-content gap-x-mobile-gap md:gap-x-tablet-gap lg:gap-x-desktop-gap;
   }
 
   .button {

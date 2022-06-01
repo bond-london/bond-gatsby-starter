@@ -5,13 +5,13 @@ import { LinkOrButton, NamedLinkInformation } from ".";
 import { AspectRatioVisual, RTF } from "../elements";
 import { Section } from "../layouts";
 import { useFirstVisible } from "../utils";
-import { RTFContent } from "@bond-london/graphcms-rich-text";
+import { CleanedRTF } from "@bond-london/graphcms-rich-text";
 
 export const Information: React.FC<{
   right?: boolean;
   visual: VisualAsset;
   title: string;
-  content?: RTFContent;
+  content?: CleanedRTF;
   links?: NamedLinkInformation[];
 }> = ({ right = false, visual, title, content, links }) => {
   const [onVisible, animationMode] = useFirstVisible();

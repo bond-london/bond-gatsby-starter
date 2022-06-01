@@ -62,7 +62,7 @@ export const Footer: React.FC<FooterInformation> = (information) => {
   } = useStaticQuery<{
     siteBuildMetadata: { buildTime: string; buildYear: string };
   }>(graphql`
-    query {
+    query Footer {
       siteBuildMetadata {
         buildYear: buildTime(formatString: "YYYY")
         buildTime(formatString: "dddd, MMMM d YYYY, h:mm:ss A")

@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { Link } from "gatsby";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Layout, Section } from "../layouts";
 
 const pages: { title: string; path: string }[] = [
@@ -9,14 +9,13 @@ const pages: { title: string; path: string }[] = [
   { title: "Components", path: "/dev/components" },
 ];
 
-export const DesignLayout: React.FC<{ title: string }> = ({
-  title,
-  children,
-}) => {
+export const DesignLayout: React.FC<
+  PropsWithChildren<{ pagePath: string; title: string }>
+> = ({ pagePath, title, children }) => {
   const relevantPages = pages.filter((page) => page.title !== title);
 
   return (
-    <Layout bodyClassName="bg-white" title={title}>
+    <Layout bodyClassName="bg-white" title={title} pagePath={pagePath}>
       <Section key="heading" componentName="Heading">
         <h1
           className={classNames(

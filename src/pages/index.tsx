@@ -1,39 +1,28 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import {
   AutoVideoOrThumbnail,
   getImageFromFile,
   getLottieFromFile,
   getVideoFromFile,
 } from "@bond-london/gatsby-graphcms-components";
-import loadable from "@loadable/component";
-const LottieElement = loadable(
-  () => import("@bond-london/gatsby-graphcms-components"),
-  { resolveComponent: (lib) => lib.LottieElement }
-);
 
-import { PageDoc, File } from "../generated/graphql-types";
+import { LottieElement } from "@bond-london/gatsby-graphcms-components/dist/elements/LottieElement";
+
 import { Layout, Section } from "../layouts";
 import classNames from "classnames";
 
-interface Props {
-  data: {
-    pageDoc: PageDoc;
-  };
-}
-const Page: React.FC<Props> = (props) => {
-  const {
-    data: {
-      pageDoc: { title, description, image, video, animation },
-    },
-  } = props;
+const Page: React.FC<PageProps<Queries.IndexPageQuery>> = ({ path, data }) => {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const pageDoc = data.pageDoc!;
+  const { image, video, animation, title, description } = pageDoc;
 
   const imageData = getImageFromFile(image);
   const videoSrc = getVideoFromFile(video);
-  const lottie = getLottieFromFile(animation as File);
+  const lottie = getLottieFromFile(animation);
 
   return (
-    <Layout bodyClassName="bg-white" title="Home">
+    <Layout bodyClassName="bg-white" title="Home" pagePath={path}>
       <Section componentName="Heading" className="bg-green">
         <h1
           className={classNames(
@@ -60,7 +49,7 @@ const Page: React.FC<Props> = (props) => {
           <LottieElement
             alt="Animation"
             className="aspect-w-1 aspect-h-1 col-span-full"
-            animationJson={lottie.animationJson}
+            animationUrl={lottie.animationUrl}
             encoded={lottie.encoded}
             loop={true}
           />
@@ -73,7 +62,7 @@ const Page: React.FC<Props> = (props) => {
 export default Page;
 
 export const indexPageQuery = graphql`
-  query IndexPageQuery {
+  query IndexPage {
     pageDoc(
       fileInformation: {
         extension: { eq: "json" }

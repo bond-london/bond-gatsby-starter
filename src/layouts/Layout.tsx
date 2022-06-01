@@ -1,13 +1,24 @@
-import { SEO } from "@bond-london/gatsby-graphcms-components";
+import {
+  SEO,
+  SiteBuildMetadata,
+  SiteMetadata,
+} from "@bond-london/gatsby-graphcms-components";
 import classNames from "classnames";
 import { graphql, useStaticQuery } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
-import React, { ReactNode, useCallback, useMemo, useState } from "react";
+import React, {
+  createContext,
+  PropsWithChildren,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Modal, Section } from ".";
-import CookieConsent from "react-cookie-consent";
-import { handleCookieAccepted } from "@bond-london/gatsby-plugin-cookie-scripts";
+import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
 
-export const LayoutContext = React.createContext<{
+export const LayoutContext = createContext<{
   setModal: (node?: ReactNode) => void;
   modal?: ReactNode;
 }>({
@@ -16,49 +27,63 @@ export const LayoutContext = React.createContext<{
   },
 });
 
-export const Layout: React.FC<{
-  bodyClassName?: string;
-  title: string;
-  description?: string;
-  keywords?: string;
-  image?: IGatsbyImageData;
-}> = ({ bodyClassName, title, description, keywords, image, children }) => {
-  const { siteBuildMetadata, site } = useStaticQuery<{
-    siteBuildMetadata: { buildTime: string; buildYear: string };
-    site: {
-      siteMetadata: {
-        title: string;
-        description: string;
-        siteUrl: string;
-        cookieName: string;
-      };
-    };
-  }>(graphql`
-    query LayoutQuery {
-      site {
-        siteMetadata {
-          description
-          title
-          siteUrl
-          cookieName
+export const Layout: React.FC<
+  PropsWithChildren<{
+    pagePath: string;
+    bodyClassName?: string;
+    title: string;
+    description?: string;
+    keywords?: string;
+    image?: IGatsbyImageData;
+  }>
+> = ({
+  pagePath,
+  bodyClassName,
+  title,
+  description,
+  keywords,
+  image,
+  children,
+}) => {
+  const { siteBuildMetadata, site } =
+    useStaticQuery<Queries.LayoutQuery>(graphql`
+      query Layout {
+        site {
+          siteMetadata {
+            description
+            siteName
+            siteUrl
+            cookieName
+            logo
+          }
+        }
+        siteBuildMetadata {
+          buildYear: buildTime(formatString: "YYYY")
+          buildTime(formatString: "dddd, MMMM d YYYY, h:mm:ss A")
         }
       }
-      siteBuildMetadata {
-        buildYear: buildTime(formatString: "YYYY")
-        buildTime(formatString: "dddd, MMMM d YYYY, h:mm:ss A")
-      }
-    }
-  `);
+    `);
 
-  const siteMetadata = site.siteMetadata;
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const siteMetadata = site!.siteMetadata!;
 
-  const pageTitle = siteMetadata?.title
-    ? `${siteMetadata.title} | ${title}`
-    : title;
+  const pageTitle = title
+    ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      `${title} | ${siteMetadata.siteName!}`
+    : // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      siteMetadata.siteName!;
 
   const onAccept = useCallback(() => {
-    handleCookieAccepted();
+    window.gtag?.("consent", "update", { ad_storage: "granted" });
   }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const cookieValue = getCookieConsentValue(siteMetadata.cookieName!);
+    if (cookieValue) {
+      onAccept();
+    }
+  }, [siteMetadata.cookieName, onAccept]);
 
   const [modal, setModal] = useState<ReactNode>();
   const provider = useMemo(
@@ -73,15 +98,15 @@ export const Layout: React.FC<{
     <LayoutContext.Provider value={provider}>
       <SEO
         pageTitle={pageTitle}
-        siteBuildMetadata={siteBuildMetadata}
+        siteBuildMetadata={siteBuildMetadata as SiteBuildMetadata}
         pageMetadata={{
           title,
           description,
           image,
           keywords,
         }}
-        siteMetadata={siteMetadata}
-        pageUrl={siteMetadata.siteUrl}
+        pagePath={pagePath}
+        siteMetadata={siteMetadata as SiteMetadata}
         className={classNames(
           bodyClassName || "bg-washed-blue",
           process.env.GATSBY_DEBUG_TAILWIND && "debug-screens"
@@ -95,8 +120,8 @@ export const Layout: React.FC<{
         bottomSpacing={false}
       >
         <p className="col-span-full">
-          © Bond London {siteBuildMetadata.buildYear}{" "}
-          {siteBuildMetadata.buildTime}
+          © Bond London {siteBuildMetadata?.buildYear as string}{" "}
+          {siteBuildMetadata?.buildTime as string}
         </p>
       </Section>
       <CookieConsent
@@ -115,7 +140,7 @@ export const Layout: React.FC<{
         declineCookieValue="cookie-declined"
         enableDeclineButton={true}
         declineButtonText="No way!"
-        cookieName={siteMetadata.cookieName}
+        cookieName={siteMetadata.cookieName as string}
         style={{ alignItems: "end" }}
         disableStyles={true}
         disableButtonStyles={true}

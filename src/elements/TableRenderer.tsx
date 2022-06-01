@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { PropsWithChildren, useMemo } from "react";
 import classNames from "classnames";
 import {
   buildTableInformationFromChildren,
@@ -72,6 +72,7 @@ export const RenderTable: React.FC<{
                 }
               >
                 <RenderElements
+                  parentIndex={0}
                   index={index}
                   contents={cell}
                   renderers={renderers}
@@ -98,6 +99,7 @@ export const RenderTable: React.FC<{
                   <div className="lg:hidden inline-block w-1/3 pr-mobile-gap p4">
                     {header && (
                       <RenderElements
+                        parentIndex={0}
                         index={index}
                         contents={table.header[index]}
                         renderers={renderers}
@@ -106,6 +108,7 @@ export const RenderTable: React.FC<{
                   </div>
                   <div className="w-2/3 inline-block lg:w-auto">
                     <RenderElements
+                      parentIndex={0}
                       index={index}
                       contents={cell}
                       renderers={renderers}
@@ -121,7 +124,9 @@ export const RenderTable: React.FC<{
   );
 };
 
-export const TableRenderer: React.FC<NodeRendererProps> = (mainProps) => {
+export const TableRenderer: React.FC<PropsWithChildren<NodeRendererProps>> = (
+  mainProps
+) => {
   const { children, renderers, context } = mainProps;
   const table = useMemo(() => {
     const table = buildTableInformationFromChildren(children);

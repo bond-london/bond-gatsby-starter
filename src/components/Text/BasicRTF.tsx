@@ -1,7 +1,7 @@
 import { VisualAsset } from "@bond-london/gatsby-graphcms-components";
 import {
   ClassNameOverrides,
-  RTFContent,
+  CleanedRTF,
 } from "@bond-london/graphcms-rich-text";
 import classNames from "classnames";
 import React from "react";
@@ -9,7 +9,7 @@ import { AspectRatioVisual, RTF } from "../../elements";
 import { Section } from "../../layouts";
 
 export const BasicRTF: React.FC<{
-  content: RTFContent;
+  content: CleanedRTF;
   className?: string;
   classNameOverrides?: ClassNameOverrides;
   visual?: VisualAsset;

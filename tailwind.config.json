@@ -1,0 +1,116 @@
+{
+  "colorOptions": {
+    "black": "#070707",
+    "light-black": "#121f28",
+    "dark-blue": "#002641",
+    "neon-green": "#bcff03",
+    "neon-green-hover": "#B0f000",
+    "pink": "#F7E4E0",
+    "blue": "#83E4FA",
+    "blue-hover": "#3FC8E7",
+    "light-blue": "#D4FBFF",
+    "washed-blue": "#EBFFFE",
+    "grey": "#F2F2F2",
+    "off-white": "#f9ffff",
+    "error": "#e53935"
+  },
+  "spacing": {
+    "icon": 6,
+    "xxxs": 8,
+    "xxs": 16,
+    "xs": 24,
+    "square": 32,
+    "s": 40,
+    "m": 64,
+    "l": 80,
+    "xl": 112
+  },
+  "sizes": {
+    "mobile": {
+      "margin": 20,
+      "gap": 20,
+      "cols": 4
+    },
+    "tablet": {
+      "breakpoint": 768,
+      "margin": 40,
+      "gap": 16,
+      "cols": 8
+    },
+    "laptop": {
+      "breakpoint": 1024,
+      "cols": 12
+    },
+    "desktop": {
+      "breakpoint": 1440,
+      "gap": 24
+    }
+  },
+  "fontTable": {
+    "h1": {
+      "font": "poppins",
+      "weight": "light",
+      "default": "32-125",
+      "laptop": "42-125"
+    },
+    "h2": {
+      "font": "poppins",
+      "weight": "light",
+      "default": "24-125",
+      "laptop": "36-125"
+    },
+    "h3": {
+      "font": "poppins",
+      "weight": "light",
+      "default": "18-125",
+      "laptop": "24-125"
+    },
+    "h3tl": {
+      "font": "poppins",
+      "weight": "light",
+      "default": "14-125",
+      "laptop": "24-125"
+    },
+    "h4": {
+      "font": "poppins",
+      "weight": "light",
+      "default": "18-125"
+    },
+    "p1": {
+      "font": "sofiapro",
+      "weight": "light",
+      "default": "18-140",
+      "laptop": "22-140"
+    },
+    "p1sb": {
+      "font": "sofiapro",
+      "weight": "semibold",
+      "default": "18-140",
+      "laptop": "22-140"
+    },
+    "p2": {
+      "font": "sofiapro",
+      "weight": "light",
+      "default": "16-140",
+      "laptop": "18-140"
+    },
+    "p2sb": {
+      "font": "sofiapro",
+      "weight": "semibold",
+      "default": "16-140",
+      "laptop": "18-140"
+    },
+    "p3": {
+      "font": "sofiapro",
+      "weight": "light",
+      "default": "14-140",
+      "laptop": "16-140"
+    },
+    "p4": {
+      "font": "sofiapro",
+      "weight": "light",
+      "default": "12-140",
+      "laptop": "15-140"
+    }
+  }
+}
